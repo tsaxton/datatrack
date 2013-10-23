@@ -1,4 +1,5 @@
 <?php
+//Hello
 require('admin/config.php');
 include('templates/header.php');
 

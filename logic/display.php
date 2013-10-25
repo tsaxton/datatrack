@@ -1,6 +1,9 @@
+<?php
+    $data = new data(1);
+?>
 <div class="row">
     <div class="span12">
-	<h2>CTA Data</h2>
+	<h2><?=$data->getName()?></h2>
     </div>
 </div>
 <script>
@@ -75,53 +78,12 @@ $(document).ready(function(){
     </div>
 </div>
 <div class="row">
-    <div class="span12">
-	<table width="100%" border="3">
-	    <tr>
-		<th>Year</th>
-		<th>Total</th>
-		<th>Bus</th>
-		<th>Rail</th>
-		<th>1 yr. change</th>
-		<th>5 yr. change</th>
-		<th>10 yr. change</th>
-	    </tr>
-	    <tr>
-		<td>1992</td>
-		<td>1234567</td>
-		<td>123456</td>
-		<td>123456</td>
-		<td>-8.65%</td>
-		<td>1.23%</td>
-		<td>2.43%</td>
-	    </tr>
-	    <tr>
-		<td>1993</td>
-		<td>1234567</td>
-		<td>123456</td>
-		<td>123456</td>
-		<td>-8.65%</td>
-		<td>1.23%</td>
-		<td>2.43%</td>
-	    </tr>
-	    <tr>
-		<td>1994</td>
-		<td>1234567</td>
-		<td>123456</td>
-		<td>123456</td>
-		<td>-8.65%</td>
-		<td>1.23%</td>
-		<td>2.43%</td>
-	    </tr>
-	    <tr>
-		<td>1995</td>
-		<td>1234567</td>
-		<td>123456</td>
-		<td>123456</td>
-		<td>-8.65%</td>
-		<td>1.23%</td>
-		<td>2.43%</td>
-	    </tr>
-	</table>
-    </div>
+    <div class="span12"><!-- Begin data table -->
+<h3>Total Ridership (Bus & 'L')</h3>
+<?=$data->makeTable('total');?>
+<h3>Bus Ridership</h3>
+<?=$data->makeTable('bus');?>
+<h3>Elevated Train Ridership</h3>
+<?=$data->makeTable('rail');?>
+    </div><!-- End data table -->
 </div>

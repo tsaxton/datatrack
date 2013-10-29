@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>JSON Example</title>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  	<script type="text/javascript">
+	  	$.getJSON("http://data.cityofchicago.org/resource/w8km-9pzd.json", function(data) {
+	  	$.each(data, function() {
+		  	$.each(this, function(k, v) {
+		  	$("#datatable").append( "<tr><td>" + k + "</td><td>" + v + "</td></tr>" );
+		  	});
+		});
+	  	
+});
+
+	  
+	  	
+	</script>
+	<style type="text/css">
+		
+	</style>
+  </head>
+
+  <body>
+  	<div class="dataresponse">
+  	<table border="1" id="datatable">
+  	</table>
+  	</div>
+  </body>
+</html>

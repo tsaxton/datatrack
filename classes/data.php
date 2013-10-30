@@ -137,7 +137,7 @@ class data{
 
     private function tableYear($field = NULL){
 	// set up table header
-	$ret = "<table class=\"data\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
+	$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 	$years = count($this->figures); // number of years of data
 	$offset = [1, 2, 5, 10, 25, 50, 100];
 	foreach($offset as $key=>$o){

@@ -8,53 +8,75 @@
 </div>
 
 <script>
-        $(document).ready(function(){
+$(document).ready(function(){
 
-            var ajaxData = function(id, field) {
-            var ret = null;
-            $.ajax({
-              async: false,
-              url: 'json.php?id=' + id + '&field=' + field,
-              dataType:"json",
-              success: function(data) {
-                ret = data;
-              }
-            });
-            return ret;
-          };
+    var ajaxData = function(id, field) {
+	var ret = null;
+	$.ajax({
+	  async: false,
+	  url: 'json.php?id=' + id + '&field=' + field,
+	  dataType:"json",
+	  success: function(data) {
+	    ret = data;
+	  }
+	});
+	return ret;
+      };
 
-	var vals = [];
-	var json = ajaxData('1', 'total');
-	for(var j in json){
-	    vals.push([parseInt(j), parseInt(json[j])]);
-	}
-	var vals2 = [];
-	var json2 = ajaxData('1', 'bus');
-	for(var j in json2){
-	    vals2.push([parseInt(j), parseInt(json2[j])]);
-	}
-	var vals3 = [];
-	var json3 = ajaxData('1', 'rail');
-	for(var j in json3){
-	    vals3.push([parseInt(j), parseInt(json3[j])]);
-	}
+    var vals = [];
+    var json = ajaxData('1', 'total');
+    for(var j in json){
+	vals.push([parseInt(j), parseInt(json[j])]);
+    }
+    var vals2 = [];
+    var json2 = ajaxData('1', 'bus');
+    for(var j in json2){
+	vals2.push([parseInt(j), parseInt(json2[j])]);
+    }
+    var vals3 = [];
+    var json3 = ajaxData('1', 'rail');
+    for(var j in json3){
+	vals3.push([parseInt(j), parseInt(json3[j])]);
+    }
 
-        var plot2 = $.jqplot('chart3', [vals, vals2, vals3],{
-            title: "CTA Annual Ridership",
-	    axes:{
-		xaxis: {
-		    tickOptions: {formatString: '%d'},
+    var plot2 = $.jqplot('chart3', [vals, vals2, vals3],{
+	title: "CTA Annual Ridership",
+	axes:{
+	    xaxis: {
+		tickOptions: {formatString: '%d'},
+	    }
+	},
+	series:[
+	  {
+	    // Change our line width and use a diamond shaped marker.
+	    lineWidth:2,
+	    markerOptions: { style:'dimaond' }
+	  }],
+      });
+
+    /*var $table = $("#total");
+    $table.find("th").each(function(columnIndex)
+    {
+	var oldValue=0, currentValue=0, $elementToMark;
+	var $trs = $table.find("tr");
+	$trs.each(function(index, element)
+	{
+	    $(this).find("td:eq("+ columnIndex +")").each(function()
+	    {
+		oldValue = currentValue;
+		currentValue = parseFloat($(this).html());
+		if(currentValue > oldValue)
+		{
+		    $elementToMark = $(this);
 		}
-	    },
-	    series:[
-	      {
-		// Change our line width and use a diamond shaped marker.
-		lineWidth:2,
-		markerOptions: { style:'dimaond' }
-	      }],
-          });
-
-        });
+		if(index == $trs.length-1)
+		{
+		  $elementToMark.addClass("min"); 
+		}
+	    });
+	});
+    });*/
+});
 </script>
 <div class="row">
     <div class="span6">

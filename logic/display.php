@@ -6,71 +6,64 @@
 	<h2><?=$data->getName()?></h2>
     </div>
 </div>
+
 <script>
-$(document).ready(function(){
-  // Some simple loops to build up data arrays.
-  var cosPoints = [];
-  for (var i=0; i<2*Math.PI; i+=0.4){
-    cosPoints.push([i, Math.cos(i)]);
-  }
-    
-  var sinPoints = [];
-  for (var i=0; i<2*Math.PI; i+=0.4){
-     sinPoints.push([i, 2*Math.sin(i-.8)]);
-  }
-    
-  var powPoints1 = [];
-  for (var i=0; i<2*Math.PI; i+=0.4) {
-      powPoints1.push([i, 2.5 + Math.pow(i/4, 2)]);
-  }
-    
-  var powPoints2 = [];
-  for (var i=0; i<2*Math.PI; i+=0.4) {
-      powPoints2.push([i, -2.5 - Math.pow(i/4, 2)]);
-  }
- 
-  var plot3 = $.jqplot('chart3', [cosPoints, sinPoints, powPoints1, powPoints2],
-    {
-      title:'Sample Chart',
-      // Series options are specified as an array of objects, one object
-      // for each series.
-      series:[
-          {
-            // Change our line width and use a diamond shaped marker.
-            lineWidth:2,
-            markerOptions: { style:'dimaond' }
-          },
-          {
-            // Don't show a line, just show markers.
-            // Make the markers 7 pixels with an 'x' style
-            showLine:false,
-            markerOptions: { size: 7, style:"x" }
-          },
-          {
-            // Use (open) circlular markers.
-            markerOptions: { style:"circle" }
-          },
-          {
-            // Use a thicker, 5 pixel line and 10 pixel
-            // filled square markers.
-            lineWidth:5,
-            markerOptions: { style:"filledSquare", size:10 }
-          }
-      ]
-    }
-  );
-    
-});
+        $(document).ready(function(){
+
+            var ajaxData = function(id, field) {
+            var ret = null;
+            $.ajax({
+              async: false,
+              url: 'json.php?id=' + id + '&field=' + field,
+              dataType:"json",
+              success: function(data) {
+                ret = data;
+              }
+            });
+            return ret;
+          };
+
+	var vals = [];
+	var json = ajaxData('1', 'total');
+	for(var j in json){
+	    vals.push([parseInt(j), parseInt(json[j])]);
+	}
+	var vals2 = [];
+	var json2 = ajaxData('1', 'bus');
+	for(var j in json2){
+	    vals2.push([parseInt(j), parseInt(json2[j])]);
+	}
+	var vals3 = [];
+	var json3 = ajaxData('1', 'rail');
+	for(var j in json3){
+	    vals3.push([parseInt(j), parseInt(json3[j])]);
+	}
+
+        var plot2 = $.jqplot('chart3', [vals, vals2, vals3],{
+            title: "CTA Annual Ridership",
+	    axes:{
+		xaxis: {
+		    tickOptions: {formatString: '%d'},
+		}
+	    },
+	    series:[
+	      {
+		// Change our line width and use a diamond shaped marker.
+		lineWidth:2,
+		markerOptions: { style:'dimaond' }
+	      }],
+          });
+
+        });
 </script>
 <div class="row">
     <div class="span6">
 	<h3>Key Observations</h3>
 	<ul>
-	    <li>The chart on the right will graphically display the data.</li>
-	    <li>We also hope to be able to make it customizable, to control timeline and which lines to show.</li>
-	    <li>Perhaps make it downloadable also?</li>
-	    <li>This section will have all of the key observations that our system finds in the data.</li>
-	    <li>Below is the chart of changes over time and other figures.</li>
+	    <li>From 2011-2012, bus ridership grew much more slowly than rail ridership.</li>
+	    <li>The largest one-year ridership increase overall was between 2007-2008 by percent.</li>
+	    <li>The largest one-year ridership decrease overall was between 1992-1993 by percent.</li>
+	    <li>Ridership dropped by more than 1/4 from 1988-1998.</li>
 	</ul>
     </div>
 

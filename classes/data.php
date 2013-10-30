@@ -136,13 +136,6 @@ class data{
     }
 
     private function tableYear($field = NULL){
-	// TODO: total value if $field is NULL
-	/*if($field){
-	    $fields = array($field);
-	}
-	else{
-	    $fields = array_keys($this->figures[0]);
-	}*/
 	// set up table header
 	$ret = "<table class=\"data\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 	$years = count($this->figures); // number of years of data
@@ -178,4 +171,24 @@ class data{
     public function getName(){
 	return $this->name;
     }
+
+    public function makeJSON($field){
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		return $this->JSONYear($field);
+	}
+    }
+
+    private function JSONYear($field){
+	$ret = array();
+	foreach($this->figures as $year=>$data){
+	    $ret[$year] = $data[$field];
+	}
+	return json_encode($ret);
+    }
+
 }

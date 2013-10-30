@@ -3,28 +3,169 @@
   <head>
   	<title>JSON Example</title>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab|Raleway:400,300' rel='stylesheet' type='text/css'>
   	<script type="text/javascript">
-	  	$.getJSON("http://data.cityofchicago.org/resource/w8km-9pzd.json", function(data) {
-	  	$.each(data, function() {
-		  	$.each(this, function(k, v) {
-		  	$("#datatable").append( "<tr><td>" + k + "</td><td>" + v + "</td></tr>" );
-		  	});
-		});
-	  	
-});
+  		//var jsondata;
+$( document ).ready(function(){
+$.get("http://data.cityofchicago.org/resource/w8km-9pzd.json", function(data) {
+		var obj = data;
+		console.log(obj[0].year);
+		function dataTable(){
+			//$.each(obj.year, function(key,val) {
+			//$( "#datatable" ).append( "<tr><td>" + val + "</td>" + "<td>" + obj.total + "</td></tr>" );
+			//});
+			var len = Object.keys(obj).length;
+			for (var i=0; i<len; i++){
+				$( "#datatable" ).append( "<tr><td>" + obj[i].year + "</td>" + "<td>" + obj[i].total + "</td></tr>" );
+			}
+			}
+dataTable();
+//graph
 
+//analysis
+});
+});	
+
+		
+		
+		/*function selectYear(year){
+			while(data.year === year){
+				return data;
+			}
+		}
+		$("#sortdata").append( "<option>" + v + "</option>" );
+	*/
 	  
 	  	
 	</script>
 	<style type="text/css">
-		
-	</style>
+	body {
+			font-size: 150%;
+			background-color: #ffffff;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+		}
+		div#wrap{
+		width: 100%;
+		margin: 0,0,0,0em;
+			
+		}
+		div#content-wrap{
+			width:80%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		div#header{
+			width: 100%;
+			
+		}
+		h1#title {
+			font-family: 'Roboto Slab', serif;
+			font-size: 2.25em;
+			color: #282828;
+			text-align: center;
+			width: 600px;
+			margin-top: 0.5em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		span#titleRed {
+			font-family: 'Raleway', sans-serif;
+			font-weight: 300;
+			font-size: 1em;
+			color: #cc0000;
+		}
+		div#menu{
+			width: 100%;
+			background-color: #282828;
+			
+		}
+		ul#menuList{
+			list-style: none;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+			width:35em;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		li.menuItem{
+			display: inline;
+			padding-right: 1.5em;
+			font-family: 'Raleway', sans-serif;
+			font-weight: 400;
+			font-size: 1.3em;
+		}
+		.menuItem a:link{
+			color:#f9f9f9;
+			-o-transition:.5s;
+			-ms-transition:.5s;
+			-moz-transition:.5s;
+			-webkit-transition:.5s;
+			transition:.5s;
+			text-decoration: none;
+		}
+		.menuItem a:visited{
+			color:#f9f9f9;
+			text-decoration: none;
+		}
+		.menuItem a:active{
+			color:#f9f9f9;
+			text-decoration: none;
+		}
+		.menuItem a:hover{
+			color: #ba1414;
+			text-decoration: none;
+		}
+table.simpletable {
+	border-width: 1px;
+	border-spacing: 0px;
+	border-style: solid;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+table.simpletable th {
+	border-width: 1px;
+	padding: 5px;
+	border-style: solid;
+	border-color: gray;
+	background-color: white;
+	font-family: 'Roboto Slab', serif;
+}
+table.simpletable td {
+	border-width: 1px;
+	padding: 5px;
+	border-style: solid;
+	border-color: gray;
+	background-color: white;
+}
+</style>
   </head>
 
   <body>
+  <div id="wrap">
+			<div id="header">
+				<h1 id="title">DataTrack <span id="titleRed">CHICAGO</span></h1>
+			</div>
+			<div id="menu">
+				<ul id="menuList">
+					<li class="menuItem"><a href="#">DASHBOARD</a></li>
+					<li class="menuItem"><a href="#">DATA SOURCES</a></li>
+					<li class="menuItem"><a href="#">ABOUT</a></li>
+					<li class="menuItem"><a href="#">HELP</a></li>
+				</ul>
+			</div>
+			<div id="content-wrap">
   	<div class="dataresponse">
-  	<table border="1" id="datatable">
+  	<table id="datatable" class="simpletable">
+  	<tr><th>Year</th><th>Total</th></tr>
+  	
   	</table>
   	</div>
+  	</div>
+  </div>
   </body>
 </html>

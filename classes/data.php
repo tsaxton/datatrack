@@ -44,10 +44,18 @@ class data{
 	}
 
 	global $db;
-	$sql = "SELECT * FROM {$this->datatable}";
-	$this->figures = $db->query($sql);
+
+	$json = file_get_contents("http://data.cityofchicago.org/resource/{$this->api}.json");
+	if($json){
+	    $json = json_decode($json, true);
+	    $this->figures = $json;
+	}
+	else{
+	    die();
+	}
 
 	$this->sortData();
+
     }
 
     public function sortData(){

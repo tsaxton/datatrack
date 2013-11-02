@@ -82,7 +82,6 @@ $(document).ready(function(){
     <div class="span6">
 	<h3>Key Observations</h3>
 	<ul>
-	    <li>From 2011-2012, bus ridership grew much more slowly than rail ridership.</li>
 	    <li>The largest one-year ridership increase overall was between 2007-2008 by percent.</li>
 	    <li>The largest one-year ridership decrease overall was between 1992-1993 by percent.</li>
 	    <li>Ridership dropped by more than 1/4 from 1988-1998.</li>

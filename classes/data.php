@@ -9,9 +9,13 @@ class data{
     private $api;
     private $datatable;
     private $type;
+    private $offsetYear = [1, 2, 5, 10, 25, 50, 100];
 
     // Data
     private $figures;
+
+    // Analysis
+    private $diffs;
 
     public function __construct($id){
 	$this->id = $id;
@@ -36,6 +40,7 @@ class data{
 	$this->datatable = $results[0]['datatable'];
 
 	$this->collectData();
+	$this->calculateDiffs();
     }
 
     public function collectData(){
@@ -147,23 +152,22 @@ class data{
 	// set up table header
 	$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 	$years = count($this->figures); // number of years of data
-	$offset = [1, 2, 5, 10, 25, 50, 100];
-	foreach($offset as $key=>$o){
+	foreach($this->offsetYear as $o){
 	    if($o < $years){
 		$ret .= "\t<th class=\"noright\">$o yr. change</th>\n\t\t<th>(% change)</th>\n\t";
-	    }
-	    else{
-		unset($offset[$key]);
 	    }
 	}
 	$year = date("Y")-1;
 	for($i=0; $i < $years; $i++){
-	    $ret .= "<tr>\n\t\t<td>$year</td>\n\t\t<td>{$this->figures[$year][$field]}</td>\n\t";
-	    foreach($offset as $o){
-		if(array_key_exists($year-$o,$this->figures)){
-		    $diff = $this->figures[$year][$field] - $this->figures[$year - $o][$field];
+	    $ret .= "<tr>\n\t\t<td>$year</td>\n\t\t<td>". number_format($this->figures[$year][$field],0,'.', ',') . "</td>\n\t";
+	    foreach($this->offsetYear as $o){
+		if($o >= $years){
+		    continue;
+		}
+		if($this->diffs[$year][$field][$o]){
+		    $diff = $this->diffs[$year][$field][$o];
 		    $pct = number_format(100 * $diff / $this->figures[$year-$o][$field], 2);
-		    $ret .= "\t<td class=\"noright\">$diff</td>\n\t\t<td class=\"noleft\">$pct</td>\n\t";
+		    $ret .= "\t<td class=\"noright\">" . number_format($diff, 0, '.', ',') . "</td>\n\t\t<td class=\"noleft\">$pct%</td>\n\t";
 		}
 		else{
 		    $ret .= "\t<td class=\"noright\">-</th>\n\t\t<td class=\"noleft\">-</td>\n\t";
@@ -197,6 +201,38 @@ class data{
 	    $ret[$year] = $data[$field];
 	}
 	return json_encode($ret);
+    }
+
+    public function calculateDiffs(){
+	if(!$this->figures){
+	    $this->initialize;
+	}
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		$this->yearDiffs();
+		break;
+	}
+    }
+
+    private function yearDiffs(){
+	$ret = array();
+	foreach($this->figures as $year=>$vals){
+	    foreach($vals as $field=>$v){
+		foreach($this->offsetYear as $o){
+		    if(array_key_exists($year-$o,$this->figures)){
+			$ret[$year][$field][$o] = $v - $this->figures[$year-$o][$field];
+		    }
+		    else{
+			$ret[$year][$field][$o] = NULL;
+		    }
+		}
+	    }
+	}
+	$this->diffs = $ret;
     }
 
 }

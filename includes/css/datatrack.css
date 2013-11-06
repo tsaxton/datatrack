@@ -19,3 +19,63 @@
 .min{
     color: red;
 }
+div#header{
+	width: 100%;			
+}
+h1#title {
+	font-family: 'Roboto Slab', serif;
+	font-size: 2.25em;
+	color: #282828;
+	text-align: center;
+	width: 600px;
+	margin-top: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+}
+span#titleRed {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 1em;
+	color: #cc0000;
+}
+div#menu{
+	width: 100%;
+	background-color: #282828;
+	
+}
+ul#menuList{
+	list-style: none;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	width:35em;
+	margin-left: auto;
+	margin-right: auto;
+}
+li.menuItem{
+	display: inline;
+	padding-right: 1.5em;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 1.3em;
+}
+.menuItem a:link{
+	color:#f9f9f9;
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+	transition:.5s;
+	text-decoration: none;
+}
+.menuItem a:visited{
+	color:#f9f9f9;
+	text-decoration: none;
+}
+.menuItem a:active{
+	color:#f9f9f9;
+	text-decoration: none;
+}
+.menuItem a:hover{
+	color: #ba1414;
+	text-decoration: none;
+}

@@ -9,8 +9,6 @@
     <link rel="stylesheet" type="text/css" href="includes/css/jquery.jqplot.css"/>
     <link rel="stylesheet" type="text/css" href="includes/css/datatrack.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab|Raleway:400,300' rel='stylesheet' type='text/css'>
-  	<script type="text/javascript">
-
     <!--JavaScript-->
     <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
     <script language="javascript" type="text/javascript" src="includes/js/jquery-1.9.1.js"></script>

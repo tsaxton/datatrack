@@ -14,11 +14,23 @@
 }
 
 .max{
-    color: green;
+    background: green;
+    color: #ffffff;
 }
+
 .min{
-    color: red;
+    background: red;
+    color: #ffffff;
 }
+
+.data .noleft{
+    border-left: 0px;
+}
+
+.data .noright{
+    border-right: 0px;
+}
+
 div#header{
 	width: 100%;			
 }

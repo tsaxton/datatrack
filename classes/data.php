@@ -124,7 +124,6 @@ class data{
 	foreach($in as $row){
 	    $year = $row['year'];
 	    unset($row['year']);
-	    $row['total'] = array_sum($row);
 	    $out[$year] = $row;
 	}
 	$this->figures = $out;
@@ -148,7 +147,7 @@ class data{
 	$years = count($this->figures); // number of years of data
 	foreach($this->offsetYear as $o){
 	    if($o < $years){
-		$ret .= "\t<th class=\"noright\">$o yr. change</th>\n\t\t<th>(% change)</th>\n\t";
+		$ret .= "\t<th class=\"noright\">$o yr. change</th>\n\t\t<th class=\"noleft\">(% change)</th>\n\t";
 	    }
 	}
 	$year = date("Y")-1;
@@ -158,10 +157,24 @@ class data{
 		if($o >= $years){
 		    continue;
 		}
-		if($this->diffs[$year][$field][$o]){
-		    $diff = $this->diffs[$year][$field][$o];
+		if($this->diffs[$field][$o][$year]){
+		    $max = max($this->diffs[$field][$o]);
+		    $min = min(array_diff($this->diffs[$field][$o], array(null, 0)));
+		    //dump($max, 'max');
+		    //dump($min, 'min');
+		    $diff = $this->diffs[$field][$o][$year];
 		    $pct = number_format(100 * $diff / $this->figures[$year-$o][$field], 2);
-		    $ret .= "\t<td class=\"noright\">" . number_format($diff, 0, '.', ',') . "</td>\n\t\t<td class=\"noleft\">$pct%</td>\n\t";
+		    $class = "noright";
+		    $class2 = "noleft";
+		    if($diff == $max){
+			$class .= " max";
+			$class2 .= " max";
+		    }
+		    elseif($diff == $min){
+			$class .= " min";
+			$class2 .= " min";
+		    }
+		    $ret .= "\t<td class=\"$class\">" . number_format($diff, 0, '.', ',') . "</td>\n\t\t<td class=\"$class2\">$pct%</td>\n\t";
 		}
 		else{
 		    $ret .= "\t<td class=\"noright\">-</th>\n\t\t<td class=\"noleft\">-</td>\n\t";
@@ -218,10 +231,10 @@ class data{
 	    foreach($vals as $field=>$v){
 		foreach($this->offsetYear as $o){
 		    if(array_key_exists($year-$o,$this->figures)){
-			$ret[$year][$field][$o] = $v - $this->figures[$year-$o][$field];
+			$ret[$field][$o][$year] = $v - $this->figures[$year-$o][$field];
 		    }
 		    else{
-			$ret[$year][$field][$o] = NULL;
+			$ret[$field][$o][$year] = NULL;
 		    }
 		}
 	    }

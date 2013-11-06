@@ -16,7 +16,16 @@ $.get("http://data.cityofchicago.org/resource/w8km-9pzd.json", function(data) {
 			//});
 			var len = Object.keys(obj).length;
 			for (var i=0; i<len; i++){
-				$( "#datatable" ).append( "<tr><td>" + obj[i].year + "</td>" + "<td>" + obj[i].total + "</td></tr>" );
+				t=i-10;
+				
+				if (i<10){
+					$( "#datatable" ).append( "<tr><td>" + obj[i].year + "</td>" + "<td>" + obj[i].total + "</td><td>Data not available</td></tr>" );
+				}
+				else
+				{
+					$( "#datatable" ).append( "<tr><td>" + obj[i].year + "</td>" + "<td>" + obj[i].total + "</td><td>" + (obj[i].total - obj[t].total) + "</td></tr>" );
+				}
+				
 			}
 			}
 dataTable();
@@ -57,6 +66,7 @@ dataTable();
 			width:80%;
 			margin-left: auto;
 			margin-right: auto;
+			margin-bottom: 20px;
 		}
 		div#header{
 			width: 100%;
@@ -161,7 +171,7 @@ table.simpletable td {
 			<div id="content-wrap">
   	<div class="dataresponse">
   	<table id="datatable" class="simpletable">
-  	<tr><th>Year</th><th>Total</th></tr>
+  	<tr><th>Year</th><th>Total</th><th>10-year change</th></tr>
   	
   	</table>
   	</div>

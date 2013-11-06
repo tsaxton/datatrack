@@ -7,7 +7,6 @@ class data{
     private $name;
     private $updated;
     private $api;
-    private $datatable;
     private $type;
     private $offsetYear = [1, 2, 5, 10, 25, 50, 100];
 
@@ -37,17 +36,12 @@ class data{
 	$this->name = $results[0]['name'];
 	$this->updated = $results[0]['updated'];
 	$this->api = $results[0]['api'];
-	$this->datatable = $results[0]['datatable'];
 
 	$this->collectData();
 	$this->calculateDiffs();
     }
 
     public function collectData(){
-	if(!$this->datatable){
-	    $this->initialize();
-	}
-
 	global $db;
 
 	$json = file_get_contents("http://data.cityofchicago.org/resource/{$this->api}.json");

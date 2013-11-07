@@ -3,12 +3,13 @@
 class data{
 
     // General Fields
-    private $id;
+    public $id;
     private $name;
     private $updated;
     private $api;
     private $type;
     private $offsetYear = [1, 2, 5, 10, 25, 50, 100];
+    public $fields;
 
     // Data
     private $figures;
@@ -36,6 +37,8 @@ class data{
 	$this->name = $results[0]['name'];
 	$this->updated = $results[0]['updated'];
 	$this->api = $results[0]['api'];
+
+	$this->fields = $db->query('select * from fields where dataset='.$this->id);
 
 	$this->collectData();
 	$this->calculateDiffs();
@@ -96,10 +99,6 @@ class data{
 
 	$this->figures = $out;
 	return;
-    }
-
-    private function yearLimit($var){
-	return ($var < count($this->figures));
     }
 
     private function sortMonthly(){

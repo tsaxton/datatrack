@@ -23,7 +23,13 @@ $(document).ready(function(){
 	return ret;
       };
 
-    var vals = [];
+    var chartData = [];
+<?php
+foreach($data->fields as $field){
+    echo "\tvar vals = [];\n\tvar json = ajaxData('{$data->id}', '{$field['field']}');\n\tfor(var j in json){\n\t\tvals.push([parseInt(j), parseInt(json[j])]);\n\t}\n\tchartData.push(vals);\n\n";
+}
+?>
+    /*var vals = [];
     var json = ajaxData('1', 'total');
     for(var j in json){
 	vals.push([parseInt(j), parseInt(json[j])]);
@@ -37,9 +43,10 @@ $(document).ready(function(){
     var json3 = ajaxData('1', 'rail');
     for(var j in json3){
 	vals3.push([parseInt(j), parseInt(json3[j])]);
-    }
+    }*/
 
-    var plot2 = $.jqplot('chart3', [vals, vals2, vals3],{
+    //var plot2 = $.jqplot('chart3', [vals, vals2, vals3],{
+    var plot2 = $.jqplot('chart3', chartData,{
 	title: "CTA Annual Ridership",
 	axes:{
 	    xaxis: {
@@ -53,29 +60,6 @@ $(document).ready(function(){
 	    markerOptions: { style:'dimaond' }
 	  }],
       });
-
-    /*var $table = $("#total");
-    $table.find("th").each(function(columnIndex)
-    {
-	var oldValue=0, currentValue=0, $elementToMark;
-	var $trs = $table.find("tr");
-	$trs.each(function(index, element)
-	{
-	    $(this).find("td:eq("+ columnIndex +")").each(function()
-	    {
-		oldValue = currentValue;
-		currentValue = parseFloat($(this).html());
-		if(currentValue > oldValue)
-		{
-		    $elementToMark = $(this);
-		}
-		if(index == $trs.length-1)
-		{
-		  $elementToMark.addClass("min"); 
-		}
-	    });
-	});
-    });*/
 });
 </script>
 <div class="row">
@@ -93,11 +77,11 @@ $(document).ready(function(){
 </div>
 <div class="row">
     <div class="span12"><!-- Begin data table -->
-<h3>Total Ridership (Bus & 'L')</h3>
-<?=$data->makeTable('total');?>
-<h3>Bus Ridership</h3>
-<?=$data->makeTable('bus');?>
-<h3>Elevated Train Ridership</h3>
-<?=$data->makeTable('rail');?>
+<?php
+foreach($data->fields as $field){
+    echo "<h3>{$field['text']}</h3>";
+    echo $data->makeTable($field['field']);
+}
+?>
     </div><!-- End data table -->
 </div>

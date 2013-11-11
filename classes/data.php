@@ -15,7 +15,7 @@ class data{
     private $figures;
 
     // Analysis
-    private $diffs;
+    public $diffs;
 
     public function __construct($id){
 	$this->id = $id;
@@ -38,7 +38,11 @@ class data{
 	$this->updated = $results[0]['updated'];
 	$this->api = $results[0]['api'];
 
-	$this->fields = $db->query('select * from fields where dataset='.$this->id);
+	$fields = $db->query('select * from fields where dataset='.$this->id);
+	$this->fields = array();
+	foreach($fields as $field){
+	    $this->fields[$field['id']] = $field;
+	}
 
 	$this->collectData();
 	$this->calculateDiffs();
@@ -239,6 +243,67 @@ class data{
 	    }
 	}
 	$this->diffs = $ret;
+    }
+
+    public function mostRecent(){
+	if(!$this->figures){
+	    $this->initialize;
+	}
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		return $this->mostRecentYear();
+	}
+    }
+
+    private function mostRecentYear(){
+	for($year = date('Y'); $year > 1900; $year--){
+	    if(array_key_exists($year, $this->figures)){
+		return $year;
+	    }
+	}
+	return 0;
+    }
+
+    public function previous($date = NULL){
+	if($date == NULL){
+	    $date = $this->mostRecent();
+	}
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		return $this->previousYear($date);
+	}
+    }
+
+    private function previousYear($year){
+	for($year--; $year > 1900; $year--){
+	    if(array_key_exists($year, $this->figures)){
+		return $year;
+	    }
+	}
+	return 0;
+    }
+
+    public function getData($date){
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		return $this->getDataByYear($date);
+	}
+    }
+
+    public function getDataByYear($year){
+	return $this->figures[$year];
     }
 
 }

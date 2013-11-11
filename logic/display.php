@@ -62,8 +62,15 @@ foreach($data->fields as $field){
       });
 });
 </script>
-<div class="row">
+<div class="row-fluid">
     <div class="span6">
+	<h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
+	<!-- Begin Recent Analysis -->
+<?php
+$recent = new recentAnalysis($data);
+echo $recent->run();
+?>
+	<!-- End Recent Analysis -->
 	<h3>Key Observations</h3>
 	<ul>
 	    <li>The largest one-year ridership increase overall was between 2007-2008 by percent.</li>
@@ -75,7 +82,7 @@ foreach($data->fields as $field){
     <div class="span5 offset1 chart" id="chart3">
     </div>
 </div>
-<div class="row">
+<div class="row-fluid">
     <div class="span12"><!-- Begin data table -->
 <?php
 foreach($data->fields as $field){

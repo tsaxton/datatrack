@@ -47,17 +47,6 @@ function dump($var, $label=NULL){
 	<div class="span6">
 	</div>
     </div>
-    <div class="row-fluid">
-	<div class="span2">
-	    <strong>Sidebar with related info</strong>
-	    <ul>
-		<li>similar data</li>
-		<li>last updated</li>
-	    </ul>
-	</div>
-
-	<div class="span10">
-
 
 <!--Begin main body content-->
 

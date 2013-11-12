@@ -7,6 +7,7 @@ class recentAnalysis{
     private $previous;
     private $yearData;
     private $prevData;
+    private $obs;
 
     public function __construct($data){
 	if(is_numeric($data)){
@@ -19,23 +20,26 @@ class recentAnalysis{
 	$this->previous = $data->previous($this->recent);
 	$this->yearData = $this->data->getData($this->recent);
 	$this->prevData = $this->data->getData($this->previous);
+	$this->highlight();
+	$this->proportion();
+	$this->streak();
     }
 
     public function run(){
-	$str = "<ul>\n\t";
-	$str .= $this->highlight();
-	$str .= $this->proportion();
+	$str = "<ul>\n";
+	foreach($this->obs as $o){
+	    $str .= "\t<li>$o</li>\n";
+	}
 	$str .= "</ul>\n\n";
 	return $str;
     }
 
     private function highlight(){
     // returns string telling the change from the previous data, and the exact value
-	$str = '';
 	foreach($this->data->fields as $field){
 	    // need to use $field['field'] for the name of the field
 	    $pct = ($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']] * 100; 
-	    $str .= "\t<li>{$field['text']}: " . number_format($this->yearData[$field['field']], 0, '.', ',');
+	    $str = "{$field['text']}: " . number_format($this->yearData[$field['field']], 0, '.', ',');
 	    if($pct == 0){
 		$str .= " (no change from {$this->previous})</li>\n";
 	    }
@@ -47,6 +51,7 @@ class recentAnalysis{
 		$pct = number_format(-$pct, 2, '.', ',');
 		$str .= " ($pct% decrease from {$this->previous})</li>\n";
 	    }
+	    $this->obs[] = $str;
 	}
 	return $str;
     }
@@ -55,34 +60,69 @@ class recentAnalysis{
 	global $db;
 	$proportions = $db->query("select * from proportions where dataset={$this->data->id}");
 
-	$str = '';
 	foreach($proportions as $p){
 	    //dump($this->yearData);
 	    $pro = 100 * $this->yearData[$this->data->fields[$p['top']]['field']] / $this->yearData[$this->data->fields[$p['bottom']]['field']];
 	    $pro = number_format($pro, 2, '.', ',');
-	    $str .= "<li>{$p['description']}: $pro%</li>\n";
+	    $this->obs[] = "{$p['description']}: $pro%";
 	}
-	return $str;
     }
 
     private function streak(){
 	$str = '';
 	foreach($this->data->fields as $field){
-	    if(($this->yearData[$field] > 0 && $this->prevData[$field] < 0) ||
-	       ($this->yearData[$field] < 0 && $this->prevData[$field] > 0)){
-		$str .= diffStreak();
+	    if($this->yearData[$field['field']] < 0 && $this->prevData[$field['field']] < 0){
+		// continuing a multi-year decrease
+		$this->obs[] = "{$field['text']} has now decreased for " . $this->negStreak($this->recent, $field['field']) . " years in a row.";
 	    }
-	    else{
-		$str .= sameStreak();
+	    elseif($this->yearData[$field['field']] < 0){
+		// decrease after increasing
+		$this->obs[] = "{$field['text']} decreased after " . $this->posStreak($this->previous, $field['field']) . " years of increasing.";
+	    }
+	    elseif($this->yearData[$field['field']] > 0 && $this->prevData[$field['field']] > 0){
+		// continuing a multi-year increase
+		$this->obs[] = "{$field['text']} has now increased for " . $this->posStreak($this->recent, $field['field']) . " years in a row.";
+	    }
+	    elseif($this->yearData[$field['field']] > 0){
+		// increase after decreasing
+		$this->obs[] = "{$field['text']} increased after " . $this->negStreak($this->previous, $field['field']) . " years of decreasing.";
 	    }
 	}
 	return $str;
     }
 
-    private function diffStreak(){
+    private function negStreak($year, $field){
+	$c = 0;
+	while($year > 1900){
+	    $d = $this->data->getData($year);
+	    $p = $this->data->getData($year-1);
+	    if($d == NULL || $p == NULL){
+		return $c;
+	    }
+	    if($d[$field]-$p[$field] > 0){
+		return $c;
+	    }
+	    $c++;
+	    $year--;
+	}
+	return $c;
     }
 
-    private function sameStreak(){
-    }
+    private function posStreak($year, $field){
+    	$c = 0;
+	while($year > 1900){
+	    $d = $this->data->getData($year);
+	    $p = $this->data->getData($year-1);
+	    if($d == NULL || $p == NULL){
+		return $c;
+	    }
+	    if($d[$field]-$p[$field] < 0){
+		return $c;
+	    }
+	    $c++;
+	    $year--;
+	}
+	return $c;
+}
 
 }

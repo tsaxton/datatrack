@@ -303,7 +303,10 @@ class data{
     }
 
     public function getDataByYear($year){
-	return $this->figures[$year];
+	if(array_key_exists($year, $this->figures)){
+	    return $this->figures[$year];
+	}
+	return NULL;
     }
 
 }

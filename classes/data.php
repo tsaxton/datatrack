@@ -16,6 +16,7 @@ class data{
 
     // Analysis
     public $diffs;
+    public $pct;
 
     public function __construct($id){
 	$this->id = $id;
@@ -163,21 +164,27 @@ class data{
 		if($this->diffs[$field][$o][$year]){
 		    $max = max($this->diffs[$field][$o]);
 		    $min = min(array_diff($this->diffs[$field][$o], array(null, 0)));
-		    //dump($max, 'max');
-		    //dump($min, 'min');
+		    $max2 = max($this->pct[$field][$o]);
+		    $min2 = min(array_diff($this->pct[$field][$o], array(null, 0)));
 		    $diff = $this->diffs[$field][$o][$year];
-		    $pct = number_format(100 * $diff / $this->figures[$year-$o][$field], 2);
+		    $pct = $this->pct[$field][$o][$year];
 		    $class = "noright";
 		    $class2 = "noleft";
 		    if($diff == $max){
 			$class .= " max";
-			$class2 .= " max";
 		    }
 		    elseif($diff == $min){
 			$class .= " min";
+		    }
+		    if($pct == $max2){
+			$class2 .= " max";
+		    }
+		    elseif($pct == $min2){
 			$class2 .= " min";
 		    }
-		    $ret .= "\t<td class=\"$class\">" . number_format($diff, 0, '.', ',') . "</td>\n\t\t<td class=\"$class2\">$pct%</td>\n\t";
+		    $ret .= "\t<td class=\"$class\">" . number_format($diff, 0, '.', ',') . "</td>\n\t\t<td class=\"$class2\">";
+		    $ret .= number_format(100 * $pct, 2);
+		    $ret .= "</td>\n\t";
 		}
 		else{
 		    $ret .= "\t<td class=\"noright\">-</th>\n\t\t<td class=\"noleft\">-</td>\n\t";
@@ -230,19 +237,29 @@ class data{
 
     private function yearDiffs(){
 	$ret = array();
+	$pct = array();
 	foreach($this->figures as $year=>$vals){
 	    foreach($vals as $field=>$v){
 		foreach($this->offsetYear as $o){
 		    if(array_key_exists($year-$o,$this->figures)){
-			$ret[$field][$o][$year] = $v - $this->figures[$year-$o][$field];
+			$w = $this->figures[$year-$o][$field];
+			$ret[$field][$o][$year] = $v - $w;
+			if($w == 0){
+			    $pct[$field][$o][$year] = NULL;
+			}
+			else{
+			    $pct[$field][$o][$year] = ($v - $w)/$w;
+			}
 		    }
 		    else{
 			$ret[$field][$o][$year] = NULL;
+			$pct[$field][$o][$year] = NULL;
 		    }
 		}
 	    }
 	}
 	$this->diffs = $ret;
+	$this->pct = $pct;
     }
 
     public function mostRecent(){

@@ -8,6 +8,7 @@ class recentAnalysis{
     private $yearData;
     private $prevData;
     private $obs;
+    private $vals;
 
     public function __construct($data){
 	if(is_numeric($data)){
@@ -27,6 +28,9 @@ class recentAnalysis{
 
     public function run(){
 	$str = "<ul>\n";
+	foreach($this->vals as $o){
+	    $str .= "\t<li>$o</li>\n";
+	}
 	foreach($this->obs as $o){
 	    $str .= "\t<li>$o</li>\n";
 	}
@@ -51,7 +55,7 @@ class recentAnalysis{
 		$pct = number_format(-$pct, 2, '.', ',');
 		$str .= " ($pct% decrease from {$this->previous})</li>\n";
 	    }
-	    $this->obs[] = $str;
+	    $this->vals[] = $str;
 	}
 	return $str;
     }

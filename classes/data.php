@@ -156,7 +156,17 @@ class data{
 	}
 	$year = date("Y")-1;
 	for($i=0; $i < $years; $i++){
-	    $ret .= "<tr>\n\t\t<td>$year</td>\n\t\t<td>". number_format($this->figures[$year][$field],0,'.', ',') . "</td>\n\t";
+	    $max = $this->getMax($field);
+	    $min = $this->getMin($field);
+	    $ret .= "<tr>\n\t\t<td>$year</td>\n\t\t<td";
+	    $val = $this->figures[$year][$field];
+	    if($val == $max){
+		$ret .= " class=\"max\"";
+	    }
+	    elseif($val == $min){
+		$ret .= " class=\"min\"";
+	    }
+	    $ret .= ">". number_format($val,0,'.', ',') . "</td>\n\t";
 	    foreach($this->offsetYear as $o){
 		if($o >= $years){
 		    continue;
@@ -324,6 +334,48 @@ class data{
 	    return $this->figures[$year];
 	}
 	return NULL;
+    }
+
+    public function getMax($field){
+	return max($this->extractData($field));
+    }
+
+    public function getMin($field){
+	return min($this->extractData($field));
+    }
+
+    private function extractData($field){
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		return $this->extractDataFromYear($field);
+	}
+    }
+
+    private function extractDataFromYear($field){
+	// This thing is by no means efficient. In a clean implementation,
+	// I think that all of the data should be converted to a better data
+	// structure for doing things like this.
+	$ret = array();
+	foreach($this->figures as $figure){
+	    $ret[] = $figure[$field];
+	}
+	return $ret;
+    }
+
+    public function getMaxChange($field, $time){
+    }
+
+    public function getMinChange($field, $time){
+    }
+
+    public function getMaxPct($field, $time){
+    }
+
+    public function getMinPct($fieldd, $time){
     }
 
 }

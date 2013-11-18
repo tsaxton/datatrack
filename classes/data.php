@@ -13,11 +13,12 @@ class data{
 
     // Data
     private $figures;
+    public $proportions;
 
     // Analysis
     public $diffs;
     public $pct;
-    public $proportions;
+    public $proportionData = array();
 
     public function __construct($id){
 	$this->id = $id;
@@ -45,9 +46,11 @@ class data{
 	foreach($fields as $field){
 	    $this->fields[$field['id']] = $field;
 	}
+	$this->proportions = $db->query("select * from proportions where dataset={$this->id}");
 
 	$this->collectData();
 	$this->calculateDiffs();
+	$this->calculateProportions();
     }
 
     public function collectData(){
@@ -208,6 +211,42 @@ class data{
 	return $ret;
     }
 
+    public function tableProp(){
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		return $this->tablePropYear();
+	}
+    }
+
+    private function tablePropYear(){
+	$ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
+	foreach($this->proportions as $p){
+	    $ret .= "\t\t<th>{$p['description']}</th>\n";
+	}
+	$ret .= "\t</tr>\n";
+	foreach($this->figures as $year=>$data){
+	    $ret .= "\t<tr>\n\t\t<th>$year</th>\n";
+	    foreach($this->proportions as $p){
+		$prop = $this->proportionData[$p['id']][$year];
+		$class = "";
+		if($prop == $this->getMaxProp($p['id'])){
+		    $class = "class=\"max\"";
+		}
+		elseif($prop == $this->getMinProp($p['id'])){
+		    $class = "class=\"min\"";
+		}
+		$ret .= "\t\t<td $class>" . number_format(100*$prop, 2, '.', ',') . "%</td>\n";
+	    }
+	    $ret .= "\t</tr>\n";
+	}
+	$ret .= "</table>\n";
+	return $ret;
+    }
+
     public function getName(){
 	return $this->name;
     }
@@ -274,9 +313,22 @@ class data{
     }
 
     public function calculateProportions(){
-	global $db;
-	$proportions = $db->query("select * from proportions where dataset={$this->id}");
-	foreach($proportion as $p){
+	switch($this->type){
+	    case 'day':
+		break;
+	    case 'month':
+		break;
+	    case 'year':
+		return $this->yearProportions();
+	}
+    }
+
+    private function yearProportions(){
+	foreach($this->proportions as $p){
+	    foreach($this->figures as $year=>$vals){
+		$pro = $vals[$this->fields[$p['top']]['field']] / $vals[$this->fields[$p['bottom']]['field']];
+		$this->proportionData[$p['id']][$year] = $pro;
+	    }
 	}
     }
 
@@ -388,6 +440,14 @@ class data{
 
     public function getMinPct($field, $time){
 	return min(array_diff($this->pct[$field][$time], array(null, 0)));
+    }
+
+    public function getMaxProp($prop){
+	return max($this->proportionData[$prop]);
+    }
+
+    public function getMinProp($prop){
+	return min(array_diff($this->proportionData[$prop], array(null, 0)));
     }
 
 }

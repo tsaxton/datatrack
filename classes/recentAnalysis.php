@@ -9,6 +9,7 @@ class recentAnalysis{
     private $prevData;
     private $obs;
     private $vals;
+    private $pro;
 
     public function __construct($data){
 	if(is_numeric($data)){
@@ -65,9 +66,8 @@ class recentAnalysis{
 	$proportions = $db->query("select * from proportions where dataset={$this->data->id}");
 
 	foreach($proportions as $p){
-	    //dump($this->yearData);
-	    $pro = 100 * $this->yearData[$this->data->fields[$p['top']]['field']] / $this->yearData[$this->data->fields[$p['bottom']]['field']];
-	    $pro = number_format($pro, 2, '.', ',');
+	    $this->pro[$p['id']] = $this->yearData[$this->data->fields[$p['top']]['field']] / $this->yearData[$this->data->fields[$p['bottom']]['field']];
+	    $pro = number_format(100*$this->pro[$p['id']], 2, '.', ',');
 	    $this->obs[] = "{$p['description']}: $pro%";
 	}
     }
@@ -155,6 +155,16 @@ class recentAnalysis{
 	    }
 
 	    // see how the proportions match
+	    foreach($this->data->proportions as $p){
+		if($this->pro[$p['id']] == $this->data->getMaxProp($p['id'])){
+		    $this->obs[] = "{$p['description']} hit a record high.";
+		}
+		if($this->pro[$p['id']] == $this->data->getMinProp($p['id'])){
+		    $this->obs[] = "{$p['description']} hit a record low.";
+		}
+	    }
+	    
+	    // TODO: if part of a streak, find if is a record streak
 	}
     }
 

@@ -83,12 +83,15 @@ echo $recent->run();
     </div>
 </div>
 <div class="row-fluid">
-    <div class="span12"><!-- Begin data table -->
+    <div class="span12"><!-- Begin data tables -->
 <?php
 foreach($data->fields as $field){
     echo "<h3>{$field['text']}</h3>";
     echo $data->makeTable($field['field']);
 }
+
+echo "<h3>Proportions</h3>";
+echo $data->tableProp();
 ?>
-    </div><!-- End data table -->
+    </div><!-- End data tables -->
 </div>

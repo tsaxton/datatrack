@@ -17,6 +17,7 @@ class data{
     // Analysis
     public $diffs;
     public $pct;
+    public $proportions;
 
     public function __construct($id){
 	$this->id = $id;
@@ -158,7 +159,7 @@ class data{
 	for($i=0; $i < $years; $i++){
 	    $max = $this->getMax($field);
 	    $min = $this->getMin($field);
-	    $ret .= "<tr>\n\t\t<td>$year</td>\n\t\t<td";
+	    $ret .= "<tr>\n\t\t<th>$year</th>\n\t\t<td";
 	    $val = $this->figures[$year][$field];
 	    if($val == $max){
 		$ret .= " class=\"max\"";
@@ -172,10 +173,10 @@ class data{
 		    continue;
 		}
 		if($this->diffs[$field][$o][$year]){
-		    $max = max($this->diffs[$field][$o]);
-		    $min = min(array_diff($this->diffs[$field][$o], array(null, 0)));
-		    $max2 = max($this->pct[$field][$o]);
-		    $min2 = min(array_diff($this->pct[$field][$o], array(null, 0)));
+		    $max = $this->getMaxDiff($field,$o);
+		    $min = $this->getMinDiff($field,$o);
+		    $max2 = $this->getMaxPct($field,$o);
+		    $min2 = $this->getMinPct($field,$o);
 		    $diff = $this->diffs[$field][$o][$year];
 		    $pct = $this->pct[$field][$o][$year];
 		    $class = "noright";
@@ -272,6 +273,13 @@ class data{
 	$this->pct = $pct;
     }
 
+    public function calculateProportions(){
+	global $db;
+	$proportions = $db->query("select * from proportions where dataset={$this->id}");
+	foreach($proportion as $p){
+	}
+    }
+
     public function mostRecent(){
 	if(!$this->figures){
 	    $this->initialize;
@@ -366,16 +374,20 @@ class data{
 	return $ret;
     }
 
-    public function getMaxChange($field, $time){
+    public function getMaxDiff($field, $time){
+	return max($this->diffs[$field][$time]);
     }
 
-    public function getMinChange($field, $time){
+    public function getMinDiff($field, $time){
+	return min(array_diff($this->diffs[$field][$time], array(null, 0)));
     }
 
     public function getMaxPct($field, $time){
+	return max($this->pct[$field][$time]);
     }
 
-    public function getMinPct($fieldd, $time){
+    public function getMinPct($field, $time){
+	return min(array_diff($this->pct[$field][$time], array(null, 0)));
     }
 
 }

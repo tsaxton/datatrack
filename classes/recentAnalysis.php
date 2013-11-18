@@ -22,6 +22,7 @@ class recentAnalysis{
 	$this->yearData = $this->data->getData($this->recent);
 	$this->prevData = $this->data->getData($this->previous);
 	$this->highlight();
+	$this->recordCheck();
 	$this->proportion();
 	$this->streak();
     }
@@ -39,7 +40,6 @@ class recentAnalysis{
     }
 
     private function highlight(){
-    // returns string telling the change from the previous data, and the exact value
 	foreach($this->data->fields as $field){
 	    // need to use $field['field'] for the name of the field
 	    $pct = ($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']] * 100; 
@@ -127,6 +127,35 @@ class recentAnalysis{
 	    $year--;
 	}
 	return $c;
-}
+    }
+
+    private function recordCheck(){
+	foreach($this->data->fields as $field){
+	    if($this->yearData[$field['field']] == $this->data->getMax($field['field'])){
+		$this->obs[] = "{$field['text']} hit a record high!";
+	    }
+	    elseif($this->yearData[$field['field']] == $this->data->getMin($field['field'])){
+		$this->obs[] = "{$field['text']} hit a record low!";
+	    }
+	    
+	    // see how the raw change matches
+	    if($this->yearData[$field['field']] == $this->data->getMaxDiff($field['field'], 1)){
+		$this->obs[] = "{$field['text']} had its largest increase in numbers ever.";
+	    }
+	    elseif($this->yearData[$field['field']] == $this->data->getMinDiff($field['field'], 1)){
+		$this->obs[] = "{$field['text']} had its largest decrease in numbers ever.";
+	    }
+
+	    // see how the percent change matches
+	    if($this->yearData[$field['field']] == $this->data->getMaxPct($field['field'], 1)){
+		$this->obs[] = "{$field['text']} had its largest percent increase ever.";
+	    }
+	    if($this->yearData[$field['field']] == $this->data->getMinPct($field['field'], 1)){
+		$this->obs[] = "{$field['text']} had its largest percent decrease ever.";
+	    }
+
+	    // see how the proportions match
+	}
+    }
 
 }

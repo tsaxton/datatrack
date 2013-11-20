@@ -44,6 +44,10 @@ foreach($data->fields as $field){
 	    lineWidth:2,
 	    markerOptions: { style:'dimaond' }
 	  }],
+	highlighter:{
+	    show: true,
+	    sizeAdjust: 7.5
+	},
       });
 });
 </script>

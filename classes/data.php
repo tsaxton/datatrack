@@ -485,4 +485,13 @@ class data{
 	return $data[$middle-1];
     }
 
+    public function getAvgDiff($field, $time){
+	return $this->averages($this->diffs[$field][$time]);
+    }
+
+    public function getAvgPct($field, $time){
+	return $this->averages($this->pct[$field][$time]);
+    }
+
+
 }

@@ -24,6 +24,8 @@ class longTerm{
 	    $this->stats[$i]['Median'] = $this->data->median($field['field']);
 	    $this->stats[$i]['Max'] = $this->data->getMax($field['field']);
 	    $this->stats[$i]['Min'] = $this->data->getMin($field['field']);
+	    $this->stats[$i]['Average Change']['Raw'] = $this->data->getAvgDiff($field['field'], 1);
+	    $this->stats[$i]['Average Change']['Percent'] = 100*$this->data->getAvgPct($field['field'], 1);
 	    $i++;
 	}
     }
@@ -36,6 +38,18 @@ class longTerm{
 	    foreach($stat as $key=>$s){
 		if(is_float($s)){
 		    $ret .= "$key: " . number_format($s, 2, '.', ',') . "<br/>\n";
+		}
+		if(is_array($s)){
+		    $ret .= "$key:<br/>\n";
+		    foreach($s as $k=>$val){
+			$ret .= "&nbsp;&nbsp;&nbsp;&nbsp;$k: ";
+			if(is_float($val)){
+			    $ret .= number_format($val, 2, '.', ',') . "<br/>\n";
+			}
+			else{
+			    $ret .= number_format($val, 0, '.', ',') . "<br/>\n";
+			}
+		    }
 		}
 		else{
 		    $ret .= "$key: " . number_format($s, 0, '.', ',') . "<br/>\n";

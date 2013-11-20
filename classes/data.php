@@ -450,4 +450,39 @@ class data{
 	return min(array_diff($this->proportionData[$prop], array(null, 0)));
     }
 
+    public function averages($field){
+	/* averages($field)
+	   INPUT: string or array
+	    string - will return the average of the field identified in the string
+	    array  - will return the average value of the array
+	*/
+	if(is_string($field)){
+	    $data = $this->extractData($field);
+	}
+	elseif(is_array($field)){
+	    $data = $field;
+	}
+	else{
+	    return NULL;
+	}
+	return array_sum($data)/count($data);
+    }
+
+    public function std($field){
+	$data = $this->extractData($field);
+	$m = $this->averages($data);
+	$sum = 0;
+	foreach($data as $d){
+	    $sum += pow(($d - $m),2);
+	}
+	return sqrt($sum / count($data));
+    }
+
+    public function median($field){
+	$data = $this->extractData($field);
+	sort($data);
+	$middle = round(count($data) / 2);
+	return $data[$middle-1];
+    }
+
 }

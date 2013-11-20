@@ -1,5 +1,7 @@
 <?php
-    $data = new data(1);
+$data = new data(1);
+$recent = new recentAnalysis($data);
+$long = new longTerm($data);
 ?>
 <div class="row">
     <div class="span12">
@@ -29,23 +31,6 @@ foreach($data->fields as $field){
     echo "\tvar vals = [];\n\tvar json = ajaxData('{$data->id}', '{$field['field']}');\n\tfor(var j in json){\n\t\tvals.push([parseInt(j), parseInt(json[j])]);\n\t}\n\tchartData.push(vals);\n\n";
 }
 ?>
-    /*var vals = [];
-    var json = ajaxData('1', 'total');
-    for(var j in json){
-	vals.push([parseInt(j), parseInt(json[j])]);
-    }
-    var vals2 = [];
-    var json2 = ajaxData('1', 'bus');
-    for(var j in json2){
-	vals2.push([parseInt(j), parseInt(json2[j])]);
-    }
-    var vals3 = [];
-    var json3 = ajaxData('1', 'rail');
-    for(var j in json3){
-	vals3.push([parseInt(j), parseInt(json3[j])]);
-    }*/
-
-    //var plot2 = $.jqplot('chart3', [vals, vals2, vals3],{
     var plot2 = $.jqplot('chart3', chartData,{
 	title: "CTA Annual Ridership",
 	axes:{
@@ -67,7 +52,6 @@ foreach($data->fields as $field){
 	<h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
 	<!-- Begin Recent Analysis -->
 <?php
-$recent = new recentAnalysis($data);
 echo $recent->run();
 ?>
 	<!-- End Recent Analysis -->
@@ -77,6 +61,9 @@ echo $recent->run();
 	    <li>The largest one-year ridership decrease overall was between 1992-1993 by percent.</li>
 	    <li>Ridership dropped by more than 1/4 from 1988-1998.</li>
 	</ul>
+
+	<h3>Statistics</h3>
+	<?=$long->statistics();?>
     </div>
 
     <div class="span5 offset1 chart" id="chart3">

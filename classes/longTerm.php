@@ -39,7 +39,7 @@ class longTerm{
 		if(is_float($s)){
 		    $ret .= "$key: " . number_format($s, 2, '.', ',') . "<br/>\n";
 		}
-		if(is_array($s)){
+		else if(is_array($s)){
 		    $ret .= "$key:<br/>\n";
 		    foreach($s as $k=>$val){
 			$ret .= "&nbsp;&nbsp;&nbsp;&nbsp;$k: ";

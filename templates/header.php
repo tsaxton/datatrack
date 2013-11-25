@@ -29,6 +29,7 @@ function dump($var, $label=NULL){
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.highlighter.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.cursor.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+    <script language="javascript" type="text/javascript" src="includes/js/observations.js"></script>
 </head>
 <body>
 <div id="header">

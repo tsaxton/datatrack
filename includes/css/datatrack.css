@@ -30,7 +30,9 @@
 .data .noright{
     border-right: 1px solid;
 }
-
+span.field{
+	font-weight: bold;
+}
 div#header{
 	width: 100%;			
 }
@@ -90,4 +92,8 @@ li.menuItem{
 .menuItem a:hover{
 	color: #ba1414;
 	text-decoration: none;
+}
+.arrow-img{
+	height: 25px;
+	width: 25px;
 }

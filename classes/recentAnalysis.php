@@ -44,13 +44,13 @@ class recentAnalysis{
 	foreach($this->data->fields as $field){
 	    // need to use $field['field'] for the name of the field
 	    $pct = ($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']] * 100; 
-	    $str = "{$field['text']}: " . number_format($this->yearData[$field['field']], 0, '.', ',');
+	    $str = "<span class='field'>{$field['text']}</span>: " . number_format($this->yearData[$field['field']], 0, '.', ',');
 	    if($pct == 0){
 		$str .= " (no change from {$this->previous})</li>\n";
 	    }
 	    elseif($pct > 0){
 		$pct = number_format($pct, 2, '.', ',');
-		$str .= " ($pct% increase from {$this->previous})</li>\n";
+		$str .= " <span class='data-increase'>($pct% increase from {$this->previous})</span></li>\n";
 	    }
 	    else{
 		$pct = number_format(-$pct, 2, '.', ',');
@@ -77,19 +77,19 @@ class recentAnalysis{
 	foreach($this->data->fields as $field){
 	    if($this->yearData[$field['field']] < 0 && $this->prevData[$field['field']] < 0){
 		// continuing a multi-year decrease
-		$this->obs[] = "{$field['text']} has now decreased for " . $this->negStreak($this->recent, $field['field']) . " years in a row.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> has now decreased for " . $this->negStreak($this->recent, $field['field']) . " years in a row.";
 	    }
 	    elseif($this->yearData[$field['field']] < 0){
 		// decrease after increasing
-		$this->obs[] = "{$field['text']} decreased after " . $this->posStreak($this->previous, $field['field']) . " years of increasing.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> decreased after " . $this->posStreak($this->previous, $field['field']) . " years of increasing.";
 	    }
 	    elseif($this->yearData[$field['field']] > 0 && $this->prevData[$field['field']] > 0){
 		// continuing a multi-year increase
-		$this->obs[] = "{$field['text']} has now increased for " . $this->posStreak($this->recent, $field['field']) . " years in a row.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> has now increased for " . $this->posStreak($this->recent, $field['field']) . " years in a row.";
 	    }
 	    elseif($this->yearData[$field['field']] > 0){
 		// increase after decreasing
-		$this->obs[] = "{$field['text']} increased after " . $this->negStreak($this->previous, $field['field']) . " years of decreasing.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> increased after " . $this->negStreak($this->previous, $field['field']) . " years of decreasing.";
 	    }
 	}
 	return $str;
@@ -132,35 +132,35 @@ class recentAnalysis{
     private function recordCheck(){
 	foreach($this->data->fields as $field){
 	    if($this->yearData[$field['field']] == $this->data->getMax($field['field'])){
-		$this->obs[] = "{$field['text']} hit a record high!";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> hit a record high!";
 	    }
 	    elseif($this->yearData[$field['field']] == $this->data->getMin($field['field'])){
-		$this->obs[] = "{$field['text']} hit a record low!";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> hit a record low!";
 	    }
 	    
 	    // see how the raw change matches
 	    if($this->yearData[$field['field']] == $this->data->getMaxDiff($field['field'], 1)){
-		$this->obs[] = "{$field['text']} had its largest increase in numbers ever.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest increase in numbers ever.";
 	    }
 	    elseif($this->yearData[$field['field']] == $this->data->getMinDiff($field['field'], 1)){
-		$this->obs[] = "{$field['text']} had its largest decrease in numbers ever.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest decrease in numbers ever.";
 	    }
 
 	    // see how the percent change matches
 	    if($this->yearData[$field['field']] == $this->data->getMaxPct($field['field'], 1)){
-		$this->obs[] = "{$field['text']} had its largest percent increase ever.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest percent increase ever.";
 	    }
 	    if($this->yearData[$field['field']] == $this->data->getMinPct($field['field'], 1)){
-		$this->obs[] = "{$field['text']} had its largest percent decrease ever.";
+		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest percent decrease ever.";
 	    }
 
 	    // see how the proportions match
 	    foreach($this->data->proportions as $p){
 		if($this->pro[$p['id']] == $this->data->getMaxProp($p['id'])){
-		    $this->obs[] = "{$p['description']} hit a record high.";
+		    $this->obs[] = "<span class='field'>{$p['description']}</span> hit a record high.";
 		}
 		if($this->pro[$p['id']] == $this->data->getMinProp($p['id'])){
-		    $this->obs[] = "{$p['description']} hit a record low.";
+		    $this->obs[] = "<span class='field'>{$p['description']}</span> hit a record low.";
 		}
 	    }
 	    

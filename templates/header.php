@@ -25,10 +25,11 @@ function dump($var, $label=NULL){
     <script language="javascript" type="text/javascript" src="includes/js/jquery-1.9.1.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/jquery.jqplot.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script language="javascript" type="text/javascript" src="includes/js/bootstrap.min.js"></script>
+    <!--<script language="javascript" type="text/javascript" src="includes/js/bootstrap.min.js"></script>-->
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.highlighter.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.cursor.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
+    <script language="javascript" type="text/javascript" src="includes/js/jquery.collapse.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/observations.js"></script>
 </head>
 <body>

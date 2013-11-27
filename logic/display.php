@@ -74,6 +74,7 @@ echo $recent->run();
     </div>
 </div>
 <div class="row-fluid">
+    <h3>Data Tables</h3>
     <div class="span12"><!-- Begin data tables -->
 <?php
 foreach($data->fields as $field){

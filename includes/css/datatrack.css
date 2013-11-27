@@ -97,3 +97,16 @@ li.menuItem{
 	height: 25px;
 	width: 25px;
 }
+h3 a {
+	display: block;
+	float: none;
+	clear: both;
+	text-align: left;
+	color:black;
+}
+/*.recent-analysis{
+	display: block;
+}
+.recent-analysis li{
+	list-style: none;
+}*/

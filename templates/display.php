@@ -51,25 +51,30 @@ foreach($data->fields as $field){
       });
 });
 </script>
-<div class="row-fluid">
-    <div class="span6">
-	<h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
-	<!-- Begin Recent Analysis -->
-<?php
-echo $recent->run();
-?>
-	<!-- End Recent Analysis -->
-	<h3>Key Observations</h3>
-	<ul>
-	    <li>The largest one-year ridership increase overall was between 2007-2008 by percent.</li>
-	    <li>The largest one-year ridership decrease overall was between 1992-1993 by percent.</li>
-	    <li>Ridership dropped by more than 1/4 from 1988-1998.</li>
-	</ul>
-
-	<h3>Statistics</h3>
-	<?=$long->statistics();?>
+<div class="row-fluid tabbable">
+    <div class="span2">
+      <ul class="nav nav-tabs nav-stacked">
+	<li class="active"><a href="#recent" data-toggle="tab">Most Recent Data</a></li>
+	<li><a href="#longterm" data-toggle="tab">Long-Term Trends</a></li>
+	<li><a href="#stats" data-toggle="tab">Statistics</a></li>
+      </ul>
     </div>
-
+      <div class="span4 tab-content">
+	<div id="recent" class="tab-pane active">
+	    <h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
+	    <!-- Begin Recent Analysis -->
+	    <?=$recent->run();?>
+	    <!-- End Recent Analysis -->
+	</div>
+	<div id="longterm" class="tab-pane">
+	<h4>Pane 2 Content</h4>
+	  <p> and so on ...</p>
+	</div>
+	<div id="stats" class="tab-pane">
+	    <h3>Statistics</h3>
+	    <?=$long->statistics();?>
+	</div>
+      </div><!-- /.tab-content -->
     <div class="span5 offset1 chart" id="chart3">
     </div>
 </div>
@@ -86,3 +91,30 @@ echo $data->tableProp();
 ?>
     </div><!-- End data tables -->
 </div>
+
+<!--<div class="row-fluid tabbable">
+    <div class="span2">
+      <ul class="nav nav-tabs nav-stacked">
+	<li class="active"><a href="#recent" data-toggle="tab">Most Recent Data</a></li>
+	<li><a href="#longterm" data-toggle="tab">Long-Term Trends</a></li>
+	<li><a href="#stats" data-toggle="tab">Statistics</a></li>
+      </ul>
+    </div>
+      <div class="span10 tab-content">
+	<div id="recent" class="tab-pane active">
+	    <h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
+	    
+	    <?=$recent->run();?>
+	    
+	</div>
+	<div id="longterm" class="tab-pane">
+	<h4>Pane 2 Content</h4>
+	  <p> and so on ...</p>
+	</div>
+	<div id="stats" class="tab-pane">
+	    <h3>Statistics</h3>
+	    <?=$long->statistics();?>
+	</div>
+      </div>
+    </div>
+</div>-->

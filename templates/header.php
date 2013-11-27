@@ -19,18 +19,25 @@ function dump($var, $label=NULL){
     <link rel="stylesheet" type="text/css" href="includes/css/jquery.jqplot.css"/>
     <link rel="stylesheet" type="text/css" href="includes/css/datatrack.css"/>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab|Raleway:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
     <!--JavaScript-->
     <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
-    <script language="javascript" type="text/javascript" src="includes/js/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/jquery.jqplot.min.js"></script>
+<<<<<<< HEAD
     <script language="javascript" type="text/javascript" src="includes/js/jquery-ui-1.10.3.custom.min.js"></script>
     <!--<script language="javascript" type="text/javascript" src="includes/js/bootstrap.min.js"></script>-->
+=======
+    <script language="javascript" type="text/javascript" src="includes/js/bootstrap.min.js"></script>
+>>>>>>> 34ef99ec01b941d331bcec767d4f2add30b31141
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.highlighter.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.cursor.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/jquery.collapse.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/observations.js"></script>
+
 </head>
 <body>
 <div id="header">

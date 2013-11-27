@@ -13,6 +13,6 @@ else{
     $id = 'display';
 }
 
-include("logic/$id.php");
+include("templates/$id.php");
 include('templates/footer.php');
 ?>

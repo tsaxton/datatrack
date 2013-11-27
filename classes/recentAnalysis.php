@@ -40,6 +40,10 @@ class recentAnalysis{
 	return $str;
     }
 
+    public function keyObs(){
+	return $this->obs[0];
+    }
+
     private function highlight(){
 	foreach($this->data->fields as $field){
 	    // need to use $field['field'] for the name of the field
@@ -50,11 +54,11 @@ class recentAnalysis{
 	    }
 	    elseif($pct > 0){
 		$pct = number_format($pct, 2, '.', ',');
-		$str .= " <span class='data-increase'>($pct% increase from {$this->previous})</span></li>\n";
+		$str .= " <span class=\"data-increase\">$pct% increase from {$this->previous}</span></li>\n";
 	    }
 	    else{
 		$pct = number_format(-$pct, 2, '.', ',');
-		$str .= " ($pct% decrease from {$this->previous})</li>\n";
+		$str .= " <span class=\"data-decrease\">$pct% decrease from {$this->previous}</span></li>\n";
 	    }
 	    $this->vals[] = $str;
 	}

@@ -40,10 +40,10 @@ function dump($var, $label=NULL){
 </div>
 <div id="menu">
 	<ul id="menuList">
-		<li class="menuItem"><a href="#">DASHBOARD</a></li>
-		<li class="menuItem"><a href="#">DATA SOURCES</a></li>
-		<li class="menuItem"><a href="#">ABOUT</a></li>
-		<li class="menuItem"><a href="#">HELP</a></li>
+		<li class="menuItem"><a href="?id=home">DASHBOARD</a></li>
+		<li class="menuItem"><a href="?id=sources">DATA SOURCES</a></li>
+		<li class="menuItem"><a href="?id=about">ABOUT</a></li>
+		<li class="menuItem"><a href="?id=help">HELP</a></li>
 	</ul>
 </div>
 

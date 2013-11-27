@@ -26,12 +26,7 @@ function dump($var, $label=NULL){
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/jquery.jqplot.min.js"></script>
-<<<<<<< HEAD
-    <script language="javascript" type="text/javascript" src="includes/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <!--<script language="javascript" type="text/javascript" src="includes/js/bootstrap.min.js"></script>-->
-=======
     <script language="javascript" type="text/javascript" src="includes/js/bootstrap.min.js"></script>
->>>>>>> 34ef99ec01b941d331bcec767d4f2add30b31141
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.highlighter.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.cursor.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.dateAxisRenderer.min.js"></script>

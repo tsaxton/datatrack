@@ -32,7 +32,8 @@ foreach($data->fields as $field){
 }
 ?>
     var plot2 = $.jqplot('chart3', chartData,{
-	title: "CTA Annual Ridership",
+	title: "<?=$data->getName();?>",
+	//title: "CTA Annual Ridership",
 	axes:{
 	    xaxis: {
 		tickOptions: {formatString: '%d'},

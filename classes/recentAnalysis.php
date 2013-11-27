@@ -29,7 +29,7 @@ class recentAnalysis{
     }
 
     public function run(){
-	$str = "<ul>\n";
+	$str = "<ul class=\"recent-analysis\">\n";
 	foreach($this->vals as $o){
 	    $str .= "\t<li>$o</li>\n";
 	}

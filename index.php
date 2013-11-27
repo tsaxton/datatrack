@@ -1,6 +1,6 @@
 <?php
-//Hello
 require('admin/config.php');
+include('includes/datatrack.php');
 include('templates/header.php');
 include('classes/data.php');
 include('classes/recentAnalysis.php');

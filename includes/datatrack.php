@@ -37,5 +37,5 @@ function slope($x, $y){
 }
 
 function intercept($x, $y){
-    return avg($y) - slope($x,$y)*avg($x)
+    return avg($y) - slope($x,$y)*avg($x);
 }

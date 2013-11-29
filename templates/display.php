@@ -81,16 +81,64 @@ foreach($data->fields as $field){
     <div class="span5 offset1 chart" id="chart3">
     </div>
 </div>
+
+<div class="row-fluid">
+    <div class="span12">
+	<h2>Data Tables</h2>
+    </div>
+</div>
+
+<div class="row-fluid tabbable">
+    <div class="span2">
+      <ul class="nav nav-tabs nav-stacked">
+	<!-- Begin data table tabs -->
+<?php
+$first = 1;
+foreach($data->fields as $field){
+    $class = '';
+    if($first){
+	$class = "class=\"active\"";
+	$first = 0;
+    }
+    echo "\t\t<li $class><a href=\"#{$field['field']}\" data-toggle=\"tab\">{$field['text']}</a></li>";
+}
+?>
+	<li><a href="#props" data-toggle="tab">Proportions</a></li>
+	<!-- End data table tabs -->
+      </ul>
+    </div>
+      <div class="span10 tab-content">
+	<!-- Begin data tables -->
+<?php
+$first = 1;
+foreach($data->fields as $field){
+    $active = '';
+    if($first){
+	$active = 'active';
+	$first = 0;
+    }
+    echo "\t\t<div id=\"{$field['field']}\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
+    echo $data->makeTable($field['field']);
+    echo "\t\t\t<!-- End Data Table: {$field['text']} -->\n\t\t</div>\n";
+}
+?>
+	<div id="props" class="tab-pane">
+	    <h3>Proportions</h3>
+	    <?=$data->tableProp();?>
+	</div>
+	<!-- End data tables -->
+      </div><!-- /.tab-content -->
+</div>
 <div class="row-fluid">
     <div class="span12"><!-- Begin data tables -->
 <?php
-foreach($data->fields as $field){
+/*foreach($data->fields as $field){
     echo "<h3>{$field['text']}</h3>";
     echo $data->makeTable($field['field']);
 }
 
 echo "<h3>Proportions</h3>";
-echo $data->tableProp();
+echo $data->tableProp();*/
 ?>
     </div><!-- End data tables -->
 </div>

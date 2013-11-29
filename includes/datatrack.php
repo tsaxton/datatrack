@@ -39,3 +39,18 @@ function slope($x, $y){
 function intercept($x, $y){
     return avg($y) - slope($x,$y)*avg($x);
 }
+
+function residuals($a, $b, $x, $y){
+    if(count($x) != count($y)){
+	return NULL;
+    }
+
+    $residualSum = 0;
+
+    foreach($x as $i=>$j){
+	$est = $a + $b*$j;
+	$residualSum += abs($est - $y[$i]);
+    }
+
+    return $residualSum;
+}

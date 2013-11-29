@@ -139,17 +139,6 @@ class data{
     }
 
     public function makeTable($field){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->tableYear($field);
-	}
-    }
-
-    private function tableYear($field = NULL){
 	// set up table header
 	$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 	$years = count($this->figures); // number of years of data
@@ -212,17 +201,6 @@ class data{
     }
 
     public function tableProp(){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->tablePropYear();
-	}
-    }
-
-    private function tablePropYear(){
 	$ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
 	foreach($this->proportions as $p){
 	    $ret .= "\t\t<th>{$p['description']}</th>\n";
@@ -252,17 +230,6 @@ class data{
     }
 
     public function makeJSON($field){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->JSONYear($field);
-	}
-    }
-
-    private function JSONYear($field){
 	$ret = array();
 	foreach($this->figures as $year=>$data){
 	    $ret[$year] = $data[$field];
@@ -274,18 +241,6 @@ class data{
 	if(!$this->figures){
 	    $this->initialize;
 	}
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		$this->yearDiffs();
-		break;
-	}
-    }
-
-    private function yearDiffs(){
 	$ret = array();
 	$pct = array();
 	foreach($this->figures as $year=>$vals){
@@ -313,17 +268,6 @@ class data{
     }
 
     public function calculateProportions(){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->yearProportions();
-	}
-    }
-
-    private function yearProportions(){
 	foreach($this->proportions as $p){
 	    foreach($this->figures as $year=>$vals){
 		$pro = $vals[$this->fields[$p['top']]['field']] / $vals[$this->fields[$p['bottom']]['field']];
@@ -336,17 +280,6 @@ class data{
 	if(!$this->figures){
 	    $this->initialize;
 	}
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->mostRecentYear();
-	}
-    }
-
-    private function mostRecentYear(){
 	for($year = date('Y'); $year > 1900; $year--){
 	    if(array_key_exists($year, $this->figures)){
 		return $year;
@@ -355,21 +288,10 @@ class data{
 	return 0;
     }
 
-    public function previous($date = NULL){
-	if($date == NULL){
-	    $date = $this->mostRecent();
+    public function previous($year = NULL){
+	if($year == NULL){
+	    $year = $this->mostRecent();
 	}
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->previousYear($date);
-	}
-    }
-
-    private function previousYear($year){
 	for($year--; $year > 1900; $year--){
 	    if(array_key_exists($year, $this->figures)){
 		return $year;
@@ -378,18 +300,7 @@ class data{
 	return 0;
     }
 
-    public function getData($date){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->getDataByYear($date);
-	}
-    }
-
-    public function getDataByYear($year){
+    public function getData($year){
 	if(array_key_exists($year, $this->figures)){
 	    return $this->figures[$year];
 	}
@@ -405,17 +316,6 @@ class data{
     }
 
     private function extractData($field){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->extractDataFromYear($field);
-	}
-    }
-
-    private function extractDataFromYear($field){
 	// This thing is by no means efficient. In a clean implementation,
 	// I think that all of the data should be converted to a better data
 	// structure for doing things like this.

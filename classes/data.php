@@ -341,6 +341,48 @@ class data{
 	return $ret;
     }
 
+    public function longStreaks(){
+    	$baseYear = $this->mostRecent();
+	foreach($this->fields as $field){
+	    $year = $baseYear;
+	    $max = 0;
+	    $min = 0;
+	    $maxYear = array();
+	    $minYear = array();
+	    // This is the lazy slow way to do it
+	    while($year > $this->minYear()){
+		$neg = $this->negStreak($year, $field['field']);
+		$pos = $this->posStreak($year, $field['field']);
+		if($pos > $max){
+		    unset($maxYear);
+		    $maxYear = array();
+		    $max = $pos;
+		    $maxYear[] = $year;
+		}
+		elseif($pos == $max){
+		    $maxYear[] = $year;
+		}
+		if($neg > $min){
+		    unset($minYear);
+		    $minYear = array();
+		    $min = $neg;
+		    $minYear[] = $year;
+		}
+		elseif($neg == $min){
+		    $minYear[] = $year;
+		}
+		$year -= max($pos, $neg);
+	    }
+	    $vals[$field['text']]['increase'] = $max;
+	    $vals[$field['text']]['decrease'] = $min;
+	    $years[$field['text']]['increase'] = $maxYear;
+	    $years[$field['text']]['decrease'] = $minYear;
+	}
+	$ret[0] = $vals;
+	$ret[1] = $years;
+	return $ret;
+    }
+
     public function getMaxDiff($field, $time){
 	return max($this->diffs[$field][$time]);
     }

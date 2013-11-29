@@ -57,6 +57,7 @@ foreach($data->fields as $field){
       <ul class="nav nav-tabs nav-stacked">
 	<li class="active"><a href="#recent" data-toggle="tab">Most Recent Data</a></li>
 	<li><a href="#longterm" data-toggle="tab">Long-Term Trends</a></li>
+	<li><a href="#streaks" data-toggle="tab">Streaks</a></li>
 	<li><a href="#stats" data-toggle="tab">Statistics</a></li>
       </ul>
     </div>
@@ -70,8 +71,12 @@ foreach($data->fields as $field){
 	<div id="longterm" class="tab-pane">
 	    <h3>Long-Term Trends</h3>
 	    <!-- Begin Long Term Analysis -->
-		<?=$long->run();?>
+	    <?=$long->run();?>
 	    <!-- End Long Term Analysis -->
+	</div>
+	<div id="streaks" class="tab-pane">
+	    <h3>Streaks</h3>
+	    <?=$long->longStreak();?>
 	</div>
 	<div id="stats" class="tab-pane">
 	    <h3>Statistics</h3>

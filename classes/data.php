@@ -330,7 +330,7 @@ class data{
 	return min($this->extractData($field));
     }
 
-    private function extractData($field){
+    public function extractData($field){
 	// This thing is by no means efficient. In a clean implementation,
 	// I think that all of the data should be converted to a better data
 	// structure for doing things like this.
@@ -339,6 +339,10 @@ class data{
 	    $ret[] = $figure[$field];
 	}
 	return $ret;
+    }
+
+    public function getYears(){
+	return array_keys($this->figures);
     }
 
     public function longStreaks(){

@@ -18,7 +18,7 @@ function xy($x, $y){
     }
     $z = array();
     foreach($x as $i=>$j){
-	$z[i] = $j * $y[i];
+	$z[$i] = $j * $y[$i];
     }
     return $z;
 }
@@ -28,12 +28,18 @@ function rvalue($x, $y){
 	return NULL;
     }
     $n = count($x);
-    $r = (n*array_sum(xy($x,$y)) - array_sum($x)*array_sum($y))/sqrt((N*array_sum(xy($x,$x)) - pow(array_sum($x),2)) * pow(N*array_sum($y),2) - pow(array_num($y),2));
+    $r = ($n*array_sum(xy($x,$y)) - (array_sum($x)*array_sum($y)))/sqrt(($n*array_sum(xy($x,$x)) - pow(array_sum($x),2)) * pow($n*array_sum($y),2) - pow(array_sum($y),2));
     return $r;
 }
 
 function slope($x, $y){
-    return rvalue($x, $y) * std($y) / std($x);
+    if(count($x) != count($y)){
+	return NULL;
+    }
+    $n = count($x);
+    $b = ($n*array_sum(xy($x,$y)) - (array_sum($x)*array_sum($y)))/($n*array_sum(xy($x,$x)) - (pow(array_sum($x),2)));
+    return $b;
+    //return rvalue($x, $y) * std($y) / std($x);
 }
 
 function intercept($x, $y){

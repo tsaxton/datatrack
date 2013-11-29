@@ -14,6 +14,7 @@ class longTerm{
 	}
 	$this->calculateStats();
 	$this->bigChanges();
+	$this->bestFit();
     }
 
     public function run(){
@@ -108,6 +109,20 @@ class longTerm{
 		    echo "\t<li>$startYear-$y</li>\n";
 		}
 		echo "</ul>\n";
+	    }
+	}
+    }
+
+    private function bestFit(){
+	$years = $this->data->getYears();
+	foreach($this->data->fields as $field){
+	    $data = $this->data->extractData($field['field']);
+	    $b = slope($years, $data);
+	    if($b > 0){
+		$this->obs[] = "<span class='field'>{$field['text']}</span> has been trending upward at rate of " . number_format($b, 2, '.', ',') . ".";
+	    }
+	    else{
+		$this->obs[] = "<span class='field'>{$field['text']}</span> has been trending downward at rate of " . number_format($b, 2, '.', ',') . ".";
 	    }
 	}
     }

@@ -13,7 +13,18 @@ class longTerm{
 	    $this->data = $data;
 	}
 	$this->calculateStats();
+	$this->bigChanges();
     }
+
+    public function run(){
+	$str = "<ul class=\"longterm-analysis\">\n";
+	foreach($this->obs as $o){
+	    $str .= "\t<li>$o</li>\n";
+	}
+	$str .= "</ul>\n\n";
+	return $str;
+    }
+
 
     private function calculateStats(){
 	$i = 0;
@@ -60,6 +71,26 @@ class longTerm{
     }
 
     public function bigChanges(){
+	$comparisons = [5, 2, 1, .75, .5];
+	# this isn't pretty...
+	foreach($this->data->fields as $field){
+	    foreach($this->data->pct[$field['field']] as $offset=>$years){
+		foreach($years as $year=>$data){
+		    foreach($comparisons as $c){
+			if(abs($data) > $c){
+			    $str = "{$field['text']} ";
+			    $str .= $data<0 ? 'decreased ' : 'increased ';
+			    $str .= "by more than ";
+			    $str .= $c*100;
+			    $str .= "% from ";
+			    $str .= $year-$offset . "-" . $year;
+			    $this->obs[] = $str;
+			    break;
+			}
+		    }
+		}
+	    }
+	}
     }
 
     public function longStreak(){

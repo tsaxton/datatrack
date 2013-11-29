@@ -8,7 +8,7 @@ class data{
     private $updated;
     private $api;
     private $type;
-    private $offsetYear = [1, 2, 5, 10, 25, 50, 100];
+    public $offsetYear = [1, 2, 5, 10, 25, 50, 100];
     public $fields;
 
     // Data
@@ -301,10 +301,14 @@ class data{
     }
 
     public function getData($year){
-	if(array_key_exists($year, $this->figures)){
+	if($this->yearExists($year)){
 	    return $this->figures[$year];
 	}
 	return NULL;
+    }
+
+    public function yearExists($year){
+	return array_key_exists($year, $this->figures);
     }
 
     public function getMax($field){
@@ -391,6 +395,73 @@ class data{
 
     public function getAvgPct($field, $time){
 	return $this->averages($this->pct[$field][$time]);
+    }
+
+    public function streakDirection($year, $field){
+	$current = $this->getData($year);
+	$prev = $this->getData($year-1);
+	$prior = $this->getData($year-2);
+	if($current == NULL || $prev == NULL){
+	    return 0;
+	}
+	$thisChange = $current[$field] - $prev[$field];
+	$prevChange = $prev[$field] - $prior[$field];
+	// need to figure out what to do about 0 change cases besides returning error
+	if($thisChange == 0 || $prevChange == 0){
+	    return 0;
+	}
+	// continuing a multi-year decrease
+	if($thisChange < 0 && $prevChange < 0){
+	    return 1;
+	}
+	// decrease after increasing
+	if($thisChange < 0){
+	    return 2;
+	}
+	// continuing a multi-year increase
+	if($thisChange > 0 && $prevChange > 0){
+	    return 3;
+	}
+	// increase after decreasing
+	if($thisChange > 0){
+	    return 4;
+	}
+	// error
+	return 0;
+    }
+
+    public function negStreak($year, $field){
+	$c = 0;
+	while($year > 1900){
+	    $d = $this->getData($year);
+	    $p = $this->getData($year-1);
+	    if($d == NULL || $p == NULL){
+		return $c;
+	    }
+	    if($d[$field]-$p[$field] > 0){
+		return $c;
+	    }
+	    $c++;
+	    $year--;
+	}
+	return $c;
+    }
+
+    public function posStreak($year, $field){
+    	$c = 0;
+	while($year > 1900){
+	    $d = $this->getData($year);
+	    $p = $this->getData($year-1);
+	    if($d == NULL || $p == NULL){
+		return $c;
+	    }
+	    if($d[$field]-$p[$field] < 0){
+		return $c;
+	    }
+	    $c++;
+	    $year--;
+	}
+	return $c;
     }
 
 

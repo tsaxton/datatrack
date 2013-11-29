@@ -68,8 +68,10 @@ foreach($data->fields as $field){
 	    <!-- End Recent Analysis -->
 	</div>
 	<div id="longterm" class="tab-pane">
-	<h4>Pane 2 Content</h4>
-	  <p> and so on ...</p>
+	    <h3>Long-Term Trends</h3>
+	    <!-- Begin Long Term Analysis -->
+		<?=$long->run();?>
+	    <!-- End Long Term Analysis -->
 	</div>
 	<div id="stats" class="tab-pane">
 	    <h3>Statistics</h3>

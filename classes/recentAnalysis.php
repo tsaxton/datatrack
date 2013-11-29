@@ -103,35 +103,35 @@ class recentAnalysis{
     private function recordCheck(){
 	foreach($this->data->fields as $field){
 	    if($this->yearData[$field['field']] == $this->data->getMax($field['field'])){
-		$this->obs[] = "<span class='field'>{$field['text']}</span> hit a record high!";
+		$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> hit a record high!</span>";
 	    }
 	    elseif($this->yearData[$field['field']] == $this->data->getMin($field['field'])){
-		$this->obs[] = "<span class='field'>{$field['text']}</span> hit a record low!";
+		$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> hit a record low!</span>";
 	    }
 	    
 	    // see how the raw change matches
 	    if($this->yearData[$field['field']] == $this->data->getMaxDiff($field['field'], 1)){
-		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest increase in numbers ever.";
+		$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest increase in numbers ever.</span>";
 	    }
 	    elseif($this->yearData[$field['field']] == $this->data->getMinDiff($field['field'], 1)){
-		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest decrease in numbers ever.";
+		$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest decrease in numbers ever.</span>";
 	    }
 
 	    // see how the percent change matches
 	    if($this->yearData[$field['field']] == $this->data->getMaxPct($field['field'], 1)){
-		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest percent increase ever.";
+		$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest percent increase ever.</span>";
 	    }
 	    if($this->yearData[$field['field']] == $this->data->getMinPct($field['field'], 1)){
-		$this->obs[] = "<span class='field'>{$field['text']}</span> had its largest percent decrease ever.";
+		$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest percent decrease ever.</span>";
 	    }
 
 	    // see how the proportions match
 	    foreach($this->data->proportions as $p){
 		if($this->pro[$p['id']] == $this->data->getMaxProp($p['id'])){
-		    $this->obs[] = "<span class='field'>{$p['description']}</span> hit a record high.";
+		    $this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record high.</span>";
 		}
 		if($this->pro[$p['id']] == $this->data->getMinProp($p['id'])){
-		    $this->obs[] = "<span class='field'>{$p['description']}</span> hit a record low.";
+		    $this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record low.</span>";
 		}
 	    }
 	    

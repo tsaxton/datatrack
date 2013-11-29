@@ -288,6 +288,17 @@ class data{
 	return 0;
     }
 
+    public function minYear(){
+	if(!$this->figures){
+	    $this->initialize;
+	}
+	for($year = $this->mostRecent(); $year > 1900; $year--){
+	    if(!$this->yearExists($year)){
+		return $year+1;
+	    }
+	}
+    }
+
     public function previous($year = NULL){
 	if($year == NULL){
 	    $year = $this->mostRecent();
@@ -401,7 +412,7 @@ class data{
 	$current = $this->getData($year);
 	$prev = $this->getData($year-1);
 	$prior = $this->getData($year-2);
-	if($current == NULL || $prev == NULL){
+	if($current == NULL || $prev == NULL || $prior == NULL){
 	    return 0;
 	}
 	$thisChange = $current[$field] - $prev[$field];

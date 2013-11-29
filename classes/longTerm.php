@@ -14,6 +14,7 @@ class longTerm{
 	}
 	$this->calculateStats();
 	$this->bigChanges();
+	$this->longStreak();
     }
 
     public function run(){
@@ -94,6 +95,38 @@ class longTerm{
     }
 
     public function longStreak(){
+	$baseYear = $this->data->mostRecent();
+	foreach($this->data->fields as $field){
+	    $year = $baseYear;
+	    $max = 0;
+	    $min = 0;
+	    $maxYear = 0;
+	    $minYear = 0;
+	    // This is the lazy slow way to do it
+	    while($year > $this->data->minYear()){
+		$neg = $this->data->negStreak($year, $field['field']);
+		$pos = $this->data->posStreak($year, $field['field']);
+		if($pos > $max){
+		    $max = $pos;
+		    $maxYear = $year;
+		}
+		if($neg > $min){
+		    $min = $neg;
+		    $minYear = $year;
+		}
+		$year -= max($pos, $neg);
+	    }
+	    $ret[$field['text']]['increase'] = $max;
+	    $ret[$field['text']]['decrease'] = $min;
+	    $years[$field['text']]['increase'] = $maxYear;
+	    $years[$field['text']]['decrease'] = $minYear;
+	}
+	foreach($ret as $text=>$types){
+	    foreach($types as $type=>$val){
+		$startYear = $years[$text][$type] - $val;
+		$this->obs[] = "<span class=\"field\">$text's</span> longest $type was the $val years from $startYear-{$years[$text][$type]}";
+	    }
+	}
     }
 }
 ?>

@@ -23,15 +23,6 @@ function xy($x, $y){
     return $z;
 }
 
-function rvalue($x, $y){
-    if(count($x) != count($y)){
-	return NULL;
-    }
-    $n = count($x);
-    $r = ($n*array_sum(xy($x,$y)) - (array_sum($x)*array_sum($y)))/sqrt(($n*array_sum(xy($x,$x)) - pow(array_sum($x),2)) * pow($n*array_sum($y),2) - pow(array_sum($y),2));
-    return $r;
-}
-
 function slope($x, $y){
     if(count($x) != count($y)){
 	return NULL;

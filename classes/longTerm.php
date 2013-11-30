@@ -14,6 +14,7 @@ class longTerm{
 	}
 	$this->calculateStats();
 	$this->bigChanges();
+	$this->pieceFit();
 	$this->bestFit();
     }
 
@@ -123,6 +124,59 @@ class longTerm{
 	    }
 	    else{
 		$this->obs[] = "<span class='field'>{$field['text']}</span> has been trending downward at rate of " . number_format($b, 2, '.', ',') . ".";
+	    }
+	}
+    }
+
+    private function pieceFit(){
+	$years = $this->data->getYears();
+	$minYear = min($years);
+	$maxYear = max($years);
+	foreach($this->data->fields as $field){
+	    $best = PHP_INT_MAX;
+	    $i = 4;
+	    $data = $this->data->extractData($field['field']);
+	    while($i < count($years)-4){
+		$years1 = array_slice($years,0,$i);
+		$years2 = array_slice($years,$i+1);
+		$data1 = array_slice($data,0,$i);
+		$data2 = array_slice($data,$i+1);
+		$a1 = intercept($years1, $data1);
+		$a2 = intercept($years2, $data2);
+		$b1 = slope($years1, $data1);
+		$b2 = slope($years2, $data2);
+		$residuals = residuals($a1, $b1, $years1, $data1) + residuals($a2, $b2, $years2, $data2);
+		if($residuals < $best){
+		    $best = $residuals;
+		    $bestA1 = $a1;
+		    $bestA2 = $a2;
+		    $bestB1 = $b1;
+		    $bestB2 = $b2;
+		    $bestI = $i;
+		}
+		$i++;
+	    }
+	    if($bestB1 < 0 && $bestB2 > 0){
+		$this->obs[] = "After trending downward from $minYear-" . ($minYear+$bestI-1) . ", <span class='field'>{$field['text']}</span> trended upward.";
+	    }
+	    elseif($bestB1 > 0 && $bestB2 < 0){
+		$this->obs[] = "After trending upward from $minYear-" . ($minYear+$bestI-1) . ", <span class='field'>{$field['text']}</span> trended downward.";
+	    }
+	    elseif($bestB2 < 0){
+		if($bestB2 > $bestB1){
+		    $this->obs[] = "The downward trend slowed from " . ($minYear+$bestI) . "-$maxYear compared to its rate from $minYear-" . ($minYear+$bestI-1) . ".";
+		}
+		else{
+		    $this->obs[] = "The downward trend sped up from " . ($minYear+$bestI) . "-$maxYear compared to its rate from $minYear-" . ($minYear+$bestI-1) . ".";
+		}
+	    }
+	    else{
+		if($bestB2 > $bestB1){
+		    $this->obs[] = "The upward trend sped up from " . $minYear+$bestI . "-$maxYear compared to its rate from $minYear-" . $minYear+$bestI-1 . ".";
+		}
+		else{
+		    $this->obs[] = "The upward trend slowed from " . $minYear+$bestI . "-$maxYear compared to its rate from $minYear-" . $minYear+$bestI-1 . ".";
+		}
 	    }
 	}
     }

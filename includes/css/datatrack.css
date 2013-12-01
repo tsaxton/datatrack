@@ -97,7 +97,6 @@ li.menuItem{
 	height: 25px;
 	width: 25px;
 }
-<<<<<<< HEAD
 h3 a {
 	display: block;
 	float: none;
@@ -110,8 +109,10 @@ h3 a {
 }
 .recent-analysis li{
 	list-style: none;
+	padding:10px 8px 10px 8px;
+	border:1px solid #dfdfdf;
+	border-bottom: 0px;
+}
+.recent-analysis li:last-child{
+	border-bottom: 1px solid #dfdfdf;
 }*/
-=======
-
-
->>>>>>> 34ef99ec01b941d331bcec767d4f2add30b31141

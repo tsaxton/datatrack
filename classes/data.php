@@ -8,7 +8,7 @@ class data{
     private $updated;
     private $api;
     private $type;
-    private $offsetYear = [1, 2, 5, 10, 25, 50, 100];
+    public $offsetYear = [1, 2, 5, 10, 25, 50, 100];
     public $fields;
 
     // Data
@@ -139,17 +139,6 @@ class data{
     }
 
     public function makeTable($field){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->tableYear($field);
-	}
-    }
-
-    private function tableYear($field = NULL){
 	// set up table header
 	$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 	$years = count($this->figures); // number of years of data
@@ -212,17 +201,6 @@ class data{
     }
 
     public function tableProp(){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->tablePropYear();
-	}
-    }
-
-    private function tablePropYear(){
 	$ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
 	foreach($this->proportions as $p){
 	    $ret .= "\t\t<th>{$p['description']}</th>\n";
@@ -252,17 +230,6 @@ class data{
     }
 
     public function makeJSON($field){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->JSONYear($field);
-	}
-    }
-
-    private function JSONYear($field){
 	$ret = array();
 	foreach($this->figures as $year=>$data){
 	    $ret[$year] = $data[$field];
@@ -274,18 +241,6 @@ class data{
 	if(!$this->figures){
 	    $this->initialize;
 	}
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		$this->yearDiffs();
-		break;
-	}
-    }
-
-    private function yearDiffs(){
 	$ret = array();
 	$pct = array();
 	foreach($this->figures as $year=>$vals){
@@ -313,17 +268,6 @@ class data{
     }
 
     public function calculateProportions(){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->yearProportions();
-	}
-    }
-
-    private function yearProportions(){
 	foreach($this->proportions as $p){
 	    foreach($this->figures as $year=>$vals){
 		$pro = $vals[$this->fields[$p['top']]['field']] / $vals[$this->fields[$p['bottom']]['field']];
@@ -336,17 +280,6 @@ class data{
 	if(!$this->figures){
 	    $this->initialize;
 	}
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->mostRecentYear();
-	}
-    }
-
-    private function mostRecentYear(){
 	for($year = date('Y'); $year > 1900; $year--){
 	    if(array_key_exists($year, $this->figures)){
 		return $year;
@@ -355,21 +288,21 @@ class data{
 	return 0;
     }
 
-    public function previous($date = NULL){
-	if($date == NULL){
-	    $date = $this->mostRecent();
+    public function minYear(){
+	if(!$this->figures){
+	    $this->initialize;
 	}
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->previousYear($date);
+	for($year = $this->mostRecent(); $year > 1900; $year--){
+	    if(!$this->yearExists($year)){
+		return $year+1;
+	    }
 	}
     }
 
-    private function previousYear($year){
+    public function previous($year = NULL){
+	if($year == NULL){
+	    $year = $this->mostRecent();
+	}
 	for($year--; $year > 1900; $year--){
 	    if(array_key_exists($year, $this->figures)){
 		return $year;
@@ -378,22 +311,15 @@ class data{
 	return 0;
     }
 
-    public function getData($date){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->getDataByYear($date);
-	}
-    }
-
-    public function getDataByYear($year){
-	if(array_key_exists($year, $this->figures)){
+    public function getData($year){
+	if($this->yearExists($year)){
 	    return $this->figures[$year];
 	}
 	return NULL;
+    }
+
+    public function yearExists($year){
+	return array_key_exists($year, $this->figures);
     }
 
     public function getMax($field){
@@ -404,18 +330,7 @@ class data{
 	return min($this->extractData($field));
     }
 
-    private function extractData($field){
-	switch($this->type){
-	    case 'day':
-		break;
-	    case 'month':
-		break;
-	    case 'year':
-		return $this->extractDataFromYear($field);
-	}
-    }
-
-    private function extractDataFromYear($field){
+    public function extractData($field){
 	// This thing is by no means efficient. In a clean implementation,
 	// I think that all of the data should be converted to a better data
 	// structure for doing things like this.
@@ -423,6 +338,52 @@ class data{
 	foreach($this->figures as $figure){
 	    $ret[] = $figure[$field];
 	}
+	return $ret;
+    }
+
+    public function getYears(){
+	return array_keys($this->figures);
+    }
+
+    public function longStreaks(){
+    	$baseYear = $this->mostRecent();
+	foreach($this->fields as $field){
+	    $year = $baseYear;
+	    $max = 0;
+	    $min = 0;
+	    $maxYear = array();
+	    $minYear = array();
+	    // This is the lazy slow way to do it
+	    while($year > $this->minYear()){
+		$neg = $this->negStreak($year, $field['field']);
+		$pos = $this->posStreak($year, $field['field']);
+		if($pos > $max){
+		    unset($maxYear);
+		    $maxYear = array();
+		    $max = $pos;
+		    $maxYear[] = $year;
+		}
+		elseif($pos == $max){
+		    $maxYear[] = $year;
+		}
+		if($neg > $min){
+		    unset($minYear);
+		    $minYear = array();
+		    $min = $neg;
+		    $minYear[] = $year;
+		}
+		elseif($neg == $min){
+		    $minYear[] = $year;
+		}
+		$year -= max($pos, $neg);
+	    }
+	    $vals[$field['text']]['increase'] = $max;
+	    $vals[$field['text']]['decrease'] = $min;
+	    $years[$field['text']]['increase'] = $maxYear;
+	    $years[$field['text']]['decrease'] = $minYear;
+	}
+	$ret[0] = $vals;
+	$ret[1] = $years;
 	return $ret;
     }
 
@@ -491,6 +452,73 @@ class data{
 
     public function getAvgPct($field, $time){
 	return $this->averages($this->pct[$field][$time]);
+    }
+
+    public function streakDirection($year, $field){
+	$current = $this->getData($year);
+	$prev = $this->getData($year-1);
+	$prior = $this->getData($year-2);
+	if($current == NULL || $prev == NULL || $prior == NULL){
+	    return 0;
+	}
+	$thisChange = $current[$field] - $prev[$field];
+	$prevChange = $prev[$field] - $prior[$field];
+	// need to figure out what to do about 0 change cases besides returning error
+	if($thisChange == 0 || $prevChange == 0){
+	    return 0;
+	}
+	// continuing a multi-year decrease
+	if($thisChange < 0 && $prevChange < 0){
+	    return 1;
+	}
+	// decrease after increasing
+	if($thisChange < 0){
+	    return 2;
+	}
+	// continuing a multi-year increase
+	if($thisChange > 0 && $prevChange > 0){
+	    return 3;
+	}
+	// increase after decreasing
+	if($thisChange > 0){
+	    return 4;
+	}
+	// error
+	return 0;
+    }
+
+    public function negStreak($year, $field){
+	$c = 0;
+	while($year > 1900){
+	    $d = $this->getData($year);
+	    $p = $this->getData($year-1);
+	    if($d == NULL || $p == NULL){
+		return $c;
+	    }
+	    if($d[$field]-$p[$field] > 0){
+		return $c;
+	    }
+	    $c++;
+	    $year--;
+	}
+	return $c;
+    }
+
+    public function posStreak($year, $field){
+    	$c = 0;
+	while($year > 1900){
+	    $d = $this->getData($year);
+	    $p = $this->getData($year-1);
+	    if($d == NULL || $p == NULL){
+		return $c;
+	    }
+	    if($d[$field]-$p[$field] < 0){
+		return $c;
+	    }
+	    $c++;
+	    $year--;
+	}
+	return $c;
     }
 
 

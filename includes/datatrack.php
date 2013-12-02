@@ -1,4 +1,13 @@
 <?php
+function dump($var, $label=NULL){
+    echo "<pre>";
+    if($label){
+	echo "$label: ";
+    }
+    var_dump($var);
+    echo "</pre>";
+}
+
 function avg($arr){
     return array_sum($arr)/count($arr);
 }

@@ -1,13 +1,3 @@
-<?php
-function dump($var, $label=NULL){
-    echo "<pre>";
-    if($label){
-	echo "$label: ";
-    }
-    var_dump($var);
-    echo "</pre>";
-}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +32,7 @@ function dump($var, $label=NULL){
 <div id="menu">
 	<ul id="menuList">
 		<li class="menuItem"><a href="?id=home">DASHBOARD</a></li>
-		<li class="menuItem"><a href="?id=sources">DATA SOURCES</a></li>
+		<li class="menuItem"><a href="?id=sets">DATA SETS</a></li>
 		<li class="menuItem"><a href="?id=about">ABOUT</a></li>
 		<li class="menuItem"><a href="?id=help">HELP</a></li>
 	</ul>

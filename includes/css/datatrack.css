@@ -128,7 +128,7 @@ h3.dashboard-menu-section{
 	list-style: none;
 	padding-left: 10px;
 }
-.dashboard-menu-list a:link, a:visited, a:active{
+.dashboard-menu-list a{
 	color:white;
 	text-decoration: none;
 }

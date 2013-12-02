@@ -104,3 +104,75 @@ h3 a {
 	text-align: left;
 	color:black;
 }
+/*----Dashboard----*/
+/*--Left Menu--*/
+#dashboard-menu{
+	border: #515151;
+	background-color: #656565;
+	width: 15%;
+	height: 100%;
+	float: left;
+}
+h3.dashboard-menu-section{
+	color:white;
+	text-transform: uppercase;
+	font-size: 1.25em;
+	padding: 0px 0px 0px 10px;
+	margin-bottom:0px;
+}
+.dashboard-menu-list{
+	margin-left: 0px;
+}
+.dashboard-menu-list li{
+	display:block;
+	list-style: none;
+	padding-left: 10px;
+}
+.dashboard-menu-list a:link, a:visited, a:active{
+	color:white;
+	text-decoration: none;
+}
+.dashboard-menu-list a:hover{
+	color: #2288f4;
+	text-decoration: none;
+}
+/*--Main Dashboard--*/
+#dashboard-main{
+	width:70%;
+	height: 100%;
+	float: left;
+	background-color:#eaeaea;
+	padding-bottom: 50px;
+}
+.dashboard-box{
+	width: 310px;
+	height: 150px;
+	background-color: #656565;
+	color: #ededed;
+	border-top: 3px solid #0b74e5;
+	padding: 5px 10px 5px 10px;
+	margin: 10px 0px 0px 10px;
+	float: left;
+	font-size: 1.5em;
+	line-height: 2em;
+}
+.dashboard-box small-box{
+	width: 150px;
+	height: 150px;
+	background-color: #656565;
+	color: #ededed;
+	border-top: 3px solid #0b74e5;
+	padding: 5px 10px 5px 10px;
+	margin: 10px 0px 0px 10px;
+	float: left;
+	font-size: 1.5em;
+	line-height: 2em;
+}
+.dashboard-box h4{
+	color: white;
+	font-size: 2em;
+}
+.lrg-number{
+	font-weight: bold;
+	font-size: 1.75em;
+}

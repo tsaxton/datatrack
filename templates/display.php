@@ -26,9 +26,10 @@ $(document).ready(function(){
       };
 
     var chartData = [];
+    var labelArray = [];
 <?php
 foreach($data->fields as $field){
-    echo "\tvar vals = [];\n\tvar json = ajaxData('{$data->id}', '{$field['field']}');\n\tfor(var j in json){\n\t\tvals.push([parseInt(j), parseInt(json[j])]);\n\t}\n\tchartData.push(vals);\n\n";
+    echo "\tvar vals = [];\n\tlabelArray.push('{$field['text']}');\n\tvar json = ajaxData('{$data->id}', '{$field['field']}');\n\tfor(var j in json){\n\t\tvals.push([parseInt(j), parseInt(json[j])]);\n\t}\n\tchartData.push(vals);\n\n";
 }
 ?>
     var plot2 = $.jqplot('chart3', chartData,{
@@ -49,6 +50,13 @@ foreach($data->fields as $field){
 	    show: true,
 	    sizeAdjust: 7.5
 	},
+	legend:{
+	    show: true,
+	    location: 'e',
+	    labels: labelArray,
+	    placement: 'outsideGrid',
+	    border: 'none'
+	}
       });
 });
 </script>

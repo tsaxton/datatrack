@@ -8,7 +8,7 @@
     border: solid 3px;
 }
 
-.data th, td{
+.data th, .data td{
     border: 2px solid;
     text-align: center;
 }

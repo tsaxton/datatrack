@@ -16,18 +16,19 @@ $data = new data(1);
 </div>
 <script type="text/javascript">
 	$('#display-transit').click(function(){
-		$('.crime').fadeOut( function() { $(this).detach(); });
-		$('.other').fadeOut( function() { $(this).detach(); });
+		$('.crime').fadeOut('slow');
+		$('.other').fadeOut('slow');
+		$('.transit').fadeIn('slow');
 	});
 	$('#display-crime').click(function(){
-		$('.transit').fadeOut( function() { $(this).detach(); });
-		$('.other').fadeOut( function() { $(this).detach(); });
-		
+		$('.crime').fadeIn('slow');
+		$('.other').fadeOut('slow');
+		$('.transit').fadeOut('slow');
 	});
 	$('#display-other').click(function(){
-		$('.transit').fadeOut( function() { $(this).detach(); });
-		$('.crime').fadeOut( function() { $(this).detach(); });
-		$('.other').fadeIn( function() { $(this).attach(); });
+		$('.crime').fadeOut('slow');
+		$('.other').fadeIn('slow');
+		$('.transit').fadeOut('slow');
 	});
 </script>
 <div id="dashboard-main">

@@ -1,5 +1,5 @@
 <?php
-$data = new data(1);
+$data = new data($dataset);
 $recent = new recentAnalysis($data);
 $long = new longTerm($data);
 ?>

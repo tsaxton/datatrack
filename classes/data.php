@@ -8,11 +8,14 @@ class data{
     private $updated;
     private $api;
     private $type;
+    private $selects;
+    private $groups;
     public $offsetYear = [1, 2, 5, 10, 25, 50, 100];
     public $fields;
+    public $allFields;
 
     // Data
-    private $figures;
+    public $figures;
     public $proportions;
 
     // Analysis
@@ -40,12 +43,21 @@ class data{
 	$this->name = $results[0]['name'];
 	$this->updated = $results[0]['updated'];
 	$this->api = $results[0]['api'];
+	$this->selects = $results[0]['selects'];
+	$this->groups = $results[0]['groups'];
 
-	$fields = $db->query('select * from fields where dataset='.$this->id);
+	$fields = $db->query('select * from fields where dataset='.$this->id.' and major=1');
 	$this->fields = array();
 	foreach($fields as $field){
 	    $this->fields[$field['id']] = $field;
 	}
+
+	$fields = $db->query('select * from fields where dataset='.$this->id);
+	$this->allFields = array();
+	foreach($fields as $field){
+	    $this->allFields[$field['id']] = $field;
+	}
+
 	$this->proportions = $db->query("select * from proportions where dataset={$this->id}");
 
 	$this->collectData();
@@ -56,7 +68,17 @@ class data{
     public function collectData(){
 	global $db;
 
-	$json = file_get_contents("http://data.cityofchicago.org/resource/{$this->api}.json");
+	$url = "http://data.cityofchicago.org/resource/{$this->api}.json";
+	if($this->selects && $this->groups){
+	    $url .= "?\$select={$this->selects}&\$group={$this->groups}";
+	}
+	elseif($this->selects){
+	    $url .= "?\$select={$this->selects}";
+	}
+	elseif($this->groups){
+	    $url .= "?\$group={$this->groups}";
+	}
+	$json = file_get_contents($url);
 	if($json){
 	    $json = json_decode($json, true);
 	    $this->figures = $json;
@@ -65,8 +87,41 @@ class data{
 	    die();
 	}
 
-	$this->sortData();
+	if($this->selects || $this->groups){
+	    $this->sortByYear();
+	}
+	else{
+	    $this->sortData();
+	}
 
+    }
+
+    public function sortByYear(){
+	if(!$this->figures){
+	    $this->collectData();
+	}
+	$in = $this->figures;
+	$out = array();
+	global $db;
+	$results = $db->query("select * from foldSort where dataset={$this->id}");
+	$key = $results[0]['keyfield'];
+	$value = $results[0]['valuefield'];
+	foreach($in as $row){
+	    $year = $row['year'];
+	    unset($row['year']);
+	    if(!array_key_exists($year, $out)){
+		$out[$year] = array();
+	    }
+	    $out[$year][$row[$key]] = $row[$value];
+	}
+	foreach($out as $year=>$values){
+	    foreach($this->allFields as $field){
+		if(!array_key_exists($field['field'], $values)){
+		    $out[$year][$field['field']] = 0;
+		}
+	    }
+	}
+	$this->figures = $out;
     }
 
     public function sortData(){
@@ -77,71 +132,27 @@ class data{
 	    // array already sorted
 	    return;
 	}
-
-	if(array_key_exists('day', $this->figures[0])){
-	    $this->type = 'day';
-	    $this->sortDaily();
-	}
-	elseif(array_key_exists('month', $this->figures[0])){
-	    $this->type = 'month';
-	    $this->sortMonthly();
-	}
-	else{
-	    $this->type = 'year';
-	    $this->sortYearly();
-	}
-    }
-
-    private function sortDaily(){
-	$in = $this->figures;
-	$out = array();
-
-	foreach($in as $row){
-	    $day = $row['day'];
-	    $month = $row['month'];
-	    $year = $row['year'];
-	    unset($row['day']);
-	    unset($row['month']);
-	    unset($row['year']);
-	    $out[$year][$month][$day] = $row;
-	}
-
-	$this->figures = $out;
-	return;
-    }
-
-    private function sortMonthly(){
-	$in = $this->figures;
-	$out = array();
-
-	foreach($in as $row){
-	    $month = $row['month'];
-	    $year = $row['year'];
-	    unset($row['month']);
-	    unset($row['year']);
-	    $out[$year][$month] = $row;
-	}
-
-	$this->figures = $out;
-	return;
-    }
-
-    private function sortYearly(){
 	$in = $this->figures;
 	$out = array();
 	foreach($in as $row){
 	    $year = $row['year'];
 	    unset($row['year']);
-	    $out[$year] = $row;
+	    if(!array_key_exists($year, $out)){
+		$out[$year] = array();
+	    }
+	    //$out[$year] = $row;
+	    $out[$year] = array_merge($out[$year], $row);
 	}
 	$this->figures = $out;
-	return;
     }
 
     public function makeTable($field){
 	// set up table header
 	$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 	$years = count($this->figures); // number of years of data
+	if(array_key_exists(date("Y"), $this->figures)){
+	    $years--;
+	}
 	foreach($this->offsetYear as $o){
 	    if($o < $years){
 		$ret .= "\t<th class=\"noright\">$o yr. change</th>\n\t\t<th class=\"noleft\">(% change)</th>\n\t";
@@ -162,6 +173,9 @@ class data{
 	    $ret .= ">". number_format($val,0,'.', ',') . "</td>\n\t";
 	    foreach($this->offsetYear as $o){
 		if($o >= $years){
+		    continue;
+		}
+		if(!array_key_exists($year,$this->diffs[$field][$o])){
 		    continue;
 		}
 		if($this->diffs[$field][$o][$year]){
@@ -247,7 +261,12 @@ class data{
 	    foreach($vals as $field=>$v){
 		foreach($this->offsetYear as $o){
 		    if(array_key_exists($year-$o,$this->figures)){
-			$w = $this->figures[$year-$o][$field];
+			if(array_key_exists($field,$this->figures[$year-$o])){
+			    $w = $this->figures[$year-$o][$field];
+			}
+			else{
+			    $w = 0;
+			}
 			$ret[$field][$o][$year] = $v - $w;
 			if($w == 0){
 			    $pct[$field][$o][$year] = NULL;
@@ -280,7 +299,7 @@ class data{
 	if(!$this->figures){
 	    $this->initialize;
 	}
-	for($year = date('Y'); $year > 1900; $year--){
+	for($year = date('Y')-1; $year > 1900; $year--){
 	    if(array_key_exists($year, $this->figures)){
 		return $year;
 	    }
@@ -400,7 +419,9 @@ class data{
     }
 
     public function getMinPct($field, $time){
-	return min(array_diff($this->pct[$field][$time], array(null, 0)));
+	$temp = array_diff($this->pct[$field][$time], array(null, 0));
+	if(count($temp) < 1){ return 0; }
+	return min($temp);
     }
 
     public function getMaxProp($prop){

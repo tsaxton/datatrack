@@ -109,7 +109,6 @@ h3 a {
 #dashboard-menu{
 	border: #515151;
 	background-color: #656565;
-	width: 15%;
 	height: 100%;
 	float: left;
 }
@@ -138,7 +137,6 @@ h3.dashboard-menu-section{
 }
 /*--Main Dashboard--*/
 #dashboard-main{
-	width:70%;
 	height: 100%;
 	float: left;
 	padding-bottom: 50px;
@@ -146,13 +144,6 @@ h3.dashboard-menu-section{
 }
 
 .dashboard-box{
-	/*width: 330px;
-	height: 200px;
-	background-color: #656565;
-	color: #ededed;
-	border-top: 3px solid #cc0000;
-	padding: 5px 10px 5px 10px;
-	margin: 10px 0px 0px 10px;*/
 	width: 40%;
 	height: 150px;
 	float: left;
@@ -161,25 +152,17 @@ h3.dashboard-menu-section{
 	margin: 1%;
 }
 .small-box{
-	width: 150px;
-	height: 200px;
-	background-color: #656565;
-	color: #ededed;
-	border-top: 3px solid #cc0000;
-	padding: 5px 10px 5px 10px;
-	margin: 10px 0px 0px 10px;
+	width: 40%;
+	height: 150px;
 	float: left;
 	font-size: 1.5em;
-	line-height: 1.45em;
+	line-height: 2em;
+	margin: 1%;
 }
 
 .dashboard-box h4{
 	color: white;
 	font-size: 2em;
-}
-
-.dashboard-box a:link, .dashboard-box a:visited{
-    color: #000000;
 }
 
 .lrg-number{

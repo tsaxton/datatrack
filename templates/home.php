@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
     <div class="span2">
 	<ul class="nav nav-list">
 	    <li class="nav-header">Categories</li>
@@ -8,23 +8,23 @@
 	</ul>
 	<script type="text/javascript">
 		$('#display-transit').click(function(){
-			$('.Safety').fadeOut('slow');
-			$('.Other').fadeOut('slow');
-			$('.Transportation').fadeIn('slow');
+			$('.crime').fadeOut('slow');
+			$('.other').fadeOut('slow');
+			$('.transit').fadeIn('slow');
 			$('.active').removeClass('active');
 			self.addClass('active');
 		});
 		$('#display-crime').click(function(){
-			$('.Safety').fadeIn('slow');
-			$('.Other').fadeOut('slow');
-			$('.Transportation').fadeOut('slow');
+			$('.crime').fadeIn('slow');
+			$('.other').fadeOut('slow');
+			$('.transit').fadeOut('slow');
 			$('.active').removeClass('active');
 			self.addClass('active');
 		});
 		$('#display-other').click(function(){
-			$('.Safety').fadeOut('slow');
-			$('.Other').fadeIn('slow');
-			$('.Transportation').fadeOut('slow');
+			$('.crime').fadeOut('slow');
+			$('.other').fadeIn('slow');
+			$('.transit').fadeOut('slow');
 			$('.active').removeClass('active');
 			self.addClass('active');
 		});
@@ -48,11 +48,8 @@ for($j=0; $j < min($sets, $ct); $j++){
 }
 $j = 0;
 while($i < 6){
-    $categories = $data[$i%$ct]->getCategories();
-    echo "<div class=\"dashboard-box small-box well $categories\">";
-    echo "<a href=\"?id=display&dataset=" . $data[$i%$ct]->getId() . "\">";
+    echo "<div class=\"dashboard-box small-box well\">";
     echo $data[$i%$ct]->obs[$j];
-    echo "</a>";
     echo "</div>";
     $i++;
     if($i%$ct == 0){

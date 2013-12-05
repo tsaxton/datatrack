@@ -35,8 +35,16 @@
 $datasets = $db->query('select * from datasets order by updated');
 $i = 0;
 $ct = count($datasets);
-for($j=0; $j < min(6, $ct); $j++){
-    $data[$j] = new recentAnalysis(intval($datasets[$j]['id']));
+$sets = 6;
+for($j=0; $j < min($sets, $ct); $j++){
+    $temp = new recentAnalysis(intval($datasets[$j]['id']));
+    if($temp->success()){
+	$data[$j] = $temp;
+    }
+    else{
+	$sets++;
+	$ct--;
+    }
 }
 $j = 0;
 while($i < 6){

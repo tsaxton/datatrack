@@ -12,6 +12,10 @@ class longTerm{
 	else{
 	    $this->data = $data;
 	}
+	if(!$this->data->success){
+	    return;
+	}
+
 	$this->calculateStats();
 	$this->bigChanges();
 	$this->pieceFit();
@@ -19,6 +23,10 @@ class longTerm{
     }
 
     public function run(){
+	if(!$this->data->success){
+	    return;
+	}
+
 	$str = "<ul class=\"longterm-analysis\">\n";
 	foreach($this->obs as $o){
 	    $str .= "\t<li>$o</li>\n";
@@ -29,6 +37,10 @@ class longTerm{
 
 
     private function calculateStats(){
+	if(!$this->data->success){
+	    return;
+	}
+
 	$i = 0;
 	foreach($this->data->fields as $field){
 	    $this->stats[$i]['Title'] = $field['text'];
@@ -44,6 +56,10 @@ class longTerm{
     }
 
     public function statistics(){
+	if(!$this->data->success){
+	    return;
+	}
+
 	$ret = '';
 	foreach($this->stats as $stat){
 	    $ret .= "<h4>{$stat['Title']}</h4>";
@@ -73,6 +89,10 @@ class longTerm{
     }
 
     public function bigChanges(){
+	if(!$this->data->success){
+	    return;
+	}
+
 	$comparisons = [5, 2, 1, .75, .5];
 	# this isn't pretty...
 	foreach($this->data->fields as $field){
@@ -96,6 +116,10 @@ class longTerm{
     }
 
     public function longStreak(){
+	if(!$this->data->success){
+	    return;
+	}
+
 	$ret = $this->data->longStreaks();
 	$vals = $ret[0];
 	$years = $ret[1];
@@ -115,6 +139,10 @@ class longTerm{
     }
 
     private function bestFit(){
+	if(!$this->data->success){
+	    return;
+	}
+
 	$years = $this->data->getYears();
 	foreach($this->data->fields as $field){
 	    $data = $this->data->extractData($field['field']);
@@ -129,6 +157,10 @@ class longTerm{
     }
 
     private function pieceFit(){
+	if(!$this->data->success){
+	    return;
+	}
+
 	$years = $this->data->getYears();
 	$minYear = min($years);
 	$maxYear = max($years);

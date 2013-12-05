@@ -14,6 +14,7 @@ class data{
     public $fields;
     public $allFields;
     public $categories;
+    public $success = TRUE;
 
     // Data
     public $figures;
@@ -63,7 +64,10 @@ class data{
 
 	$this->proportions = $db->query("select * from proportions where dataset={$this->id}");
 
-	$this->collectData();
+	$result = $this->collectData();
+	if(!$result){
+	    $this->success = FALSE;
+	}
 	$this->calculateDiffs();
 	$this->calculateProportions();
     }
@@ -84,10 +88,13 @@ class data{
 	$json = file_get_contents($url);
 	if($json){
 	    $json = json_decode($json, true);
+	    if(count($json) < 10){
+		return 0;
+	    }
 	    $this->figures = $json;
 	}
 	else{
-	    die();
+	    return 0;
 	}
 
 	if($this->selects || $this->groups){
@@ -96,10 +103,15 @@ class data{
 	else{
 	    $this->sortData();
 	}
+	return 1;
 
     }
 
     public function sortByYear(){
+	if(!$this->success){
+	    return;
+	}
+
 	if(!$this->figures){
 	    $this->collectData();
 	}
@@ -128,7 +140,11 @@ class data{
     }
 
     public function sortData(){
-	if(!$this->figures){
+	if(!$this->success){
+	    return;
+	}
+
+if(!$this->figures){
 	    $this->collectData();
 	}
 	if(!array_key_exists(0,$this->figures)){
@@ -150,7 +166,11 @@ class data{
     }
 
     public function makeTable($field){
-	// set up table header
+	if(!$this->success){
+	    return;
+	}
+
+// set up table header
 	$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 	$years = count($this->figures); // number of years of data
 	if(array_key_exists(date("Y"), $this->figures)){
@@ -218,11 +238,19 @@ class data{
     }
 
     public function areProportions(){
+	if(!$this->success){
+	    return;
+	}
+
 	return count($this->proportions);
     }
     
     public function tableProp(){
-	$ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
+	if(!$this->success){
+	    return;
+	}
+
+$ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
 	foreach($this->proportions as $p){
 	    $ret .= "\t\t<th>{$p['description']}</th>\n";
 	}
@@ -247,10 +275,18 @@ class data{
     }
 
     public function getName(){
+	if(!$this->success){
+	    return;
+	}
+
 	return $this->name;
     }
 
     public function makeJSON($field){
+	if(!$this->success){
+	    return;
+	}
+
 	$ret = array();
 	foreach($this->figures as $year=>$data){
 	    $ret[$year] = $data[$field];
@@ -259,6 +295,10 @@ class data{
     }
 
     public function calculateDiffs(){
+	if(!$this->success){
+	    return;
+	}
+
 	if(!$this->figures){
 	    $this->initialize;
 	}
@@ -294,6 +334,10 @@ class data{
     }
 
     public function calculateProportions(){
+	if(!$this->success){
+	    return;
+	}
+
 	foreach($this->proportions as $p){
 	    foreach($this->figures as $year=>$vals){
 		$pro = $vals[$this->fields[$p['top']]['field']] / $vals[$this->fields[$p['bottom']]['field']];
@@ -303,6 +347,10 @@ class data{
     }
 
     public function mostRecent(){
+	if(!$this->success){
+	    return;
+	}
+
 	if(!$this->figures){
 	    $this->initialize;
 	}
@@ -315,6 +363,10 @@ class data{
     }
 
     public function minYear(){
+	if(!$this->success){
+	    return;
+	}
+
 	if(!$this->figures){
 	    $this->initialize;
 	}
@@ -326,6 +378,10 @@ class data{
     }
 
     public function previous($year = NULL){
+	if(!$this->success){
+	    return;
+	}
+
 	if($year == NULL){
 	    $year = $this->mostRecent();
 	}
@@ -338,6 +394,10 @@ class data{
     }
 
     public function getData($year){
+	if(!$this->success){
+	    return;
+	}
+
 	if($this->yearExists($year)){
 	    return $this->figures[$year];
 	}
@@ -345,18 +405,34 @@ class data{
     }
 
     public function yearExists($year){
+	if(!$this->success){
+	    return;
+	}
+
 	return array_key_exists($year, $this->figures);
     }
 
     public function getMax($field){
+	if(!$this->success){
+	    return;
+	}
+
 	return max($this->extractData($field));
     }
 
     public function getMin($field){
+	if(!$this->success){
+	    return;
+	}
+
 	return min($this->extractData($field));
     }
 
     public function extractData($field){
+	if(!$this->success){
+	    return;
+	}
+
 	// This thing is by no means efficient. In a clean implementation,
 	// I think that all of the data should be converted to a better data
 	// structure for doing things like this.
@@ -368,11 +444,19 @@ class data{
     }
 
     public function getYears(){
+	if(!$this->success){
+	    return;
+	}
+
 	return array_keys($this->figures);
     }
 
     public function longStreaks(){
-    	$baseYear = $this->mostRecent();
+    	if(!$this->success){
+	    return;
+	}
+
+	$baseYear = $this->mostRecent();
 	foreach($this->fields as $field){
 	    $year = $baseYear;
 	    $max = 0;
@@ -414,32 +498,60 @@ class data{
     }
 
     public function getMaxDiff($field, $time){
+	if(!$this->success){
+	    return;
+	}
+
 	return max($this->diffs[$field][$time]);
     }
 
     public function getMinDiff($field, $time){
+	if(!$this->success){
+	    return;
+	}
+
 	return min(array_diff($this->diffs[$field][$time], array(null, 0)));
     }
 
     public function getMaxPct($field, $time){
+	if(!$this->success){
+	    return;
+	}
+
 	return max($this->pct[$field][$time]);
     }
 
     public function getMinPct($field, $time){
+	if(!$this->success){
+	    return;
+	}
+
 	$temp = array_diff($this->pct[$field][$time], array(null, 0));
 	if(count($temp) < 1){ return 0; }
 	return min($temp);
     }
 
     public function getMaxProp($prop){
+	if(!$this->success){
+	    return;
+	}
+
 	return max($this->proportionData[$prop]);
     }
 
     public function getMinProp($prop){
+	if(!$this->success){
+	    return;
+	}
+
 	return min(array_diff($this->proportionData[$prop], array(null, 0)));
     }
 
     public function averages($field){
+	if(!$this->success){
+	    return;
+	}
+
 	/* averages($field)
 	   INPUT: string or array
 	    string - will return the average of the field identified in the string
@@ -458,6 +570,10 @@ class data{
     }
 
     public function std($field){
+	if(!$this->success){
+	    return;
+	}
+
 	$data = $this->extractData($field);
 	$m = $this->averages($data);
 	$sum = 0;
@@ -468,6 +584,10 @@ class data{
     }
 
     public function median($field){
+	if(!$this->success){
+	    return;
+	}
+
 	$data = $this->extractData($field);
 	sort($data);
 	$middle = round(count($data) / 2);
@@ -475,14 +595,26 @@ class data{
     }
 
     public function getAvgDiff($field, $time){
+	if(!$this->success){
+	    return;
+	}
+
 	return $this->averages($this->diffs[$field][$time]);
     }
 
     public function getAvgPct($field, $time){
+	if(!$this->success){
+	    return;
+	}
+
 	return $this->averages($this->pct[$field][$time]);
     }
 
     public function streakDirection($year, $field){
+	if(!$this->success){
+	    return;
+	}
+
 	$current = $this->getData($year);
 	$prev = $this->getData($year-1);
 	$prior = $this->getData($year-2);
@@ -516,6 +648,10 @@ class data{
     }
 
     public function negStreak($year, $field){
+	if(!$this->success){
+	    return;
+	}
+
 	$c = 0;
 	while($year > 1900){
 	    $d = $this->getData($year);
@@ -533,7 +669,11 @@ class data{
     }
 
     public function posStreak($year, $field){
-    	$c = 0;
+    	if(!$this->success){
+	    return;
+	}
+
+	$c = 0;
 	while($year > 1900){
 	    $d = $this->getData($year);
 	    $p = $this->getData($year-1);

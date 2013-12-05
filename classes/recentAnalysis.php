@@ -30,8 +30,10 @@ class recentAnalysis{
 
     public function run(){
 	$str = "<ul class=\"recent-analysis\">\n";
-	foreach($this->vals as $o){
-	    $str .= "\t<li>$o</li>\n";
+	if(is_array($this->vals)){
+	    foreach($this->vals as $o){
+		$str .= "\t<li>$o</li>\n";
+	    }
 	}
 	foreach($this->obs as $o){
 	    $str .= "\t<li>$o</li>\n";
@@ -45,8 +47,12 @@ class recentAnalysis{
     }
 
     private function highlight(){
+	$str = '';
 	foreach($this->data->fields as $field){
 	    // need to use $field['field'] for the name of the field
+	    if(!is_array($this->yearData) || !is_array($this->prevData)){
+		continue;
+	    }
 	    if(!(array_key_exists($field['field'], $this->yearData) && array_key_exists($field['field'], $this->prevData))){
 		continue;
 	    }

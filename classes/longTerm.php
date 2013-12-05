@@ -134,8 +134,15 @@ class longTerm{
 	$maxYear = max($years);
 	foreach($this->data->fields as $field){
 	    $best = PHP_INT_MAX;
+	    $bestA1 = NULL;
+	    $bestA2 = NULL;
+	    $bestB1 = NULL;
+	    $bestB2 = NULL;
 	    $i = 4;
 	    $data = $this->data->extractData($field['field']);
+	    if($i < count($years)-4){
+		continue;
+	    }
 	    while($i < count($years)-4){
 		$years1 = array_slice($years,0,$i);
 		$years2 = array_slice($years,$i+1);
@@ -155,6 +162,9 @@ class longTerm{
 		    $bestI = $i;
 		}
 		$i++;
+	    }
+	    if(!($bestB1 && $bestB2 && $bestA1 && $bestA2)){
+		continue;
 	    }
 	    if($bestB1 < 0 && $bestB2 > 0){
 		$this->obs[] = "After trending downward from $minYear-" . ($minYear+$bestI-1) . ", <span class='field'>{$field['text']}</span> trended upward.";

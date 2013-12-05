@@ -13,6 +13,7 @@ class data{
     public $offsetYear = [1, 2, 5, 10, 25, 50, 100];
     public $fields;
     public $allFields;
+    public $categories;
 
     // Data
     public $figures;
@@ -57,6 +58,8 @@ class data{
 	foreach($fields as $field){
 	    $this->allFields[$field['id']] = $field;
 	}
+
+	$this->categories = $db->query('select * from categories where dataset='.$this->id);
 
 	$this->proportions = $db->query("select * from proportions where dataset={$this->id}");
 

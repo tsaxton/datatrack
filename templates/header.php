@@ -34,7 +34,7 @@
 	<ul id="menuList">
 		<li class="menuItem"><a href="?id=home">DASHBOARD</a></li>
 		<li class="menuItem"><a href="?id=sets">DATA SETS</a></li>
-		<li class="menuItem"><a href="?id=about">ABOUT</a></li>
+		<!--<li class="menuItem"><a href="?id=about">ABOUT</a></li>-->
 		<li class="menuItem"><a href="?id=help">HELP</a></li>
 	</ul>
 </div>

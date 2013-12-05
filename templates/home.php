@@ -3,7 +3,6 @@
 	<ul class="nav nav-list">
 	    <li class="nav-header">Categories</li>
 	    <li><a href="#crime" id="display-crime">Crime</a></li>
-	    <li><a href="#energy" id="display-other">Energy</a></li>
 	    <li><a href="#transit" id="display-transit">Transportation</a></li>
 	    <!--<li>Government</li>-->
 	</ul>
@@ -32,20 +31,34 @@
 	</script>
     </div>
     <div id="dashboard-main" class="span8">
-	<div class="dashboard-box small-box well transit">
-	<p>CTA rail ridership hit a new high this year.</p>
-	</div>
-	<div class="dashboard-box small-box well transit">
-	<p>Total CTA ridership (bus & rail) is up 2.56% this year.</p>
-	</div>
-	<div class="dashboard-box small-box well crime">
-	<p>Crime in Chicago is down 2.5% last month versus November 2012.</p>
-	</div>
-	<div class="dashboard-box small-box well other">
-	<p>There are 138 alternative fuel locations in the City of Chicago.</p>
-	</div>
+<?php
+$datasets = $db->query('select * from datasets order by updated');
+$i = 0;
+$ct = count($datasets);
+for($j=0; $j < min(6, $ct); $j++){
+    $data[$j] = new recentAnalysis(intval($datasets[$j]['id']));
+}
+$j = 0;
+while($i < 6){
+    echo "<div class=\"dashboard-box small-box well\">";
+    echo $data[$i%$ct]->obs[$j];
+    echo "</div>";
+    $i++;
+    if($i%$ct == 0){
+	$j++;
+    }
+}
+?>
     </div>
     <div class="span2">
-    Data Sets
+	<ul class="nav nav-list">
+	    <li class="nav-header">Data Sets</li>
+<?php
+$datasets = $db->query('select * from datasets order by name');
+foreach($datasets as $d){
+    echo "\t\t\t<li><a href=\"?id=display&dataset={$d['id']}\">{$d['name']}</a></li>\n";
+}
+?>
+	</ul>
     </div>
 </div>

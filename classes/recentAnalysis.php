@@ -7,7 +7,7 @@ class recentAnalysis{
     private $previous;
     private $yearData;
     private $prevData;
-    private $obs;
+    public $obs;
     private $vals;
     private $pro;
 
@@ -18,8 +18,8 @@ class recentAnalysis{
 	else{
 	    $this->data = $data;
 	}
-	$this->recent = $data->mostRecent();
-	$this->previous = $data->previous($this->recent);
+	$this->recent = $this->data->mostRecent();
+	$this->previous = $this->data->previous($this->recent);
 	$this->yearData = $this->data->getData($this->recent);
 	$this->prevData = $this->data->getData($this->previous);
 	$this->highlight();

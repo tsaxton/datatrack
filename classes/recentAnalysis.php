@@ -18,6 +18,10 @@ class recentAnalysis{
 	else{
 	    $this->data = $data;
 	}
+	if(!$this->data->success){
+		return;
+	}
+	
 	$this->recent = $this->data->mostRecent();
 	$this->previous = $this->data->previous($this->recent);
 	$this->yearData = $this->data->getData($this->recent);
@@ -29,6 +33,9 @@ class recentAnalysis{
     }
 
     public function run(){
+	if(!$this->data->success){
+		return;
+	}
 	$str = "<ul class=\"recent-analysis\">\n";
 	foreach($this->vals as $o){
 	    $str .= "\t<li>$o</li>\n";
@@ -41,10 +48,16 @@ class recentAnalysis{
     }
 
     public function keyObs(){
+	if(!$this->data->success){
+		return;
+	}
 	return $this->obs[0];
     }
 
     private function highlight(){
+	if(!$this->data->success){
+		return;
+	}
 	foreach($this->data->fields as $field){
 	    // need to use $field['field'] for the name of the field
 	    if(!(array_key_exists($field['field'], $this->yearData) && array_key_exists($field['field'], $this->prevData))){
@@ -72,6 +85,9 @@ class recentAnalysis{
     }
 
     private function proportion(){
+	if(!$this->data->success){
+		return;
+	}
 	global $db;
 	$proportions = $db->query("select * from proportions where dataset={$this->data->id}");
 
@@ -83,6 +99,9 @@ class recentAnalysis{
     }
 
     private function streak(){
+	if(!$this->data->success){
+		return;
+	}
 	$str = '';
 	foreach($this->data->fields as $field){
 	    $direction = $this->data->streakDirection($this->recent, $field['field']);
@@ -107,6 +126,9 @@ class recentAnalysis{
     }
 
     private function recordCheck(){
+	if(!$this->data->success){
+		return;
+	}
 	foreach($this->data->fields as $field){
 	    if(!array_key_exists($field['field'], $this->yearData)){
 		continue;

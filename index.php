@@ -17,7 +17,7 @@ if($id == 'display' && !array_key_exists('dataset', $_GET)){
     $id = 'home';
 }
 elseif($id == 'display'){
-    $dataset = $_GET['dataset'];
+    $dataset = intval($_GET['dataset']);
 }
 
 include("templates/$id.php");

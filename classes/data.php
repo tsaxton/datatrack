@@ -13,6 +13,7 @@ class data{
     public $offsetYear = [1, 2, 5, 10, 25, 50, 100];
     public $fields;
     public $allFields;
+    public $success = TRUE;
 
     // Data
     public $figures;

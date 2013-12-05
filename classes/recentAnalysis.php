@@ -7,7 +7,7 @@ class recentAnalysis{
     private $previous;
     private $yearData;
     private $prevData;
-    private $obs;
+    public $obs;
     private $vals;
     private $pro;
 
@@ -18,8 +18,8 @@ class recentAnalysis{
 	else{
 	    $this->data = $data;
 	}
-	$this->recent = $data->mostRecent();
-	$this->previous = $data->previous($this->recent);
+	$this->recent = $this->data->mostRecent();
+	$this->previous = $this->data->previous($this->recent);
 	$this->yearData = $this->data->getData($this->recent);
 	$this->prevData = $this->data->getData($this->previous);
 	$this->highlight();
@@ -47,6 +47,12 @@ class recentAnalysis{
     private function highlight(){
 	foreach($this->data->fields as $field){
 	    // need to use $field['field'] for the name of the field
+	    if(!(array_key_exists($field['field'], $this->yearData) && array_key_exists($field['field'], $this->prevData))){
+		continue;
+	    }
+	    if($this->prevData[$field['field']] == 0){
+		continue;
+	    }
 	    $pct = ($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']] * 100; 
 	    $str = "<span class='field'>{$field['text']}</span>: " . number_format($this->yearData[$field['field']], 0, '.', ',');
 	    if($pct == 0){
@@ -56,7 +62,7 @@ class recentAnalysis{
 		$pct = number_format($pct, 2, '.', ',');
 		$str .= " <span class=\"data-increase\">$pct% increase from {$this->previous}</span></li>\n";
 	    }
-	    else{
+	    elseif($pct < 0){
 		$pct = number_format(-$pct, 2, '.', ',');
 		$str .= " <span class=\"data-decrease\">$pct% decrease from {$this->previous}</span></li>\n";
 	    }
@@ -102,6 +108,9 @@ class recentAnalysis{
 
     private function recordCheck(){
 	foreach($this->data->fields as $field){
+	    if(!array_key_exists($field['field'], $this->yearData)){
+		continue;
+	    }
 	    if($this->yearData[$field['field']] == $this->data->getMax($field['field'])){
 		$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> hit a record high!</span>";
 	    }

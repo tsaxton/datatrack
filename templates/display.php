@@ -1,5 +1,5 @@
 <?php
-$data = new data(1);
+$data = new data($dataset);
 $recent = new recentAnalysis($data);
 $long = new longTerm($data);
 ?>
@@ -26,9 +26,10 @@ $(document).ready(function(){
       };
 
     var chartData = [];
+    var labelArray = [];
 <?php
 foreach($data->fields as $field){
-    echo "\tvar vals = [];\n\tvar json = ajaxData('{$data->id}', '{$field['field']}');\n\tfor(var j in json){\n\t\tvals.push([parseInt(j), parseInt(json[j])]);\n\t}\n\tchartData.push(vals);\n\n";
+    echo "\tvar vals = [];\n\tlabelArray.push('{$field['text']}');\n\tvar json = ajaxData('{$data->id}', '{$field['field']}');\n\tfor(var j in json){\n\t\tvals.push([parseInt(j), parseInt(json[j])]);\n\t}\n\tchartData.push(vals);\n\n";
 }
 ?>
     var plot2 = $.jqplot('chart3', chartData,{
@@ -49,6 +50,13 @@ foreach($data->fields as $field){
 	    show: true,
 	    sizeAdjust: 7.5
 	},
+	legend:{
+	    show: true,
+	    location: 'e',
+	    labels: labelArray,
+	    placement: 'outsideGrid',
+	    border: 'none'
+	}
       });
 });
 </script>
@@ -105,10 +113,14 @@ foreach($data->fields as $field){
 	$class = "class=\"active\"";
 	$first = 0;
     }
-    echo "\t\t<li $class><a href=\"#{$field['field']}\" data-toggle=\"tab\">{$field['text']}</a></li>";
+    echo "\t\t<li $class><a href=\"#".str_replace(' ','',$field['field'])."\" data-toggle=\"tab\">{$field['text']}</a></li>";
 }
+    if($data->areProportions()){
 ?>
 	<li><a href="#props" data-toggle="tab">Proportions</a></li>
+<?php
+    }
+?>
 	<!-- End data table tabs -->
       </ul>
     </div>
@@ -122,55 +134,20 @@ foreach($data->fields as $field){
 	$active = 'active';
 	$first = 0;
     }
-    echo "\t\t<div id=\"{$field['field']}\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
+    echo "\t\t<div id=\"".str_replace(' ','',$field['field'])."\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
     echo $data->makeTable($field['field']);
     echo "\t\t\t<!-- End Data Table: {$field['text']} -->\n\t\t</div>\n";
 }
+if($data->areProportions()){
 ?>
 	<div id="props" class="tab-pane">
 	    <h3>Proportions</h3>
 	    <?=$data->tableProp();?>
 	</div>
+<?php
+}
+?>
 	<!-- End data tables -->
       </div><!-- /.tab-content -->
 </div>
-<div class="row-fluid">
-    <div class="span12"><!-- Begin data tables -->
-<?php
-/*foreach($data->fields as $field){
-    echo "<h3>{$field['text']}</h3>";
-    echo $data->makeTable($field['field']);
-}
 
-echo "<h3>Proportions</h3>";
-echo $data->tableProp();*/
-?>
-    </div><!-- End data tables -->
-</div>
-
-<!--<div class="row-fluid tabbable">
-    <div class="span2">
-      <ul class="nav nav-tabs nav-stacked">
-	<li class="active"><a href="#recent" data-toggle="tab">Most Recent Data</a></li>
-	<li><a href="#longterm" data-toggle="tab">Long-Term Trends</a></li>
-	<li><a href="#stats" data-toggle="tab">Statistics</a></li>
-      </ul>
-    </div>
-      <div class="span10 tab-content">
-	<div id="recent" class="tab-pane active">
-	    <h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
-	    
-	    <?=$recent->run();?>
-	    
-	</div>
-	<div id="longterm" class="tab-pane">
-	<h4>Pane 2 Content</h4>
-	  <p> and so on ...</p>
-	</div>
-	<div id="stats" class="tab-pane">
-	    <h3>Statistics</h3>
-	    <?=$long->statistics();?>
-	</div>
-      </div>
-    </div>
-</div>-->

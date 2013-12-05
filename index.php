@@ -10,7 +10,14 @@ if(array_key_exists('id',$_GET)){
     $id = $_GET['id'];
 }
 else{
-    $id = 'display';
+    $id = 'home';
+}
+
+if($id == 'display' && !array_key_exists('dataset', $_GET)){
+    $id = 'home';
+}
+elseif($id == 'display'){
+    $dataset = $_GET['dataset'];
 }
 
 include("templates/$id.php");

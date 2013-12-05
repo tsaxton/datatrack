@@ -113,7 +113,7 @@ foreach($data->fields as $field){
 	$class = "class=\"active\"";
 	$first = 0;
     }
-    echo "\t\t<li $class><a href=\"#{$field['field']}\" data-toggle=\"tab\">{$field['text']}</a></li>";
+    echo "\t\t<li $class><a href=\"#".str_replace(' ','',$field['field'])."\" data-toggle=\"tab\">{$field['text']}</a></li>";
 }
 ?>
 	<li><a href="#props" data-toggle="tab">Proportions</a></li>
@@ -130,7 +130,7 @@ foreach($data->fields as $field){
 	$active = 'active';
 	$first = 0;
     }
-    echo "\t\t<div id=\"{$field['field']}\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
+    echo "\t\t<div id=\"".str_replace(' ','',$field['field'])."\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
     echo $data->makeTable($field['field']);
     echo "\t\t\t<!-- End Data Table: {$field['text']} -->\n\t\t</div>\n";
 }

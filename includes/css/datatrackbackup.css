@@ -178,10 +178,6 @@ h3.dashboard-menu-section{
 	font-size: 2em;
 }
 
-.dashboard-box a:link, .dashboard-box a:visited{
-    color: #000000;
-}
-
 .lrg-number{
 	font-weight: bold;
 	font-size: 1.75em;

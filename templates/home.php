@@ -8,23 +8,23 @@
 	</ul>
 	<script type="text/javascript">
 		$('#display-transit').click(function(){
-			$('.crime').fadeOut('slow');
-			$('.other').fadeOut('slow');
-			$('.transit').fadeIn('slow');
+			$('.Safety').fadeOut('slow');
+			$('.Other').fadeOut('slow');
+			$('.Transportation').fadeIn('slow');
 			$('.active').removeClass('active');
 			self.addClass('active');
 		});
 		$('#display-crime').click(function(){
-			$('.crime').fadeIn('slow');
-			$('.other').fadeOut('slow');
-			$('.transit').fadeOut('slow');
+			$('.Safety').fadeIn('slow');
+			$('.Other').fadeOut('slow');
+			$('.Transportation').fadeOut('slow');
 			$('.active').removeClass('active');
 			self.addClass('active');
 		});
 		$('#display-other').click(function(){
-			$('.crime').fadeOut('slow');
-			$('.other').fadeIn('slow');
-			$('.transit').fadeOut('slow');
+			$('.Safety').fadeOut('slow');
+			$('.Other').fadeIn('slow');
+			$('.Transportation').fadeOut('slow');
 			$('.active').removeClass('active');
 			self.addClass('active');
 		});
@@ -40,8 +40,11 @@ for($j=0; $j < min(6, $ct); $j++){
 }
 $j = 0;
 while($i < 6){
-    echo "<div class=\"dashboard-box small-box well\">";
+    $categories = $data[$i%$ct]->getCategories();
+    echo "<div class=\"dashboard-box small-box well $categories\">";
+    echo "<a href=\"?id=display&dataset=" . $data[$i%$ct]->getId() . "\">";
     echo $data[$i%$ct]->obs[$j];
+    echo "</a>";
     echo "</div>";
     $i++;
     if($i%$ct == 0){

@@ -154,4 +154,16 @@ class recentAnalysis{
 	}
     }
 
+    public function getCategories(){
+	$str = '';
+	foreach($this->data->categories as $c){
+	    $str .= "{$c['category']} ";
+	}
+	return $str;
+    }
+
+    public function getId(){
+	return $this->data->id;
+    }
+
 }

@@ -214,6 +214,10 @@ class data{
 	return $ret;
     }
 
+    public function areProportions(){
+	return count($this->proportions);
+    }
+    
     public function tableProp(){
 	$ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
 	foreach($this->proportions as $p){

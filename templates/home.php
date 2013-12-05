@@ -16,6 +16,11 @@ $data = new data(1);
 </ul>
 </div>
 <script type="text/javascript">
+	/*$(".small-box").hover(function(){
+		$(this).css("background-color", "#cc0000");
+	}, function(){
+		$(this).css("background-color", "#656565");
+	});*/
 	$('#display-all').click(function(){
 		$('.dashboard-box').appendTo( $('#dashboard-main') );
 		$('#dashboard-main').append( $('.small-box') );
@@ -55,5 +60,14 @@ $data = new data(1);
 	<div class="small-box other">
 	<p>Total CTA ridership (bus & rail) is up 2.56% this year.</p>
 	</div>
+<?php
+/*
+$results = $db->query('select * from datasets order by updated');
+foreach($results as $result){
+    $mostRecent = new recentAnalysis($result['id']);
+    echo $mostRecent->keyObs();
+}
+*/
+?>
 </div>
 <div class="clearfix"></div>

@@ -8,6 +8,7 @@ $data = new data(1);
 </ul>
 <h3 class="dashboard-menu-section">Categories</h3>
 <ul class="dashboard-menu-list">
+<li><a href="#all" id="display-all">All</li>
 <li class="muted"><a href="#crime" id="display-crime">Crime</li>
 <li><a href="#transit" id="display-transit">Transportation</a></li>
 <li class="muted">Government</li>
@@ -15,9 +16,13 @@ $data = new data(1);
 </ul>
 </div>
 <script type="text/javascript">
+	$('#display-all').click(function(){
+		$('.dashboard-box').appendTo( $('#dashboard-main') );
+		$('#dashboard-main').append( $('.small-box') );
+	});
 	$('#display-transit').click(function(){
 		$('.crime').fadeOut( function() { $(this).detach(); });
-		$('.other').fadeOut( function() { $(this).detach(); });
+		$('.other').fadeOut( function() { $(this).detach(); });	
 	});
 	$('#display-crime').click(function(){
 		$('.transit').fadeOut( function() { $(this).detach(); });
@@ -25,9 +30,9 @@ $data = new data(1);
 		
 	});
 	$('#display-other').click(function(){
+		$('.other').appendTo( $('#dashboard-main') );
 		$('.transit').fadeOut( function() { $(this).detach(); });
 		$('.crime').fadeOut( function() { $(this).detach(); });
-		$('.other').fadeIn( function() { $(this).attach(); });
 	});
 </script>
 <div id="dashboard-main">
@@ -35,22 +40,20 @@ $data = new data(1);
 		<p>Currently analyzing <span class="lrg-number">2</span> datasets with <span class="lrg-number">163</span> total rows of data from <span class="lrg-number">1</span> source.</p>
 	</div>
 	
-	<div class="dashboard-box small-box">
-		<h4><?$data = new data(1);?></h4>
+	<div class="dashboard-box">
+		<h4></h4>
 		<div id="sample-graph">Graph</div>
-		<p>And some content/analysis</p>
+		<p></p>
+		
 	</div>
-	<div class="dashboard-box small-box transit">
+	<div class="dashboard-box transit">
 	<p>CTA rail ridership hit a new high this year.</p>
 	</div>
-	<div class="dashboard-box small-box transit">
+	<div class="small-box transit">
 	<p>Total CTA ridership (bus & rail) is up 2.56% this year.</p>
 	</div>
-	<div class="dashboard-box small-box crime">
-	<p>Crime in Chicago is down 2.5% last month versus November 2012.</p>
-	</div>
-	<div class="dashboard-box small-box other">
-	<p>There are 138 alternative fuel locations in the City of Chicago.</p>
+	<div class="small-box other">
+	<p>Total CTA ridership (bus & rail) is up 2.56% this year.</p>
 	</div>
 </div>
 <div class="clearfix"></div>

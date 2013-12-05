@@ -147,9 +147,12 @@ h3.dashboard-menu-section{
 .dashboard-box{
 	width: 310px;
 	height: 150px;
+	width: 330px;
+	height: 200px;
 	background-color: #656565;
 	color: #ededed;
 	border-top: 3px solid #0b74e5;
+	border-top: 3px solid #cc0000;
 	padding: 5px 10px 5px 10px;
 	margin: 10px 0px 0px 10px;
 	float: left;
@@ -157,16 +160,17 @@ h3.dashboard-menu-section{
 	line-height: 2em;
 }
 .dashboard-box small-box{
+.small-box{
 	width: 150px;
-	height: 150px;
+	height: 200px;
 	background-color: #656565;
 	color: #ededed;
-	border-top: 3px solid #0b74e5;
+	border-top: 3px solid #cc0000;
 	padding: 5px 10px 5px 10px;
 	margin: 10px 0px 0px 10px;
 	float: left;
 	font-size: 1.5em;
-	line-height: 2em;
+	line-height: 1.45em;
 }
 .dashboard-box h4{
 	color: white;

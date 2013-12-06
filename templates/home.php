@@ -36,10 +36,11 @@ $datasets = $db->query('select * from datasets order by updated');
 $i = 0;
 $ct = count($datasets);
 $sets = 6;
+$k = 0;
 for($j=0; $j < min($sets, $ct); $j++){
     $temp = new recentAnalysis(intval($datasets[$j]['id']));
     if($temp->success()){
-	$data[$j] = $temp;
+	$data[$k++] = $temp;
     }
     else{
 	$sets++;

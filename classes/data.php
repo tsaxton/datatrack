@@ -29,7 +29,7 @@ class data{
 	$this->id = $id;
 	$this->success = TRUE;
 	$this->initialize();
-	$this->offsetYear = [1, 2, 5, 10, 25, 50, 100];
+	$this->offsetYear = array(1, 2, 5, 10, 25, 50, 100);
     }
 
     public function initialize(){

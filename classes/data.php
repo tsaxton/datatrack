@@ -335,10 +335,12 @@ $ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
 	    return;
 	}
 
-	foreach($this->proportions as $p){
-	    foreach($this->figures as $year=>$vals){
-		$pro = $vals[$this->fields[$p['top']]['field']] / $vals[$this->fields[$p['bottom']]['field']];
-		$this->proportionData[$p['id']][$year] = $pro;
+	if(is_array($this->proportions)){
+	    foreach($this->proportions as $p){
+		foreach($this->figures as $year=>$vals){
+		    $pro = $vals[$this->fields[$p['top']]['field']] / $vals[$this->fields[$p['bottom']]['field']];
+		    $this->proportionData[$p['id']][$year] = $pro;
+		}
 	    }
 	}
     }

@@ -168,12 +168,14 @@ class recentAnalysis{
 	    }
 
 	    // see how the proportions match
-	    foreach($this->data->proportions as $p){
-		if($this->pro[$p['id']] == $this->data->getMaxProp($p['id'])){
-		    $this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record high.</span>";
-		}
-		if($this->pro[$p['id']] == $this->data->getMinProp($p['id'])){
-		    $this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record low.</span>";
+	    if(is_array($this->data->proportions)){
+		foreach($this->data->proportions as $p){
+		    if($this->pro[$p['id']] == $this->data->getMaxProp($p['id'])){
+			$this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record high.</span>";
+		    }
+		    if($this->pro[$p['id']] == $this->data->getMinProp($p['id'])){
+			$this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record low.</span>";
+		    }
 		}
 	    }
 	    

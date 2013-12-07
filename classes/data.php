@@ -10,11 +10,11 @@ class data{
     private $type;
     private $selects;
     private $groups;
-    public $offsetYear = [1, 2, 5, 10, 25, 50, 100];
+    public $offsetYear;
     public $fields;
     public $allFields;
     public $categories;
-    public $success = TRUE;
+    public $success;
 
     // Data
     public $figures;
@@ -27,7 +27,9 @@ class data{
 
     public function __construct($id){
 	$this->id = $id;
+	$this->success = TRUE;
 	$this->initialize();
+	$this->offsetYear = [1, 2, 5, 10, 25, 50, 100];
     }
 
     public function initialize(){

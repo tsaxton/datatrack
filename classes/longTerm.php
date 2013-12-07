@@ -93,7 +93,7 @@ class longTerm{
 	    return;
 	}
 
-	$comparisons = [5, 2, 1, .75, .5];
+	$comparisons = array(5, 2, 1, .75, .5);
 	# this isn't pretty...
 	foreach($this->data->fields as $field){
 	    foreach($this->data->pct[$field['field']] as $offset=>$years){

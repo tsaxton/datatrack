@@ -32,7 +32,7 @@
     </div>
     <div id="dashboard-main" class="span8">
 <?php
-$datasets = $db->query('select * from datasets order by updated');
+$datasets = dbQuery('select * from datasets order by updated');
 $i = 0;
 $ct = count($datasets);
 $sets = 6;
@@ -65,7 +65,7 @@ while($i < 6){
 	<ul class="nav nav-list">
 	    <li class="nav-header">Data Sets</li>
 <?php
-$datasets = $db->query('select * from datasets order by name');
+$datasets = dbQuery('select * from datasets order by name');
 foreach($datasets as $d){
     echo "\t\t\t<li><a href=\"?id=display&dataset={$d['id']}\">{$d['name']}</a></li>\n";
 }

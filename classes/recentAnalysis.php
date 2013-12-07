@@ -98,8 +98,7 @@ class recentAnalysis{
 	    return;
 	}
 
-	global $db;
-	$proportions = $db->query("select * from proportions where dataset={$this->data->id}");
+	$proportions = dbQuery("select * from proportions where dataset={$this->data->id}");
 
 	foreach($proportions as $p){
 	    $this->pro[$p['id']] = $this->yearData[$this->data->fields[$p['top']]['field']] / $this->yearData[$this->data->fields[$p['bottom']]['field']];

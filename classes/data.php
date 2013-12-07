@@ -37,8 +37,7 @@ class data{
 	    throw new Exception('Data object was improperly initialized.');
 	}
 
-	global $db;
-	$results = $db->query('select * from datasets where id='.$this->id);
+	$results = dbQuery('select * from datasets where id='.$this->id);
 
 	if(count($results) != 1){
 	    throw new Exception('Too many entries with given id.');
@@ -50,21 +49,21 @@ class data{
 	$this->selects = $results[0]['selects'];
 	$this->groups = $results[0]['groups'];
 
-	$fields = $db->query('select * from fields where dataset='.$this->id.' and major=1');
+	$fields = dbQuery('select * from fields where dataset='.$this->id.' and major=1');
 	$this->fields = array();
 	foreach($fields as $field){
 	    $this->fields[$field['id']] = $field;
 	}
 
-	$fields = $db->query('select * from fields where dataset='.$this->id);
+	$fields = dbQuery('select * from fields where dataset='.$this->id);
 	$this->allFields = array();
 	foreach($fields as $field){
 	    $this->allFields[$field['id']] = $field;
 	}
 
-	$this->categories = $db->query('select * from categories where dataset='.$this->id);
+	$this->categories = dbQuery('select * from categories where dataset='.$this->id);
 
-	$this->proportions = $db->query("select * from proportions where dataset={$this->id}");
+	$this->proportions = dbQuery("select * from proportions where dataset={$this->id}");
 
 	$result = $this->collectData();
 	if(!$result){
@@ -75,7 +74,6 @@ class data{
     }
 
     public function collectData(){
-	global $db;
 
 	$url = "http://data.cityofchicago.org/resource/{$this->api}.json";
 	if($this->selects && $this->groups){
@@ -119,8 +117,7 @@ class data{
 	}
 	$in = $this->figures;
 	$out = array();
-	global $db;
-	$results = $db->query("select * from foldSort where dataset={$this->id}");
+	$results = dbQuery("select * from foldSort where dataset={$this->id}");
 	$key = $results[0]['keyfield'];
 	$value = $results[0]['valuefield'];
 	foreach($in as $row){

@@ -4,10 +4,11 @@ ini_set('display_errors', 'On');
 
 require_once('includes/meekro.php');
 
+$host = 'localhost';
 $username = 'datatrack';
 $password = 'journalistdatadashboard';
 $dbName   = 'datatrack';
 
-$db = new MeekroDB('localhost', $username, $password, $dbName);
+$db = new MeekroDB($host, $username, $password, $dbName);
 
 ?>

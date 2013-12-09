@@ -38,7 +38,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,1,'Transportation'),(2,2,'Safety');
+INSERT INTO `categories` VALUES (1,1,'Transportation'),(2,2,'Crime');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,32 +100,6 @@ INSERT INTO `fields` VALUES (4,1,'total','Total Ridership',1),(5,1,'bus','Bus Ri
 UNLOCK TABLES;
 
 --
--- Table structure for table `fold`
---
-
-DROP TABLE IF EXISTS `fold`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fold` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dataset` int(11) NOT NULL,
-  `field` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `dataset` (`dataset`),
-  CONSTRAINT `fold_ibfk_1` FOREIGN KEY (`dataset`) REFERENCES `datasets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fold`
---
-
-LOCK TABLES `fold` WRITE;
-/*!40000 ALTER TABLE `fold` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fold` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `foldSort`
 --
 
@@ -151,33 +125,6 @@ LOCK TABLES `foldSort` WRITE;
 /*!40000 ALTER TABLE `foldSort` DISABLE KEYS */;
 INSERT INTO `foldSort` VALUES (1,2,'primary_type','count_id');
 /*!40000 ALTER TABLE `foldSort` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `foldYears`
---
-
-DROP TABLE IF EXISTS `foldYears`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `foldYears` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dataset` int(11) NOT NULL,
-  `year` varchar(255) DEFAULT NULL,
-  `date` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `dataset` (`dataset`),
-  CONSTRAINT `foldYears_ibfk_1` FOREIGN KEY (`dataset`) REFERENCES `datasets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `foldYears`
---
-
-LOCK TABLES `foldYears` WRITE;
-/*!40000 ALTER TABLE `foldYears` DISABLE KEYS */;
-/*!40000 ALTER TABLE `foldYears` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -222,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-07 14:02:28
+-- Dump completed on 2013-12-08 18:22:00

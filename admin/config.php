@@ -25,5 +25,4 @@ function dbQuery($sql){
         }
         return $result;
 }
-
 ?>

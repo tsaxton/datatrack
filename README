@@ -1,0 +1,59 @@
+DATATRACK
+
+Developed by:
+Amon Jones <amonjones2016@u.northwestern.edu>
+Michael McCarthy <michaelmccarthy2016@u.northwestern.edu>
+Thomas M. Saxton <tsaxton@u.northwestern.edu>
+
+Advisors:
+Professor Larry Birnbaum, EECS
+Professor Rich Gordon, Medill School of Journalism
+EECS 338
+
+Document Last Updated: 08.December.2013
+
+-----------------------------------------------------------------------------
+
+1. INSTALLATION INSTRUCTIONS
+1.1 Prerequisites
+DataTrack requires PHP 5.4 and MySQL to run. It also uses the mysqli PHP extension. Therefore, you will most likely require an Apache server, although other environments may work.
+
+As of now, there is a PHP 5.3 version on the Heroku branch in the Git repository.
+
+1.2 Installation of PHP Application
+Given that you have PHP 5.4 and mysqli installed on your system, you would install the PHP application as you would on your operating system and server type.
+
+Clone the Git Repository containing DataTrack to your server machine and configure your server as you normally would.
+
+1.3 Installation of the MySQL Database.
+Import APPHOME/admin/datatrack.sql to your MySQL database:
+    mysql -h HOST -p -u USERNAME < APPHOME/admin/datatrack.sql
+Then create a new user and password for the application and grand read/write permissions to the datatrack database.
+
+1.4 Configuring DataTrack
+In APPHOME/admin/config.php, update the $username, $password and $host variables to match those of your MySQL environment.
+
+DataTrack should now be successfully deployed.
+
+2. ADDING ADDITONAL DATASETS
+All datasets in DataTrack:Chicago must come from the City of Chicago's data portal at data.cityofchicago.gov. In order to add a data set, it must be condensed into yearly time-series data.
+
+This may take a bit of work on behalf of the developer to figure out how to do. For data that is time stamped, it probably just requires selecting and grouping the data. For example, the correct JSON to condense the crime data set in such a way is:
+http://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=year,primary_type,count(id)&$group=year,primary_type
+
+Here, we are saying that we're interested in the year, type of crime, and the number of separate incidents of that crime that occurred. We want to group, or condense data, into similar years and types. This format will be used for any crime series data.
+
+Note that you may need to play with exactly the right combination of fields and groupings for this to be correct, including specifiying which part of a date field you find interesting.
+
+Once you do that, for the time being, you need to manually add the dataset to the MySQL database.
+SYNTAX: insert into datasets (api, name, updated, selects, groups) values (DATA_PORTAL_IDENTIFIER, 'TITLE OF DATASET', 'YYYY-MM-DD', 'field list', 'field list');
+EXAMPLE: insert into datasets (api, name, updated, selects, groups) values (ijzp-q8t2', 'Crimes 2001-Present', '2013-10-29', 'year,primary_type,count(id)','year,primary_type');
+
+As you can see, selects and groups come from the URL found earlier. The date is in the metadata for the data. Hopefully we can eventually update this dynamically, and have an easier way for you to add the data set.
+
+Once this has been accomplished, you should add fields to the fields table. A field, in this case, is any column that occurs each year. So for CTA ridership, an example is bus data; for crimes, homocide. This should match the value returned by the Data Portal's API.
+
+You should also add a category associated with the data set. Note that right now, categories are hard-coded in the dashboard (this needs to be changed as well). Therefore, either the code needs to be changed, or stick with the categories of "Transportation" "Crime" and "Other."
+
+Finally, proportions can be added in the proportions table. The 'top' field should reference the id of a field in the fields column that would be the top of the proportion. Similar syntax for the bottom.
+

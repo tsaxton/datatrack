@@ -8,8 +8,8 @@
 	</ul>
 	<script type="text/javascript">
 		$('#display-transit').click(function(){
-			$('.crime').fadeOut('slow');
-			$('.other').fadeOut('slow');
+			$('.Crime').fadeOut('slow');
+			$('.Other').fadeOut('slow');
 			$('.Transportation').fadeIn('slow');
 			$('.active').removeClass('active');
 			self.addClass('active');

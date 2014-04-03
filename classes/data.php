@@ -144,7 +144,7 @@ class data{
 	    return;
 	}
 
-if(!$this->figures){
+	if(!$this->figures){
 	    $this->collectData();
 	}
 	if(!array_key_exists(0,$this->figures)){
@@ -182,6 +182,9 @@ if(!$this->figures){
 	    }
 	}
 	$year = date("Y")-1;
+	while(!array_key_exists($year, $this->figures)){
+		$year--;
+	}
 	for($i=0; $i < $years; $i++){
 	    $max = $this->getMax($field);
 	    $min = $this->getMin($field);

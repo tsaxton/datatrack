@@ -2,7 +2,7 @@
 function dump($var, $label=NULL){
     echo "<pre>";
     if($label){
-	echo "$label: ";
+		echo "$label: ";
     }
     var_dump($var);
     echo "</pre>";
@@ -16,25 +16,25 @@ function std($arr){
     $sum = 0;
     $m = avg($arr);
     foreach($arr as $a){
-	$sum += pow(($a-$m),2);
+		$sum += pow(($a-$m),2);
     }
     return sqrt($sum / count($arr));
 }
 
 function xy($x, $y){
     if(count($x) != count($y)){
-	return NULL;
+		return NULL;
     }
     $z = array();
     foreach($x as $i=>$j){
-	$z[$i] = $j * $y[$i];
+		$z[$i] = $j * $y[$i];
     }
     return $z;
 }
 
 function slope($x, $y){
     if(count($x) != count($y)){
-	return NULL;
+		return NULL;
     }
     $n = count($x);
     $b = ($n*array_sum(xy($x,$y)) - (array_sum($x)*array_sum($y)))/($n*array_sum(xy($x,$x)) - (pow(array_sum($x),2)));
@@ -48,14 +48,14 @@ function intercept($x, $y){
 
 function residuals($a, $b, $x, $y){
     if(count($x) != count($y)){
-	return NULL;
+		return NULL;
     }
 
     $residualSum = 0;
 
     foreach($x as $i=>$j){
-	$est = $a + $b*$j;
-	$residualSum += abs($est - $y[$i]);
+		$est = $a + $b*$j;
+		$residualSum += abs($est - $y[$i]);
     }
 
     return $residualSum;

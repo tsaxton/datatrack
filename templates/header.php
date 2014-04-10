@@ -28,7 +28,7 @@
 </head>
 <body>
 <div id="header">
-	<h1 id="title">DataTrack <span id="titleRed">Chicago</span></h1>
+	<h1 id="title">DataTrack <span id="titleRed">Plus</span></h1>
 </div>
 <div id="menu">
 	<ul id="menuList">

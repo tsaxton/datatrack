@@ -56,8 +56,9 @@ CREATE TABLE `datasets` (
   `updated` date DEFAULT NULL,
   `selects` varchar(512) DEFAULT NULL,
   `groups` varchar(512) DEFAULT NULL,
+  `type` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +67,7 @@ CREATE TABLE `datasets` (
 
 LOCK TABLES `datasets` WRITE;
 /*!40000 ALTER TABLE `datasets` DISABLE KEYS */;
-INSERT INTO `datasets` VALUES (1,'w8km-9pzd','CTA Annual Ridership','2013-10-20',NULL,NULL),(2,'ijzp-q8t2','Crimes, 2001-Present','2013-10-29','year,primary_type,count(id)','year,primary_type');
+INSERT INTO `datasets` VALUES (1,'w8km-9pzd','CTA Annual Ridership','2013-10-20',NULL,NULL,'yearly'),(2,'ijzp-q8t2','Crimes, 2001-Present','2013-10-29','year,primary_type,count(id)','year,primary_type','yearly'),(3,'bynn-gwxy','CTA - Bus Ridership by Route',NULL,NULL,NULL,'monthly');
 /*!40000 ALTER TABLE `datasets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-04-09 19:55:19
+-- Dump completed on 2014-04-11 15:11:12

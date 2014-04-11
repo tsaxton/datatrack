@@ -3,6 +3,7 @@ require('admin/config.php');
 include('includes/datatrack.php');
 include('templates/header.php');
 include('classes/data.php');
+include('classes/monthly.php');
 include('classes/yearly.php');
 include('classes/recentAnalysis.php');
 include('classes/longTerm.php');
@@ -14,10 +15,10 @@ else{
     $id = 'home';
 }
 
-if($id == 'display' && !array_key_exists('dataset', $_GET)){
+if(($id == 'display' || $id == 'dump') && !array_key_exists('dataset', $_GET)){
     $id = 'home';
 }
-elseif($id == 'display'){
+elseif($id == 'display' || $id=='dump'){
     $dataset = $_GET['dataset'];
 }
 

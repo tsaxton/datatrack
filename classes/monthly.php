@@ -69,17 +69,32 @@ class monthly extends data{
 			return 0;
 		}
 
-		if($this->selects || $this->groups){
-			// need to figure out what needs to happen here...
-		}
-		else{
-			$this->sortData();
-		}
+		$this->sortData();
 		return 1;
 	}
 
-    public function sortByYear(){}
-    public function sortData(){}
+    public function sortData(){
+		// For now, we won't worry about having multiple things.
+		$yearField = $this->getYearField();
+		$monthField = $this->getMonthField();
+
+		$ret = array();
+		foreach($this->figures as $figure){
+			$year = intval($this->extractYear($figure, $yearField));
+			$month = $this->extractMonth($figure, $monthField);
+			if(is_numeric($month)){
+				$month = intval($month);
+			}
+			else{
+				$month = $this->monthString2Int($month);
+			}
+			if(!array_key_exists($year, $ret)){
+				$ret[$year] = array();
+			}
+			$ret[$year][$month] = $figure;
+		}
+		$this->figures = $ret;
+	}
     public function makeTable($field){}
     public function tableProp(){}
     public function makeJSON($field){}

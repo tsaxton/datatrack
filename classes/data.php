@@ -32,7 +32,6 @@ abstract class data{
 
     abstract public function initialize();
     abstract public function collectData();
-    abstract public function sortByYear();
     abstract public function sortData();
     abstract public function makeTable($field);
     abstract public function tableProp();
@@ -146,4 +145,181 @@ abstract class data{
 		$middle = round(count($data) / 2);
 		return $data[$middle-1];
     }
+
+	protected function getYearField(){
+		global $db;
+		$results = $db->query('select * from datefields where dataset='.$this->id);
+		foreach($results as $result){
+			if($result['type'] == 'year'){
+				return array($result['field'], 'year');
+			}
+		}
+		$formats = array('month/year', 'month/day/year', 'month day, year', 'year.month.day', 'day.month.year');
+		foreach($results as $result){
+			foreach($formats as $format){
+				if($result['type'] == $format){
+					return array($result['field'], $format);
+				}
+			}
+		}
+	}
+
+	protected function getMonthField(){
+		global $db;
+		$results = $db->query('select * from datefields where dataset='.$this->id);
+		foreach($results as $result){
+			if($result['type'] == 'month'){
+				return array($result['field'], 'month');
+			}
+		}
+		$formats = array('month/year', 'month/day/year', 'month day, year', 'year.month.day', 'day.month.year');
+		foreach($results as $result){
+			foreach($formats as $format){
+				if($result['type'] == $format){
+					return array($result['field'], $format);
+				}
+			}
+		}
+	}
+
+	protected function extractYear($piece, $format){
+		switch($format[1]){
+		case 'year':
+			return $piece[$format[0]];
+			break;
+		case 'month/year':
+			$date = split("/|\.|-", $piece[$format[0]]);
+			// $piece[$format][0] = 01/2014
+			// $date = array('01', '2014')
+			if(count($date) == 2){
+				return $date[1];
+			}
+			elseif(count($date) > 2){
+				// $date = array('04', '11', '2014')
+				return $date[count($date)-1];
+			}
+			break;
+		case 'month/day/year':
+		case 'day.month.year':
+			$date = split("/|\.|-", $piece[$format[0]]);
+			// $date = array('04', '11', '2014')
+			if(count($date)==3){
+				return $date[2];
+			}
+			elseif(count($date)>3){
+				return $date[count($date)-1];
+			}
+			elseif(count($date)==2){
+				return $date[1];
+			}
+			break;
+		case 'month day, year':
+			break;
+		case 'year.month.day':
+			$date = split("/|\.|-", $piece[$format[0]]);
+			// $date = array('2014', '11', '04')
+			return $date[0];
+			break;
+		}
+		throw new exception('Year format and field contents do not match!');
+	}
+
+	protected function extractMonth($piece, $format){
+		switch($format[1]){
+		case 'month':
+			return $piece[$format[0]];
+			break;
+		case 'month/year':
+			$date = split("/|\.|-", $piece[$format[0]]);
+			// $piece[$format][0] = 01/2014
+			// $date = array('01', '2014')
+			if(count($date) == 2){
+				return $date[0];
+			}
+			break;
+		case 'month/day/year':
+			$date = split("/|\.|-", $piece[$format[0]]);
+			if(count($date)==3){
+				return $date[0];
+			}
+			elseif(count($date)==2){
+				return $date[0];
+			}
+			break;
+		case 'day.month.year':
+			$date = split("/|\.|-", $piece[$format[0]]);
+			// $date = array('04', '11', '2014')
+			if(count($date)==3){
+				return $date[1];
+			}
+			elseif(count($date)==2){
+				return $date[0];
+			}
+			break;
+		case 'month day, year':
+			break;
+		case 'year.month.day':
+			$date = split("/|\.|-", $piece[$format[0]]);
+			// $date = array('2014', '11', '04')
+			return $date[1];
+			break;
+		}
+		throw new exception('Year format and field contents do not match!');
+	}
+
+	protected function monthString2Int($month){
+		switch(strtolower($month)){
+		case 'jan':
+		case 'jan.':
+		case 'january':
+			return 1;
+		case 'feb':
+		case 'feb.':
+		case 'febr':
+		case 'febr.':
+		case 'february':
+			return 2;
+		case 'mar':
+		case 'mar.':
+		case 'march':
+			return 3;
+		case 'apr':
+		case 'apr.':
+		case 'april':
+			return 4;
+		case 'may':
+			return 5;
+		case 'jun':
+		case 'jun.':
+		case 'june':
+			return 6;
+		case 'jul.':
+		case 'jul':
+		case 'july':
+			return 7;
+		case 'aug.':
+		case 'aug':
+		case 'august':
+			return 8;
+		case 'sep':
+		case 'sep.':
+		case 'sept':
+		case 'sept.':
+		case 'september':
+			return 9;
+		case 'oct':
+		case 'oct.':
+		case 'october':
+			return 10;
+		case 'nov':
+		case 'nov.':
+		case 'november':
+			return 11;
+		case 'dec':
+		case 'dec.':
+		case 'december':
+			return 12;
+		}
+		throw new exception("Can't recognize abbreviation used for month!");
+	}
 }

@@ -3,6 +3,7 @@ require('admin/config.php');
 include('includes/datatrack.php');
 include('templates/header.php');
 include('classes/data.php');
+include('classes/yearly.php');
 include('classes/recentAnalysis.php');
 include('classes/longTerm.php');
 

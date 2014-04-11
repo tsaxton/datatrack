@@ -12,8 +12,18 @@ class recentAnalysis{
     private $pro;
 
     public function __construct($data){
+		global $db;
 		if(is_numeric($data)){
-	    	$this->data = new data($data);
+			$row = $db->queryFirstRow('select * from datasets where id='.$data);
+			if($row['type'] == 'yearly'){
+				$this->data = new yearly($data);
+			}
+			elseif($row['type'] == 'monthly'){
+				$this->data = new monthly($data);
+			}
+			else{
+	    		$this->data = new data($data);
+			}
 		}
 		else{
 	    	$this->data = $data;

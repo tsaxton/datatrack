@@ -1,5 +1,14 @@
 <?php
-$data = new data($dataset);
+$results = $db->queryFirstRow('select * from datasets where id='.$dataset);
+if(!$results){
+	die();
+}
+if($results['type'] == 'yearly'){
+	$data = new yearly($dataset);
+}
+elseif($results['type'] == 'monthly'){
+	$data = new monthly($dataset);
+}
 $recent = new recentAnalysis($data);
 $long = new longTerm($data);
 ?>
@@ -9,7 +18,7 @@ $long = new longTerm($data);
     </div>
 </div>
 
-<script>
+<!--<script>
 $(document).ready(function(){
 
     var ajaxData = function(id, field) {
@@ -59,7 +68,7 @@ foreach($data->fields as $field){
 	}
       });
 });
-</script>
+</script>-->
 <div class="row-fluid tabbable">
     <div class="span2">
       <ul class="nav nav-tabs nav-stacked">

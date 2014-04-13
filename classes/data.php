@@ -11,6 +11,7 @@ abstract class data{
     protected $selects;
     protected $groups;
     public $offsetYear = [1, 2, 5, 10, 25, 50, 100];
+	public $offsetMonth = [1, 3, 6, 12];
     public $fields;
     public $allFields;
     public $categories;
@@ -39,7 +40,6 @@ abstract class data{
     abstract public function calculateDiffs();
     abstract public function calculateProportions();
     abstract public function mostRecent();
-    abstract public function previous($year = NULL);
     abstract public function getData($year);
     abstract public function extractData($field);
     abstract public function longStreaks();
@@ -265,6 +265,36 @@ abstract class data{
 			break;
 		}
 		throw new exception('Year format and field contents do not match!');
+	}
+
+	protected function monthInt2String($month){
+		switch($month){
+		case 1:
+			return 'Jan';
+		case 2:
+			return 'Feb';
+		case 3:
+			return 'Mar';
+		case 4:
+			return 'Apr';
+		case 5:
+			return 'May';
+		case 6:
+			return 'June';
+		case 7:
+			return 'July';
+		case 8:
+			return 'Aug';
+		case 9:
+			return 'Sept';
+		case 10:
+			return 'Oct';
+		case 11:
+			return 'Nov';
+		case 12:
+			return 'Dec';
+		}
+		throw new exception('Provided month integer not in range 1-12!');
 	}
 
 	protected function monthString2Int($month){

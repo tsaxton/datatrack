@@ -153,11 +153,12 @@ class yearly extends data{
 				$ret .= "\t<th class=\"noright\">$o yr. change</th>\n\t\t<th class=\"noleft\">(% change)</th>\n\t";
 			}
 		}
+		$ret .="</th>\n\t";
 		$year = date("Y")-1;
 		while(!array_key_exists($year, $this->figures)){
 			$year--;
 		}
-	for($i=0; $i < $years; $i++){
+		for($i=0; $i < $years; $i++){
 			$max = $this->getMax($field);
 			$min = $this->getMin($field);
 			$ret .= "<tr>\n\t\t<th>$year</th>\n\t\t<td";
@@ -260,7 +261,7 @@ class yearly extends data{
 		}
 
 		if(!$this->figures){
-			$this->initialize;
+			$this->initialize();
 		}
 		$ret = array();
 		$pct = array();
@@ -312,7 +313,7 @@ class yearly extends data{
 		}
 
 		if(!$this->figures){
-			$this->initialize;
+			$this->initialize();
 		}
 		for($year = date('Y')-1; $year > 1900; $year--){
 			if(array_key_exists($year, $this->figures)){

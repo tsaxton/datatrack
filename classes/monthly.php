@@ -95,15 +95,167 @@ class monthly extends data{
 		}
 		$this->figures = $ret;
 	}
-    public function makeTable($field){}
+
+    public function makeTable($field){
+		if(!$this->success){
+			return;
+		}
+		
+		// set up table header
+		$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Month</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
+		foreach($this->offsetMonth as $o){
+			$ret .= "\t<th class=\"noright\">$o month change</th>\n\t\t<th class=\"noleft\">(% change)</th>\n\t";
+		}
+		$ret .= "</tr>\n";
+		// TODO: Finish this function
+	}
+
     public function tableProp(){}
-    public function makeJSON($field){}
-    public function calculateDiffs(){}
-    public function calculateProportions(){}
-    public function mostRecent(){}
-    public function previous($year = NULL){}
-    public function getData($year){}
-    public function extractData($field){}
+    public function makeJSON($field){
+		if(!$this->success){
+			return;
+		}
+		$ret = array();
+		foreach($this->figures as $year=>$months){
+			foreach($months as $month=>$data){
+				if(!array_key_exists($year, $ret)){
+					$ret[$year] = array();
+				}
+				$ret[$year][$month] = $data[$field];
+			}
+		}
+		return json_encode($ret);
+	}
+
+    public function calculateDiffs(){
+		if(!$this->success){
+			return;
+		}
+
+		if(!$this->figures){
+			$this->initialize();
+		}
+
+		$ret = array();
+		$pct = array();
+
+		foreach($this->figures as $year=>$months){
+			foreach($months as $month=>$vals){
+				foreach($this->offsetMonth as $o){
+					$targetYear = $year;
+					$targetMonth = $month;
+					if($targetMonth <= $o){
+						$targetYear--;
+						$targetMonth = $targetMonth + 12 - $o;
+					}
+					else{
+						$targetMonth -= $o;
+					}
+					foreach($this->fields as $fieldID=>$fieldData){
+						$field = $fieldData['field'];
+						if(array_key_exists($targetYear, $this->figures) && array_key_exists($targetMonth, $this->figures[$targetYear])){
+							$v = $this->figures[$year][$month][$field];
+							$w = $this->figures[$targetYear][$targetMonth][$field];
+							$ret[$year][$month][$field][$o] = $v - $w;
+							$pct[$year][$month][$field][$o] = ($v-$w)/$w;
+						}
+						else{
+							$ret[$year][$month][$field][$o] = NULL;
+							$pct[$year][$month][$field][$o] = NULL;
+						}
+					}
+				}
+			}
+		}
+		$this->diffs = $ret;
+		$this->pct = $pct;
+	}
+
+    public function calculateProportions(){
+		if(!$this->success){
+			return;
+		}
+
+		foreach($this->proportions as $p){
+			foreach($this->figures as $year=>$months){
+				foreach($months as $month=>$vals){
+					$pro = $vals[$this->fields[$p['top']]['field']] / $vals[$this->fields[$p['bottom']]['field']];
+					$this->proportionData[$p['id']][$year][$month] = $pro;
+				}
+			}
+		}
+	}
+
+    public function mostRecent(){
+		if(!$this->success){
+			return;
+		}
+
+		if(!$this->figures){
+			$this->initialize();
+		}
+		for($year = $date('Y')-1; $year > 1900; $year--){
+			if(array_key_exists($year, $this->figures)){
+				break;
+			}
+		}
+		if($year == 1901){
+			return array(0,0);
+		}
+		for($month = 12; $month > 0; $month--){
+			if(array_key_exists($month, $this->figures[$year])){
+				return array($year, $month);
+			}
+		}
+		return array(0,0);
+	}
+
+    public function previous($year = NULL, $month = NULL){
+		if(!$this->success){
+			return;
+		}
+
+		if($year == NULL){
+			$year = $this->mostRecent()[0];
+		}
+		if($month == NULL){
+			$month = $this->mostRecent()[1];
+		}
+		if($year == 0 || $month == 0){
+			return array(0,0);
+		}
+		for($year; $year > 1900; $year--){
+			for($month = 12; $month > 0; $month--){
+				if(array_key_exists($year, $this->figures) && array_key_exists($month, $this->figures[$year])){
+					return array($year, $month);
+				}
+			}
+		}
+		return array(0,0);
+	}
+
+    public function getData($year){
+		if(!$this->success){
+			return;
+		}
+
+		if($this->yearExists($year)){
+			return $this->figures[$year];
+		}
+
+		return NULL;
+	}
+
+    public function extractData($field){
+		$ret = array();
+		foreach($this->figures as $year=>$months){
+			foreach($months as $data){
+				$ret[] = $data[$field];
+			}
+		}
+		return $ret;
+	}
+
     public function longStreaks(){}
     public function getAvgDiff($field, $time){}
     public function getAvgPct($field, $time){}
@@ -117,5 +269,16 @@ class monthly extends data{
     public function getMinPct($field, $time){}
     public function getMaxProp($prop){}
     public function getMinProp($prop){}
+
+	public function monthExists($year, $month){
+		if(!$this->success){
+			return;
+		}
+
+		if($this->yearExists($year)){
+			return array_key_exists($month, $this->figures[$year]);
+		}
+		return False;
+	}
 }
 ?>

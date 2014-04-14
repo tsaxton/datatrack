@@ -256,19 +256,36 @@ class monthly extends data{
 		return $ret;
 	}
 
-    public function longStreaks(){}
     public function getAvgDiff($field, $time){}
     public function getAvgPct($field, $time){}
     public function streakDirection($year, $field){}
     public function negStreak($year, $field){}
     public function posStreak($year, $field){}
     public function minYear(){}
-    public function getMaxDiff($field, $time){}
+    public function getMaxDiff($field, $time){
+		$diffs = array();
+		foreach($this->diffs as $year=>$months){
+			foreach($months as $month=>$data){
+				$diffs[] = $data[$field][$time];
+			}
+		}
+		return max($diffs);
+	}
     public function getMinDiff($field, $time){}
-    public function getMaxPct($field, $time){}
+    public function getMaxPct($field, $time){} // instead of $this->diffs, using $this->pct
     public function getMinPct($field, $time){}
-    public function getMaxProp($prop){}
+    public function getMaxProp($prop){
+		//$this->proportionData[$p['id']][$year][$month] = $pro;
+		$vals = array();
+		foreach($this->proportionData[$prop] as $year){
+			foreach($year as $month=>$val){
+				$vals[] = $val;
+			}
+		}
+		return max($vals);
+	}
     public function getMinProp($prop){}
+    public function longStreaks(){}
 
 	public function monthExists($year, $month){
 		if(!$this->success){

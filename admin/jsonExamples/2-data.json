@@ -1,0 +1,2116 @@
+[ {
+  "primary_type" : "NON - CRIMINAL",
+  "year" : "2013",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "OTHER OFFENSE ",
+  "year" : "2013",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "NON-CRIMINAL (SUBJECT SPECIFIED)",
+  "year" : "2012",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2012",
+  "count_id" : "6"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2007",
+  "count_id" : "1"
+}
+, {
+  "primary_type" : "NON-CRIMINAL",
+  "year" : "2012",
+  "count_id" : "6"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2006",
+  "count_id" : "1"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2012",
+  "count_id" : "17"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2012",
+  "count_id" : "26"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2012",
+  "count_id" : "723"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2012",
+  "count_id" : "2203"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2012",
+  "count_id" : "574"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2008",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2010",
+  "count_id" : "7"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2009",
+  "count_id" : "1"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2011",
+  "count_id" : "5"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2011",
+  "count_id" : "588"
+}
+, {
+  "primary_type" : "OTHER OFFENSE ",
+  "year" : "2011",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2011",
+  "count_id" : "13"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2011",
+  "count_id" : "39"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2011",
+  "count_id" : "736"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2011",
+  "count_id" : "181"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2011",
+  "count_id" : "619"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2011",
+  "count_id" : "461"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2005",
+  "count_id" : "453"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2010",
+  "count_id" : "7"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2010",
+  "count_id" : "6"
+}
+, {
+  "primary_type" : "OTHER OFFENSE ",
+  "year" : "2010",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2010",
+  "count_id" : "189"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2010",
+  "count_id" : "198"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2010",
+  "count_id" : "2485"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2010",
+  "count_id" : "929"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2010",
+  "count_id" : "790"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2010",
+  "count_id" : "21366"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2010",
+  "count_id" : "3701"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2010",
+  "count_id" : "737"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2010",
+  "count_id" : "9398"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2010",
+  "count_id" : "3538"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2001",
+  "count_id" : "667"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2004",
+  "count_id" : "454"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2009",
+  "count_id" : "7"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2009",
+  "count_id" : "19"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2009",
+  "count_id" : "5"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2009",
+  "count_id" : "11"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2009",
+  "count_id" : "236"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2009",
+  "count_id" : "168"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2009",
+  "count_id" : "298"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2009",
+  "count_id" : "983"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2009",
+  "count_id" : "3937"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2009",
+  "count_id" : "3120"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2009",
+  "count_id" : "745"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2009",
+  "count_id" : "43626"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2009",
+  "count_id" : "584"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2009",
+  "count_id" : "10877"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2009",
+  "count_id" : "4164"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2008",
+  "count_id" : "12"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2008",
+  "count_id" : "4"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2008",
+  "count_id" : "52"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2008",
+  "count_id" : "13"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2008",
+  "count_id" : "644"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2008",
+  "count_id" : "260"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2008",
+  "count_id" : "190"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2008",
+  "count_id" : "1190"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2008",
+  "count_id" : "577"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2008",
+  "count_id" : "5142"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2008",
+  "count_id" : "907"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2008",
+  "count_id" : "46335"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2008",
+  "count_id" : "3010"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2008",
+  "count_id" : "3874"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2008",
+  "count_id" : "12308"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2008",
+  "count_id" : "52665"
+}
+, {
+  "primary_type" : "RITUALISM",
+  "year" : "2007",
+  "count_id" : "1"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2007",
+  "count_id" : "5"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2007",
+  "count_id" : "11"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2007",
+  "count_id" : "260"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2007",
+  "count_id" : "66"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2007",
+  "count_id" : "712"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2007",
+  "count_id" : "213"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2007",
+  "count_id" : "12"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2007",
+  "count_id" : "1409"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2007",
+  "count_id" : "1172"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2007",
+  "count_id" : "3312"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2007",
+  "count_id" : "6083"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2007",
+  "count_id" : "26883"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2007",
+  "count_id" : "678"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2007",
+  "count_id" : "18558"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2007",
+  "count_id" : "3543"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2007",
+  "count_id" : "13722"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2007",
+  "count_id" : "26254"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2007",
+  "count_id" : "54495"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2007",
+  "count_id" : "53855"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2006",
+  "count_id" : "4"
+}
+, {
+  "primary_type" : "DOMESTIC VIOLENCE",
+  "year" : "2001",
+  "count_id" : "1"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2001",
+  "count_id" : "6"
+}
+, {
+  "primary_type" : "RITUALISM",
+  "year" : "2001",
+  "count_id" : "8"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2001",
+  "count_id" : "19"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2001",
+  "count_id" : "9"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2001",
+  "count_id" : "406"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2001",
+  "count_id" : "204"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2001",
+  "count_id" : "280"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2001",
+  "count_id" : "935"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2001",
+  "count_id" : "4278"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2001",
+  "count_id" : "2751"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2001",
+  "count_id" : "26009"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2001",
+  "count_id" : "934"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2001",
+  "count_id" : "1012"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2001",
+  "count_id" : "27505"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2001",
+  "count_id" : "31377"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2001",
+  "count_id" : "1637"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2001",
+  "count_id" : "6026"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2001",
+  "count_id" : "50576"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2001",
+  "count_id" : "13238"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2001",
+  "count_id" : "93439"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2001",
+  "count_id" : "55850"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2001",
+  "count_id" : "29667"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2001",
+  "count_id" : "14892"
+}
+, {
+  "primary_type" : "RITUALISM",
+  "year" : "2002",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2002",
+  "count_id" : "37"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2002",
+  "count_id" : "5"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2002",
+  "count_id" : "25"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2002",
+  "count_id" : "202"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2002",
+  "count_id" : "8"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2002",
+  "count_id" : "6409"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2002",
+  "count_id" : "971"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2002",
+  "count_id" : "361"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2002",
+  "count_id" : "1414"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2002",
+  "count_id" : "51787"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2002",
+  "count_id" : "338"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2002",
+  "count_id" : "1030"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2002",
+  "count_id" : "2458"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2002",
+  "count_id" : "25618"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2002",
+  "count_id" : "831"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2002",
+  "count_id" : "13882"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2002",
+  "count_id" : "4285"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2002",
+  "count_id" : "31509"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2002",
+  "count_id" : "55948"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2002",
+  "count_id" : "32606"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2002",
+  "count_id" : "18519"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2002",
+  "count_id" : "94144"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2002",
+  "count_id" : "25067"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2003",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "RITUALISM",
+  "year" : "2003",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2003",
+  "count_id" : "16"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2003",
+  "count_id" : "6"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2003",
+  "count_id" : "83"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2003",
+  "count_id" : "364"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2003",
+  "count_id" : "409"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2003",
+  "count_id" : "1088"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2003",
+  "count_id" : "6213"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2003",
+  "count_id" : "1311"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2003",
+  "count_id" : "247"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2003",
+  "count_id" : "953"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2003",
+  "count_id" : "711"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2003",
+  "count_id" : "4209"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2003",
+  "count_id" : "14809"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2003",
+  "count_id" : "2431"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2003",
+  "count_id" : "31149"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2003",
+  "count_id" : "17330"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2003",
+  "count_id" : "55021"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2003",
+  "count_id" : "22724"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2003",
+  "count_id" : "54295"
+}
+, {
+  "primary_type" : "RITUALISM",
+  "year" : "2006",
+  "count_id" : "7"
+}
+, {
+  "primary_type" : "RITUALISM",
+  "year" : "2004",
+  "count_id" : "1"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2004",
+  "count_id" : "9"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2004",
+  "count_id" : "70"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2004",
+  "count_id" : "9"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2004",
+  "count_id" : "777"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2004",
+  "count_id" : "214"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2004",
+  "count_id" : "352"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2004",
+  "count_id" : "484"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2004",
+  "count_id" : "530"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2004",
+  "count_id" : "13"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2004",
+  "count_id" : "4285"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2004",
+  "count_id" : "1122"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2004",
+  "count_id" : "987"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2004",
+  "count_id" : "7478"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2004",
+  "count_id" : "15916"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2004",
+  "count_id" : "53227"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2004",
+  "count_id" : "22787"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2004",
+  "count_id" : "28822"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2004",
+  "count_id" : "2498"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2004",
+  "count_id" : "15970"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2004",
+  "count_id" : "29553"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2004",
+  "count_id" : "57092"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2006",
+  "count_id" : "17"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2006",
+  "count_id" : "9"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2006",
+  "count_id" : "58"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2006",
+  "count_id" : "279"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2006",
+  "count_id" : "726"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2006",
+  "count_id" : "1134"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2006",
+  "count_id" : "1368"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2006",
+  "count_id" : "185"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2006",
+  "count_id" : "342"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2006",
+  "count_id" : "1551"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2006",
+  "count_id" : "3072"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2006",
+  "count_id" : "7031"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2006",
+  "count_id" : "21788"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2006",
+  "count_id" : "759"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2006",
+  "count_id" : "14513"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2006",
+  "count_id" : "25907"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2006",
+  "count_id" : "3814"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2006",
+  "count_id" : "55834"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2006",
+  "count_id" : "27117"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2006",
+  "count_id" : "57237"
+}
+, {
+  "primary_type" : "RITUALISM",
+  "year" : "2005",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2005",
+  "count_id" : "4"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2005",
+  "count_id" : "9"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2005",
+  "count_id" : "19"
+}
+, {
+  "primary_type" : "OFFENSES INVOLVING CHILDREN",
+  "year" : "2005",
+  "count_id" : "68"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2005",
+  "count_id" : "193"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2005",
+  "count_id" : "261"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2005",
+  "count_id" : "392"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2005",
+  "count_id" : "1077"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2005",
+  "count_id" : "1006"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2005",
+  "count_id" : "6119"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2005",
+  "count_id" : "56258"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2005",
+  "count_id" : "4103"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2005",
+  "count_id" : "16664"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2005",
+  "count_id" : "2735"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2005",
+  "count_id" : "22487"
+}
+, {
+  "primary_type" : "INTERFERE WITH PUBLIC OFFICER",
+  "year" : "2005",
+  "count_id" : "617"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2005",
+  "count_id" : "16036"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2005",
+  "count_id" : "28056"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2005",
+  "count_id" : "27035"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2005",
+  "count_id" : "54750"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2008",
+  "count_id" : "359"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2013",
+  "count_id" : "5"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2013",
+  "count_id" : "596"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2001",
+  "count_id" : "99259"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2013",
+  "count_id" : "10"
+}
+, {
+  "primary_type" : "NON-CRIMINAL",
+  "year" : "2013",
+  "count_id" : "4"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2004",
+  "count_id" : "87140"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2013",
+  "count_id" : "1651"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2013",
+  "count_id" : "464"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2011",
+  "count_id" : "2424"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2003",
+  "count_id" : "604"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2004",
+  "count_id" : "24563"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2005",
+  "count_id" : "691"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2009",
+  "count_id" : "22596"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2011",
+  "count_id" : "267"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2012",
+  "count_id" : "8223"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2004",
+  "count_id" : "1794"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2002",
+  "count_id" : "657"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2008",
+  "count_id" : "18823"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2007",
+  "count_id" : "448"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2002",
+  "count_id" : "98325"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2011",
+  "count_id" : "3109"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2012",
+  "count_id" : "209"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2009",
+  "count_id" : "461"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2009",
+  "count_id" : "47917"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2008",
+  "count_id" : "25431"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2003",
+  "count_id" : "29466"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2003",
+  "count_id" : "98864"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2013",
+  "count_id" : "22"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2009",
+  "count_id" : "25694"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2010",
+  "count_id" : "22008"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2005",
+  "count_id" : "85427"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2004",
+  "count_id" : "95372"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2010",
+  "count_id" : "40651"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2010",
+  "count_id" : "437"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2006",
+  "count_id" : "15959"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2001",
+  "count_id" : "18428"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2009",
+  "count_id" : "68907"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2012",
+  "count_id" : "35333"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2007",
+  "count_id" : "79580"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2005",
+  "count_id" : "83969"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2003",
+  "count_id" : "25156"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2012",
+  "count_id" : "158"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2012",
+  "count_id" : "501"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2006",
+  "count_id" : "477"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2003",
+  "count_id" : "1573"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2007",
+  "count_id" : "1500"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2008",
+  "count_id" : "16698"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2009",
+  "count_id" : "15448"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2012",
+  "count_id" : "1232"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2004",
+  "count_id" : "13213"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2002",
+  "count_id" : "13689"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2003",
+  "count_id" : "13409"
+}
+, {
+  "primary_type" : "CONCEALED CARRY LICENSE VIOLATION",
+  "year" : "2014",
+  "count_id" : "2"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2009",
+  "count_id" : "15941"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2011",
+  "count_id" : "8663"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2010",
+  "count_id" : "1100"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2006",
+  "count_id" : "86118"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2011",
+  "count_id" : "503"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2010",
+  "count_id" : "33"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2010",
+  "count_id" : "517"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2001",
+  "count_id" : "2226"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2007",
+  "count_id" : "335"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2006",
+  "count_id" : "24324"
+}
+, {
+  "primary_type" : "PUBLIC INDECENCY",
+  "year" : "2014",
+  "count_id" : "3"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2011",
+  "count_id" : "38488"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2013",
+  "count_id" : "365"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2009",
+  "count_id" : "1370"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2001",
+  "count_id" : "2184"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2006",
+  "count_id" : "80658"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2002",
+  "count_id" : "2524"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2009",
+  "count_id" : "615"
+}
+, {
+  "primary_type" : "OBSCENITY",
+  "year" : "2014",
+  "count_id" : "6"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2006",
+  "count_id" : "2663"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2004",
+  "count_id" : "2980"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2011",
+  "count_id" : "434"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2002",
+  "count_id" : "2163"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2013",
+  "count_id" : "1288"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2010",
+  "count_id" : "43310"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2005",
+  "count_id" : "13502"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2010",
+  "count_id" : "313"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2003",
+  "count_id" : "88364"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2011",
+  "count_id" : "74123"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2003",
+  "count_id" : "2934"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2008",
+  "count_id" : "1471"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2008",
+  "count_id" : "88159"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2007",
+  "count_id" : "84999"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2005",
+  "count_id" : "25505"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2010",
+  "count_id" : "65935"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2011",
+  "count_id" : "20197"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2011",
+  "count_id" : "20088"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2011",
+  "count_id" : "37326"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2012",
+  "count_id" : "235"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2008",
+  "count_id" : "514"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2005",
+  "count_id" : "1788"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2010",
+  "count_id" : "12147"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2012",
+  "count_id" : "35839"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2006",
+  "count_id" : "13456"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2008",
+  "count_id" : "26403"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2008",
+  "count_id" : "14656"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2012",
+  "count_id" : "17484"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2007",
+  "count_id" : "1509"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2006",
+  "count_id" : "1441"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2008",
+  "count_id" : "26181"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2001",
+  "count_id" : "1785"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2002",
+  "count_id" : "1816"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2007",
+  "count_id" : "24854"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2007",
+  "count_id" : "14012"
+}
+, {
+  "primary_type" : "NON-CRIMINAL",
+  "year" : "2014",
+  "count_id" : "3"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2008",
+  "count_id" : "75907"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2005",
+  "count_id" : "1518"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2007",
+  "count_id" : "2770"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2013",
+  "count_id" : "242"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2010",
+  "count_id" : "1311"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2011",
+  "count_id" : "3880"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2010",
+  "count_id" : "76308"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2005",
+  "count_id" : "2780"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2011",
+  "count_id" : "2267"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2008",
+  "count_id" : "1495"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2009",
+  "count_id" : "1234"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2010",
+  "count_id" : "2471"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2009",
+  "count_id" : "26739"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2012",
+  "count_id" : "1016"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2011",
+  "count_id" : "1051"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2010",
+  "count_id" : "26403"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2010",
+  "count_id" : "18995"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2010",
+  "count_id" : "14271"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2011",
+  "count_id" : "19317"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2011",
+  "count_id" : "61735"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2013",
+  "count_id" : "3140"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2003",
+  "count_id" : "2055"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2009",
+  "count_id" : "80251"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2013",
+  "count_id" : "3225"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2013",
+  "count_id" : "146"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2011",
+  "count_id" : "1417"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2012",
+  "count_id" : "3898"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2007",
+  "count_id" : "15443"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2011",
+  "count_id" : "26565"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2012",
+  "count_id" : "74215"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2009",
+  "count_id" : "2505"
+}
+, {
+  "primary_type" : "OTHER NARCOTIC VIOLATION",
+  "year" : "2014",
+  "count_id" : "4"
+}
+, {
+  "primary_type" : "STALKING",
+  "year" : "2014",
+  "count_id" : "20"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2011",
+  "count_id" : "12156"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2009",
+  "count_id" : "13649"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2014",
+  "count_id" : "68"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2014",
+  "count_id" : "135"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2012",
+  "count_id" : "16423"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2014",
+  "count_id" : "27"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2014",
+  "count_id" : "1555"
+}
+, {
+  "primary_type" : "LIQUOR LAW VIOLATION",
+  "year" : "2014",
+  "count_id" : "72"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2012",
+  "count_id" : "12871"
+}
+, {
+  "primary_type" : "INTERFERENCE WITH PUBLIC OFFICER",
+  "year" : "2014",
+  "count_id" : "225"
+}
+, {
+  "primary_type" : "PROSTITUTION",
+  "year" : "2014",
+  "count_id" : "258"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2013",
+  "count_id" : "134"
+}
+, {
+  "primary_type" : "KIDNAPPING",
+  "year" : "2014",
+  "count_id" : "51"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2014",
+  "count_id" : "2745"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2014",
+  "count_id" : "2934"
+}
+, {
+  "primary_type" : "DECEPTIVE PRACTICE",
+  "year" : "2013",
+  "count_id" : "12311"
+}
+, {
+  "primary_type" : "SEX OFFENSE",
+  "year" : "2013",
+  "count_id" : "945"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2014",
+  "count_id" : "10817"
+}
+, {
+  "primary_type" : "WEAPONS VIOLATION",
+  "year" : "2014",
+  "count_id" : "517"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2014",
+  "count_id" : "521"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2013",
+  "count_id" : "2180"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2014",
+  "count_id" : "486"
+}
+, {
+  "primary_type" : "GAMBLING",
+  "year" : "2014",
+  "count_id" : "17"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2012",
+  "count_id" : "2114"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2014",
+  "count_id" : "2764"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2013",
+  "count_id" : "12497"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2011",
+  "count_id" : "13966"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2013",
+  "count_id" : "17607"
+}
+, {
+  "primary_type" : "CRIMINAL TRESPASS",
+  "year" : "2013",
+  "count_id" : "8139"
+}
+, {
+  "primary_type" : "THEFT",
+  "year" : "2013",
+  "count_id" : "70015"
+}
+, {
+  "primary_type" : "MOTOR VEHICLE THEFT",
+  "year" : "2014",
+  "count_id" : "2168"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2014",
+  "count_id" : "5848"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2014",
+  "count_id" : "3438"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2013",
+  "count_id" : "11726"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2004",
+  "count_id" : "1542"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2012",
+  "count_id" : "1344"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2012",
+  "count_id" : "455"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2012",
+  "count_id" : "13454"
+}
+, {
+  "primary_type" : "ASSAULT",
+  "year" : "2012",
+  "count_id" : "19580"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2012",
+  "count_id" : "22728"
+}
+, {
+  "primary_type" : "INTIMIDATION",
+  "year" : "2011",
+  "count_id" : "171"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2012",
+  "count_id" : "60636"
+}
+, {
+  "primary_type" : "PUBLIC PEACE VIOLATION",
+  "year" : "2012",
+  "count_id" : "2989"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2013",
+  "count_id" : "1151"
+}
+, {
+  "primary_type" : "ARSON",
+  "year" : "2013",
+  "count_id" : "359"
+}
+, {
+  "primary_type" : "BURGLARY",
+  "year" : "2013",
+  "count_id" : "17625"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2013",
+  "count_id" : "30816"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2013",
+  "count_id" : "55361"
+}
+, {
+  "primary_type" : "CRIM SEXUAL ASSAULT",
+  "year" : "2014",
+  "count_id" : "215"
+}
+, {
+  "primary_type" : "ROBBERY",
+  "year" : "2014",
+  "count_id" : "1732"
+}
+, {
+  "primary_type" : "OFFENSE INVOLVING CHILDREN",
+  "year" : "2008",
+  "count_id" : "2507"
+}
+, {
+  "primary_type" : "OTHER OFFENSE",
+  "year" : "2013",
+  "count_id" : "17873"
+}
+, {
+  "primary_type" : "NARCOTICS",
+  "year" : "2013",
+  "count_id" : "33778"
+}
+, {
+  "primary_type" : "CRIMINAL DAMAGE",
+  "year" : "2014",
+  "count_id" : "4975"
+}
+, {
+  "primary_type" : "BATTERY",
+  "year" : "2014",
+  "count_id" : "9646"
+}
+, {
+  "primary_type" : "HOMICIDE",
+  "year" : "2014",
+  "count_id" : "51"
+}
+ ]

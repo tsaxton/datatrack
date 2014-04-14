@@ -1,0 +1,650 @@
+{
+  "id" : "bynn-gwxy",
+  "name" : "CTA - Ridership - Bus Routes - Monthly Day-Type Averages & Totals",
+  "attribution" : "Chicago Transit Authority",
+  "attributionLink" : "http://www.transitchicago.com",
+  "averageRating" : 0,
+  "category" : "Transportation",
+  "createdAt" : 1312572349,
+  "description" : "This dataset shows monthly averages, by day type (weekday, Saturday or Sunday/Holiday) and monthly totals for all CTA bus routes, back to 2001. See attached readme file for information on how these numbers are calculated.",
+  "displayType" : "table",
+  "downloadCount" : 468,
+  "indexUpdatedAt" : 1397074079,
+  "newBackend" : false,
+  "numberOfComments" : 0,
+  "oid" : 7716551,
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1396915537,
+  "publicationGroup" : 239193,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1396915479,
+  "rowsUpdatedBy" : "6bsn-5494",
+  "tableId" : 1538347,
+  "totalTimesRated" : 0,
+  "viewCount" : 1610,
+  "viewLastModified" : 1396915537,
+  "viewType" : "tabular",
+  "columns" : [ {
+    "id" : 141847048,
+    "name" : "route",
+    "dataTypeName" : "text",
+    "fieldName" : "route",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1504647,
+    "width" : 75,
+    "cachedContents" : {
+      "non_null" : 22211,
+      "smallest" : "1",
+      "null" : 0,
+      "largest" : "X99",
+      "top" : [ {
+        "count" : 20,
+        "item" : "119"
+      }, {
+        "count" : 19,
+        "item" : "120"
+      }, {
+        "count" : 18,
+        "item" : "121"
+      }, {
+        "count" : 17,
+        "item" : "124"
+      }, {
+        "count" : 16,
+        "item" : "125"
+      }, {
+        "count" : 15,
+        "item" : "126"
+      }, {
+        "count" : 14,
+        "item" : "128"
+      }, {
+        "count" : 13,
+        "item" : "132"
+      }, {
+        "count" : 12,
+        "item" : "134"
+      }, {
+        "count" : 11,
+        "item" : "135"
+      }, {
+        "count" : 10,
+        "item" : "136"
+      }, {
+        "count" : 9,
+        "item" : "143"
+      }, {
+        "count" : 8,
+        "item" : "146"
+      }, {
+        "count" : 7,
+        "item" : "147"
+      }, {
+        "count" : 6,
+        "item" : "148"
+      }, {
+        "count" : 5,
+        "item" : "151"
+      }, {
+        "count" : 4,
+        "item" : "152"
+      }, {
+        "count" : 3,
+        "item" : "155"
+      }, {
+        "count" : 2,
+        "item" : "156"
+      }, {
+        "count" : 1,
+        "item" : "157"
+      } ]
+    },
+    "format" : {
+      "aggregate" : "count",
+      "align" : "left"
+    }
+  }, {
+    "id" : 141847049,
+    "name" : "routename",
+    "dataTypeName" : "text",
+    "fieldName" : "routename",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1504648,
+    "width" : 235,
+    "cachedContents" : {
+      "non_null" : 22211,
+      "smallest" : "111th/King Drive",
+      "null" : 0,
+      "largest" : "Wrigley Field Express",
+      "top" : [ {
+        "count" : 20,
+        "item" : "Michigan/119th"
+      }, {
+        "count" : 19,
+        "item" : "Ogilvie/Streeterville Express"
+      }, {
+        "count" : 18,
+        "item" : "Union/Streeterville Express"
+      }, {
+        "count" : 17,
+        "item" : "Navy Pier"
+      }, {
+        "count" : 16,
+        "item" : "Water Tower Express"
+      }, {
+        "count" : 15,
+        "item" : "Jackson"
+      }, {
+        "count" : 14,
+        "item" : "Soldier Field Express"
+      }, {
+        "count" : 13,
+        "item" : "Goose Island Express"
+      }, {
+        "count" : 12,
+        "item" : "Stockton/LaSalle Express"
+      }, {
+        "count" : 11,
+        "item" : "Clarendon/LaSalle Express"
+      }, {
+        "count" : 10,
+        "item" : "Sheridan/LaSalle Express"
+      }, {
+        "count" : 9,
+        "item" : "Stockton/Michigan Express"
+      }, {
+        "count" : 8,
+        "item" : "Inner Drive/Michigan Express"
+      }, {
+        "count" : 7,
+        "item" : "Outer Drive Express"
+      }, {
+        "count" : 6,
+        "item" : "Clarendon/Michigan Express"
+      }, {
+        "count" : 5,
+        "item" : "Sheridan"
+      }, {
+        "count" : 4,
+        "item" : "Addison"
+      }, {
+        "count" : 3,
+        "item" : "Devon"
+      }, {
+        "count" : 2,
+        "item" : "LaSalle"
+      }, {
+        "count" : 1,
+        "item" : "Streeterville/Taylor"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 141847050,
+    "name" : "Month_Beginning",
+    "dataTypeName" : "calendar_date",
+    "fieldName" : "month_beginning",
+    "position" : 3,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 1504649,
+    "width" : 123,
+    "cachedContents" : {
+      "non_null" : 22211,
+      "smallest" : "2001-01-01T00:00:00",
+      "null" : 0,
+      "largest" : "2013-12-01T00:00:00",
+      "top" : [ {
+        "count" : 20,
+        "item" : "2009-09-01T00:00:00"
+      }, {
+        "count" : 19,
+        "item" : "2009-12-01T00:00:00"
+      }, {
+        "count" : 18,
+        "item" : "2010-02-01T00:00:00"
+      }, {
+        "count" : 17,
+        "item" : "2011-02-01T00:00:00"
+      }, {
+        "count" : 16,
+        "item" : "2011-03-01T00:00:00"
+      }, {
+        "count" : 15,
+        "item" : "2011-04-01T00:00:00"
+      }, {
+        "count" : 14,
+        "item" : "2011-05-01T00:00:00"
+      }, {
+        "count" : 13,
+        "item" : "2011-06-01T00:00:00"
+      }, {
+        "count" : 12,
+        "item" : "2011-07-01T00:00:00"
+      }, {
+        "count" : 11,
+        "item" : "2011-08-01T00:00:00"
+      }, {
+        "count" : 10,
+        "item" : "2011-09-01T00:00:00"
+      }, {
+        "count" : 9,
+        "item" : "2011-10-01T00:00:00"
+      }, {
+        "count" : 8,
+        "item" : "2011-11-01T00:00:00"
+      }, {
+        "count" : 7,
+        "item" : "2011-12-01T00:00:00"
+      }, {
+        "count" : 6,
+        "item" : "2012-01-01T00:00:00"
+      }, {
+        "count" : 5,
+        "item" : "2012-02-01T00:00:00"
+      }, {
+        "count" : 4,
+        "item" : "2012-03-01T00:00:00"
+      }, {
+        "count" : 3,
+        "item" : "2012-04-01T00:00:00"
+      }, {
+        "count" : 2,
+        "item" : "2012-05-01T00:00:00"
+      }, {
+        "count" : 1,
+        "item" : "2012-06-01T00:00:00"
+      } ]
+    },
+    "format" : {
+      "view" : "date",
+      "align" : "left"
+    }
+  }, {
+    "id" : 141847051,
+    "name" : "Avg_Weekday_Rides",
+    "dataTypeName" : "number",
+    "fieldName" : "avg_weekday_rides",
+    "position" : 4,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1504650,
+    "width" : 134,
+    "cachedContents" : {
+      "non_null" : 22211,
+      "smallest" : "0",
+      "sum" : "151759881.3",
+      "null" : 0,
+      "average" : "6832.645144297870",
+      "largest" : "37787.2",
+      "top" : [ {
+        "count" : 20,
+        "item" : "4471.4"
+      }, {
+        "count" : 19,
+        "item" : "998.3"
+      }, {
+        "count" : 18,
+        "item" : "1336"
+      }, {
+        "count" : 17,
+        "item" : "911.8"
+      }, {
+        "count" : 16,
+        "item" : "1422.3"
+      }, {
+        "count" : 15,
+        "item" : "5830.1"
+      }, {
+        "count" : 14,
+        "item" : "992.6"
+      }, {
+        "count" : 13,
+        "item" : "299.7"
+      }, {
+        "count" : 12,
+        "item" : "2882.7"
+      }, {
+        "count" : 11,
+        "item" : "3137.8"
+      }, {
+        "count" : 10,
+        "item" : "1846.2"
+      }, {
+        "count" : 9,
+        "item" : "1680"
+      }, {
+        "count" : 8,
+        "item" : "13771.6"
+      }, {
+        "count" : 7,
+        "item" : "12836.4"
+      }, {
+        "count" : 6,
+        "item" : "2145.2"
+      }, {
+        "count" : 5,
+        "item" : "17349.8"
+      }, {
+        "count" : 4,
+        "item" : "9177.8"
+      }, {
+        "count" : 3,
+        "item" : "6522.7"
+      }, {
+        "count" : 2,
+        "item" : "7582.7"
+      }, {
+        "count" : 1,
+        "item" : "5057.1"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "left"
+    }
+  }, {
+    "id" : 141847052,
+    "name" : "Avg_Saturday_Rides",
+    "dataTypeName" : "number",
+    "fieldName" : "avg_saturday_rides",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1504651,
+    "width" : 129,
+    "cachedContents" : {
+      "non_null" : 22211,
+      "smallest" : "0",
+      "sum" : "97347409.9",
+      "null" : 0,
+      "average" : "4382.846783125478",
+      "largest" : "30644.6",
+      "top" : [ {
+        "count" : 20,
+        "item" : "0"
+      }, {
+        "count" : 19,
+        "item" : "17272.1"
+      }, {
+        "count" : 18,
+        "item" : "8763.9"
+      }, {
+        "count" : 17,
+        "item" : "8970.7"
+      }, {
+        "count" : 16,
+        "item" : "992.8"
+      }, {
+        "count" : 15,
+        "item" : "11061.7"
+      }, {
+        "count" : 14,
+        "item" : "1906.3"
+      }, {
+        "count" : 13,
+        "item" : "6342.4"
+      }, {
+        "count" : 12,
+        "item" : "358.5"
+      }, {
+        "count" : 11,
+        "item" : "8104.4"
+      }, {
+        "count" : 10,
+        "item" : "594.9"
+      }, {
+        "count" : 9,
+        "item" : "3646"
+      }, {
+        "count" : 8,
+        "item" : "3668.9"
+      }, {
+        "count" : 7,
+        "item" : "3710.7"
+      }, {
+        "count" : 6,
+        "item" : "1325.1"
+      }, {
+        "count" : 5,
+        "item" : "4591.5"
+      }, {
+        "count" : 4,
+        "item" : "2281.6"
+      }, {
+        "count" : 3,
+        "item" : "1914"
+      }, {
+        "count" : 2,
+        "item" : "2029.1"
+      }, {
+        "count" : 1,
+        "item" : "1291.4"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "align" : "left",
+      "noCommas" : "false"
+    }
+  }, {
+    "id" : 141847053,
+    "name" : "Avg_Sunday-Holiday_Rides",
+    "dataTypeName" : "number",
+    "fieldName" : "avg_sunday_holiday_rides",
+    "position" : 6,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1504652,
+    "width" : 182,
+    "cachedContents" : {
+      "non_null" : 22211,
+      "smallest" : "0",
+      "sum" : "66444318.7",
+      "null" : 0,
+      "average" : "2991.505051551033",
+      "largest" : "24110.9",
+      "top" : [ {
+        "count" : 20,
+        "item" : "0"
+      }, {
+        "count" : 19,
+        "item" : "6458.4"
+      }, {
+        "count" : 18,
+        "item" : "499.1"
+      }, {
+        "count" : 17,
+        "item" : "7324.7"
+      }, {
+        "count" : 16,
+        "item" : "1067.4"
+      }, {
+        "count" : 15,
+        "item" : "4506.2"
+      }, {
+        "count" : 14,
+        "item" : "5089.7"
+      }, {
+        "count" : 13,
+        "item" : "380.3"
+      }, {
+        "count" : 12,
+        "item" : "2013.9"
+      }, {
+        "count" : 11,
+        "item" : "2328.6"
+      }, {
+        "count" : 10,
+        "item" : "2417"
+      }, {
+        "count" : 9,
+        "item" : "3265.7"
+      }, {
+        "count" : 8,
+        "item" : "1611.4"
+      }, {
+        "count" : 7,
+        "item" : "1646.6"
+      }, {
+        "count" : 6,
+        "item" : "1319.7"
+      }, {
+        "count" : 5,
+        "item" : "951"
+      }, {
+        "count" : 4,
+        "item" : "269.5"
+      }, {
+        "count" : 3,
+        "item" : "1415.9"
+      }, {
+        "count" : 2,
+        "item" : "73.3"
+      }, {
+        "count" : 1,
+        "item" : "657.4"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "align" : "left",
+      "noCommas" : "false"
+    }
+  }, {
+    "id" : 141847054,
+    "name" : "MonthTotal",
+    "dataTypeName" : "number",
+    "fieldName" : "monthtotal",
+    "position" : 7,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1504653,
+    "width" : 107,
+    "cachedContents" : {
+      "non_null" : 22211,
+      "smallest" : "1",
+      "sum" : "3959765953",
+      "null" : 0,
+      "average" : "178279.4990320112",
+      "largest" : "1058879",
+      "top" : [ {
+        "count" : 20,
+        "item" : "118668"
+      }, {
+        "count" : 19,
+        "item" : "20964"
+      }, {
+        "count" : 18,
+        "item" : "28055"
+      }, {
+        "count" : 17,
+        "item" : "26141"
+      }, {
+        "count" : 16,
+        "item" : "29868"
+      }, {
+        "count" : 15,
+        "item" : "146379"
+      }, {
+        "count" : 14,
+        "item" : "2447"
+      }, {
+        "count" : 13,
+        "item" : "6293"
+      }, {
+        "count" : 12,
+        "item" : "60537"
+      }, {
+        "count" : 11,
+        "item" : "65893"
+      }, {
+        "count" : 10,
+        "item" : "38770"
+      }, {
+        "count" : 9,
+        "item" : "35280"
+      }, {
+        "count" : 8,
+        "item" : "385248"
+      }, {
+        "count" : 7,
+        "item" : "347252"
+      }, {
+        "count" : 6,
+        "item" : "45049"
+      }, {
+        "count" : 5,
+        "item" : "494698"
+      }, {
+        "count" : 4,
+        "item" : "225494"
+      }, {
+        "count" : 3,
+        "item" : "180389"
+      }, {
+        "count" : 2,
+        "item" : "159237"
+      }, {
+        "count" : 1,
+        "item" : "106199"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "align" : "left",
+      "noCommas" : "false"
+    }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "metadata" : {
+    "custom_fields" : {
+      "Metadata" : {
+        "Last Updated Date via Automated Load" : "",
+        "Time Period" : "",
+        "Data Owner" : "Chicago Transit Authority ",
+        "Frequency" : ""
+      }
+    },
+    "renderTypeConfig" : {
+      "visible" : {
+        "table" : true
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+    "rdfSubject" : "0",
+    "attachments" : [ {
+      "blobId" : "0B1DF5E4-1463-44EC-858F-DBECC7FD1E73",
+      "name" : "ridershipreadme.txt",
+      "filename" : "ridershipreadme.txt"
+    } ]
+  },
+  "owner" : {
+    "id" : "6bsn-5494",
+    "displayName" : "cta web",
+    "profileImageUrlLarge" : "/images/profile/4109/1509/cta-logo---flattransp_large.png",
+    "profileImageUrlMedium" : "/images/profile/4109/1509/cta-logo---flattransp_thumb.png",
+    "profileImageUrlSmall" : "/images/profile/4109/1509/cta-logo---flattransp_tiny.png",
+    "roleName" : "administrator",
+    "screenName" : "cta web",
+    "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+  },
+  "query" : {
+  },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "6bsn-5494",
+    "displayName" : "cta web",
+    "profileImageUrlLarge" : "/images/profile/4109/1509/cta-logo---flattransp_large.png",
+    "profileImageUrlMedium" : "/images/profile/4109/1509/cta-logo---flattransp_thumb.png",
+    "profileImageUrlSmall" : "/images/profile/4109/1509/cta-logo---flattransp_tiny.png",
+    "roleName" : "administrator",
+    "screenName" : "cta web",
+    "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+  },
+  "tags" : [ "cta", "public transit", "ridership", "sustainability" ],
+  "flags" : [ "default" ]
+}

@@ -1,0 +1,344 @@
+{
+  "id" : "vbts-zqt4",
+  "name" : "Libraries - WiFi Usage",
+  "attribution" : "Chicago Public Library",
+  "attributionLink" : "http://chipublib.org",
+  "averageRating" : 0,
+  "category" : "Education",
+  "createdAt" : 1316127129,
+  "description" : "Number of WiFi sessions per month provided at Chicago Public Library locations.",
+  "displayType" : "table",
+  "downloadCount" : 173,
+  "indexUpdatedAt" : 1390979315,
+  "newBackend" : false,
+  "numberOfComments" : 0,
+  "oid" : 7246399,
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1390948115,
+  "publicationGroup" : 240468,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1390948073,
+  "rowsUpdatedBy" : "cmhs-sm84",
+  "tableId" : 1457860,
+  "totalTimesRated" : 0,
+  "viewCount" : 1082,
+  "viewLastModified" : 1390948115,
+  "viewType" : "tabular",
+  "columns" : [ {
+    "id" : 130980978,
+    "name" : "MONTH",
+    "dataTypeName" : "text",
+    "fieldName" : "month",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1520373,
+    "width" : 119,
+    "cachedContents" : {
+      "non_null" : 36,
+      "smallest" : "April",
+      "null" : 0,
+      "largest" : "September",
+      "top" : [ {
+        "count" : 20,
+        "item" : "January"
+      }, {
+        "count" : 19,
+        "item" : "February"
+      }, {
+        "count" : 18,
+        "item" : "March"
+      }, {
+        "count" : 17,
+        "item" : "April"
+      }, {
+        "count" : 16,
+        "item" : "May"
+      }, {
+        "count" : 15,
+        "item" : "June"
+      }, {
+        "count" : 14,
+        "item" : "July"
+      }, {
+        "count" : 13,
+        "item" : "August"
+      }, {
+        "count" : 12,
+        "item" : "September"
+      }, {
+        "count" : 11,
+        "item" : "October"
+      }, {
+        "count" : 10,
+        "item" : "November"
+      }, {
+        "count" : 9,
+        "item" : "December"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "left"
+    }
+  }, {
+    "id" : 130980979,
+    "name" : "YEAR",
+    "dataTypeName" : "number",
+    "fieldName" : "year",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1752520,
+    "width" : 100,
+    "cachedContents" : {
+      "non_null" : 36,
+      "smallest" : "2011",
+      "sum" : "72432",
+      "null" : 0,
+      "average" : "2012",
+      "largest" : "2013",
+      "top" : [ {
+        "count" : 20,
+        "item" : "2011"
+      }, {
+        "count" : 19,
+        "item" : "2012"
+      }, {
+        "count" : 18,
+        "item" : "2013"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 130980980,
+    "name" : "NUMBER OF SESSIONS",
+    "dataTypeName" : "number",
+    "fieldName" : "number_of_sessions",
+    "position" : 3,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1520374,
+    "width" : 189,
+    "cachedContents" : {
+      "non_null" : 36,
+      "smallest" : "19657",
+      "sum" : "2375527",
+      "null" : 0,
+      "average" : "65986.86111111111",
+      "largest" : "186981",
+      "top" : [ {
+        "count" : 20,
+        "item" : "22263"
+      }, {
+        "count" : 19,
+        "item" : "19657"
+      }, {
+        "count" : 18,
+        "item" : "24506"
+      }, {
+        "count" : 17,
+        "item" : "23998"
+      }, {
+        "count" : 16,
+        "item" : "23242"
+      }, {
+        "count" : 15,
+        "item" : "26044"
+      }, {
+        "count" : 14,
+        "item" : "27735"
+      }, {
+        "count" : 13,
+        "item" : "33934"
+      }, {
+        "count" : 12,
+        "item" : "32714"
+      }, {
+        "count" : 11,
+        "item" : "34760"
+      }, {
+        "count" : 10,
+        "item" : "33535"
+      }, {
+        "count" : 9,
+        "item" : "31842"
+      }, {
+        "count" : 8,
+        "item" : "33089"
+      }, {
+        "count" : 7,
+        "item" : "34428"
+      }, {
+        "count" : 6,
+        "item" : "38230"
+      }, {
+        "count" : 5,
+        "item" : "39164"
+      }, {
+        "count" : 4,
+        "item" : "39272"
+      }, {
+        "count" : 3,
+        "item" : "40431"
+      }, {
+        "count" : 2,
+        "item" : "46069"
+      }, {
+        "count" : 1,
+        "item" : "50608"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "right"
+    }
+  }, {
+    "id" : 130980981,
+    "name" : "CUMULATIVE NUMBER OF SESSIONS",
+    "dataTypeName" : "number",
+    "fieldName" : "cumulative_number_of_sessions",
+    "position" : 4,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1752480,
+    "width" : 274,
+    "cachedContents" : {
+      "non_null" : 36,
+      "smallest" : "22263",
+      "sum" : "27525791",
+      "null" : 0,
+      "average" : "764605.3055555556",
+      "largest" : "2375527",
+      "top" : [ {
+        "count" : 20,
+        "item" : "22263"
+      }, {
+        "count" : 19,
+        "item" : "41920"
+      }, {
+        "count" : 18,
+        "item" : "66426"
+      }, {
+        "count" : 17,
+        "item" : "90424"
+      }, {
+        "count" : 16,
+        "item" : "113666"
+      }, {
+        "count" : 15,
+        "item" : "139710"
+      }, {
+        "count" : 14,
+        "item" : "167445"
+      }, {
+        "count" : 13,
+        "item" : "201379"
+      }, {
+        "count" : 12,
+        "item" : "234093"
+      }, {
+        "count" : 11,
+        "item" : "268853"
+      }, {
+        "count" : 10,
+        "item" : "302388"
+      }, {
+        "count" : 9,
+        "item" : "334230"
+      }, {
+        "count" : 8,
+        "item" : "367319"
+      }, {
+        "count" : 7,
+        "item" : "401747"
+      }, {
+        "count" : 6,
+        "item" : "439977"
+      }, {
+        "count" : 5,
+        "item" : "479141"
+      }, {
+        "count" : 4,
+        "item" : "518413"
+      }, {
+        "count" : 3,
+        "item" : "558844"
+      }, {
+        "count" : 2,
+        "item" : "604913"
+      }, {
+        "count" : 1,
+        "item" : "655521"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "false",
+      "align" : "right"
+    }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "metadata" : {
+    "custom_fields" : {
+      "Metadata" : {
+        "Last Updated Date via Automated Load" : "",
+        "Time Period" : "2011-2012",
+        "Data Owner" : "Chicago Public Library",
+        "Frequency" : "Data is updated monthly"
+      }
+    },
+    "renderTypeConfig" : {
+      "visible" : {
+        "table" : true
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+    "rdfSubject" : "0"
+  },
+  "owner" : {
+    "id" : "scy9-9wg4",
+    "displayName" : "cocadmin",
+    "privilegesDisabled" : false,
+    "profileImageUrlLarge" : "/images/profile/4783/7574/CitySeal_Small_large.jpg",
+    "profileImageUrlMedium" : "/images/profile/4783/7574/CitySeal_Small_thumb.jpg",
+    "profileImageUrlSmall" : "/images/profile/4783/7574/CitySeal_Small_tiny.jpg",
+    "roleName" : "administrator",
+    "screenName" : "cocadmin",
+    "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+  },
+  "query" : {
+    "orderBys" : [ {
+      "ascending" : true,
+      "expression" : {
+        "columnId" : 130980981,
+        "type" : "column"
+      }
+    } ]
+  },
+  "rights" : [ "read" ],
+  "sortBys" : [ {
+    "id" : 0,
+    "viewColumnId" : 130980981,
+    "flags" : [ "asc" ]
+  } ],
+  "tableAuthor" : {
+    "id" : "scy9-9wg4",
+    "displayName" : "cocadmin",
+    "privilegesDisabled" : false,
+    "profileImageUrlLarge" : "/images/profile/4783/7574/CitySeal_Small_large.jpg",
+    "profileImageUrlMedium" : "/images/profile/4783/7574/CitySeal_Small_thumb.jpg",
+    "profileImageUrlSmall" : "/images/profile/4783/7574/CitySeal_Small_tiny.jpg",
+    "roleName" : "administrator",
+    "screenName" : "cocadmin",
+    "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+  },
+  "tags" : [ "performance metrics", "libraries" ],
+  "flags" : [ "default" ]
+}

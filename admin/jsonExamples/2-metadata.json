@@ -1,0 +1,1519 @@
+{
+  "id" : "ijzp-q8t2",
+  "name" : "Crimes - 2001 to present",
+  "attribution" : "Chicago Police Department",
+  "attributionLink" : "https://portal.chicagopolice.org/portal/page/portal/ClearPath",
+  "averageRating" : 0,
+  "category" : "Public Safety",
+  "createdAt" : 1317405571,
+  "description" : "This dataset reflects reported incidents of crime (with the exception of murders where data exists for each victim) that occurred in the City of Chicago from 2001 to present, minus the most recent seven days. Data is extracted from the Chicago Police Department's CLEAR (Citizen Law Enforcement Analysis and Reporting) system. In order to protect the privacy of crime victims, addresses are shown at the block level only and specific locations are not identified. Should you have questions about this dataset, you may contact the Research & Development Division of the Chicago Police Department at 312.745.6071 or RandD@chicagopolice.org. Disclaimer: These crimes may be based upon preliminary information supplied to the Police Department by the reporting parties that have not been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error. Therefore, the Chicago Police Department does not guarantee (either expressed or implied) the accuracy, completeness, timeliness, or correct sequencing of the information and the information should not be used for comparison purposes over time. The Chicago Police Department will not be responsible for any error or omission, or for the use of, or the results obtained from the use of this information. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited. The Chicago Police Department is not responsible for the content of any off-site pages that are referenced by or that reference this web page other than an official City of Chicago or Chicago Police Department web page. The user specifically acknowledges that the Chicago Police Department is not responsible for any defamatory, offensive, misleading, or illegal conduct of other users, links, or third parties and that the risk of injury from the foregoing rests entirely with the user.  The unauthorized use of the words \"Chicago Police Department,\" \"Chicago Police,\" or any colorable imitation of these words or the unauthorized use of the Chicago Police Department logo is unlawful. This web page does not, in any way, authorize such use. Data is updated daily Tuesday through Sunday. The dataset contains more than 65,000 records/rows of data and cannot be viewed in full in Microsoft Excel. Therefore, when downloading the file, select CSV from the Export menu. Open the file in an ASCII text editor, such as Wordpad, to view and search. To access a list of Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) codes, go to http://data.cityofchicago.org/Public-Safety/Chicago-Police-Department-Illinois-Uniform-Crime-R/c7ck-438e",
+  "displayType" : "table",
+  "downloadCount" : 45849,
+  "indexUpdatedAt" : 1397454251,
+  "newBackend" : false,
+  "numberOfComments" : 0,
+  "oid" : 6707502,
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1386275591,
+  "publicationGroup" : 239997,
+  "publicationStage" : "published",
+  "resourceName" : "crimes",
+  "rowClass" : "",
+  "rowIdentifierColumnId" : 120515105,
+  "rowsUpdatedAt" : 1397470044,
+  "rowsUpdatedBy" : "scy9-9wg4",
+  "state" : "normal",
+  "tableId" : 1388089,
+  "totalTimesRated" : 0,
+  "viewCount" : 73899,
+  "viewLastModified" : 1386376229,
+  "viewType" : "tabular",
+  "columns" : [ {
+    "id" : 120515105,
+    "name" : "ID",
+    "dataTypeName" : "number",
+    "fieldName" : "id",
+    "position" : 1,
+    "renderTypeName" : "number",
+    "tableColumnId" : 2154841,
+    "width" : 100,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "634",
+      "sum" : "28667375923505",
+      "null" : 0,
+      "average" : "5228932.363579770",
+      "largest" : "9569766",
+      "top" : [ {
+        "count" : 20,
+        "item" : "9555500"
+      }, {
+        "count" : 19,
+        "item" : "9555494"
+      }, {
+        "count" : 18,
+        "item" : "9553820"
+      }, {
+        "count" : 17,
+        "item" : "9553907"
+      }, {
+        "count" : 16,
+        "item" : "9553847"
+      }, {
+        "count" : 15,
+        "item" : "9419182"
+      }, {
+        "count" : 14,
+        "item" : "9553895"
+      }, {
+        "count" : 13,
+        "item" : "9418711"
+      }, {
+        "count" : 12,
+        "item" : "9553837"
+      }, {
+        "count" : 11,
+        "item" : "9459075"
+      }, {
+        "count" : 10,
+        "item" : "9446896"
+      }, {
+        "count" : 9,
+        "item" : "9552312"
+      }, {
+        "count" : 8,
+        "item" : "9551367"
+      }, {
+        "count" : 7,
+        "item" : "21318"
+      }, {
+        "count" : 6,
+        "item" : "21317"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "align" : "right",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 120515106,
+    "name" : "Case Number",
+    "dataTypeName" : "text",
+    "fieldName" : "case_number",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514295,
+    "width" : 134,
+    "cachedContents" : {
+      "non_null" : 5482452,
+      "smallest" : "01G050460",
+      "null" : 1,
+      "largest" : "ZZZ199957",
+      "top" : [ {
+        "count" : 20,
+        "item" : "HX207431"
+      }, {
+        "count" : 19,
+        "item" : "HX205893"
+      }, {
+        "count" : 18,
+        "item" : "HX205775"
+      }, {
+        "count" : 17,
+        "item" : "HX205125"
+      }, {
+        "count" : 16,
+        "item" : "HW562848"
+      }, {
+        "count" : 15,
+        "item" : "HX205950"
+      }, {
+        "count" : 14,
+        "item" : "HW562178"
+      }, {
+        "count" : 13,
+        "item" : "HX205829"
+      }, {
+        "count" : 12,
+        "item" : "HX112270"
+      }, {
+        "count" : 11,
+        "item" : "HW590669"
+      }, {
+        "count" : 10,
+        "item" : "HX204450"
+      }, {
+        "count" : 9,
+        "item" : "HX203236"
+      }, {
+        "count" : 8,
+        "item" : "HX206223"
+      }, {
+        "count" : 7,
+        "item" : "HX206004"
+      } ]
+    },
+    "format" : {
+      "aggregate" : "count",
+      "align" : "left"
+    }
+  }, {
+    "id" : 120515107,
+    "name" : "Date",
+    "dataTypeName" : "calendar_date",
+    "fieldName" : "date",
+    "position" : 3,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 1514296,
+    "width" : 148,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "2001-01-01T00:00:00",
+      "null" : 0,
+      "largest" : "2014-04-06T05:00:00",
+      "top" : [ {
+        "count" : 20,
+        "item" : "2014-04-01T19:40:00"
+      }, {
+        "count" : 19,
+        "item" : "2014-04-01T19:00:00"
+      }, {
+        "count" : 18,
+        "item" : "2014-03-31T16:00:00"
+      }, {
+        "count" : 17,
+        "item" : "2014-03-31T06:30:00"
+      }, {
+        "count" : 16,
+        "item" : "2014-03-31T05:30:00"
+      }, {
+        "count" : 15,
+        "item" : "2013-12-08T01:45:00"
+      }, {
+        "count" : 14,
+        "item" : "2014-03-31T17:10:00"
+      }, {
+        "count" : 13,
+        "item" : "2013-09-27T14:00:00"
+      }, {
+        "count" : 12,
+        "item" : "2014-03-31T16:05:00"
+      }, {
+        "count" : 11,
+        "item" : "2014-01-12T22:30:00"
+      }, {
+        "count" : 10,
+        "item" : "2013-12-31T21:30:00"
+      }, {
+        "count" : 9,
+        "item" : "2014-03-30T14:50:00"
+      }, {
+        "count" : 8,
+        "item" : "2014-03-29T12:30:00"
+      }, {
+        "count" : 7,
+        "item" : "2014-03-31T22:10:00"
+      }, {
+        "count" : 6,
+        "item" : "2014-03-31T18:05:00"
+      } ]
+    },
+    "format" : {
+      "view" : "date_time",
+      "align" : "left"
+    }
+  }, {
+    "id" : 120515108,
+    "name" : "Block",
+    "dataTypeName" : "text",
+    "fieldName" : "block",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514297,
+    "width" : 160,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "0000X E 100 PL",
+      "null" : 0,
+      "largest" : "138XX S DOTY AVE W",
+      "top" : [ {
+        "count" : 20,
+        "item" : "023XX S SACRAMENTO AVE"
+      }, {
+        "count" : 19,
+        "item" : "014XX N MILWAUKEE AVE"
+      }, {
+        "count" : 18,
+        "item" : "071XX S STATE ST"
+      }, {
+        "count" : 17,
+        "item" : "055XX S EVERETT AVE"
+      }, {
+        "count" : 16,
+        "item" : "068XX S CRANDON AVE"
+      }, {
+        "count" : 15,
+        "item" : "011XX W 63RD ST"
+      }, {
+        "count" : 14,
+        "item" : "007XX W 42ND ST"
+      }, {
+        "count" : 13,
+        "item" : "059XX W MADISON ST"
+      }, {
+        "count" : 12,
+        "item" : "081XX S MOZART ST"
+      }, {
+        "count" : 11,
+        "item" : "028XX N SPAULDING AVE"
+      }, {
+        "count" : 10,
+        "item" : "003XX W 74TH ST"
+      }, {
+        "count" : 9,
+        "item" : "058XX N EAST CIRCLE AVE"
+      }, {
+        "count" : 8,
+        "item" : "051XX N PULASKI RD"
+      }, {
+        "count" : 7,
+        "item" : "113XX S FOREST AVE"
+      }, {
+        "count" : 6,
+        "item" : "025XX E 84TH ST"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515109,
+    "name" : "IUCR",
+    "dataTypeName" : "text",
+    "fieldName" : "iucr",
+    "position" : 5,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514298,
+    "width" : 148,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "0110",
+      "null" : 0,
+      "largest" : "9901",
+      "top" : [ {
+        "count" : 20,
+        "item" : "1320"
+      }, {
+        "count" : 19,
+        "item" : "0620"
+      }, {
+        "count" : 18,
+        "item" : "0320"
+      }, {
+        "count" : 17,
+        "item" : "0610"
+      }, {
+        "count" : 16,
+        "item" : "0460"
+      }, {
+        "count" : 15,
+        "item" : "0910"
+      }, {
+        "count" : 14,
+        "item" : "0560"
+      }, {
+        "count" : 13,
+        "item" : "0810"
+      }, {
+        "count" : 12,
+        "item" : "1310"
+      }, {
+        "count" : 11,
+        "item" : "0820"
+      }, {
+        "count" : 10,
+        "item" : "0486"
+      }, {
+        "count" : 9,
+        "item" : "0890"
+      }, {
+        "count" : 8,
+        "item" : "1811"
+      }, {
+        "count" : 7,
+        "item" : "0860"
+      }, {
+        "count" : 6,
+        "item" : "2820"
+      }, {
+        "count" : 5,
+        "item" : "1330"
+      }, {
+        "count" : 4,
+        "item" : "2024"
+      }, {
+        "count" : 3,
+        "item" : "031A"
+      }, {
+        "count" : 2,
+        "item" : "2825"
+      }, {
+        "count" : 1,
+        "item" : "2027"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515110,
+    "name" : "Primary Type",
+    "dataTypeName" : "text",
+    "fieldName" : "primary_type",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514299,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "ARSON",
+      "null" : 0,
+      "largest" : "WEAPONS VIOLATION",
+      "top" : [ {
+        "count" : 20,
+        "item" : "ROBBERY"
+      }, {
+        "count" : 19,
+        "item" : "WEAPONS VIOLATION"
+      }, {
+        "count" : 18,
+        "item" : "CRIMINAL DAMAGE"
+      }, {
+        "count" : 17,
+        "item" : "BURGLARY"
+      }, {
+        "count" : 16,
+        "item" : "OTHER OFFENSE"
+      }, {
+        "count" : 15,
+        "item" : "BATTERY"
+      }, {
+        "count" : 14,
+        "item" : "MOTOR VEHICLE THEFT"
+      }, {
+        "count" : 13,
+        "item" : "ASSAULT"
+      }, {
+        "count" : 12,
+        "item" : "THEFT"
+      }, {
+        "count" : 11,
+        "item" : "OFFENSE INVOLVING CHILDREN"
+      }, {
+        "count" : 10,
+        "item" : "ARSON"
+      }, {
+        "count" : 9,
+        "item" : "NARCOTICS"
+      }, {
+        "count" : 8,
+        "item" : "CRIM SEXUAL ASSAULT"
+      }, {
+        "count" : 7,
+        "item" : "KIDNAPPING"
+      }, {
+        "count" : 6,
+        "item" : "CRIMINAL TRESPASS"
+      }, {
+        "count" : 5,
+        "item" : "SEX OFFENSE"
+      }, {
+        "count" : 4,
+        "item" : "DECEPTIVE PRACTICE"
+      }, {
+        "count" : 3,
+        "item" : "PROSTITUTION"
+      }, {
+        "count" : 2,
+        "item" : "OBSCENITY"
+      }, {
+        "count" : 1,
+        "item" : "INTERFERENCE WITH PUBLIC OFFICER"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515111,
+    "name" : "Description",
+    "dataTypeName" : "text",
+    "fieldName" : "description",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514300,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "$300 AND UNDER",
+      "null" : 0,
+      "largest" : "WIREROOM/SPORTS",
+      "top" : [ {
+        "count" : 20,
+        "item" : "TO VEHICLE"
+      }, {
+        "count" : 19,
+        "item" : "UNLAWFUL ENTRY"
+      }, {
+        "count" : 18,
+        "item" : "ARMED: HANDGUN"
+      }, {
+        "count" : 17,
+        "item" : "STRONGARM - NO WEAPON"
+      }, {
+        "count" : 16,
+        "item" : "FORCIBLE ENTRY"
+      }, {
+        "count" : 15,
+        "item" : "SIMPLE"
+      }, {
+        "count" : 14,
+        "item" : "AUTOMOBILE"
+      }, {
+        "count" : 13,
+        "item" : "TO PROPERTY"
+      }, {
+        "count" : 12,
+        "item" : "$500 AND UNDER"
+      }, {
+        "count" : 11,
+        "item" : "DOMESTIC BATTERY SIMPLE"
+      }, {
+        "count" : 10,
+        "item" : "FROM BUILDING"
+      }, {
+        "count" : 9,
+        "item" : "POSS: CANNABIS 30GMS OR LESS"
+      }, {
+        "count" : 8,
+        "item" : "POSS: HEROIN(WHITE)"
+      }, {
+        "count" : 7,
+        "item" : "RETAIL THEFT"
+      }, {
+        "count" : 6,
+        "item" : "TELEPHONE THREAT"
+      }, {
+        "count" : 5,
+        "item" : "TO LAND"
+      }, {
+        "count" : 4,
+        "item" : "HARASSMENT BY TELEPHONE"
+      }, {
+        "count" : 3,
+        "item" : "$300 AND UNDER"
+      }, {
+        "count" : 2,
+        "item" : "OVER $300"
+      }, {
+        "count" : 1,
+        "item" : "POSS: CRACK"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515112,
+    "name" : "Location Description",
+    "dataTypeName" : "text",
+    "fieldName" : "location_description",
+    "position" : 8,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514301,
+    "width" : 340,
+    "cachedContents" : {
+      "non_null" : 5481821,
+      "smallest" : "ABANDONED BUILDING",
+      "null" : 632,
+      "largest" : "YMCA",
+      "top" : [ {
+        "count" : 20,
+        "item" : "SIDEWALK"
+      }, {
+        "count" : 19,
+        "item" : "RESIDENTIAL YARD (FRONT/BACK)"
+      }, {
+        "count" : 18,
+        "item" : "RESIDENCE"
+      }, {
+        "count" : 17,
+        "item" : "RESIDENCE PORCH/HALLWAY"
+      }, {
+        "count" : 16,
+        "item" : "STREET"
+      }, {
+        "count" : 15,
+        "item" : "APARTMENT"
+      }, {
+        "count" : 14,
+        "item" : "PARKING LOT/GARAGE(NON.RESID.)"
+      }, {
+        "count" : 13,
+        "item" : "OTHER"
+      }, {
+        "count" : 12,
+        "item" : "RESIDENCE-GARAGE"
+      }, {
+        "count" : 11,
+        "item" : "ALLEY"
+      }, {
+        "count" : 10,
+        "item" : "SMALL RETAIL STORE"
+      }, {
+        "count" : 9,
+        "item" : "SCHOOL, PUBLIC, BUILDING"
+      }, {
+        "count" : 8,
+        "item" : "RESTAURANT"
+      }, {
+        "count" : 7,
+        "item" : "VEHICLE NON-COMMERCIAL"
+      }, {
+        "count" : 6,
+        "item" : "CTA PLATFORM"
+      }, {
+        "count" : 5,
+        "item" : "GROCERY FOOD STORE"
+      }, {
+        "count" : 4,
+        "item" : "GAS STATION"
+      }, {
+        "count" : 3,
+        "item" : "BAR OR TAVERN"
+      }, {
+        "count" : 2,
+        "item" : "DEPARTMENT STORE"
+      }, {
+        "count" : 1,
+        "item" : "COMMERCIAL / BUSINESS OFFICE"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515113,
+    "name" : "Arrest",
+    "dataTypeName" : "checkbox",
+    "fieldName" : "arrest",
+    "position" : 9,
+    "renderTypeName" : "checkbox",
+    "tableColumnId" : 1514302,
+    "width" : 172,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : false,
+      "null" : 0,
+      "largest" : true,
+      "top" : [ {
+        "count" : 20,
+        "item" : false
+      }, {
+        "count" : 19,
+        "item" : true
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515114,
+    "name" : "Domestic",
+    "dataTypeName" : "checkbox",
+    "fieldName" : "domestic",
+    "position" : 10,
+    "renderTypeName" : "checkbox",
+    "tableColumnId" : 1514303,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : false,
+      "null" : 0,
+      "largest" : true,
+      "top" : [ {
+        "count" : 20,
+        "item" : false
+      }, {
+        "count" : 19,
+        "item" : true
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515115,
+    "name" : "Beat",
+    "dataTypeName" : "text",
+    "fieldName" : "beat",
+    "position" : 11,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514304,
+    "width" : 148,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "011",
+      "null" : 0,
+      "largest" : "2535",
+      "top" : [ {
+        "count" : 20,
+        "item" : "1532"
+      }, {
+        "count" : 19,
+        "item" : "1633"
+      }, {
+        "count" : 18,
+        "item" : "1923"
+      }, {
+        "count" : 17,
+        "item" : "0331"
+      }, {
+        "count" : 16,
+        "item" : "0925"
+      }, {
+        "count" : 15,
+        "item" : "1513"
+      }, {
+        "count" : 14,
+        "item" : "0835"
+      }, {
+        "count" : 13,
+        "item" : "1412"
+      }, {
+        "count" : 12,
+        "item" : "0731"
+      }, {
+        "count" : 11,
+        "item" : "1612"
+      }, {
+        "count" : 10,
+        "item" : "1712"
+      }, {
+        "count" : 9,
+        "item" : "0531"
+      }, {
+        "count" : 8,
+        "item" : "0423"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515116,
+    "name" : "District",
+    "dataTypeName" : "text",
+    "description" : "District",
+    "fieldName" : "district",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 5086344,
+    "width" : 100,
+    "cachedContents" : {
+      "non_null" : 4286391,
+      "smallest" : " ",
+      "null" : 1196062,
+      "largest" : "031",
+      "top" : [ {
+        "count" : 20,
+        "item" : "007"
+      }, {
+        "count" : 19,
+        "item" : "022"
+      }, {
+        "count" : 18,
+        "item" : "008"
+      }, {
+        "count" : 17,
+        "item" : "024"
+      }, {
+        "count" : 16,
+        "item" : "016"
+      }, {
+        "count" : 15,
+        "item" : "004"
+      }, {
+        "count" : 14,
+        "item" : "006"
+      }, {
+        "count" : 13,
+        "item" : "014"
+      }, {
+        "count" : 12,
+        "item" : "005"
+      }, {
+        "count" : 11,
+        "item" : "025"
+      }, {
+        "count" : 10,
+        "item" : "015"
+      }, {
+        "count" : 9,
+        "item" : "020"
+      }, {
+        "count" : 8,
+        "item" : "010"
+      }, {
+        "count" : 7,
+        "item" : "002"
+      }, {
+        "count" : 6,
+        "item" : "017"
+      }, {
+        "count" : 5,
+        "item" : "003"
+      }, {
+        "count" : 4,
+        "item" : "001"
+      }, {
+        "count" : 3,
+        "item" : "018"
+      }, {
+        "count" : 2,
+        "item" : "012"
+      }, {
+        "count" : 1,
+        "item" : "011"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515117,
+    "name" : "Ward",
+    "dataTypeName" : "number",
+    "fieldName" : "ward",
+    "position" : 13,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1514305,
+    "width" : 148,
+    "cachedContents" : {
+      "non_null" : 4867243,
+      "smallest" : "1",
+      "sum" : "109876115",
+      "null" : 615210,
+      "average" : "22.57461051359055",
+      "largest" : "50",
+      "top" : [ {
+        "count" : 20,
+        "item" : "15"
+      }, {
+        "count" : 19,
+        "item" : "6"
+      }, {
+        "count" : 18,
+        "item" : "21"
+      }, {
+        "count" : 17,
+        "item" : "27"
+      }, {
+        "count" : 16,
+        "item" : "17"
+      }, {
+        "count" : 15,
+        "item" : "7"
+      }, {
+        "count" : 14,
+        "item" : "9"
+      }, {
+        "count" : 13,
+        "item" : "16"
+      }, {
+        "count" : 12,
+        "item" : "20"
+      }, {
+        "count" : 11,
+        "item" : "37"
+      }, {
+        "count" : 10,
+        "item" : "28"
+      }, {
+        "count" : 9,
+        "item" : "8"
+      }, {
+        "count" : 8,
+        "item" : "24"
+      }, {
+        "count" : 7,
+        "item" : "34"
+      }, {
+        "count" : 6,
+        "item" : "2"
+      }, {
+        "count" : 5,
+        "item" : "5"
+      }, {
+        "count" : 4,
+        "item" : "42"
+      }, {
+        "count" : 3,
+        "item" : "3"
+      }, {
+        "count" : 2,
+        "item" : "29"
+      }, {
+        "count" : 1,
+        "item" : "1"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515118,
+    "name" : "Community Area",
+    "dataTypeName" : "text",
+    "description" : "Community Area",
+    "fieldName" : "community_area",
+    "position" : 14,
+    "renderTypeName" : "text",
+    "tableColumnId" : 5086360,
+    "width" : 100,
+    "cachedContents" : {
+      "non_null" : 4867554,
+      "smallest" : " ",
+      "null" : 614899,
+      "largest" : "9",
+      "top" : [ {
+        "count" : 20,
+        "item" : "67"
+      }, {
+        "count" : 19,
+        "item" : "69"
+      }, {
+        "count" : 18,
+        "item" : "71"
+      }, {
+        "count" : 17,
+        "item" : "23"
+      }, {
+        "count" : 16,
+        "item" : "43"
+      }, {
+        "count" : 15,
+        "item" : "68"
+      }, {
+        "count" : 14,
+        "item" : "25"
+      }, {
+        "count" : 13,
+        "item" : "24"
+      }, {
+        "count" : 12,
+        "item" : "29"
+      }, {
+        "count" : 11,
+        "item" : "49"
+      }, {
+        "count" : 10,
+        "item" : "28"
+      }, {
+        "count" : 9,
+        "item" : "8"
+      }, {
+        "count" : 8,
+        "item" : "66"
+      }, {
+        "count" : 7,
+        "item" : "61"
+      }, {
+        "count" : 6,
+        "item" : "22"
+      }, {
+        "count" : 5,
+        "item" : "44"
+      }, {
+        "count" : 4,
+        "item" : "32"
+      }, {
+        "count" : 3,
+        "item" : "27"
+      }, {
+        "count" : 2,
+        "item" : "26"
+      }, {
+        "count" : 1,
+        "item" : "46"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515119,
+    "name" : "FBI Code",
+    "dataTypeName" : "text",
+    "fieldName" : "fbi_code",
+    "position" : 15,
+    "renderTypeName" : "text",
+    "tableColumnId" : 1514306,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "01A",
+      "null" : 0,
+      "largest" : "26",
+      "top" : [ {
+        "count" : 20,
+        "item" : "03"
+      }, {
+        "count" : 19,
+        "item" : "15"
+      }, {
+        "count" : 18,
+        "item" : "14"
+      }, {
+        "count" : 17,
+        "item" : "05"
+      }, {
+        "count" : 16,
+        "item" : "26"
+      }, {
+        "count" : 15,
+        "item" : "08B"
+      }, {
+        "count" : 14,
+        "item" : "07"
+      }, {
+        "count" : 13,
+        "item" : "08A"
+      }, {
+        "count" : 12,
+        "item" : "06"
+      }, {
+        "count" : 11,
+        "item" : "04A"
+      }, {
+        "count" : 10,
+        "item" : "20"
+      }, {
+        "count" : 9,
+        "item" : "04B"
+      }, {
+        "count" : 8,
+        "item" : "09"
+      }, {
+        "count" : 7,
+        "item" : "18"
+      }, {
+        "count" : 6,
+        "item" : "02"
+      }, {
+        "count" : 5,
+        "item" : "17"
+      }, {
+        "count" : 4,
+        "item" : "13"
+      }, {
+        "count" : 3,
+        "item" : "16"
+      }, {
+        "count" : 2,
+        "item" : "10"
+      }, {
+        "count" : 1,
+        "item" : "11"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515120,
+    "name" : "X Coordinate",
+    "dataTypeName" : "number",
+    "fieldName" : "x_coordinate",
+    "position" : 16,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1514307,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : 5438537,
+      "smallest" : "1092697",
+      "sum" : "6333265455733",
+      "null" : 43916,
+      "average" : "1164516.386618865",
+      "largest" : "1205152",
+      "top" : [ {
+        "count" : 20,
+        "item" : "1169866"
+      }, {
+        "count" : 19,
+        "item" : "1172259"
+      }, {
+        "count" : 18,
+        "item" : "1137022"
+      }, {
+        "count" : 17,
+        "item" : "1158760"
+      }, {
+        "count" : 16,
+        "item" : "1153935"
+      }, {
+        "count" : 15,
+        "item" : "1174959"
+      }, {
+        "count" : 14,
+        "item" : "1129219"
+      }, {
+        "count" : 13,
+        "item" : "1148757"
+      }, {
+        "count" : 12,
+        "item" : "1180309"
+      }, {
+        "count" : 11,
+        "item" : "1194332"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 120515121,
+    "name" : "Y Coordinate",
+    "dataTypeName" : "number",
+    "fieldName" : "y_coordinate",
+    "position" : 17,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1514308,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : 5438537,
+      "smallest" : "1813930",
+      "sum" : "10255165174441",
+      "null" : 43916,
+      "average" : "1885647.771531388",
+      "largest" : "1951664",
+      "top" : [ {
+        "count" : 20,
+        "item" : "1863064"
+      }, {
+        "count" : 19,
+        "item" : "1876916"
+      }, {
+        "count" : 18,
+        "item" : "1899447"
+      }, {
+        "count" : 17,
+        "item" : "1850256"
+      }, {
+        "count" : 16,
+        "item" : "1918572"
+      }, {
+        "count" : 15,
+        "item" : "1855914"
+      }, {
+        "count" : 14,
+        "item" : "1938308"
+      }, {
+        "count" : 13,
+        "item" : "1933896"
+      }, {
+        "count" : 12,
+        "item" : "1829792"
+      }, {
+        "count" : 11,
+        "item" : "1849723"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true",
+      "align" : "right"
+    }
+  }, {
+    "id" : 120515122,
+    "name" : "Year",
+    "dataTypeName" : "number",
+    "fieldName" : "year",
+    "position" : 18,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1518776,
+    "width" : 100,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "2001",
+      "sum" : "11000841625",
+      "null" : 0,
+      "average" : "2006.554661754510",
+      "largest" : "2014",
+      "top" : [ {
+        "count" : 20,
+        "item" : "2013"
+      }, {
+        "count" : 19,
+        "item" : "2012"
+      }, {
+        "count" : 18,
+        "item" : "2011"
+      }, {
+        "count" : 17,
+        "item" : "2007"
+      }, {
+        "count" : 16,
+        "item" : "2010"
+      }, {
+        "count" : 15,
+        "item" : "2008"
+      }, {
+        "count" : 14,
+        "item" : "2001"
+      }, {
+        "count" : 13,
+        "item" : "2006"
+      }, {
+        "count" : 12,
+        "item" : "2002"
+      }, {
+        "count" : 11,
+        "item" : "2009"
+      }, {
+        "count" : 10,
+        "item" : "2005"
+      }, {
+        "count" : 9,
+        "item" : "2003"
+      }, {
+        "count" : 8,
+        "item" : "2004"
+      }, {
+        "count" : 7,
+        "item" : "2014"
+      } ]
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "align" : "right",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 120515123,
+    "name" : "Updated On",
+    "dataTypeName" : "calendar_date",
+    "fieldName" : "updated_on",
+    "position" : 19,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 2154842,
+    "width" : 100,
+    "cachedContents" : {
+      "non_null" : 5482453,
+      "smallest" : "2006-01-26T03:51:08",
+      "null" : 0,
+      "largest" : "2014-04-12T00:41:09",
+      "top" : [ {
+        "count" : 20,
+        "item" : "2007-06-11T15:52:33"
+      }, {
+        "count" : 19,
+        "item" : "2006-03-31T22:03:38"
+      }, {
+        "count" : 18,
+        "item" : "2006-03-30T21:10:16"
+      }, {
+        "count" : 17,
+        "item" : "2006-03-22T21:58:07"
+      }, {
+        "count" : 16,
+        "item" : "2006-02-25T00:14:30"
+      }, {
+        "count" : 15,
+        "item" : "2006-01-30T03:44:08"
+      }, {
+        "count" : 14,
+        "item" : "2006-01-26T19:28:55"
+      }, {
+        "count" : 13,
+        "item" : "2006-01-26T03:51:08"
+      }, {
+        "count" : 12,
+        "item" : "2014-02-12T00:40:02"
+      }, {
+        "count" : 11,
+        "item" : "2014-02-19T00:39:37"
+      }, {
+        "count" : 10,
+        "item" : "2014-02-20T00:40:43"
+      }, {
+        "count" : 9,
+        "item" : "2014-04-10T00:40:25"
+      }, {
+        "count" : 8,
+        "item" : "2014-04-03T00:40:46"
+      }, {
+        "count" : 7,
+        "item" : "2014-04-02T00:41:31"
+      }, {
+        "count" : 6,
+        "item" : "2014-04-01T00:40:37"
+      }, {
+        "count" : 5,
+        "item" : "2014-03-30T00:39:29"
+      }, {
+        "count" : 4,
+        "item" : "2014-03-29T00:39:43"
+      }, {
+        "count" : 3,
+        "item" : "2014-03-28T00:40:24"
+      }, {
+        "count" : 2,
+        "item" : "2014-03-27T00:41:25"
+      }, {
+        "count" : 1,
+        "item" : "2014-03-26T00:40:14"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515124,
+    "name" : "Latitude",
+    "dataTypeName" : "number",
+    "fieldName" : "latitude",
+    "position" : 20,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1514309,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : 5438537,
+      "smallest" : "41.64458010539843",
+      "sum" : "227558264.124454674629711",
+      "null" : 43916,
+      "average" : "41.84181593771536",
+      "largest" : "42.02302490811244",
+      "top" : [ {
+        "count" : 20,
+        "item" : "41.77974436596441"
+      }, {
+        "count" : 19,
+        "item" : "41.817703414480405"
+      }, {
+        "count" : 18,
+        "item" : "41.880235252688195"
+      }, {
+        "count" : 17,
+        "item" : "41.74483125787711"
+      }, {
+        "count" : 16,
+        "item" : "41.93239582085431"
+      }, {
+        "count" : 15,
+        "item" : "41.7600118282525"
+      }, {
+        "count" : 14,
+        "item" : "41.98701093931538"
+      }, {
+        "count" : 13,
+        "item" : "41.97454783616416"
+      }, {
+        "count" : 12,
+        "item" : "41.688208840270285"
+      }, {
+        "count" : 11,
+        "item" : "41.74256932418728"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515125,
+    "name" : "Longitude",
+    "dataTypeName" : "number",
+    "fieldName" : "longitude",
+    "position" : 21,
+    "renderTypeName" : "number",
+    "tableColumnId" : 1514310,
+    "width" : 208,
+    "cachedContents" : {
+      "non_null" : 5438537,
+      "smallest" : "-87.93432498623031",
+      "sum" : "-476806400.62528874895887",
+      "null" : 43916,
+      "average" : "-87.67181332503369",
+      "largest" : "-87.52438878911826",
+      "top" : [ {
+        "count" : 20,
+        "item" : "-87.65279504668527"
+      }, {
+        "count" : 19,
+        "item" : "-87.6436145401978"
+      }, {
+        "count" : 18,
+        "item" : "-87.77233633441908"
+      }, {
+        "count" : 17,
+        "item" : "-87.69386037885074"
+      }, {
+        "count" : 16,
+        "item" : "-87.70972262279236"
+      }, {
+        "count" : 15,
+        "item" : "-87.63433654454855"
+      }, {
+        "count" : 14,
+        "item" : "-87.80010114772635"
+      }, {
+        "count" : 13,
+        "item" : "-87.72835376001956"
+      }, {
+        "count" : 12,
+        "item" : "-87.61552719548796"
+      }, {
+        "count" : 11,
+        "item" : "-87.5635384933623"
+      } ]
+    },
+    "format" : {
+    }
+  }, {
+    "id" : 120515126,
+    "name" : "Location",
+    "dataTypeName" : "location",
+    "fieldName" : "location",
+    "position" : 22,
+    "renderTypeName" : "location",
+    "tableColumnId" : 1514311,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : 5438537,
+      "smallest" : {
+        "longitude" : "-87.66562938585982",
+        "latitude" : "41.781663840561826"
+      },
+      "null" : 43916,
+      "largest" : {
+        "longitude" : "-87.5635384933623",
+        "latitude" : "41.74256932418728"
+      },
+      "top" : [ {
+        "count" : 20,
+        "item" : {
+          "longitude" : "-87.65279504668527",
+          "latitude" : "41.77974436596441"
+        }
+      }, {
+        "count" : 19,
+        "item" : {
+          "longitude" : "-87.6436145401978",
+          "latitude" : "41.817703414480405"
+        }
+      }, {
+        "count" : 18,
+        "item" : {
+          "longitude" : "-87.77233633441908",
+          "latitude" : "41.880235252688195"
+        }
+      }, {
+        "count" : 17,
+        "item" : {
+          "longitude" : "-87.69386037885074",
+          "latitude" : "41.74483125787711"
+        }
+      }, {
+        "count" : 16,
+        "item" : {
+          "longitude" : "-87.70972262279236",
+          "latitude" : "41.93239582085431"
+        }
+      }, {
+        "count" : 15,
+        "item" : {
+          "longitude" : "-87.63433654454855",
+          "latitude" : "41.7600118282525"
+        }
+      }, {
+        "count" : 14,
+        "item" : {
+          "longitude" : "-87.80010114772635",
+          "latitude" : "41.98701093931538"
+        }
+      }, {
+        "count" : 13,
+        "item" : {
+          "longitude" : "-87.72835376001956",
+          "latitude" : "41.97454783616416"
+        }
+      }, {
+        "count" : 12,
+        "item" : {
+          "longitude" : "-87.61552719548796",
+          "latitude" : "41.688208840270285"
+        }
+      }, {
+        "count" : 11,
+        "item" : {
+          "longitude" : "-87.5635384933623",
+          "latitude" : "41.74256932418728"
+        }
+      } ]
+    },
+    "format" : {
+    },
+    "subColumnTypes" : [ "human_address", "latitude", "longitude", "machine_address", "needs_recoding" ]
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "metadata" : {
+    "custom_fields" : {
+      "Metadata" : {
+        "Last Updated Date via Automated Load" : "2013/12/03 05:00:01",
+        "Time Period" : "2001 to present, minus the most recent seven days",
+        "Data Owner" : "Police",
+        "Frequency" : "Data is updated daily, Tuesday through Sunday"
+      }
+    },
+    "renderTypeConfig" : {
+      "visible" : {
+        "table" : true
+      }
+    },
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+    "rdfSubject" : "0",
+    "rowIdentifier" : "120515105",
+    "rdfClass" : ""
+  },
+  "owner" : {
+    "id" : "scy9-9wg4",
+    "displayName" : "cocadmin",
+    "privilegesDisabled" : false,
+    "profileImageUrlLarge" : "/images/profile/4783/7574/CitySeal_Small_large.jpg",
+    "profileImageUrlMedium" : "/images/profile/4783/7574/CitySeal_Small_thumb.jpg",
+    "profileImageUrlSmall" : "/images/profile/4783/7574/CitySeal_Small_tiny.jpg",
+    "roleName" : "administrator",
+    "screenName" : "cocadmin",
+    "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+  },
+  "query" : {
+    "orderBys" : [ {
+      "ascending" : false,
+      "expression" : {
+        "columnId" : 120515107,
+        "type" : "column"
+      }
+    } ]
+  },
+  "rights" : [ "read" ],
+  "sortBys" : [ {
+    "id" : 0,
+    "viewColumnId" : 120515107
+  } ],
+  "tableAuthor" : {
+    "id" : "scy9-9wg4",
+    "displayName" : "cocadmin",
+    "privilegesDisabled" : false,
+    "profileImageUrlLarge" : "/images/profile/4783/7574/CitySeal_Small_large.jpg",
+    "profileImageUrlMedium" : "/images/profile/4783/7574/CitySeal_Small_thumb.jpg",
+    "profileImageUrlSmall" : "/images/profile/4783/7574/CitySeal_Small_tiny.jpg",
+    "roleName" : "administrator",
+    "screenName" : "cocadmin",
+    "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+  },
+  "tags" : [ "crime", "police" ],
+  "flags" : [ "default" ]
+}

@@ -271,9 +271,33 @@ class monthly extends data{
 		}
 		return max($diffs);
 	}
-    public function getMinDiff($field, $time){}
-    public function getMaxPct($field, $time){} // instead of $this->diffs, using $this->pct
-    public function getMinPct($field, $time){}
+    public function getMinDiff($field, $time){
+    	$diffs = array();
+		foreach($this->diffs as $year=>$months){
+			foreach($months as $month=>$data){
+				$diffs[] = $data[$field][$time];
+			}
+		}
+		return min($diffs);
+    }
+    public function getMaxPct($field, $time){
+    	$diffs = array();
+		foreach($this->pct as $year=>$months){
+			foreach($months as $month=>$data){
+				$diffs[] = $data[$field][$time];
+			}
+		}
+		return max($diffs);
+    } // instead of $this->diffs, using $this->pct
+    public function getMinPct($field, $time){
+    	$diffs = array();
+		foreach($this->pct as $year=>$months){
+			foreach($months as $month=>$data){
+				$diffs[] = $data[$field][$time];
+			}
+		}
+		return min($diffs);
+    }
     public function getMaxProp($prop){
 		//$this->proportionData[$p['id']][$year][$month] = $pro;
 		$vals = array();

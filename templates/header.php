@@ -8,15 +8,12 @@
     <link href="includes/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link rel="stylesheet" type="text/css" href="includes/css/jquery.jqplot.css"/>
     <link rel="stylesheet" type="text/css" href="includes/css/datatrack.css"/>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab|Raleway:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
     <!--JavaScript-->
     <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
-    <script language="javascript" type="text/javascript" src="includes/js/bootstrap.min.js"></script>
-
-    
     
     <!--JavaScript for Data Analysis-->
     <script language="javascript" type="text/javascript" src="includes/js/jquery.jqplot.min.js"></script>
@@ -24,7 +21,14 @@
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.cursor.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/observations.js"></script>
+	<script language="javascript" type="text/javascript" src="includes/js/datatrack.js"></script>
 
+	<!-- Font -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab|Raleway:400,300' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="header">

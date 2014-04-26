@@ -1,31 +1,30 @@
-<form class='form' role='form' method='post' action='input-file.php'>
+<form class='form' role='form' method='post' action='input-url.php'>
 
-  <div class="form-group">
-    <label for="URL">link</label>
-    <input class="form-control" type="text" id="URL">
-    <p class="help-block">input your link here.</p>
-  </div>
+	<div class="form-group">
+		<label for="url">Link</label>
+		<input class="form-control" type="text" name="url" id="url">
+	</div>
 
-  <form id="data-type-selection" role="form">
 	<div class="radio-inline">
 		<label>
-			<input type="radio" id="data-type-monthly" checked name="data-type" value="monthly"/>
+			<input type="radio" id="timeframe-monthly" name="timeframe" value="monthly"/>
 				Monthly
 			</label>
 	</div>
 	<div class="radio-inline">
 		<label>
-			<input type="radio" id="data-type-Quarterly" name="data-type" value="Quarterly"/>
+			<input type="radio" id="timeframe-quarterly" name="timeframe" value="quarterly"/>
 				Quarterly
 			</label>
 	</div>
 	<div class="radio-inline">
 		<label>
-			<input type="radio" id="data-type--Yearly" name="data-type" value="Yearly"/>
+			<input type="radio" id="timeframe-yearly" name="timeframe" value="yearly"/>
 				Yearly
 		</label>
 	</div>
-</form>
 
-  <button type='submit' class='btn btn-default'>submit</button>
+	<div class="form-group">
+		<button type='submit' class='btn btn-default'>Submit</button>
+	</div>
 </form>

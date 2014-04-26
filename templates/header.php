@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!--Style-->
-    <link href="includes/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link rel="stylesheet" type="text/css" href="includes/css/jquery.jqplot.css"/>
     <link rel="stylesheet" type="text/css" href="includes/css/datatrack.css"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">

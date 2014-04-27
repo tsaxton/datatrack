@@ -1,13 +1,6 @@
 <?php
-require('admin/config.php');
-include('includes/datatrack.php');
+include('includes.php');
 include('templates/header.php');
-include('classes/data.php');
-include('classes/monthly.php');
-include('classes/yearly.php');
-include('classes/recentAnalysis.php');
-include('classes/longTerm.php');
-
 if(array_key_exists('id',$_GET)){
     $id = $_GET['id'];
 }

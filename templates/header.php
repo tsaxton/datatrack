@@ -21,6 +21,7 @@
     <script language="javascript" type="text/javascript" src="includes/js/plugins/jqplot.dateAxisRenderer.min.js"></script>
     <script language="javascript" type="text/javascript" src="includes/js/observations.js"></script>
 	<script language="javascript" type="text/javascript" src="includes/js/datatrack.js"></script>
+	<script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>
 
 	<!-- Font -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab|Raleway:400,300' rel='stylesheet' type='text/css'>

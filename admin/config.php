@@ -1,8 +1,7 @@
 <?php
 error_reporting(-1);
-ini_set('display_errors', 'On');
+ini_set('display_errors', 'on');
 
-require_once('includes/meekro.php');
 
 $host = 'localhost';
 $username = 'datatrack';

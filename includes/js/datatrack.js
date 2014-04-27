@@ -19,4 +19,17 @@ $(document).ajaxComplete(function(){
 			})
 		})
 	}
+	$('#input-paste').ajaxForm({
+		beforeSend: function(){
+			$('#upload').collapse('hide').html('');
+			$('#time').collapse('show').html('Loading...');
+		},
+		complete: function(response){
+			console.log('Got here');
+			$('#time').html(response.responseText);
+			console.log(response);
+		},
+		error: function(){
+		}
+	})
 });

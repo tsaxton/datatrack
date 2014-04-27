@@ -103,6 +103,10 @@ h3 a {
 	text-align: left;
 	color:black;
 }
+
+textarea{
+	font-family: monospace !important;
+}
 /*----Dashboard----*/
 /*--Left Menu--*/
 #dashboard-menu{

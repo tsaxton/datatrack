@@ -1,20 +1,21 @@
 <?php
 
-class cvsparse {
+class csvparse {
 	public $str;
 	public $arr;
 	public $time;
+	public $location;
+	public $location_err = false;
+
 	public function __construct($str, $time){
 		$this->str = $str;
-		$arr = parse_csv($str);
+		$arr = $this->parse_csv($str);
 		$this->arr = $arr;
-
 		$this->time = $time;
-
+		$this->find_time();
 	}
 
-	private function parse_csv ($csv_string, $delimiter = ",", $skip_empty_lines = true, $trim_fields = true)
-	{
+	private function parse_csv ($csv_string, $delimiter = ",", $skip_empty_lines = true, $trim_fields = true){
 	    $enc = preg_replace('/(?<!")""/', '!!Q!!', $csv_string);
 	    $enc = preg_replace_callback(
 	        '/"(.*?)"/s',
@@ -38,8 +39,7 @@ class cvsparse {
 	    );
 	}
 
-		private function find_time ()
-	{
+	private function find_time(){
 		$row = 0;
 		$column = 0;
 		$row_score = 0;
@@ -48,18 +48,19 @@ class cvsparse {
 		foreach($this->arr[0] as $str){
 			if (($timestamp = strtotime($str)) === false) {
 				$row++;
-			} else {
+			}
+			else{
 				$row++;
 				$row_score++;
 			}
 		}
 
-		foreach($this->arr as $r)
-		{
+		foreach($this->arr as $r){
 			$str = $r[0];
-			if(($timestamp = strtotime($r))=== false){
+			if(($timestamp = strtotime($str))=== false){
 				$column++;
-			}else{
+			}
+			else{
 				$column++;
 				$column_score++;
 			}
@@ -78,16 +79,17 @@ class cvsparse {
 
 		$row_score = 0;
 		$column_score = 0;
+		$location_err = true;
 
 		foreach($this->arr[0] as $str){
 			$row_score += strlen($str);
 		}
 
-		foreach($this->arr as $r)
-		{
+		foreach($this->arr as $r){
 			$str = $r[0];
 			$column_score += strlen($str);
 		}
+
 		$column_score/=$column;
 		$row_score/=$row;
 
@@ -99,8 +101,48 @@ class cvsparse {
 			$this->location = 'row';
 			return true;
 		}
-		return false;
 
+		return false;
+	}
+
+	public function confirmDates(){
+		//if (($timestamp = strtotime($str)) === false) {
+		switch($this->time){
+		case 'quarterly':
+			$format = 'm/Y';
+			break;
+		case 'monthly':
+			$format = 'm/Y';
+			break;
+		case 'yearly':
+			$format = 'Y';
+			break;
+		}
+
+		$dates = array();
+		if(!$this->location_err && $this->location == 'column'){
+			foreach($this->arr as $r){
+				$str = $r[0];
+				if(($timestamp = strtotime($str)) != false){
+					array_push($dates, date('Y', $timestamp));
+				}
+			}
+		}
+		elseif(!$this->location_err && $this->location == 'row'){
+			echo "This other case!";
+			foreach($this->arr[0] as $str){
+				if(($timestamp = strtotime($str)) != false){
+					array_push($dates, date('Y', $timestamp));
+				}
+			}
+		}
+		elseif(!$this->location_err){
+			$this->location_err = true;
+		}
+		if($this->location_err){
+			// TODO: More complex interface for the event that the dates are not correct.
+		}
+		return $dates;
 	}
 
 }

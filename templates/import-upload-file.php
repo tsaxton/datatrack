@@ -1,4 +1,4 @@
-<form class='form' role='form' method='post' action='input-file.php'>
+<form class='form' id="input-file" role='form' method='post' action='templates/input-file.php'>
 
   	<div class="form-group">
 		<label for="uploadFile">Upload File</label>

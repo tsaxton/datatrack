@@ -1,4 +1,4 @@
-<form class='form' role='form' method='post' action='input-paste.php'>
+<form class='form' id="input-paste" role='form' method='post' action='templates/input-paste.php'>
 
 <div class="form-group">
     <label for="uploadFile">Paste your file here.</label>

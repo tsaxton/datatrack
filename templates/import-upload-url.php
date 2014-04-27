@@ -1,4 +1,4 @@
-<form class='form' role='form' method='post' action='input-url.php'>
+<form class='form' id="input-url" role='form' method='post' action='templates/input-url.php'>
 
 	<div class="form-group">
 		<label for="url">Link</label>

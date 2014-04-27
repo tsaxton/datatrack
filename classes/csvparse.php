@@ -145,4 +145,23 @@ class csvparse {
 		return $dates;
 	}
 
+	public function confirmFields(){
+		$fields = array();
+
+		if($this->location == 'column'){
+			for($i = 1; $i < count($this->arr[0]); $i++){
+				array_push($fields, $this->arr[0][$i]);
+			}
+		}
+		elseif($this->location == 'row'){
+			for($i = 1; $i < count($this->arr); $i++){
+				array_push($fields, $this->arr[$i][0]);
+			}
+		}
+		else{
+			// TODO: error case
+		}
+		return $fields;
+	}
+
 }

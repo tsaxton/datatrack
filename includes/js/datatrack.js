@@ -25,9 +25,25 @@ $(document).ajaxComplete(function(){
 			$('#time').collapse('show').html('Loading...');
 		},
 		complete: function(response){
-			console.log('Got here');
 			$('#time').html(response.responseText);
-			console.log(response);
+		},
+		error: function(){
+		}
+	})
+	/*$('#good-date').click(function(){
+		$('#time').collapse('hide').html('');
+		$('#attributes').clooapse('show').html('Loading...');
+		$.get('templates/data-attributes.php', {}, function(response){
+			$('#attributes').html(response);
+		});
+	});*/
+	$('#confirm-date').ajaxForm({
+		beforeSend: function(){
+			$('#time').collapse('hide').html('');
+			$('#attributes').collapse('show').html('Loading...');
+		},
+		complete: function(response){
+			$('#attributes').html(response.responseText);
 		},
 		error: function(){
 		}

@@ -15,7 +15,7 @@ $dates = $_SESSION['input']->confirmDates();
 <table class="table table-striped">
 <?php
 foreach($dates as $date){
-	echo"\t<tr>\n\t\t<td>$date</td>\n\t</tr>\n";
+	echo "\t<tr>\n\t\t<td>$date</td>\n\t</tr>\n";
 }
 ?>
 </table>
@@ -32,7 +32,9 @@ foreach($dates as $date){
 </form>
 </div>-->
 
-<form>
-<button type="submit" class="btn btn-success" id="good-date" formaction="templates/data-attributes.php">Yes</button>
-<button type="submit" class="btn btn-danger" id="bad-date" formaction="templates/date-wizard.php">No</button>
+<form class="form form-inline" id="confirm-date" action="templates/data-attributes.php" method="POST">
+<button type="submit" class="btn btn-success" id="good-date">Yes</button>
+</form>
+<form class="form form-inline" id="reject-date" action="templates/date-wizard.php" method="POST">
+<button type="submit" class="btn btn-danger" id="bad-date">No</button>
 </form>

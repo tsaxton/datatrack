@@ -48,4 +48,23 @@ $(document).ajaxComplete(function(){
 		error: function(){
 		}
 	})
+	$('#fieldSubmission').ajaxForm({
+		beforeSend: function(){
+			$('#attributes').collapse('hide').html('');
+			$('#troubleshooting').collapse('show').html('Loading...');
+		},
+		complete: function(response){
+			console.log(response.responseText);
+			if(response.responseText.indexOf("success") != -1){
+				$('#troubleshooting').collapse('hide').html('');
+				$('#view').collapse('show').html('Your data has been verified. Preparing to load data analysis...');
+				window.location.replace('templates/previewData.php');
+			}
+			else{
+				$('#troubleshooting').html(response.responseText);
+			}
+		},
+		error: function(){
+		}
+	})
 });

@@ -5,8 +5,9 @@ session_start();
 
 $fields = $_SESSION['input']->confirmFields();
 
+// TODO: In multiple files, allow them to choose if it is a data listing category, or a data set category
 ?>
-<form action="templates/confirm.php" method="post">
+<form id="fieldSubmission" action="templates/confirm.php" method="post">
 <p>If you do not wish to include any of the following fields, uncheck them.</p>
 <?php
 foreach($fields as $field){

@@ -164,4 +164,47 @@ class csvparse {
 		return $fields;
 	}
 
+	public function getDataRows(){
+		return count($this->arr);
+	}
+
+	public function getDataColumns(){
+		return count($this->arr[0]);
+	}
+
+	public function getData($index){
+		if($this->location == 'column'){
+			return $this->arr[$index];
+		}
+		elseif($this->location == 'row'){
+			$ret = array();
+			foreach($this->arr as $row){
+				array_push($ret, $row[$index]);
+			}
+			return $ret;
+		}
+		return 0;
+	}
+
+	public function getIndex($field){
+		$field = preg_replace("/[^A-Za-z0-9 ]/", '', $field);
+		//dump($field, 'field for getIndex');
+		if($this->location == 'column'){
+			foreach($this->arr[0] as $ind=>$foo){
+				//dump(preg_replace("/[^A-Za-z0-9]/", '', $foo));
+ 				if(preg_replace("/[^A-Za-z0-9]/", '', $foo) == $field){
+					return $ind;
+				}
+			}
+		}
+		elseif($this->location == 'row'){
+			foreach($this->arr as $ind=>$row){
+				if($row[0] == $field){
+					return $ind;
+				}
+			}
+		}
+		return 23;
+	}
+
 }

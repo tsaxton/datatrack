@@ -32,9 +32,12 @@ foreach($dates as $date){
 </form>
 </div>-->
 
-<form class="form form-inline" id="confirm-date" action="templates/data-attributes.php" method="POST">
+<form class="form form-inline" role="form" id="confirm-date" action="templates/data-attributes.php" method="POST">
+<div class="form-group">
 <button type="submit" class="btn btn-success" id="good-date">Yes</button>
-</form>
+</div>
+<div class="form-group">
 <form class="form form-inline" id="reject-date" action="templates/date-wizard.php" method="POST">
 <button type="submit" class="btn btn-danger" id="bad-date">No</button>
+</div>
 </form>

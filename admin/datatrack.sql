@@ -29,7 +29,7 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`id`),
   KEY `dataset` (`dataset`),
   CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`dataset`) REFERENCES `datasets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,1,'Transportation'),(2,2,'Public Safety'),(3,3,'Transportation'),(4,3,'Monthly'),(5,1,'Annual'),(6,2,'Annual');
+INSERT INTO `categories` VALUES (1,1,'Transportation'),(2,2,'Public Safety'),(3,3,'Transportation'),(4,3,'Monthly'),(5,1,'Annual'),(6,2,'Annual'),(7,4,'Monthly'),(8,4,'Technology'),(9,4,'Library'),(10,4,'Chicago');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `datasets` (
   `groups` varchar(512) DEFAULT NULL,
   `type` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,8 +67,36 @@ CREATE TABLE `datasets` (
 
 LOCK TABLES `datasets` WRITE;
 /*!40000 ALTER TABLE `datasets` DISABLE KEYS */;
-INSERT INTO `datasets` VALUES (1,'w8km-9pzd','CTA Annual Ridership','2013-10-20',NULL,NULL,'yearly'),(2,'ijzp-q8t2','Crimes, 2001-Present','2013-10-29','year,primary_type,count(id)','year,primary_type','yearly'),(3,'bynn-gwxy','CTA - Bus Ridership by Route',NULL,NULL,NULL,'monthly');
+INSERT INTO `datasets` VALUES (1,'w8km-9pzd','CTA Annual Ridership',NULL,NULL,NULL,'yearly'),(2,'ijzp-q8t2','Crimes, 2001-Present',NULL,'year,primary_type,count(id)','year,primary_type','yearly'),(3,'bynn-gwxy','CTA - Bus Ridership by Route',NULL,NULL,NULL,'monthly'),(4,'vbts-zqt4','CPL Wi-Fi Usage',NULL,NULL,NULL,'monthly');
 /*!40000 ALTER TABLE `datasets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `datefields`
+--
+
+DROP TABLE IF EXISTS `datefields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `datefields` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dataset` int(11) DEFAULT NULL,
+  `field` varchar(128) DEFAULT NULL,
+  `type` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dataset` (`dataset`),
+  CONSTRAINT `datefields_ibfk_1` FOREIGN KEY (`dataset`) REFERENCES `datasets` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `datefields`
+--
+
+LOCK TABLES `datefields` WRITE;
+/*!40000 ALTER TABLE `datefields` DISABLE KEYS */;
+INSERT INTO `datefields` VALUES (1,4,'year','year'),(2,4,'month','month');
+/*!40000 ALTER TABLE `datefields` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -87,7 +115,7 @@ CREATE TABLE `fields` (
   PRIMARY KEY (`id`),
   KEY `dataset` (`dataset`),
   CONSTRAINT `fields_ibfk_1` FOREIGN KEY (`dataset`) REFERENCES `datasets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +124,7 @@ CREATE TABLE `fields` (
 
 LOCK TABLES `fields` WRITE;
 /*!40000 ALTER TABLE `fields` DISABLE KEYS */;
-INSERT INTO `fields` VALUES (4,1,'total','Total Ridership',1),(5,1,'bus','Bus Ridership',1),(6,1,'rail','Elevated Train Ridership',1),(7,2,'OFFENSES INVOLVING CHILDREN','Offenses involving children',0),(8,2,'DOMESTIC VIOLENCE','Domestic violence',0),(9,2,'RITUALISM','Ritualism',0),(10,2,'INTERFERE WITH PUBLIC OFFICER','Interfere with public officer',0),(11,2,'NON-CRIMINAL (SUBJECT SPECIFIED)','Non-criminal (subject specified)',0),(12,2,'OTHER NARCOTIC VIOLATION','Other narcotic violation',0),(13,2,'NON-CRIMINAL','Non-criminal',0),(14,2,'OTHER OFFENSE ','Other offense ',0),(15,2,'OBSCENITY','Obscenity',0),(16,2,'PUBLIC INDECENCY','Public indecency',0),(17,2,'NON - CRIMINAL','Non - criminal',0),(18,2,'STALKING','Stalking',0),(19,2,'HOMICIDE','Homicide',1),(20,2,'KIDNAPPING','Kidnapping',0),(21,2,'INTIMIDATION','Intimidation',0),(22,2,'ARSON','Arson',1),(23,2,'SEX OFFENSE','Sex offense',0),(24,2,'PROSTITUTION','Prostitution',0),(25,2,'LIQUOR LAW VIOLATION','Liquor law violation',0),(26,2,'INTERFERENCE WITH PUBLIC OFFICER','Interference with public officer',0),(27,2,'CRIM SEXUAL ASSAULT','Criminal Sexual Assault',1),(28,2,'GAMBLING','Gambling',0),(29,2,'MOTOR VEHICLE THEFT','Motor vehicle theft',0),(30,2,'BURGLARY','Burglary',1),(31,2,'DECEPTIVE PRACTICE','Deceptive practice',0),(32,2,'OFFENSE INVOLVING CHILDREN','Offense involving children',0),(33,2,'ROBBERY','Robbery',1),(34,2,'WEAPONS VIOLATION','Weapons violation',0),(35,2,'NARCOTICS','Narcotics',0),(36,2,'PUBLIC PEACE VIOLATION','Public peace violation',0),(37,2,'CRIMINAL DAMAGE','Criminal damage',0),(38,2,'CRIMINAL TRESPASS','Criminal trespass',0),(39,2,'BATTERY','Battery',0),(40,2,'ASSAULT','Assault',1),(41,2,'OTHER OFFENSE','Other offense',0),(42,2,'THEFT','Theft',0),(43,2,'TOTAL','Total',0),(44,3,'avg_weekday_rides','Average Weekday Rides',1),(45,3,'avg_saturday_rides','Average Saturday Rides',1),(46,3,'avg_sunday_holiday_rides','Average Sunday Rides',1),(47,3,'monthtotal','Total Rides',1);
+INSERT INTO `fields` VALUES (4,1,'total','Total Ridership',1),(5,1,'bus','Bus Ridership',1),(6,1,'rail','Elevated Train Ridership',1),(7,2,'OFFENSES INVOLVING CHILDREN','Offenses involving children',0),(8,2,'DOMESTIC VIOLENCE','Domestic violence',0),(9,2,'RITUALISM','Ritualism',0),(10,2,'INTERFERE WITH PUBLIC OFFICER','Interfere with public officer',0),(11,2,'NON-CRIMINAL (SUBJECT SPECIFIED)','Non-criminal (subject specified)',0),(12,2,'OTHER NARCOTIC VIOLATION','Other narcotic violation',0),(13,2,'NON-CRIMINAL','Non-criminal',0),(14,2,'OTHER OFFENSE ','Other offense ',0),(15,2,'OBSCENITY','Obscenity',0),(16,2,'PUBLIC INDECENCY','Public indecency',0),(17,2,'NON - CRIMINAL','Non - criminal',0),(18,2,'STALKING','Stalking',0),(19,2,'HOMICIDE','Homicide',1),(20,2,'KIDNAPPING','Kidnapping',0),(21,2,'INTIMIDATION','Intimidation',0),(22,2,'ARSON','Arson',1),(23,2,'SEX OFFENSE','Sex offense',0),(24,2,'PROSTITUTION','Prostitution',0),(25,2,'LIQUOR LAW VIOLATION','Liquor law violation',0),(26,2,'INTERFERENCE WITH PUBLIC OFFICER','Interference with public officer',0),(27,2,'CRIM SEXUAL ASSAULT','Criminal Sexual Assault',1),(28,2,'GAMBLING','Gambling',0),(29,2,'MOTOR VEHICLE THEFT','Motor vehicle theft',0),(30,2,'BURGLARY','Burglary',1),(31,2,'DECEPTIVE PRACTICE','Deceptive practice',0),(32,2,'OFFENSE INVOLVING CHILDREN','Offense involving children',0),(33,2,'ROBBERY','Robbery',1),(34,2,'WEAPONS VIOLATION','Weapons violation',0),(35,2,'NARCOTICS','Narcotics',0),(36,2,'PUBLIC PEACE VIOLATION','Public peace violation',0),(37,2,'CRIMINAL DAMAGE','Criminal damage',0),(38,2,'CRIMINAL TRESPASS','Criminal trespass',0),(39,2,'BATTERY','Battery',0),(40,2,'ASSAULT','Assault',1),(41,2,'OTHER OFFENSE','Other offense',0),(42,2,'THEFT','Theft',0),(43,2,'TOTAL','Total',0),(44,3,'avg_weekday_rides','Average Weekday Rides',1),(45,3,'avg_saturday_rides','Average Saturday Rides',1),(46,3,'avg_sunday_holiday_rides','Average Sunday Rides',1),(47,3,'monthtotal','Total Rides',1),(48,4,'number_of_sessions','Sessions',1);
 /*!40000 ALTER TABLE `fields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,6 +154,37 @@ LOCK TABLES `foldSort` WRITE;
 /*!40000 ALTER TABLE `foldSort` DISABLE KEYS */;
 INSERT INTO `foldSort` VALUES (1,2,'primary_type','count_id');
 /*!40000 ALTER TABLE `foldSort` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `monthly`
+--
+
+DROP TABLE IF EXISTS `monthly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `monthly` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `dataset` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `field` int(11) DEFAULT NULL,
+  `value` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dataset` (`dataset`),
+  KEY `field` (`field`),
+  CONSTRAINT `monthly_ibfk_1` FOREIGN KEY (`dataset`) REFERENCES `datasets` (`id`),
+  CONSTRAINT `monthly_ibfk_2` FOREIGN KEY (`field`) REFERENCES `fields` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `monthly`
+--
+
+LOCK TABLES `monthly` WRITE;
+/*!40000 ALTER TABLE `monthly` DISABLE KEYS */;
+/*!40000 ALTER TABLE `monthly` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -160,6 +219,36 @@ LOCK TABLES `proportions` WRITE;
 INSERT INTO `proportions` VALUES (1,1,5,4,'Percentage of bus riders'),(2,1,6,4,'Percentage of train riders');
 /*!40000 ALTER TABLE `proportions` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `yearly`
+--
+
+DROP TABLE IF EXISTS `yearly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `yearly` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `dataset` int(11) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `field` int(11) DEFAULT NULL,
+  `value` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dataset` (`dataset`),
+  KEY `field` (`field`),
+  CONSTRAINT `yearly_ibfk_1` FOREIGN KEY (`dataset`) REFERENCES `datasets` (`id`),
+  CONSTRAINT `yearly_ibfk_2` FOREIGN KEY (`field`) REFERENCES `fields` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `yearly`
+--
+
+LOCK TABLES `yearly` WRITE;
+/*!40000 ALTER TABLE `yearly` DISABLE KEYS */;
+/*!40000 ALTER TABLE `yearly` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -170,4 +259,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-04-11 15:30:29
+-- Dump completed on 2014-04-30 19:10:13

@@ -58,7 +58,7 @@ $(document).ajaxComplete(function(){
 			if(response.responseText.indexOf("success") != -1){
 				$('#troubleshooting').collapse('hide').html('');
 				$('#view').collapse('show').html('Your data has been verified. Preparing to load data analysis...');
-				window.location.replace('templates/previewData.php');
+				window.location = 'templates/previewData.php';
 			}
 			else{
 				$('#troubleshooting').html(response.responseText);

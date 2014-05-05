@@ -5,8 +5,8 @@ session_start();
 
 //dump($_POST);
 
-$csv = new csvparse($_POST['file'], $_POST['timeframe']);
-$_SESSION['input'] = $csv;
+$json = new jsonparse($_POST['file'], $_POST['timeframe']);
+$_SESSION['input'] = $json;
 
 $dates = $_SESSION['input']->confirmDates();
 
@@ -35,7 +35,7 @@ foreach($dates as $date){
 <form class="form form-inline" role="form" id="confirm-date" action="templates/data-attributes.php" method="POST">
 <div class="form-group">
 <button type="submit" class="btn btn-success" id="good-date">Yes</button>
-</div>
+</div
 <div class="form-group">
 <form class="form form-inline" id="reject-date" action="templates/date-wizard.php" method="POST">
 <button type="submit" class="btn btn-danger" id="bad-date">No</button>

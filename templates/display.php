@@ -70,7 +70,7 @@ foreach($data->fields as $field){
 });
 </script>-->
 <div class="row-fluid tabbable">
-    <div class="span2">
+    <div class="col-md-2">
       <ul class="nav nav-tabs nav-stacked">
 	<li class="active"><a href="#recent" data-toggle="tab">Most Recent Data</a></li>
 	<li><a href="#longterm" data-toggle="tab">Long-Term Trends</a></li>
@@ -78,40 +78,40 @@ foreach($data->fields as $field){
 	<li><a href="#stats" data-toggle="tab">Statistics</a></li>
       </ul>
     </div>
-      <div class="span4 tab-content">
+      <div class="col-md-4 tab-content">
 	<div id="recent" class="tab-pane active">
 	    <h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
 	    <!-- Begin Recent Analysis -->
 	    <?=$recent->run();?>
 	    <!-- End Recent Analysis -->
 	</div>
-	<div id="longterm" class="tab-pane">
+	<div id="longterm" class="tab-pane fade">
 	    <h3>Long-Term Trends</h3>
 	    <!-- Begin Long Term Analysis -->
 	    <?=$long->run();?>
 	    <!-- End Long Term Analysis -->
 	</div>
-	<div id="streaks" class="tab-pane">
+	<div id="streaks" class="tab-pane fade">
 	    <h3>Streaks</h3>
 	    <?=$long->longStreak();?>
 	</div>
-	<div id="stats" class="tab-pane">
+	<div id="stats" class="tab-pane fade">
 	    <h3>Statistics</h3>
 	    <?=$long->statistics();?>
 	</div>
       </div><!-- /.tab-content -->
-    <div class="span5 offset1 chart" id="chart3">
+    <div class="col-md-5 col-md-offset-1 chart" id="chart3">
     </div>
 </div>
 
 <div class="row-fluid">
-    <div class="span12">
+    <div class="col-md-12">
 	<h2>Data Tables</h2>
     </div>
 </div>
 
 <div class="row-fluid tabbable">
-    <div class="span2">
+    <div class="col-md-2">
       <ul class="nav nav-tabs nav-stacked">
 	<!-- Begin data table tabs -->
 <?php
@@ -133,7 +133,7 @@ foreach($data->fields as $field){
 	<!-- End data table tabs -->
       </ul>
     </div>
-      <div class="span10 tab-content">
+      <div class="col-md-10 tab-content">
 	<!-- Begin data tables -->
 <?php
 $first = 1;

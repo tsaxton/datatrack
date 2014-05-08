@@ -15,7 +15,7 @@ class jsonparse {
 		$this->find_time();
 	}
 
-	public function parse_json(){
+	public function parse_json($json){
 		$json = json_decode($json, true);
 		$this->arr = $json;
 		return $json;
@@ -23,66 +23,46 @@ class jsonparse {
 
 
 	private function find_time(){
+		foreach($this->arr as $arr){
+			$result = $this->timeRecursion($arr, 0);
+			if($result){
+				$this->location = $result;
+				return $result;
+			}
+		}
+		return false;
+		// TODO: Case where date isn't a field, but rather is a key
+	}
 
-		echo "<h1>hello world!!!</h1>";
-
-		$dates = [‘year’, ‘month’, ‘day’, ‘date’];
-		$dateslength = count($dates);
-		foreach($this->arr as $key=>$value){
-			for($dates = 0; $dates < $arrlength; $dates++){
-				if(&key == $date){
-					return $key;
-				}
-				elseif (gettype($value) == "array") {
-					$valuelength = count($value);
-					for($value = 0; $dates < $valuelength; $value++){
-
-
+	private function timeRecursion($arr, $level, $ret = array()){
+		$dates = ['year', 'month', 'day', 'quarter', 'date'];
+		if(is_array($arr)){
+			foreach($arr as $key=>$value){
+				foreach($dates as $date){
+					if(strpos(strtolower($key), $date) !== false){
+						array_push($ret, array('key', $key, $level));
 					}
 				}
+				if(is_array($value)){
+					$ret = array_merge($ret, timeRecursion($value, $level+1));
+				}
 			}
-		return null;
 		}
+		$seen = array();
+		foreach($ret as $key=>$field){
+			if(isset($seen[$field[1]])){
+				unset($seen[$key]);
+			}
+			else{
+				$seen[$field[1]] = 1;
+			}
+		}
+		unset($seen);
+		dump($ret);
+		return $ret;
 	}
 
 	public function confirmDates(){
-		//if (($timestamp = strtotime($str)) === false) {
-		switch($this->time){
-		case 'quarterly':
-			$format = 'm/Y';
-			break;
-		case 'monthly':
-			$format = 'm/Y';
-			break;
-		case 'yearly':
-			$format = 'Y';
-			break;
-		}
-
-		$dates = array();
-		if(!$this->location_err && $this->location == 'column'){
-			foreach($this->arr as $r){
-				$str = $r[0];
-				if(($timestamp = strtotime($str)) != false){
-					array_push($dates, date('Y', $timestamp));
-				}
-			}
-		}
-		elseif(!$this->location_err && $this->location == 'row'){
-			echo "This other case!";
-			foreach($this->arr[0] as $str){
-				if(($timestamp = strtotime($str)) != false){
-					array_push($dates, date('Y', $timestamp));
-				}
-			}
-		}
-		elseif(!$this->location_err){
-			$this->location_err = true;
-		}
-		if($this->location_err){
-			// TODO: More complex interface for the event that the dates are not correct.
-		}
-		return $dates;
 	}
 
 	public function confirmFields(){

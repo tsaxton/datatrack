@@ -24,12 +24,10 @@ class jsonparse {
 
 	private function find_time(){
 
-		echo "<h1>hello world!!!</h1>";
-
 		$dates = [‘year’, ‘month’, ‘day’, ‘date’];
 		$dateslength = count($dates);
 		foreach($this->arr as $key=>$value){
-			for($dates = 0; $dates < $arrlength; $dates++){
+			for($dates = 0; $dates < $dateslength; $dates++){
 				if(&key == $date){
 					return $key;
 				}

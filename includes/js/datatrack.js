@@ -83,9 +83,8 @@ function add() {
 			+ (n + 1)
 			+ ':</label><input type="file" class="form-control" id="File_'
 			+ (n + 1) + '_input"placeholder="Add your file here" /></div>'
-			+ '<div class="col-md-2">\
-	        	<br>\
-	            <select class="form-control" id="Monthly">\
+			+ '<div class="col-md-2" style="display:none;" name="select_month"><br>'
+			+'		<select class="form-control" id="Monthly">\
 	                <option value="time">Month</option>\
 	                <option value="time">January</option>\
 			    	<option value="time">February</option>\
@@ -100,33 +99,50 @@ function add() {
 			    	<option value="time">December</option>\
 		        </select>\
 		    </div>'
-		    + '<div class="col-md-2">\
-				<br>\
-	            <select class="form-control" id="Quarterly">\
+		    + '<div class="col-md-2" style="display:none;" name="select_quarter"><br>'
+		    +'		<select class="form-control" id="Quarterly">\
 	            	<option value="time">Quarter</option>\
 	                <option value="time">Quarter 1</option>\
 	                <option value="time">Quarter 2</option>\
 			    	<option value="time">Quarter 3</option>\
 			    	<option value="time">Quarter 4</option>\
-		        </select>\
-		    </div>'
-		    + '<div class="col-md-2">\
-				<br>\
-	            <select class="form-control" id="Yearly">\
-	                <option value="time">Year</option>\
-	                <option value="time">1990</option>\
-			    	<option value="time">1991</option>\
-		        </select>\
-		    </div></div></div>';
+		        	</select>\
+		    	</div>'
+		    + '<div class="col-md-2" style="display:none;" name="select_year"><br>'
+		    + '<?php echo "hello world"; ?>'
+		    +'</div></div></div>';
 
 	files.append(nextFile);
 }
 
-function select_timefield(){
+function select_timeMonth(){
 	
-	if ( document.radios.timeframe1.checked == true ) {
-		alert("hi");
+	
+
+	if($('#timeframe-monthly').is(':checked')){
+		//var n = files.children().length;
+		$("div[name=select_month]").each(function() {
+			$(this).css("display", "block");
+		})
 	}
 
+}
+
+function select_timeQuarter(){
+	
+	if($('#timeframe-quarterly').is(':checked')){
+		$("div[name=select_quarter]").each(function (){
+			$(this).css("display", "block");
+		})
+	}
+}
+
+function select_timeYear(){
+		
+	if($('#timeframe-yearly').is(':checked')){
+		$("div[name=select_year]").each(function (){
+			$(this).css("display", "block");
+		})
+	}
 }
 

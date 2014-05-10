@@ -91,7 +91,7 @@
 		    </div>
 		</div>   
     </div>
- <button type="button" class="btn btn-default" onclick="add()">Add</button>
+ <button id="additionalFile" type="button" class="btn btn-default" onclick="add()">Add</button>
 </div>
 		
 

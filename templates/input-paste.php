@@ -5,8 +5,8 @@ session_start();
 
 //dump($_POST);
 
-$json = new jsonparse($_POST['file'], $_POST['timeframe']);
-$_SESSION['input'] = $json;
+$csv = new csvparse($_POST['file'], $_POST['timeframe']);
+$_SESSION['input'] = $csv;
 
 $dates = $_SESSION['input']->confirmDates();
 

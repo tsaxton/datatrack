@@ -1,99 +1,4 @@
 <form class='form' id="input-file" role='form' method='post' action='templates/input-file.php' enctype="multipart/form-data">
-<div class="col-md-12">
-  	<div class="form-group" id="file-group">
-	  	<div class="col-md-12">
-	  		<div class="form-group col-md-5">
-	        	<label for="file_1_input">File 1:</label>
-	            <input type="file" id="file_1_input" class="form-control" placeholder="Add your file here"/>
-	        </div>
-	        <div class="col-md-2" style="display:none;" name="select_month">
-	        	<br>
-	            <select class="form-control" id="Monthly">
-	                <option value="time">Month</option>
-	                <option value="time">January</option>
-			    	<option value="time">February</option>
-			    	<option value="time">March</option>
-			    	<option value="time">April</option>
-			    	<option value="time">May</option>
-			    	<option value="time">June</option>
-			    	<option value="time">August</option>
-			    	<option value="time">September></option>
-			    	<option value="time">October</option>
-			    	<option value="time">November</option>
-			    	<option value="time">December</option>
-		        </select>
-		    </div>                  
-			<div class="col-md-2" style="display:none;" name="select_quarter">
-				<br>
-	            <select class="form-control" id="Quarterly">
-	            	<option value="time">Quarter</option>
-	                <option value="time">Quarter 1</option>
-	                <option value="time">Quarter 2</option>
-			    	<option value="time">Quarter 3</option>
-			    	<option value="time">Quarter 4</option>
-		        </select>
-		    </div>               
-			<div class="col-md-2" style="display:none;" name="select_year">
-				<br>
-	            <select class="form-control" id="Yearly">
-	                <option value="time">Year</option>
-	                <?php
-						for($i=1950; $i<=date("Y"); $i++){
-						echo "<option value='time'> $i </option>";		
-						}	
-					?>  
-		        </select>
-		    </div>               
-		</div>
-        
-        <div class="col-md-12">
-	        <div class="form-group col-md-5">
-	        	<label for="file_2_input">File 2:</label>
-	            <input type="file" id="file_2_input" class="form-control" placeholder="Add your file here"/>
-	        </div>
-	        <div class="col-md-2" style="display:none;" name="select_month">
-	        	<br>
-	            <select class="form-control" id="Monthly" >
-	                <option value="time">Month</option>
-	                <option value="time">January</option>
-			    	<option value="time">February</option>
-			    	<option value="time">March</option>
-			    	<option value="time">April</option>
-			    	<option value="time">May</option>
-			    	<option value="time">June</option>
-			    	<option value="time">August</option>
-			    	<option value="time">September></option>
-			    	<option value="time">October</option>
-			    	<option value="time">November</option>
-			    	<option value="time">December</option>
-		        </select>
-		    </div>                  
-			<div class="col-md-2" style="display:none;" name="select_quarter">
-				<br>
-	            <select class="form-control" id="Quarterly">
-	            	<option value="time">Quarter</option>
-	                <option value="time">Quarter 1</option>
-	                <option value="time">Quarter 2</option>
-			    	<option value="time">Quarter 3</option>
-			    	<option value="time">Quarter 4</option>
-		        </select>
-		    </div>               
-			<div class="col-md-2" style="display:none;" name="select_year">
-				<br>
-	        <select class="form-control" id="Yearly">
-		        <option value="time">Year</option>   
-				<?php
-					for($i=1950; $i<=date("Y"); $i++){
-							echo "<option value='time'> $i </option>";		
-					}	
-				?>  
-		    </select>   
-		    </div>
-		</div>   
-    </div>
- <button id="additionalFile" type="button" class="btn btn-default" onclick="add()">Add</button>
-</div>
-		
 
 	<div class="radio-inline" id="radios">
 		<br>
@@ -117,6 +22,104 @@
 		</label>
 	</div>
 
+<div class="col-md-12">
+  	<div class="form-group" id="file-group">
+	  	<div class="col-md-12">
+	  		<div class="form-group col-md-5">
+	        	<label for="file_1_input">File 1:</label>
+	            <input type="file" id="file_1_input" name="files[]" class="form-control" placeholder="Add your file here"/>
+	        </div>
+	        <div class="col-md-2" style="display:none;" name="select_month">
+	        	<br>
+	            <select class="form-control" name="month[]" id="Monthly">
+	                <option value="0">Month</option>
+	                <option value="1">January</option>
+			    	<option value="2">February</option>
+			    	<option value="3">March</option>
+			    	<option value="4">April</option>
+			    	<option value="5">May</option>
+			    	<option value="6">June</option>
+					<option value="7">July</option>
+			    	<option value="8">August</option>
+			    	<option value="9">September></option>
+			    	<option value="10">October</option>
+			    	<option value="11">November</option>
+			    	<option value="12">December</option>
+		        </select>
+		    </div>                  
+			<div class="col-md-2" style="display:none;" name="select_quarter">
+				<br>
+	            <select class="form-control" name="quarter[]" id="Quarterly">
+	            	<option value="0">Quarter</option>
+	                <option value="1">Quarter 1</option>
+	                <option value="2">Quarter 2</option>
+			    	<option value="3">Quarter 3</option>
+			    	<option value="4">Quarter 4</option>
+		        </select>
+		    </div>               
+			<div class="col-md-2" style="display:none;" name="year[]" name="select_year">
+				<br>
+	            <select class="form-control" id="Yearly">
+	                <option value="time">Year</option>
+	                <?php
+						for($i=1950; $i<=date("Y"); $i++){
+						echo "<option value='time'> $i </option>";		
+						}	
+					?>  
+		        </select>
+		    </div>               
+		</div>
+        
+        <div class="col-md-12">
+	        <div class="form-group col-md-5">
+	        	<label for="file_2_input">File 2:</label>
+	            <input type="file" id="file_2_input" class="form-control" placeholder="Add your file here"/>
+	        </div>
+	        <div class="col-md-2" style="display:none;" name="select_month">
+	        	<br>
+	            <select class="form-control" id="Monthly" name="month[]">
+	                <option value="0">Month</option>
+	                <option value="1">January</option>
+			    	<option value="2">February</option>
+			    	<option value="3">March</option>
+			    	<option value="4">April</option>
+			    	<option value="5">May</option>
+			    	<option value="6">June</option>
+					<option value="7">July</option>
+			    	<option value="8">August</option>
+			    	<option value="9">September></option>
+			    	<option value="10">October</option>
+			    	<option value="11">November</option>
+			    	<option value="12">December</option>
+		        </select>
+		    </div>                  
+			<div class="col-md-2" style="display:none;" name="select_quarter">
+				<br>
+	            <select class="form-control" name="quarter[]" id="Quarterly">
+	            	<option value="0">Quarter</option>
+	                <option value="1">Quarter 1</option>
+	                <option value="2">Quarter 2</option>
+			    	<option value="3">Quarter 3</option>
+			    	<option value="4">Quarter 4</option>
+		        </select>
+		    </div>               
+			<div class="col-md-2" style="display:none;" name="select_year">
+				<br>
+	        <select class="form-control" name="year[]" id="Yearly">
+		        <option value="time">Year</option>   
+				<?php
+					//for($i=1950; $i<=date("Y"); $i++){
+					for($i=date("Y"); $i >= 1950; $i--){
+							echo "<option value='$i'>$i</option>";		
+					}	
+				?>  
+		    </select>   
+		    </div>
+		</div>   
+    </div>
+ <button id="additionalFile" type="button" class="btn btn-default" onclick="add()">Add</button>
+</div>
+		
 	<div class="form-group">
 		<button type='submit' class='btn btn-default'>Submit</button>
 	</div>

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	if($('#upload').length != 0){
 		$.get('templates/import-upload.php',{},function(response){
 			$('#upload').html(response);
@@ -7,6 +8,9 @@ $(document).ready(function(){
 			})
 		})
 	}
+
+
+	
 });
 
 $(document).ajaxComplete(function(){
@@ -68,3 +72,45 @@ $(document).ajaxComplete(function(){
 		}
 	})
 });
+
+var i = 2;
+
+function add(){ // link that says add a file has ID "additionalFile"
+	i++;
+    //e.preventDefault();
+    $.get('classes/filefield.php',{index:i},function(response){ // display folder is the equivalent of our tempates folder
+		$('#file-group').append(response);
+    })
+}
+
+function select_timeMonth(){
+	
+	
+
+	if($('#timeframe-monthly').is(':checked')){
+		//var n = files.children().length;
+		$("div[name=select_month]").each(function() {
+			$(this).css("display", "block");
+		})
+	}
+
+}
+
+function select_timeQuarter(){
+	
+	if($('#timeframe-quarterly').is(':checked')){
+		$("div[name=select_quarter]").each(function (){
+			$(this).css("display", "block");
+		})
+	}
+}
+
+function select_timeYear(){
+		
+	if($('#timeframe-yearly').is(':checked')){
+		$("div[name=select_year]").each(function (){
+			$(this).css("display", "block");
+		})
+	}
+}
+

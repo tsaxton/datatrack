@@ -1,9 +1,9 @@
 <form class='form' id="input-file" role='form' method='post' action='templates/input-file.php' enctype="multipart/form-data">
 
-	<div class="radio-inline" id="radios">
+	<div class="radio-inline">
 		<br>
 		<label>
-			<input type="radio" id="timeframe-monthly" name="timeframe-monthly" onclick="select_timeMonth()" value="monthly"/>
+			<input type="radio" id="timeframe-monthly" name="timeframe" onclick="select_timeMonth()" value="monthly"/>
 				Monthly
 			</label>
 	</div>
@@ -24,10 +24,10 @@
 
 <div class="col-md-12">
   	<div class="form-group" id="file-group">
-	  	<div class="col-md-12">
+	  	<!--div class="col-md-12">
 	  		<div class="form-group col-md-5">
 	        	<label for="file_1_input">File 1:</label>
-	            <input type="file" id="file_1_input" name="files[]" class="form-control" placeholder="Add your file here"/>
+	            <input type="file" id="file_input" name="files[]" class="form-control" placeholder="Add your file here"/>
 	        </div>
 	        <div class="col-md-2" style="display:none;" name="select_month">
 	        	<br>
@@ -41,7 +41,7 @@
 			    	<option value="6">June</option>
 					<option value="7">July</option>
 			    	<option value="8">August</option>
-			    	<option value="9">September></option>
+			    	<option value="9">September</option>
 			    	<option value="10">October</option>
 			    	<option value="11">November</option>
 			    	<option value="12">December</option>
@@ -62,18 +62,18 @@
 	            <select class="form-control" id="Yearly">
 	                <option value="time">Year</option>
 	                <?php
-						for($i=1950; $i<=date("Y"); $i++){
-						echo "<option value='time'> $i </option>";		
-						}	
-					?>  
+						/*for($i=date("Y"); $i>=1950; $i--){
+						echo "<option value='$i'> $i </option>";		
+						}	*/
+					?>
 		        </select>
 		    </div>               
-		</div>
+		</div-->
         
         <div class="col-md-12">
 	        <div class="form-group col-md-5">
-	        	<label for="file_2_input">File 2:</label>
-	            <input type="file" id="file_2_input" class="form-control" placeholder="Add your file here"/>
+	        	<label for="file_input">File 1:</label>
+	            <input type="file" id="file_input" class="form-control" placeholder="Add your file here"/>
 	        </div>
 	        <div class="col-md-2" style="display:none;" name="select_month">
 	        	<br>
@@ -110,12 +110,12 @@
 				<?php
 					//for($i=1950; $i<=date("Y"); $i++){
 					for($i=date("Y"); $i >= 1950; $i--){
-							echo "<option value='$i'>$i</option>";		
+							echo "<option value='$i'>$i</option>";
 					}	
 				?>  
 		    </select>   
 		    </div>
-		</div>   
+		</div>  
     </div>
  <button id="additionalFile" type="button" class="btn btn-default" onclick="add()">Add</button>
 </div>

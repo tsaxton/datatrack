@@ -73,40 +73,52 @@ $(document).ajaxComplete(function(){
 	})
 });
 
-var i = 2;
+var i = 1;
+
 
 function add(){ // link that says add a file has ID "additionalFile"
 	i++;
+	var t = "none";
+	var radioyear = "none";
     //e.preventDefault();
-    $.get('classes/filefield.php',{index:i},function(response){ // display folder is the equivalent of our tempates folder
+    if($('#timeframe-monthly').is(':checked')){
+    	t = "month";
+    }
+    if($('#timeframe-quarterly').is(':checked')){
+    	t = "quarter";
+    }
+    if($('#timeframe-yearly').is(':checked')){
+    	radioyear = "year";
+    }
+    $.get('classes/filefield.php',{index:i,timefield:t,checkyear:radioyear},function(response){ // display folder is the equivalent of our tempates folder
 		$('#file-group').append(response);
     })
 }
 
 function select_timeMonth(){
-	
-	
-
 	if($('#timeframe-monthly').is(':checked')){
-		//var n = files.children().length;
 		$("div[name=select_month]").each(function() {
 			$(this).css("display", "block");
+		})
+		$("div[name=select_quarter]").each(function (){
+			$(this).css("display", "none");
 		})
 	}
 
 }
 
 function select_timeQuarter(){
-	
 	if($('#timeframe-quarterly').is(':checked')){
+		$("div[name=select_month]").each(function() {
+			$(this).css("display", "none");
+		})
 		$("div[name=select_quarter]").each(function (){
 			$(this).css("display", "block");
 		})
 	}
 }
 
-function select_timeYear(){
-		
+function select_timeYear(){	
 	if($('#timeframe-yearly').is(':checked')){
 		$("div[name=select_year]").each(function (){
 			$(this).css("display", "block");

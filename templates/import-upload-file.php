@@ -17,7 +17,7 @@
 	<div class="radio-inline">
 		<br>
 		<label>
-			<input type="radio" id="timeframe-yearly" name="timeframe" onclick="select_timeYear()" value="yearly"/>
+			<input checked type="radio" id="timeframe-yearly" name="timeframe" onclick="select_timeYear()" value="yearly"/>
 				Yearly
 		</label>
 	</div>
@@ -103,7 +103,7 @@
 			    	<option value="4">Quarter 4</option>
 		        </select>
 		    </div>               
-			<div class="col-md-2" style="display:none;" name="select_year">
+			<div class="col-md-2" name="select_year">
 				<br>
 	        <select class="form-control" name="year[]" id="Yearly">
 		        <option value="time">Year</option>   
@@ -117,7 +117,9 @@
 		    </div>
 		</div>  
     </div>
- <button id="additionalFile" type="button" class="btn btn-default" onclick="add()">Add</button>
+	<div class="form-group">
+ 	 	 <button id="additionalFile" type="button" class="btn btn-default" onclick="add()">Add</button>
+	</div>
 </div>
 		
 	<div class="form-group">

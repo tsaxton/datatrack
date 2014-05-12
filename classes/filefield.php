@@ -57,16 +57,7 @@ $quarter .= ';" name="select_quarter">
 		    	<option value="4">Quarter 4</option>
 	        </select>
 	    	</div>';
-$year = '<div class="col-md-2" style="display:';
-
-if($radioyear == "year"){
-	$year .= "block";
-}
-else{
-	$year .= "none";
-}
-
-$year .= ';" name="select_year">
+$year = '<div class="col-md-2"  name="select_year">
 			<br>
             <select class="form-control" name="year[]" id="Yearly">
                 <option value="0">Year</option>';

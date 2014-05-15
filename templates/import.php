@@ -9,7 +9,7 @@
 		<div id="upload" class="panel-collapse panel-body collapse in">
 		</div>
 	</div>
-	<div class="panel panel-default">
+	<!--<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4 class="panel-title">
 				2. Confirm Data Time Frame
@@ -44,5 +44,5 @@
 		</div>
 		<div id="view" class="panel-collapse panel-body collapse">
 		</div>
-	</div>
+	</div>-->
 </div>

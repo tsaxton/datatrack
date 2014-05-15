@@ -73,7 +73,7 @@
 		</div>  
     </div>
 	<div class="form-group">
- 	 	 <button id="additionalFile" type="button" class="btn btn-default" onclick="add()">Add</button>
+ 	 	 <a id="additionalFile" href="#" onclick="add()"><span class="glyphicon glyphicon-plus"></span> Click Here to Add Another File</a>
 	</div>
 </div>
 		

@@ -5,7 +5,11 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 session_start();
 
 if(array_key_exists('files', $_FILES)){
-	$_SESSION['csv'] = new multicsv($_FILES['files'], $month, $quarter, $year);
+	$month = $_POST['months'];
+	$quarter = $_POST['quarters'];
+	$year = $_POST['year'];
+	$type = $_POST['timeframe'];
+	$_SESSION['csv'] = new multicsv($_FILES['files'], $month, $quarter, $year, $type);
 }
 
 if(!array_key_exists('csv', $_SESSION)){

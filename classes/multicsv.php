@@ -9,7 +9,7 @@ class multicsv{
 	private $quarters;
 	private $step;
 
-	public function __construct($files, $month, $quarter, $year){
+	public function __construct($files, $month, $quarter, $year, $type){
 		foreach($files['error'] as $i=>$error){
 			if($error == 0){
 				$this->files[$i] = file_get_contents($files['tmp_name'][$i]);
@@ -18,6 +18,7 @@ class multicsv{
 		$this->months = $month;
 		$this->years = $year;
 		$this->quarters = $quarter;
+		$this->type = $type;
 		$this->step = 0;
 	}
 
@@ -163,6 +164,51 @@ class multicsv{
 				}
 			case 6:
 				// Check for date fields, if necessary
+				// if a case reads "this is a problem" it can just return an error message, using the $this->errorMessage($msg) function
+				switch($this->type){
+				case 'yearly':
+					if(is_array($this->years) && count($this->years) != count($this->files)){
+						// this is a problem
+					}
+					if(!is_array($this->years)){
+						// need to find years in the data
+					}
+					break;
+				case 'monthly':
+					if(!is_array($this->months) && !is_array($this->years)){
+						// month and year contained in array
+					}
+					elseif(!is_array($this->months) && is_array($this->years) && count($this->years) != count($this->files)){
+						// this is a problem
+					}
+					elseif(!is_array($this->months) && is_array($this->years)){
+						// only months are hidden in the data
+					}
+					elseif(is_array($this->months) && !is_array($this->years)){
+						// some really low-priority stuff where the months are files with each year in it
+					}
+					elseif(is_array($this->months) && is_array($this->years) && (count($this->years) != count($this->files) || count($this->months) != count($this->files))){
+						// this is a problem
+					}
+					break;
+				case 'quarterly':
+					if(!is_array($this->quarters) && !is_array($this->years)){
+						// quarter and year contained in array
+					}
+					elseif(!is_array($this->quarters) && is_array($this->years) && count($this->years) != count($this->files)){
+						// this is a problem
+					}
+					elseif(!is_array($this->quarters) && is_array($this->years)){
+						// only quarters are hidden in the data
+					}
+					elseif(is_array($this->quarters) && !is_array($this->years)){
+						// some really low-priority stuff where the quarters are files with each year in it
+					}
+					elseif(is_array($this->quarters) && is_array($this->years) && (count($this->years) != count($this->files) || count($this->quarters) != count($this->files))){
+						// this is a problem
+					}
+					break;
+				}
 				break;
 			case 7:
 				// Ask which one is category and which one is type

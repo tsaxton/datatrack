@@ -8,6 +8,9 @@ class multicsv{
 	private $years;
 	private $quarters;
 	private $step;
+	private $useCols = array();
+	private $useRows = array();
+	private $data = array();
 
 	public function __construct($files, $month, $quarter, $year, $type){
 		foreach($files['error'] as $i=>$error){
@@ -75,11 +78,45 @@ class multicsv{
 					}
 				}
 				break;
+			case 5:
+				if($args == 'yes'){
+					$problems = $this->nonNumeric();
+					foreach($this->arrays as $i=>$table){
+						foreach($problems as $problem){
+							echo $problem;
+							foreach($table as $j=>$row){
+								if($row[0] == $problem){
+									echo "<p>unsetting in file $i</p>";
+									unset($this->arrays[$i][$j]);
+									break;
+								}
+							}
+							echo "<hr>";
+						}
+					}
+				}
+				break;
+			case 7:
+				if($args == 1){
+					$this->flipFiles();
+				}
+				break;
+			case 9:
+				foreach($args as $index=>$value){
+					array_push($this->useCols, $index+1);
+				}
+				break;
+			case 10:
+				foreach($args as $index=>$value){
+					array_push($this->useRows, $index+1);
+				}
+				break;
 		}
 		$this->step++;
 	}
 
 	public function continueAnalysis($args){
+		set_time_limit(120);
 		while(1){
 			foreach($this->arrays as $i=>$arr){
 				$this->arrays[$i] = array_values($this->arrays[$i]); // rekey the array to make sure we're not missing row numbers
@@ -145,23 +182,11 @@ class multicsv{
 				break;
 			case 5:
 				// Check for rows with no numeric data; if not the first row, then get rid of it
-				foreach($this->arrays as $i=>$file){
-					foreach($file as $j=>$row){
-						if($j == 0){
-							continue;
-						}
-						$switch = false;
-						foreach($row as $k=>$col){
-							if(is_numeric($col)){
-								$switch = true;
-								break;
-							}
-						}
-						if($switch != true){
-							unset($this->arrays[$i][$j]);
-						}
-					}
+				$problems = $this->nonNumeric();
+				if(!empty($problems)){
+					return $this->yesNo($this->ignoreQuestion('row', $problems));
 				}
+				break;
 			case 6:
 				// Check for date fields, if necessary
 				// if a case reads "this is a problem" it can just return an error message, using the $this->errorMessage($msg) function
@@ -212,12 +237,142 @@ class multicsv{
 				break;
 			case 7:
 				// Ask which one is category and which one is type
+				$rowOne = $this->getFirstRow();
+				$colOne = $this->getFirstColumn();
+				return $this->radioButtons(array(implode(', ', $rowOne), implode(', ', $colOne)), "Which of the following shows your <strong>data types</strong> (e.g. Total, Men, Women, Ages, etc.)?");
 				break;
 			case 8:
-				return "Success!";
+				$colOne = $this->getFirstColumn();
+				return $this->yesNo("<p>Are the following the data you measured?</p><p>" . implode(', ', $colOne) . "</p>");
+				break;
+			case 9:
+				// Ask which types they want to use
+				$rowOne = $this->getFirstRow();
+				array_shift($rowOne);
+				return $this->checkButtons($rowOne, 'Which of the data types do you wish to use? (NOTE: At least one must be checked.)');
+				break;
+			case 10:
+				// Ask which categories they want to use
+				$colOne = $this->getFirstColumn();
+				array_shift($colOne);
+				return $this->checkButtons($colOne, 'Which of these data categories do you wish to use? (NOTE: At least one must be checked.)');
+				break;
+			case 11:
+				$this->toInternalData();
+				break;
+			case 12:
+				return "Yay!";
 			}
 			$this->step++;
 		}
+	}
+
+	private function nonNumeric(){
+		$problems = array();
+		foreach($this->arrays as $i=>$file){
+			foreach($file as $j=>$row){
+				if($j == 0){
+					continue;
+				}
+				$switch = false;
+				foreach($row as $k=>$col){
+					if($k == 0){
+						continue;
+					}
+					if(!is_numeric($col)){
+						$switch = true;
+						break;
+					}
+				}
+				if($switch == true){
+					//unset($this->arrays[$i][$j]);
+					array_push($problems, $this->arrays[$i][$j][0]);
+				}
+			}
+		}
+		return $problems;
+	}
+
+	private function toInternalData(){
+		switch($this->type){
+		case 'yearly':
+			return $this->toInternalDataYearly();
+		case 'monthly':
+			return $this->toInternalDataMonthly();
+		case 'quarterly':
+			return $this->toInternalDataQuarterly();
+		}
+	}
+
+	private function toInternalDataYearly(){
+		$ret = array();
+		foreach($this->files as $i=>$file){
+			$year = $this->years[$i];
+			$ret[$year] = array();
+			echo "FILE $i";
+			foreach($this->useRows as $row){
+				foreach($this->useCols as $col){
+					$rowLabel = $this->arrays[0][$row][0];
+					if(count($this->useCols) == 1){
+						$colLabel = '';
+					}
+					else{
+					$colLabel = ' (' . $this->arrays[0][0][$col] . ')';
+					}
+					$label = $rowLabel . $colLabel;
+					echo "<p>$label</p>";
+					$localFirstRow = $this->getFirstRow($i);
+					$localFirstCol = $this->getFirstColumn($i);
+					$j = array_search($rowLabel, $localFirstCol);
+					$k = array_search($this->arrays[0][0][$col], $localFirstRow);
+					if($j===false || $k===false){
+						echo "About to return";
+						return "Something went wrong!";
+					}
+					echo $j . "<br>" . $k . "<br>";
+					echo $this->arrays[$i][$j][$k];
+					$ret[$year][$label] = $this->arrays[$i][$j][$k];
+				}
+			}
+			echo "<hr>";
+		}
+		$this->data = $ret;
+	}
+
+	private function toInternalDataMonthly(){
+		return 0;
+	}
+
+	private function toInternalDataQuarterly(){
+		return 0;
+	}
+
+	private function flipFiles(){
+		$ret = array();
+		foreach($this->arrays as $i=>$file){
+			$ret[$i] = array();
+			foreach($file as $j=>$row){
+				foreach($row as $k=>$col){
+					if(!array_key_exists($k, $ret[$i])){
+						$ret[$i][$k] = array();
+					}
+					$ret[$i][$k][$j] = $col;
+				}
+			}
+		}
+		$this->arrays = $ret;
+	}
+
+	private function getFirstRow($file = 0){
+		return $this->arrays[$file][0];
+	}
+
+	private function getFirstColumn($file = 0){
+		$ret = array();
+		foreach($this->arrays[$file] as $j=>$row){
+			array_push($ret, $row[0]);
+		}
+		return $ret;
 	}
 
 	private function getWeirdRows(){
@@ -364,10 +519,11 @@ class multicsv{
 		$str .= '<form action="analyze.php" method="POST" id="confirmationDialog">';
 		foreach($options as $i=>$option){
 			$str .= '<div class="radio">';
-			$str .= "<label for='$i'><input type='radio' name='response' value='$i'/> $option</label></div>";
+			$str .= "<label for='$i'><input type='radio' id='$i' name='response' value='$i'/> $option</label></div>";
 		}
 		$str .= "<div class='form-group'><button type='submit' class='btn btn-default'>Continue</button></div>";
 		$str .= '</form></div>';
+		return $str;
 	}
 
 	private function checkButtons($options, $message){
@@ -375,10 +531,11 @@ class multicsv{
 		$str .= '<form action="analyze.php" method="POST" id="confirmationDialog">';
 		foreach($options as $i=>$option){
 			$str .= '<div class="checkbox">';
-			$str .= "<label for='$i'><input type='checkbox' name='response' value='$i'/> $option</label></div>";
+			$str .= "<label for='$i'><input type='checkbox' id='$i' checked name='response[]'/> $option</label></div>";
 		}
 		$str .= "<div class='form-group'><button type='submit' class='btn btn-default'>Continue</button></div>";
 		$str .= '</form></div>';
+		return $str;
 	}
 
 	private function yesNo($message){

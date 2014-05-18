@@ -27,8 +27,13 @@ abstract class data{
     public $proportionData = array();
 
     public function __construct($id){
-		$this->id = $id;
-		$this->initialize();
+		if(is_array($id)){
+			$this->fromArray($id);
+		}
+		else{
+			$this->id = $id;
+			$this->initialize();
+		}
     }
 
     abstract public function initialize();

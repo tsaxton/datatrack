@@ -2,6 +2,20 @@
 
 class yearly extends data{
 
+	private function fromArray($data){
+		$this->name = 'User Data';
+		$year = reset($data);
+		$fields = array();
+		foreach($year as $field=>$val){
+			array_push($fields, array('field'=>$field, 'text'=>$field, 'major'=>1));
+		}
+		$this->fields = $fields;
+		$this->allFields = $fields;
+		$this->figures = $data;
+
+		$this->calculateDiffs();
+	}
+
     public function initialize(){
 		if(!$this->id){
 			throw new Exception('Data object was improperly initialized.');

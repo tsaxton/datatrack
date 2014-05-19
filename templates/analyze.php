@@ -2,7 +2,6 @@
 //include('../includes.php');
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-session_start();
 
 if(array_key_exists('files', $_FILES)){
 	$month = $_POST['months'];

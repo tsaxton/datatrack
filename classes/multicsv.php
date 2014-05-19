@@ -39,7 +39,6 @@ class multicsv{
 								unset($this->arrays[$i][$j]);
 							}
 							elseif($rowLen != $mean){
-								echo "Trying to unset \$this->arrays[$i][$j]";
 								unset($this->arrays[$i][$j]);
 							}
 						}
@@ -83,15 +82,12 @@ class multicsv{
 					$problems = $this->nonNumeric();
 					foreach($this->arrays as $i=>$table){
 						foreach($problems as $problem){
-							echo $problem;
 							foreach($table as $j=>$row){
 								if($row[0] == $problem){
-									echo "<p>unsetting in file $i</p>";
 									unset($this->arrays[$i][$j]);
 									break;
 								}
 							}
-							echo "<hr>";
 						}
 					}
 				}
@@ -261,10 +257,50 @@ class multicsv{
 				$this->toInternalData();
 				break;
 			case 12:
-				return "Yay!";
+				return $this->displayData();
 			}
 			$this->step++;
 		}
+	}
+
+	private function displayData(){
+		switch($this->type){
+		case 'yearly':
+			return $this->displayDataYearly();
+		case 'monthly':
+			return $this->displayDataMonthly();
+		case 'quarterly':
+			return $this->displayDataQuarterly();
+		}
+	}
+
+	private function displayDataYearly(){
+		$str = "<table class='table table-striped'><tr><th>&nbsp;</th>";
+		foreach($this->data as $year=>$info){
+			$str .= "<th>$year</th>";
+		}
+		$str .= "</tr>\n";
+		$year = date('Y');
+		while(!array_key_exists($year, $this->data)){
+			$year--;
+		}
+		foreach($this->data[$year] as $category=>$foo){
+			$str .= "<tr><th>$category</th>";
+			foreach($this->data as $year=>$info){
+				$str .= "<td>{$info[$category]}</td>";
+			}
+			$str .= "</tr>\n";
+		}
+		$str .= "</table>";
+		return $str;
+	}
+
+	private function displayDataMonthly(){
+		return;
+	}
+
+	private function displayDataQuarterly(){
+		return;
 	}
 
 	private function nonNumeric(){
@@ -309,7 +345,6 @@ class multicsv{
 		foreach($this->files as $i=>$file){
 			$year = $this->years[$i];
 			$ret[$year] = array();
-			echo "FILE $i";
 			foreach($this->useRows as $row){
 				foreach($this->useCols as $col){
 					$rowLabel = $this->arrays[0][$row][0];
@@ -320,21 +355,17 @@ class multicsv{
 					$colLabel = ' (' . $this->arrays[0][0][$col] . ')';
 					}
 					$label = $rowLabel . $colLabel;
-					echo "<p>$label</p>";
 					$localFirstRow = $this->getFirstRow($i);
 					$localFirstCol = $this->getFirstColumn($i);
 					$j = array_search($rowLabel, $localFirstCol);
 					$k = array_search($this->arrays[0][0][$col], $localFirstRow);
 					if($j===false || $k===false){
-						echo "About to return";
+						// TODO: Should probably do something else here
 						return "Something went wrong!";
 					}
-					echo $j . "<br>" . $k . "<br>";
-					echo $this->arrays[$i][$j][$k];
 					$ret[$year][$label] = $this->arrays[$i][$j][$k];
 				}
 			}
-			echo "<hr>";
 		}
 		$this->data = $ret;
 	}
@@ -516,7 +547,7 @@ class multicsv{
 
 	private function radioButtons($options, $message){
 		$str = '<div class="well"><p>' . $message . '</p>';
-		$str .= '<form action="analyze.php" method="POST" id="confirmationDialog">';
+		$str .= '<form action="?id=analyze" method="POST" id="confirmationDialog">';
 		foreach($options as $i=>$option){
 			$str .= '<div class="radio">';
 			$str .= "<label for='$i'><input type='radio' id='$i' name='response' value='$i'/> $option</label></div>";
@@ -528,7 +559,7 @@ class multicsv{
 
 	private function checkButtons($options, $message){
 		$str = '<div class="well"><p>' . $message . '</p>';
-		$str .= '<form action="analyze.php" method="POST" id="confirmationDialog">';
+		$str .= '<form action="?id=analyze" method="POST" id="confirmationDialog">';
 		foreach($options as $i=>$option){
 			$str .= '<div class="checkbox">';
 			$str .= "<label for='$i'><input type='checkbox' id='$i' checked name='response[]'/> $option</label></div>";
@@ -539,7 +570,7 @@ class multicsv{
 	}
 
 	private function yesNo($message){
-		$str = "<div class='well'><p>$message</p><p><strong>Responding No will result in the process being exited. You will need to edit your files manually to fix the error.</strong><div class='row'><form action='analyze.php' method='POST' id='confirmationDialog'><div class='col-md-6'><button type='submit' name='response' value='yes' class='btn btn-success'>Yes</button></div><div class='col-md-6'><button type='submit' name='response' value='no' class='btn btn-danger'>No</button></div></form></div></div>";
+		$str = "<div class='well'><p>$message</p><p><strong>Responding No will result in the process being exited. You will need to edit your files manually to fix the error.</strong><div class='row'><form action='?id=analyze' method='POST' id='confirmationDialog'><div class='col-md-6'><button type='submit' name='response' value='yes' class='btn btn-success'>Yes</button></div><div class='col-md-6'><button type='submit' name='response' value='no' class='btn btn-danger'>No</button></div></form></div></div>";
 		return $str;
 	}
 

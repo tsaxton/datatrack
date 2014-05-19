@@ -1,4 +1,4 @@
-<form class='form' id="input-file" role='form' method='post' action='templates/analyze.php' enctype="multipart/form-data">
+<form class='form' id="input-file" role='form' method='post' action='?id=analyze' enctype="multipart/form-data">
 
 	<div class="radio-inline">
 		<br>

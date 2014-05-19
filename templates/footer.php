@@ -1,6 +1,8 @@
 <!--End main body content-->
 
-
-</div> <!-- close container-fluid -->
+<footer>
+       			<p> Copyright Datatrack and Trendable teams 2014</p>
+       		</footer>
+<!-- </div> <!-- close container-fluid --> 
 </body>
 </html>

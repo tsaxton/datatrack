@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('includes.php');
 include('templates/header.php');
 if(array_key_exists('id',$_GET)){

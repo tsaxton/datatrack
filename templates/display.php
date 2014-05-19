@@ -12,11 +12,16 @@ elseif($results['type'] == 'monthly'){
 $recent = new recentAnalysis($data);
 $long = new longTerm($data);
 ?>
-<div class="row">
-    <div class="span12">
-	<h2><?=$data->getName()?></h2>
+<div class = "topTrends">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+	<h1><?=$data->getName()?> Analysis</h1>
     </div>
 </div>
+
+
 
 <!--<script>
 $(document).ready(function(){
@@ -70,38 +75,57 @@ foreach($data->fields as $field){
 });
 </script>-->
 <div class="row-fluid tabbable">
-    <div class="span2">
-      <ul class="nav nav-tabs nav-stacked">
+    <div class="span3">
+      <ul class="nav nav-tabs">
 	<li class="active"><a href="#recent" data-toggle="tab">Most Recent Data</a></li>
 	<li><a href="#longterm" data-toggle="tab">Long-Term Trends</a></li>
 	<li><a href="#streaks" data-toggle="tab">Streaks</a></li>
 	<li><a href="#stats" data-toggle="tab">Statistics</a></li>
       </ul>
     </div>
+    
       <div class="span4 tab-content">
 	<div id="recent" class="tab-pane active">
-	    <h3>Most Recent Data (<?=$data->mostRecent();?>)</h3>
+	    <h2>Most Recent Data (<?=$data->mostRecent();?>)</h2>
 	    <!-- Begin Recent Analysis -->
 	    <?=$recent->run();?>
 	    <!-- End Recent Analysis -->
 	</div>
 	<div id="longterm" class="tab-pane">
-	    <h3>Long-Term Trends</h3>
+	    <h2>Long-Term Trends</h2>
 	    <!-- Begin Long Term Analysis -->
 	    <?=$long->run();?>
 	    <!-- End Long Term Analysis -->
 	</div>
 	<div id="streaks" class="tab-pane">
-	    <h3>Streaks</h3>
+	    <h2>Streaks</h2>
 	    <?=$long->longStreak();?>
 	</div>
 	<div id="stats" class="tab-pane">
-	    <h3>Statistics</h3>
+	    <h2>Statistics</h2>
 	    <?=$long->statistics();?>
 	</div>
       </div><!-- /.tab-content -->
-    <div class="span5 offset1 chart" id="chart3">
-    </div>
+      
+      </div>
+</div>
+
+    
+    <div class = "lineGraph">
+    <div class="container">
+    <div class="row">
+            <div class="col-lg-12">
+			<img class = "line" src = "/includes/img/linechart_symbols.png">
+                  <button class="Yes"> Get Link </button> <button class = "No"> Compare </button>
+             		<button class = "showMe"> Add / Edit Data </button>
+        
+              
+</div>
+			</div>			
+        </div>
+</div>
+    <!--<div class="span5 offset1 chart" id="chart3">
+    </div> -->
 </div>
 
 <div class="row-fluid">

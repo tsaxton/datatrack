@@ -1,6 +1,6 @@
 <?php
-session_start();
 include('includes.php');
+session_start();
 include('templates/header.php');
 if(array_key_exists('id',$_GET)){
     $id = $_GET['id'];

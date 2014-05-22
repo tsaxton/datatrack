@@ -1,3 +1,27 @@
+<header>
+            <div class = "container">
+       			<h1>trendable!</h1>
+               <p> Easily import, knit together and analyze time series data.</p>
+              <!--<input placeholder = "Paste data or URL of data in JSON, XML or CSV format here.">
+              <button class="analyze"> Analyze </button> <button title = "Upload" class = "upload"> <img src = "includes/img/upload.png"> </button>-->
+              <a href = "/?id=import"><button class="analyze" title = "Import Data"><img src = "includes/img/upload.png"> Import Data </button> </a><button title = "Datasets" class = "upload"> <span class="glyphicon glyphicon-cloud"></span> My Data </button>
+            </div>
+       		</header>
+
+<div class = "examples">
+            <div class = "container">
+       				<h2> Examples: </h2>
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div> 
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div> 
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div> 
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div>
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div>
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div>
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div>
+                  <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div> 
+            </div>
+       		</div>
+
 <div class="row-fluid">
     <div class="span2">
 	<ul class="nav nav-list">

@@ -1,4 +1,4 @@
-<header>
+<!--<header>
             <div class = "container">
        			<h1>Find the story in your time series data.</h1>
               <input placeholder = "Paste data or URL of data in JSON, XML or CSV format here.">
@@ -18,9 +18,9 @@
                   <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div>
                   <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div> 
             </div>
-       		</div>
+       		</div> -->
 
-< <h1>Data Importer Tool</h1>
+<h1>Import Data</h1>
 <div class="panel-group" id="accordion">
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -31,7 +31,7 @@
 		<div id="upload" class="panel-collapse panel-body collapse in">
 		</div>
 	</div>
-	<!--<div class="panel panel-default">
+	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4 class="panel-title">
 				2. Confirm Data Time Frame
@@ -66,5 +66,5 @@
 		</div>
 		<div id="view" class="panel-collapse panel-body collapse">
 		</div>
-	</div>-->
+	</div>
 </div>

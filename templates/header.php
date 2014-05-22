@@ -43,8 +43,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/?id=input">
-                    <img src="includes/css/trendable!logo.png" alt="" width = "220px">
+                <a class="navbar-brand" href="/?id=home">
+                    <img src="includes/css/trendable!logo.png" alt="" width = "200px">
                 </a>
             </div>
 
@@ -52,10 +52,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/?id=home">Dashboard</a>
+                        <a href="/?id=import">Import Data</a>
                     </li>
                     <li>
-                        <a href="/?id=sets">Datasets</a>
+                        <a href="/?id=sets"> Dashboard</a>
                     </li>
                     <li>
                         <a href="/?id=help">Help</a>

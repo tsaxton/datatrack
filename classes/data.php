@@ -19,7 +19,7 @@ abstract class data{
 
     // Data
     public $figures;
-    public $proportions;
+    public $proportions = array();
 
     // Analysis
     public $diffs;

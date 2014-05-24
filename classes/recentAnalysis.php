@@ -109,6 +109,10 @@ class recentAnalysis{
 		}
 
 		global $db;
+		if($this->data->id == NULL){
+			return;
+		}
+
 		$proportions = $db->query("select * from proportions where dataset={$this->data->id}");
 
 		foreach($proportions as $p){

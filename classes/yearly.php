@@ -2,7 +2,7 @@
 
 class yearly extends data{
 
-	private function fromArray($data){
+	protected function fromArray($data){
 		$this->name = 'User Data';
 		$year = reset($data);
 		$fields = array();

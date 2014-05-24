@@ -1,16 +1,17 @@
 <?php
 
 class multicsv{
+	public $data = array();
+	public $type;
 
 	private $files = array();
 	private $arrays = array();
 	private $months;
 	private $years;
 	private $quarters;
-	private $step;
 	private $useCols = array();
 	private $useRows = array();
-	private $data = array();
+	private $step = 0;
 
 	public function __construct($files, $month, $quarter, $year, $type){
 		foreach($files['error'] as $i=>$error){
@@ -292,6 +293,7 @@ class multicsv{
 			$str .= "</tr>\n";
 		}
 		$str .= "</table>";
+		$str .= "\n<center><a href='?id=display' class='btn btn-success'>Analyze Data</a></center>\n";
 		return $str;
 	}
 

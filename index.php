@@ -9,11 +9,11 @@ else{
     $id = 'home';
 }
 
-if(($id == 'display' || $id == 'dump') && !array_key_exists('dataset', $_GET)){
-    $id = 'home';
-}
-elseif($id == 'display' || $id=='dump'){
+if(($id == 'display' || $id=='dump') && array_key_exists('dataset', $_GET)){
     $dataset = $_GET['dataset'];
+}
+else{
+	$dataset = NULL;
 }
 
 include("templates/$id.php");

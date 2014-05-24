@@ -1,13 +1,32 @@
 <?php
-$results = $db->queryFirstRow('select * from datasets where id='.$dataset);
-if(!$results){
-	die();
+if($dataset != NULL){
+	$results = $db->queryFirstRow('select * from datasets where id='.$dataset);
+	if(!$results){
+		die();
+	}
+	if($results['type'] == 'yearly'){
+		$data = new yearly($dataset);
+	}
+	elseif($results['type'] == 'monthly'){
+		$data = new monthly($dataset);
+	}
 }
-if($results['type'] == 'yearly'){
-	$data = new yearly($dataset);
+elseif(array_key_exists('csv', $_SESSION)){
+	$csv = $_SESSION['csv'];
+	switch($csv->type){
+	case 'monthly':
+		$data = new monthly($csv->data);
+		break;
+	case 'quarterly':
+		//$data = new quarterly($csv->data);
+		break;
+	case 'yearly':
+		$data = new yearly($csv->data);
+		break;
+	}
 }
-elseif($results['type'] == 'monthly'){
-	$data = new monthly($dataset);
+else{
+	die('No data set selected');
 }
 $recent = new recentAnalysis($data);
 $long = new longTerm($data);
@@ -145,7 +164,9 @@ foreach($data->fields as $field){
 	$class = "class=\"active\"";
 	$first = 0;
     }
-    echo "\t\t<li $class><a href=\"#".str_replace(' ','',$field['field'])."\" data-toggle=\"tab\">{$field['text']}</a></li>";
+	//preg_replace("/[^A-Za-z0-9]/", '', $string);
+    echo "\t\t<li $class><a href=\"#".preg_replace("/[^A-Za-z0-9]/", '', $field['field'])."\" data-toggle=\"tab\">{$field['text']}</a></li>";
+    //echo "\t\t<li $class><a href=\"#".str_replace(' ','',$field['field'])."\" data-toggle=\"tab\">{$field['text']}</a></li>";
 }
     if($data->areProportions()){
 ?>
@@ -166,7 +187,8 @@ foreach($data->fields as $field){
 	$active = 'active';
 	$first = 0;
     }
-    echo "\t\t<div id=\"".str_replace(' ','',$field['field'])."\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
+    echo "\t\t<div id=\"".preg_replace("/[^A-za-z0-9]/", '', $field['field'])."\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
+    //echo "\t\t<div id=\"".str_replace(' ','',$field['field'])."\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
     echo $data->makeTable($field['field']);
     echo "\t\t\t<!-- End Data Table: {$field['text']} -->\n\t\t</div>\n";
 }

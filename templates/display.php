@@ -28,6 +28,7 @@ elseif(array_key_exists('csv', $_SESSION)){
 else{
 	die('No data set selected');
 }
+$_SESSION['data'] = $data; // store the current data set as the most recent one
 $recent = new recentAnalysis($data);
 $long = new longTerm($data);
 ?>

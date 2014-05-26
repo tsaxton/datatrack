@@ -9,9 +9,66 @@ $(document).ready(function(){
 		})
 	}
 
+		var id = "";
+		$(".invisibleData").each(function(){ id += $(this).attr("title") + ';' });
+		id = id.split(';');
+		id.pop();
+		//console.log(id);
+		
+		graphData = [];
+		title = '';
+		for (var i = 0; i <= id.length - 1; i++) {
+			result = getData(id[i]);
+			//console.log(result);
+			graphData.push(result);
+			title += $('#' + id[i] + ' h3').text() + ';';		
+		};
 
+		title = title.split(';');
+		title.pop();
+		var Series = [];
+		for (var i = 0; i <= title.length - 1; i++){
+			Series.push({label: title[i]});
+		}
+
+		var option = {
+			legend: { 
+				show: true,
+				location: 'sw',
+			},
+			series: Series
+		};
+
+		$.jqplot('graph', graphData, option);
 	
 });
+
+function getData(id){
+	var column1 = [];
+	$('table#' + id + ' tbody tr th:nth-child(1)').each(function(){
+		//console.log($(this).text());
+		column1.push(parseFloat($(this).text()));
+	});
+	column1.shift();
+	//console.log(column1);
+
+	var column2 = [];
+	$('table#' + id + ' tbody tr td:nth-child(2)').each(function(){
+		var num = $(this).text();
+		num = num.replace(",", "");
+		column2.push(parseFloat(num));
+	});
+	//console.log(column2);
+
+	var result = [];
+	for (var i = 0; i <= column1.length - 1; i++) {
+		var temp = [];
+		temp.push(column1[i])
+		temp.push(column2[i]);
+		result.push(temp);
+	}
+	return result;
+}
 
 $(document).ajaxComplete(function(){
 	if($('input[name=import-upload-type]').length != 0){
@@ -125,4 +182,5 @@ function select_timeYear(){
 		})
 	}
 }
+
 

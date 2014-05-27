@@ -84,7 +84,7 @@ class multicsv{
 					foreach($this->arrays as $i=>$table){
 						foreach($problems as $problem){
 							foreach($table as $j=>$row){
-								if($row[0] == $problem){
+								if($row[0] == $problem[1]){
 									unset($this->arrays[$i][$j]);
 									break;
 								}
@@ -156,17 +156,53 @@ class multicsv{
 				}
 			case 1:
 				// Check CSV file for unusual lengths, and if there's a problem, return a question
-				$problems = $this->getWeirdRows();
+				$mean = $this->meanRowLength();
+				$problems = array();
+				foreach($this->arrays as $i=>$file){
+					foreach($file as $j=>$row){
+						$rowLen = $this->realRowLength($row);
+						if($rowLen == 0){
+							unset($this->arrays[$i][$j]);
+						}
+						elseif($rowLen != $mean){
+							unset($this->arrays[$i][$j]);
+						}
+					}
+				}
+				/*$problems = $this->getWeirdRows();
 				if(!empty($problems)){
 					$message = $this->formulateProblemMessage($problems);
 					return $this->yesNo($message);
-				}
+				}*/
 				break;
+					/*foreach($this->arrays as $i=>$file){
+						foreach($file as $j=>$row){
+							$rowLen = $this->realRowLength($row);
+							if($rowLen == 0){
+								unset($this->arrays[$i][$j]);
+							}
+							elseif($rowLen != $mean){
+								unset($this->arrays[$i][$j]);
+							}
+						}*/
 			case 3:
 				// Check heading column names, and alert if there are differences
 				$problems = $this->missingColumns();
 				if(!empty($problems)){
-					return $this->yesNo($this->ignoreQuestion('col', $problems));
+					$problems = $this->missingColumns();
+					foreach($this->arrays as $i=>$table){
+						$row = $table[0];
+						foreach($problems as $problem){
+							$column = array_search($problem, $row);
+							if($coulmn === false){
+								continue;
+							}
+							foreach($table as $j=>$row){
+								unset($row[$column]);
+							}
+						}
+					}
+					//return $this->yesNo($this->ignoreQuestion('col', $problems));
 					//return $this->errorMessage("Your files do not have the same labels on their rows and/or columns.");
 				}
 				break;
@@ -174,14 +210,25 @@ class multicsv{
 				// Check heading row names, and alert if there are differences
 				$problems = $this->missingRows();
 				if(!empty($problems)){
-					return $this->yesNo($this->ignoreQuestion('row', $problems));
+					foreach($this->arrays as $i=>$table){
+						foreach($problems as $problem){
+							foreach($table as $j=>$row){
+								if($row[0] == $problem){
+									unset($this->arrays[$i][$j]);
+									break;
+								}
+							}
+						}
+					}
+					//return $this->yesNo($this->ignoreQuestion('row', $problems));
 				}
 				break;
 			case 5:
 				// Check for rows with no numeric data; if not the first row, then get rid of it
 				$problems = $this->nonNumeric();
 				if(!empty($problems)){
-					return $this->yesNo($this->ignoreQuestion('row', $problems));
+					return $this->yesNo($this->nonNumericProblems($problems));
+					//return $this->yesNo($this->ignoreQuestion('row', $problems));
 				}
 				break;
 			case 6:
@@ -239,8 +286,8 @@ class multicsv{
 				return $this->radioButtons(array(implode(', ', $rowOne), implode(', ', $colOne)), "Which of the following shows your <strong>data types</strong> (e.g. Total, Men, Women, Ages, etc.)?");
 				break;
 			case 8:
-				$colOne = $this->getFirstColumn();
-				return $this->yesNo("<p>Are the following the data you measured?</p><p>" . implode(', ', $colOne) . "</p>");
+				//$colOne = $this->getFirstColumn();
+				//return $this->yesNo("<p>Are the following the data you measured?</p><p>" . implode(', ', $colOne) . "</p>");
 				break;
 			case 9:
 				// Ask which types they want to use
@@ -305,6 +352,16 @@ class multicsv{
 		return;
 	}
 
+	private function nonNumericProblems($problems){
+		$str = "<p>The following values were detected as non-numeric. If you wish to use this data, fix it manually and restart the process.</p>";
+		$str .= "<table class='table table-striped'><tr><th>File</th><th>Row Heading</th><th>Value</th><th>Column No.</th></tr>";
+		foreach($problems as $problem){
+			$str .= "<tr><td>{$problem[0]}</td><td>{$problem[1]}</td><td>{$problem[2]}</td><td>{$problem[3]}</td></tr>\n";
+		}
+		$str .= "</table>";
+		return $str;
+	}
+
 	private function nonNumeric(){
 		$problems = array();
 		foreach($this->arrays as $i=>$file){
@@ -319,12 +376,11 @@ class multicsv{
 					}
 					if(!is_numeric($col)){
 						$switch = true;
-						break;
+						array_push($problems, array($i, $this->arrays[$i][$j][0], $this->arrays[$i][$j][$k], $k));
 					}
 				}
 				if($switch == true){
 					//unset($this->arrays[$i][$j]);
-					array_push($problems, $this->arrays[$i][$j][0]);
 				}
 			}
 		}
@@ -572,7 +628,7 @@ class multicsv{
 	}
 
 	private function yesNo($message){
-		$str = "<div class='well'><p>$message</p><p><strong>Responding No will result in the process being exited. You will need to edit your files manually to fix the error.</strong><div class='row'><form action='?id=analyze' method='POST' id='confirmationDialog'><div class='col-md-6'><button type='submit' name='response' value='yes' class='btn btn-success'>Yes</button></div><div class='col-md-6'><button type='submit' name='response' value='no' class='btn btn-danger'>No</button></div></form></div></div>";
+		$str = "<div class='well'><p>$message</p><div class='row'><div class='col-md-6'><form action='?id=analyze' method='POST' id='confirmationDialog'><button type='submit' name='response' value='yes' class='btn btn-success'>Ignore Data</button></form></div><div class='col-md-6'><form action='?id=import' method='POST' id='confirmationDialog'><button type='submit' name='response' value='no' class='btn btn-danger'>Fix File</button></form></div></div></div>";
 		return $str;
 	}
 

@@ -16,6 +16,13 @@ abstract class data{
     public $allFields;
     public $categories;
     public $success = TRUE;
+	protected $recent;
+	protected $previous;
+	protected $yearData;
+	protected $prevData;
+	public $obs;
+	protected $vals;
+	protected $pro;
 
     // Data
     public $figures;
@@ -36,6 +43,7 @@ abstract class data{
 		}
     }
 
+	abstract protected function fromArray($data);
     abstract public function initialize();
     abstract public function collectData();
     abstract public function sortData();
@@ -60,6 +68,17 @@ abstract class data{
     abstract public function getMinPct($field, $time);
     abstract public function getMaxProp($prop);
     abstract public function getMinProp($prop);
+	abstract public function previous();
+	abstract public function analyze();
+	abstract public function printRecent();
+	abstract public function keyObs();
+	abstract protected function highlight();
+	abstract protected function proportion();
+	abstract protected function streak();
+	abstract protected function recordCheck();
+	abstract public function getCategories();
+	abstract public function getId();
+
 
     public function areProportions(){
 		if(!$this->success){

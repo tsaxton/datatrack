@@ -29,7 +29,8 @@ else{
 	die('No data set selected');
 }
 $_SESSION['data'] = $data; // store the current data set as the most recent one
-$recent = new recentAnalysis($data);
+#$recent = new recentAnalysis($data);
+$data->analyze();
 $long = new longTerm($data);
 ?>
 <div class = "topTrends">
@@ -107,7 +108,7 @@ foreach($data->fields as $field){
 		<div id="recent" class="tab-pane active">
 			<h2>Most Recent Data (<?=$data->mostRecent();?>)</h2>
 			<!-- Begin Recent Analysis -->
-			<?=$recent->run();?>
+			<?=$data->printRecent();?>
 			<!-- End Recent Analysis -->
 		</div>
 		<div id="longterm" class="tab-pane">

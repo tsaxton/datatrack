@@ -1,6 +1,10 @@
 <?php
 
 class monthly extends data{
+	protected function fromArray($data){
+		return;
+	}
+
     public function initialize(){
 		if(!$this->id){
 			throw new Exception('Data object was improperly initialized.');
@@ -320,6 +324,39 @@ class monthly extends data{
 			return array_key_exists($month, $this->figures[$year]);
 		}
 		return False;
+	}
+
+	public function analyze(){
+	}
+
+	public function printRecent(){
+	}
+
+	public function keyObs(){
+	}
+
+	protected function highlight(){
+		return;
+	}
+
+	protected function proportion(){
+		return;
+	}
+
+	protected function streak(){
+		return;
+	}
+
+	protected function recordCheck(){
+		return;
+	}
+
+	public function getCategories(){
+		return;
+	}
+
+	public function getId(){
+		return;
 	}
 }
 ?>

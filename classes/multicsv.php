@@ -225,6 +225,7 @@ class multicsv{
 				break;
 			case 5:
 				// Check for rows with no numeric data; if not the first row, then get rid of it
+				$this->removeCommas();
 				$problems = $this->nonNumeric();
 				if(!empty($problems)){
 					return $this->yesNo($this->nonNumericProblems($problems));
@@ -385,6 +386,16 @@ class multicsv{
 			}
 		}
 		return $problems;
+	}
+
+	private function removeCommas(){
+		foreach($this->arrays as $i=>$file){
+			foreach($file as $j=>$row){
+				foreach($row as $k=>$col){
+					$this->arrays[$i][$j][$k] = str_replace(',','', $col);
+				}
+			}
+		}
 	}
 
 	private function toInternalData(){

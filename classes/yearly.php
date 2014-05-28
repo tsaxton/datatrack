@@ -176,6 +176,10 @@ class yearly extends data{
 		for($i=0; $i < $years; $i++){
 			$max = $this->getMax($field);
 			$min = $this->getMin($field);
+			while(!array_key_exists($year, $this->figures)){
+				$year--;
+				continue;
+			}
 			$ret .= "<tr>\n\t\t<th>$year</th>\n\t\t<td";
 			$val = $this->figures[$year][$field];
 			if($val == $max){

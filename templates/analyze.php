@@ -1,5 +1,17 @@
-<div class = "space"> </div>
-
+<div class = "importer">
+<div class = "container">
+      <div class = "row">
+          <div class = "col-lg-4">
+          		<div class = "grayBox"><h1> 1. Upload Data</h1></div>
+          </div>
+          <div class = "col-lg-4">
+             <div class = "purpleBox"><h1> 2. Check Data</h1></div>
+          </div>
+          <div class = "col-lg-4">
+              <div class = "grayBox"><h1> 3. Analyze</h1></div>
+          </div>
+      </div>
+      <div class = "space"></div>
 <?php
 //include('../includes.php');
 

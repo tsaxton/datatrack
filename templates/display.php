@@ -1,3 +1,17 @@
+<div class = "importer">
+<div class = "container">
+      <div class = "row">
+          <div class = "col-lg-4">
+          		<div class = "grayBox"><h1> 1. Upload Data</h1></div>
+          </div>
+          <div class = "col-lg-4">
+             <div class = "grayBox"><h1> 2. Check Data</h1></div>
+          </div>
+          <div class = "col-lg-4">
+              <div class = "purpleBox"><h1> 3. Analyze</h1></div>
+          </div>
+      </div>
+
 <?php
 if($dataset != NULL){
 	$results = $db->queryFirstRow('select * from datasets where id='.$dataset);
@@ -38,7 +52,7 @@ $long = new longTerm($data);
 
 		<div class="row">
 			<div class="col-lg-12">
-				<h1><?=$data->getName()?> Analysis</h1>
+				<h1 class = "displayHeadline"><?=$data->getName()?> Analysis</h1>
 			</div>
 		</div>
 

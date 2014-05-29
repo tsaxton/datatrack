@@ -1,6 +1,6 @@
 <header>
             <div class = "container">
-       			<h1>trendable!</h1>
+       			<h1>trendable <img src = "includes/img/trendablePicLogo.png"></h1>
                <p> Easily import, knit together and analyze time series data.</p>
               <!--<input placeholder = "Paste data or URL of data in JSON, XML or CSV format here.">
               <button class="analyze"> Analyze </button> <button title = "Upload" class = "upload"> <img src = "includes/img/upload.png"> </button>-->

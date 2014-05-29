@@ -1,5 +1,10 @@
-<form class='form' id="input-file" role='form' method='post' action='?id=analyze' enctype="multipart/form-data">
+<div class = "importHeadline">
+      <h1> Import Data Tool</h1>
+      </div>
 
+<form class='form' id="input-file" role='form' method='post' action='?id=analyze' enctype="multipart/form-data">
+<div class = "row">
+	<div class = "col-lg-6">
 	<div class="radio-inline">
 		<br>
 		<label>
@@ -21,13 +26,15 @@
 				Yearly
 		</label>
 	</div>
-
-<div class="col-md-12">
+    </div>
+    </div>
+<div class = "row">
+<div>
   	<div class="form-group" id="file-group">
     
-        <div class="col-md-12">
-	        <div class="form-group col-md-5">
-	        	<label for="file_input">File 1:</label>
+        <div>
+	        <div class="form-group col-lg-6">
+	        
 	            <input type="file" id="file_input" name="files[]" class="form-control" placeholder="Add your file here"/>
 	        </div>
 	        <div class="col-md-2" style="display:none;" name="select_month">
@@ -59,7 +66,6 @@
 		        </select>
 		    </div>               
 			<div class="col-md-2" name="select_year">
-				<br>
 	        <select class="form-control" name="year[]" id="Yearly">
 		        <option value="time">Year</option>   
 				<?php
@@ -72,11 +78,16 @@
 		    </div>
 		</div>  
     </div>
+    </div>
+    
+    <div class = "row">
+    <div class = "col-lg-12">
 	<div class="form-group">
  	 	 <a id="additionalFile" href="#" onclick="add()"><span class="glyphicon glyphicon-plus"></span> Click Here to Add Another File</a>
 	</div>
 </div>
-		
+		</div>
+</div>
 	<div class="form-group">
 		<button type='submit' class='btn btn-default'>Submit</button>
 	</div>

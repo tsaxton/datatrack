@@ -5806,30 +5806,39 @@ body {
 .navbar {
 	background-color: rgba(210,210,210,.87);
 	border: none;	
+	padding: 0px;
+	box-shadow: rgba(40,40,40,.5) 1px 1px 7px;
 	
 }
 
 .navbar .nav > li > a {
-    font-family: ".LucidaGrandeUI";
-	font-size: 18px;
-	color: rgb(59,191,154);
-	font-weight: 600;
+    font-family: VAGbold;
+	font-size: 16px;
+	color: rgb(78,60,81);
+	font-weight: 300;
 }
 
 .navbar .nav > li > a:hover {
-    color: rgb(78,60,81);
+    color: rgb(59,191,154);
+}
+
+.divider {
+	border-right: 1px solid rgb(220,220,220);
+	border-left: 1px solid rgb(190,190,190);
+	height: 48px;
+	padding: 0px;
 }
 
 header {
 	display: block;
 	width: 100%;	
-	height: 710px;
+	height: 620px;
 	padding-top: 96px;
 	background-image: url('graphPaperBG.png');
-	background-position: 101% 61%;
-	background-size: 60%;
+	background-position: 96.5% 95%;
+	background-size: 56%;
 	background-repeat:no-repeat;
-	background-color: rgb(230,230,230);
+	background-color: rgb(240,240,240);
 }
 
 h1 {
@@ -5844,14 +5853,16 @@ h1 {
 header h1 {
 	text-align: left;
 	font-size: 78px;
-	margin-left: 6%;	
+	margin-left: 2%;	
 	margin-bottom: 0px;
+	margin-top: 10px;
+	text-shadow: rgba(40,40,40,.5) 1px 1px 7px;
 }
 
 header p {
 	font-family: '.LucidaGrandeUI';
 	font-size: 24px;
-	margin-left: 6%;	
+	margin-left: 2%;	
 	color: rgb(100,100,100);
 	width: 30%;
 	margin-bottom: 20px;
@@ -5882,7 +5893,7 @@ header input {
 	color: rgb(40,40,40);
 	opacity: .94;
 	border: none;
-	margin-left: 6%;
+	margin-left: 2%;
 	box-shadow: 1px 1px 2px darkgray;
 	
 }
@@ -5928,6 +5939,12 @@ header input {
 
 header a:hover {
 text-decoration: none;	
+}
+
+header h1 img {
+	max-width: 120px;
+	margin-left: -26px;
+	margin-top: -3px;	
 }
 
 .examples {
@@ -6095,7 +6112,7 @@ h4 span {
 
 .topTrends {
 	background-color: white;
-	padding-top: 70px;	
+	padding-top: 20px;	
 	margin-bottom: 75px;
 }
 
@@ -6207,6 +6224,100 @@ ul.nav.nav-tabs li.active a {
 }
 
 .space {
-	margin-bottom: 100px;	
+	margin-bottom: 20px;	
 }
 
+.purpleBox {
+	width: 100%;
+	height: 50px;
+	background-color: rgb(78,60,81);
+	margin-top: 90px;
+	border-radius: 0px 300px 300px 0px;
+	box-shadow: rgba(40,40,40,.8) 1px 1px 4px;
+}
+
+.grayBox {
+	width: 100%;
+	height: 50px;
+	background-color: rgba(210,210,210,1);
+	margin-top: 90px;
+}
+
+.purpleBox h1 {
+	color: white; 
+	margin: 0;
+	padding: 15px;
+	font-size: 24px;
+	text-align: left;	
+}
+
+.grayBox h1 {
+	color: rgb(248,248,248); 
+	margin: 0;
+	padding: 15px;
+	font-size: 24px;
+	text-align: left;	
+}
+
+.instructions {
+	width: 41.6%;
+	float: right;
+	background-color: rgba(242,87,73,.0);
+	margin-top: 56px;	
+}
+
+.instructions h2 {
+	color: rgb(50,50,50);
+	margin-top: 0px;	
+	margin-bottom: 0px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-top: 20px;
+	font-size: 25px;
+}
+
+.instructions p {
+	padding: 0px 20px 30px 20px;	
+	margin: 0px;
+	color: rgb(60,60,60);
+}
+
+#upload {
+	width: 55%;
+	padding: 10px;
+	padding-top: 0px;
+	background-color: rgb(240,240,240);
+	margin-top: 30px;
+	margin-left: 10px;
+	border-radius: 5px 5px 5px 5px;
+	padding-left: 50px;
+	margin-bottom: 120px;
+	box-shadow: rgba(40,40,40,.4) 2px 2px 4px;
+}
+
+#additionalFile {
+	color: rgb(242,87,73);	
+}
+
+.radio-inline {	
+}
+
+.row {
+	height: auto;
+}
+
+.form-group {
+	margin-left: 0px;	
+}
+
+.importHeadline h1 {
+	margin: 0px;
+	padding: 0px;
+	margin-top: 20px;
+	font-size: 46px;
+}
+
+.displayHeadline{
+	margin-top: 0px;	
+	padding-top: 0px;
+}

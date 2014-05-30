@@ -23,6 +23,8 @@ abstract class data{
 	public $obs;
 	protected $vals;
 	protected $pro;
+	protected $lt = array();
+	protected $stats = array();
 
     // Data
     public $figures;
@@ -78,7 +80,13 @@ abstract class data{
 	abstract protected function recordCheck();
 	abstract public function getCategories();
 	abstract public function getId();
-
+	abstract public function run();
+	abstract protected function calculateStats();
+	abstract public function statistics();
+	abstract public function bigChanges();
+	abstract public function longStreak();
+	abstract protected function bestFit();
+	abstract protected function pieceFit();
 
     public function areProportions(){
 		if(!$this->success){
@@ -109,7 +117,7 @@ abstract class data{
 			return;
 		}
 
-		return max($this->extractData($field));
+		return max($this->extractData($field)) + 0; // +0 forces to number
     }
 
     public function getMin($field){
@@ -117,7 +125,7 @@ abstract class data{
 			return;
 		}
 
-		return min($this->extractData($field));
+		return min($this->extractData($field)) + 0; // +0 forces to number
     }
 
     public function getYears(){
@@ -167,7 +175,7 @@ abstract class data{
 		$data = $this->extractData($field);
 		sort($data);
 		$middle = round(count($data) / 2);
-		return $data[$middle-1];
+		return $data[$middle-1]+0; // plus zero forces to number
     }
 
 	protected function getYearField(){

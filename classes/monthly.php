@@ -358,5 +358,26 @@ class monthly extends data{
 	public function getId(){
 		return;
 	}
+
+	public function run(){
+	}
+
+	protected function calculateStats(){
+	}
+
+	public function statistics(){
+	}
+
+	public function bigChanges(){
+	}
+
+	public function longStreak(){
+	}
+
+	protected function bestFit(){
+	}
+
+	protected function pieceFit(){
+	}
 }
 ?>

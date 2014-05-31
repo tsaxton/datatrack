@@ -55,14 +55,15 @@ abstract class data{
     abstract public function calculateDiffs();
     abstract public function calculateProportions();
     abstract public function mostRecent();
-    abstract public function getData($year);
+	abstract public function mostRecentStr();
+    abstract public function getData($year, $month);
     abstract public function extractData($field);
     abstract public function longStreaks();
     abstract public function getAvgDiff($field, $time);
     abstract public function getAvgPct($field, $time);
-    abstract public function streakDirection($year, $field);
-    abstract public function negStreak($year, $field);
-    abstract public function posStreak($year, $field);
+    abstract public function streakDirection($year, $field, $month=NULL);
+    abstract public function negStreak($year, $field, $month);
+    abstract public function posStreak($year, $field, $month);
     abstract public function minYear();
     abstract public function getMaxDiff($field, $time);
     abstract public function getMinDiff($field, $time);
@@ -71,7 +72,6 @@ abstract class data{
     abstract public function getMaxProp($prop);
     abstract public function getMinProp($prop);
 	abstract public function previous();
-	abstract public function analyze();
 	abstract public function printRecent();
 	abstract public function keyObs();
 	abstract protected function highlight();
@@ -383,5 +383,23 @@ abstract class data{
 			return 12;
 		}
 		throw new exception("Can't recognize abbreviation used for month!");
+	}
+
+	public function analyze(){
+		if(!$this->success){
+			return;
+		}
+		$this->recent = $this->mostRecent();
+		$this->previous = $this->previous($this->recent);
+		$this->yearData = $this->getData($this->recent);
+		$this->prevData = $this->getData($this->previous);
+		$this->highlight();
+		$this->recordCheck();
+		$this->proportion();
+		$this->streak();
+		$this->calculateStats();
+		$this->bigChanges();
+		$this->pieceFit();
+		$this->bestFit();
 	}
 }

@@ -120,7 +120,7 @@ foreach($data->fields as $field){
 	</div>
 	<div class="span4 tab-content">
 		<div id="recent" class="tab-pane active">
-			<h2>Most Recent Data (<?=$data->mostRecent();?>)</h2>
+			<h2>Most Recent Data (<?=$data->mostRecentStr();?>)</h2>
 			<!-- Begin Recent Analysis -->
 			<?=$data->printRecent();?>
 			<!-- End Recent Analysis -->

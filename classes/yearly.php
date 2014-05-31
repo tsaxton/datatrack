@@ -342,6 +342,10 @@ class yearly extends data{
 		return 0;
     }
 
+	public function mostRecentStr(){
+		return $this->mostRecent();
+	}
+
     public function minYear(){
 		if(!$this->success){
 			return;
@@ -373,7 +377,7 @@ class yearly extends data{
 		return 0;
     }
 
-    public function getData($year){
+    public function getData($year, $month=NULL){
 		if(!$this->success){
 			return;
 		}
@@ -511,7 +515,7 @@ class yearly extends data{
 		return $this->averages($this->pct[$field][$time]);
     }
 
-    public function streakDirection($year, $field){
+    public function streakDirection($year, $field, $month=NULL){
 		if(!$this->success){
 			return;
 		}
@@ -548,7 +552,7 @@ class yearly extends data{
 		return 0;
     }
 
-    public function negStreak($year, $field){
+    public function negStreak($year, $field, $month=NULL){
 		if(!$this->success){
 			return;
 		}
@@ -569,7 +573,7 @@ class yearly extends data{
 		return $c;
     }
 
-    public function posStreak($year, $field){
+    public function posStreak($year, $field, $month=NULL){
 		if(!$this->success){
 			return;
 		}
@@ -800,8 +804,7 @@ class yearly extends data{
 	    	$this->stats[$i]['Average Change']['Raw'] = $this->getAvgDiff($field['field'], 1);
 	    	$this->stats[$i]['Average Change']['Percent'] = 100*$this->getAvgPct($field['field'], 1);
 	    	$i++;
-}
-		$i++;
+		}
 	}
 
 	public function statistics(){

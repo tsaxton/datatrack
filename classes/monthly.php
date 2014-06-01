@@ -386,9 +386,14 @@ class monthly extends data{
 		return 0;
 	}
 
-    public function negStreak($year, $field, $month){
+    public function negStreak($year, $field, $month=NULL){
 		if(!$this->success){
 			return;
+		}
+
+		if($month==NULL && is_array($year)){
+			$month = $year[1];
+			$year = $year[0];
 		}
 
 		$c = 0;
@@ -409,9 +414,13 @@ class monthly extends data{
 		return $c;
 	}
 
-    public function posStreak($year, $field, $month){
+    public function posStreak($year, $field, $month=NULL){
 		if(!$this->success){
 			return;
+		}
+		if($month==NULL && is_array($year)){
+			$month = $year[1];
+			$year = $year[0];
 		}
 
 		$c = 0;
@@ -449,7 +458,7 @@ class monthly extends data{
 		return min(array_keys($this->figures[$yr]));
 	}
 
-    public function getMaxDiff($field, $time){ // trust issues on this function's implementation
+    public function getMaxDiff($field, $time){
 		$diffs = array();
 		foreach($this->diffs as $year=>$months){
 			foreach($months as $month=>$data){
@@ -459,7 +468,7 @@ class monthly extends data{
 		return max($diffs);
 	}
 
-    public function getMinDiff($field, $time){ // same here
+    public function getMinDiff($field, $time){
     	$diffs = array();
 		foreach($this->diffs as $year=>$months){
 			foreach($months as $month=>$data){
@@ -469,7 +478,7 @@ class monthly extends data{
 		return min($diffs);
     }
 
-    public function getMaxPct($field, $time){ // I seem to have already done this function at some point, not sure if I trust it
+    public function getMaxPct($field, $time){
     	$diffs = array();
 		foreach($this->pct as $year=>$months){
 			foreach($months as $month=>$data){
@@ -479,7 +488,7 @@ class monthly extends data{
 		return max($diffs);
     } // instead of $this->diffs, using $this->pct
 
-    public function getMinPct($field, $time){ // I seem to have already done this function at some point, not sure if I trust it
+    public function getMinPct($field, $time){
     	$diffs = array();
 		foreach($this->pct as $year=>$months){
 			foreach($months as $month=>$data){
@@ -488,7 +497,7 @@ class monthly extends data{
 		}
 		return min($diffs);
     }
-    public function getMaxProp($prop){ // trust issues here too
+    public function getMaxProp($prop){
 		//$this->proportionData[$p['id']][$year][$month] = $pro;
 		$vals = array();
 		foreach($this->proportionData[$prop] as $year){
@@ -499,9 +508,63 @@ class monthly extends data{
 		return max($vals);
 	}
 
-    public function getMinProp($prop){} // why is this one not done?
+    public function getMinProp($prop){
+		$vals = array();
+		foreach($this->proportionData[$prop] as $year){
+			foreach($year as $month=>$val){
+				$vals[] = $val;
+			}
+		}
+		return min($vals);
+	}
 
-    public function longStreaks(){}
+    public function longStreaks(){
+		if(!$this->success){
+			return;
+		}
+
+		$base = $this->mostRecent();
+		foreach($this->fields as $field){
+			$year = $base[0];
+			$month = $base[1];
+			$max = 0;
+			$min = 0;
+			$maxTime = array();
+			$minTime = array();
+
+			while($base[0] != 0 && $base[1] != 0){
+				$year = $base[0];
+				$month = $base[1];
+				$neg = $this->negStreak($year, $field['field']);
+				$pos = $this->posStreak($year, $field['field']);
+				if($pos > $max){
+					unset($maxTime);
+					$maxTime = array();
+					$max = $pos;
+					array_push($maxTime, $base);
+				}
+				elseif($pos == $max){
+					array_push($maxTime, $base);
+				}
+				if($neg > $min){
+					unset($minTime);
+					$minTime = array();
+					$min = $neg;
+					array_push($minTime, $base);
+				}
+				elseif($neg == $min){
+					array_push($minTime, $base);
+				}
+				$base = $this->previous($year, $month);
+			}
+
+			$vals[$field['text']]['increase'] = $max;
+			$vals[$field['text']]['decrease'] = $min;
+			$years[$field['text']]['increase'] = $maxTime;
+			$years[$field['text']]['decrease'] = $minTime;
+		}
+		return array($vals, $years);
+	}
 
 	public function monthExists($year, $month){
 		if(!$this->success){
@@ -515,25 +578,159 @@ class monthly extends data{
 	}
 
 	public function printRecent(){
+		if(!$this->success){
+			return;
+		}
+		$str = "<ul class=\"recent-analysis\">\n";
+		if(is_array($this->vals)){
+	    	foreach($this->vals as $o){
+				$str .= "\t<li>$o</li>\n";
+	    	}
+		}
+		foreach($this->obs as $o){
+	    	$str .= "\t<li>$o</li>\n";
+		}
+		$str .= "</ul>\n\n";
+		return $str;
+
 	}
 
 	public function keyObs(){
+		if(!$this->success){
+			return;
+		}
+
+		return $this->obs[0];
+	}
+
+	private function timeString($year, $month = NULL){
+		if(is_array($year) && $month == NULL){
+			$month = $year[1];
+			$year = $year[0];
+		}
+		return $this->months[$month] . " " . $year;
 	}
 
 	protected function highlight(){
-		return;
+		if(!$this->success){
+			return;
+		}
+
+		$str = '';
+		$time = $this->mostRecent();
+		$dataString = $this->timeString($time);
+		$data = $this->getData($time[0], $time[1]);
+		$prevTime = $this->previous($time[0], $time[1]);
+		$prev = $this->getData($prevTime[0], $prevTime[1]);
+		$prevString = $this->timeString($prevTime);
+		foreach($this->fields as $field){
+			if($prev[$field['field']] == 0 || $prev[$field['field']] == NULL){
+				continue;
+			}
+			$pct = ($data[$field['field']] - $prev[$field['field']]) / $prev[$field['field']] * 100;
+			$str = "<span class='field'>{$field['text']}</span>: " . number_format($data[$field['field']], 0, '.', ',');
+			if($pct == 0){
+				$str .= " (no change from $prevString)</li>\n";
+			}
+			elseif($pct > 0){
+				$pct = number_format($pct, 2, '.', ',');
+				$str .= " <span class=\"data-increase\">$pct% increase from $prevString</span></li>\n";
+			}
+			elseif($pct < 0){
+				$pct = number_format(-$pct, 2, '.', ',');
+				$str .= " <span class=\"data-decrease\">$pct% decrease from $prevString</span></li>\n";
+			}
+			$this->vals[] = $str;
+		}
+		return $str;
 	}
 
 	protected function proportion(){
-		return;
+		if(!$this->success){
+			return;
+		}
+
+		foreach($this->proportions as $p){
+			$this->pro[$p['id']] = $this->yearData[$this->fields[$p['top']]['field']] / $this->yearData[$this->fields[$p['bottom']]['field']];
+			$pro = number_format(100*$this->pro[$p['id']], 2, '.', ',');
+			$this->obs[] = "{$p['description']}: $pro%";
+		}
 	}
 
 	protected function streak(){
-		return;
+		if(!$this->success){
+			return;
+		}
+
+		$str = '';
+		foreach($this->fields as $field){
+			$direction = $this->streakDirection($this->recent[0], $field['field'], $this->recent[1]);
+			switch($direction){
+			case 1:
+				// continuing a multi-month decrease
+				$this->obs[] = "<span class='field'>{$field['text']}</span> has now decreased for " . $this->negStreak($this->recent, $field['field']) . " months in a row.";
+				break;
+			case 2:
+				// decrease after increasing
+				$this->obs[] = "<span class='field'>{$field['text']}</span> decreased after " . $this->posStreak($this->previous, $field['field']) . " months of increasing.";
+				break;
+			case 3:
+				// continuing a multi-month increase
+				$this->obs[] = "<span class='field'>{$field['text']}</span> has now increased for " . $this->posStreak($this->recent, $field['field']) . " months in a row.";
+				break;
+			case 4:
+				// increase after decreasing
+				$this->obs[] = "<span class='field'>{$field['text']}</span> increased after " . $this->negStreak($this->previous, $field['field']) . " months of decreasing.";
+				break;
+			}
+		}
 	}
 
 	protected function recordCheck(){
-		return;
+		if(!$this->success){
+			return;
+		}
+
+		foreach($this->fields as $field){
+			if(!array_key_exists($field['field'], $this->yearData)){
+				continue;
+			}
+
+			if($this->yearData[$field['field']] == $this->getMax($field['field'])){
+				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> hit a record high!</span>";
+			}
+			elseif($this->yearData[$field['field']] == $this->getMin($field['field'])){
+				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> hit a record low!</span>";
+			}
+	    	
+	    	// see how the raw change matches
+	    	if(abs($this->yearData[$field['field']] - $this->prevData[$field['field']]) == abs($this->getMaxDiff($field['field'], 1))){
+				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest increase in numbers ever.</span>";
+	    	}
+	    	elseif(abs($this->yearData[$field['field']] - $this->prevData[$field['field']]) == abs($this->getMinDiff($field['field'], 1))){
+				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest decrease in numbers ever.</span>";
+	    	}
+
+	    	// see how the percent change matches
+	    	if(abs(($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']]) == abs($this->getMaxPct($field['field'], 1))){
+				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest percent increase ever.</span>";
+	    	}
+	    	if(abs(($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']]) == abs($this->getMinPct($field['field'], 1))){
+				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest percent decrease ever.</span>";
+	    	}
+
+	    	foreach($this->proportions as $p){
+				if($this->pro[$p['id']] == $this->getMaxProp($p['id'])){
+		    		$this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record high.</span>";
+				}
+				if($this->pro[$p['id']] == $this->getMinProp($p['id'])){
+		    		$this->obs[] = "<span class='record'><span class='field'>{$p['description']}</span> hit a record low.</span>";
+				}
+	    	}
+
+			// TODO: if part of a streak, find if it is a record streak
+	
+		}
 	}
 
 	public function getCategories(){

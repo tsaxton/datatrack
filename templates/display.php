@@ -144,6 +144,18 @@ foreach($data->fields as $field){
 </div>
 </div>
 
+<div>
+	<select class="form-control" id="graphSelection">
+  			<?php
+  			foreach($data->fields as $field){
+    			// This isn't quite the full code, you'll need to do <option> HTML tags
+    			// This is just printing the names of what you need
+  				echo "<option id=\"".preg_replace("/[^A-za-z0-9]/", '', $field['field'])."\">" .$field['text'] ."</option>";
+    			// In the <option> tag, value="{$field['id']}"
+  			}
+  			?>
+  	</select>
+</div>
 
 <div class = "lineGraph">
 	<div class="container">

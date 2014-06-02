@@ -497,6 +497,7 @@ class monthly extends data{
 		}
 		return min($diffs);
     }
+
     public function getMaxProp($prop){
 		//$this->proportionData[$p['id']][$year][$month] = $pro;
 		$vals = array();
@@ -537,6 +538,8 @@ class monthly extends data{
 				$month = $base[1];
 				$neg = $this->negStreak($year, $field['field']);
 				$pos = $this->posStreak($year, $field['field']);
+				dump($neg, 'neg');
+				dump($pos, 'pos');
 				if($pos > $max){
 					unset($maxTime);
 					$maxTime = array();
@@ -562,6 +565,8 @@ class monthly extends data{
 			$vals[$field['text']]['decrease'] = $min;
 			$years[$field['text']]['increase'] = $maxTime;
 			$years[$field['text']]['decrease'] = $minTime;
+			dump($vals, 'vals');
+			dump($years, 'years');
 		}
 		return array($vals, $years);
 	}
@@ -734,14 +739,29 @@ class monthly extends data{
 	}
 
 	public function getCategories(){
-		return;
-	}
+		if(!$this->success){
+			return;
+		}
 
-	public function getId(){
-		return;
+		$str = '';
+		foreach($this->categories as $c){
+			$str .= "{$c['category']} ";
+		}
+
+		return $str;
 	}
 
 	public function run(){
+		if(!$this->success){
+			return;
+		}
+
+		$str = "<ul class=\"longterm-analysis\">\n";
+		foreach($this->lt as $o){
+			$str .= "\t<li>$o</li>\n";
+		}
+		$str .= "</ul>\n\n";
+		return $str;
 	}
 
 	protected function calculateStats(){
@@ -797,16 +817,164 @@ class monthly extends data{
 		return $ret;
 	}
 
+	private function subtractMonths($year, $month, $sub){
+		while($sub >= $month){
+			$year--;
+			$month += 12;
+		}
+		$month -= $sub;
+		return array($year, $month);
+	}
+
 	public function bigChanges(){
+		if(!$this->success){
+			return;
+		}
+
+		$comparisons = [5, 2, 1, .75, .5];
+		// this isn't pretty...
+		foreach($this->fields as $field){
+			foreach($this->pct as $year=>$months){
+				foreach($months as $month=>$vals){
+					foreach($vals[$field['field']] as $offset=>$data){
+						foreach($comparisons as $c){
+							if($c < 1 && $offset > 1){
+								continue; // we don't care about small changes at long intervals
+							}
+							if(abs($data) > $c){
+								$str = "{$field['text']} ";
+								$str .= $data<0 ? 'decreased ' : 'increased ';
+								$str .= "by more than " . $c*100 . "% from ";
+								$str .= $this->timeString($this->subtractMonths($year, $month, $offset)) . ' to ' . $this->timeString($year, $month) . ".";
+								$str .= " (Actual Value: " . number_format(abs($data*100), 0, '.', ',') . "%)";
+								$this->lt[] = $str;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	public function longStreak(){
+		if(!$this->success){
+			return;
+		}
+
+		$ret = $this->longStreaks();
+		$vals = $ret[0];
+		$years = $ret[1];
+
+		foreach($vals as $text=>$types){
+			echo "<h4>$text</h4>\n";
+			foreach($types as $type=>$val){
+				echo "Longest $type: $val years\n";
+				$i = 0;
+				dump($years[$text][$type]);
+			}
+		}
+	}
+
+	private function linearizeTime(){
+		$ret = array();
+		foreach($this->figures as $year=>$months){
+			foreach($months as $month=>$foo){
+				$dec = $month/12;
+				$val = $year + $dec;
+				array_push($ret, $val);
+			}
+		}
+		return $ret;
+	}
+
+	private function date2str($date){
+		$int = int($date);
+		$dec = 12*($date - $int);
+		return $month[$dec] . " " . $int;
 	}
 
 	protected function bestFit(){
+		if(!$this->success){
+			return;
+		}
+
+		$time = $this->linearizeTime();
+		foreach($this->fields as $field){
+			$data = $this->extractData($field['field']);
+			$b = slope($time, $data);
+			if($b > 0){
+				$this->lt[] = "<span class='field'>{$field['text']}</span> has been trending upward at a rate of " . number_format($b, 2, '.', ',') . ".";
+			}
+			else{
+				$this->lt[] = "<span class='field'>{$field['text']}</span> has been trending downward at a rate of " . number_format($b, 2, '.', ',') . ".";
+			}
+		}
 	}
 
 	protected function pieceFit(){
+		if(!$this->success){
+			return;
+		}
+
+		$time = $this->linearizeTime();
+		foreach($this->fields as $field){
+			$best = PHP_INT_MAX;
+			$bestA1 = NULL;
+			$bestA2 = NULL;
+			$bestB1 = NULL;
+			$bestB2 = NULL;
+			$i = 4;
+			$data = $this->extractData($field['field']);
+			if($i < count($time)-4){
+				continue;
+			}
+			while($i < count($time)-4){
+				$years1 = array_slice($time, 0, $i);
+				$years2 = array_slice($time, $i+1);
+				$data1 = array_slice($data, 0, $i);
+				$data2 = array_slice($data, $i+1);
+				$a1 = intercept($years1, $data1);
+				$a2 = intercept($years2, $data2);
+				$b1 = slope($years1, $data1);
+				$b2 = slope($years2, $data2);
+				$residuals = residuals($a1, $b1, $years1, $data1) + residuals($a2, $b2, $years2, $data2);
+				if($residuals < $best){
+					$best = $residuals;
+					$bestA1 = $a1;
+					$bestA2 = $a2;
+					$bestB1 = $b1;
+					$bestB2 = $b2;
+					$bestI = $i;
+				}
+				$i++;
+			}
+			if(!($bestB1 && $bestB2 && $bestA1 && $bestA2)){
+				continue;
+			}
+			if($bestB1 < 0 && $bestB2 > 0){
+				$this->obs[] = "After trending downward from " . $this->date2str($time[0]) . " to " . $this->date2str($time[0+$bestI-1]) . ", <span class='field'>{$field['text']}</span> trended upward.";
+			}
+			elseif($bestB1 > 0 && $bestB2 < 0){
+				$this->obs[] = "After trending upward from " . $this->date2str($time[0]) . " to " . $this->date2str($time[0+$bestI-1]) . ", <span class='field'>{$field['text']}</span> trended downward.";
+			}
+			elseif($bestB2 < 0){
+				if($bestB2 > $bestB1){
+					$this->obs[] = "The downward trend slowed from " . $this->date2str($time[0+$bestI]) . " to " . $this->date2str($time[count($time)-1]) . " compared to its rate from " . $this->date2str($time[0]) . " to " . $this->date2str($time[$bestI-1]) . ".";
+				}
+				else{
+					$this->obs[] = "The downward trend sped up from " . $this->date2str($time[0+$bestI]) . " to " . $this->date2str($time[count($time)-1]) . " compared to its rate from " . $this->date2str($time[0]) . " to " . $this->date2str($time[$bestI-1]) . ".";
+				}
+			}
+			else{
+				if($bestB2 > $bestB1){
+					$this->obs[] = "The upward trend sped up from " . $this->date2str($time[0+$bestI]) . " to " . $this->date2str($time[count($time)-1]) . " compared to its rate from " . $this->date2str($time[0]) . " to " . $this->date2str($time[$bestI-1]) . ".";
+				}
+				else{
+					$this->obs[] = "The upward trend slowed from " . $this->date2str($time[0+$bestI]) . " to " . $this->date2str($time[count($time)-1]) . " compared to its rate from " . $this->date2str($time[0]) . " to " . $this->date2str($time[$bestI-1]) . ".";
+				}
+			}
+		}
 	}
 }
 ?>

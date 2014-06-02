@@ -79,7 +79,6 @@ abstract class data{
 	abstract protected function streak();
 	abstract protected function recordCheck();
 	abstract public function getCategories();
-	abstract public function getId();
 	abstract public function run();
 	abstract protected function calculateStats();
 	abstract public function statistics();
@@ -87,6 +86,10 @@ abstract class data{
 	abstract public function longStreak();
 	abstract protected function bestFit();
 	abstract protected function pieceFit();
+
+	public function getId(){
+		return $this->id;
+	}
 
     public function areProportions(){
 		if(!$this->success){

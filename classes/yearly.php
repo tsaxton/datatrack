@@ -730,18 +730,18 @@ class yearly extends data{
 	    	}
 	    	
 	    	// see how the raw change matches
-	    	if($this->yearData[$field['field']] == $this->getMaxDiff($field['field'], 1)){
+	    	if(abs($this->yearData[$field['field']] - $this->prevData[$field['field']]) == abs($this->getMaxDiff($field['field'], 1))){
 				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest increase in numbers ever.</span>";
 	    	}
-	    	elseif($this->yearData[$field['field']] == $this->getMinDiff($field['field'], 1)){
+	    	elseif(abs($this->yearData[$field['field']] - $this->prevData[$field['field']]) == abs($this->getMinDiff($field['field'], 1))){
 				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest decrease in numbers ever.</span>";
 	    	}
 
 	    	// see how the percent change matches
-	    	if($this->yearData[$field['field']] == $this->getMaxPct($field['field'], 1)){
+	    	if(abs(($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']]) == abs($this->getMaxPct($field['field'], 1))){
 				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest percent increase ever.</span>";
 	    	}
-	    	if($this->yearData[$field['field']] == $this->getMinPct($field['field'], 1)){
+	    	if(abs(($this->yearData[$field['field']] - $this->prevData[$field['field']]) / $this->prevData[$field['field']]) == abs($this->getMinPct($field['field'], 1))){
 				$this->obs[] = "<span class='record'><span class='field'>{$field['text']}</span> had its largest percent decrease ever.</span>";
 	    	}
 
@@ -769,10 +769,6 @@ class yearly extends data{
 	    	$str .= "{$c['category']} ";
 		}
 		return $str;
-    }
-
-    public function getId(){
-		return $this->id;
     }
 
 	public function run(){

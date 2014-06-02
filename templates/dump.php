@@ -9,4 +9,5 @@ if($results['type'] == 'yearly'){
 elseif($results['type'] == 'monthly'){
 	$data = new monthly($dataset);
 }
+$data->analyze();
 dump($data);

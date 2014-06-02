@@ -45,7 +45,7 @@ else{
 $_SESSION['data'] = $data; // store the current data set as the most recent one
 #$recent = new recentAnalysis($data);
 $data->analyze();
-$long = new longTerm($data);
+//$long = new longTerm($data);
 ?>
 <div class = "topTrends">
 	<div class="container">
@@ -120,7 +120,7 @@ foreach($data->fields as $field){
 	</div>
 	<div class="span4 tab-content">
 		<div id="recent" class="tab-pane active">
-			<h2>Most Recent Data (<?=$data->mostRecent();?>)</h2>
+			<h2>Most Recent Data (<?=$data->mostRecentStr();?>)</h2>
 			<!-- Begin Recent Analysis -->
 			<?=$data->printRecent();?>
 			<!-- End Recent Analysis -->
@@ -128,16 +128,16 @@ foreach($data->fields as $field){
 		<div id="longterm" class="tab-pane">
 			<h2>Long-Term Trends</h2>
 			<!-- Begin Long Term Analysis -->
-			<?=$long->run();?>
+			<?=$data->run();?>
 			<!-- End Long Term Analysis -->
 		</div>
 		<div id="streaks" class="tab-pane">
 			<h2>Streaks</h2>
-			<?=$long->longStreak();?>
+			<?=$data->longStreak();?>
 		</div>
 		<div id="stats" class="tab-pane">
 			<h2>Statistics</h2>
-			<?=$long->statistics();?>
+			<?=$data->statistics();?>
 		</div>
 	</div><!-- /.tab-content -->
 	

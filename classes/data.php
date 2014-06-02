@@ -23,6 +23,8 @@ abstract class data{
 	public $obs;
 	protected $vals;
 	protected $pro;
+	protected $lt = array();
+	protected $stats = array();
 
     // Data
     public $figures;
@@ -53,14 +55,15 @@ abstract class data{
     abstract public function calculateDiffs();
     abstract public function calculateProportions();
     abstract public function mostRecent();
-    abstract public function getData($year);
+	abstract public function mostRecentStr();
+    abstract public function getData($year, $month);
     abstract public function extractData($field);
     abstract public function longStreaks();
     abstract public function getAvgDiff($field, $time);
     abstract public function getAvgPct($field, $time);
-    abstract public function streakDirection($year, $field);
-    abstract public function negStreak($year, $field);
-    abstract public function posStreak($year, $field);
+    abstract public function streakDirection($year, $field, $month=NULL);
+    abstract public function negStreak($year, $field, $month);
+    abstract public function posStreak($year, $field, $month);
     abstract public function minYear();
     abstract public function getMaxDiff($field, $time);
     abstract public function getMinDiff($field, $time);
@@ -69,7 +72,6 @@ abstract class data{
     abstract public function getMaxProp($prop);
     abstract public function getMinProp($prop);
 	abstract public function previous();
-	abstract public function analyze();
 	abstract public function printRecent();
 	abstract public function keyObs();
 	abstract protected function highlight();
@@ -78,7 +80,13 @@ abstract class data{
 	abstract protected function recordCheck();
 	abstract public function getCategories();
 	abstract public function getId();
-
+	abstract public function run();
+	abstract protected function calculateStats();
+	abstract public function statistics();
+	abstract public function bigChanges();
+	abstract public function longStreak();
+	abstract protected function bestFit();
+	abstract protected function pieceFit();
 
     public function areProportions(){
 		if(!$this->success){
@@ -109,7 +117,7 @@ abstract class data{
 			return;
 		}
 
-		return max($this->extractData($field));
+		return max($this->extractData($field)) + 0; // +0 forces to number
     }
 
     public function getMin($field){
@@ -117,7 +125,7 @@ abstract class data{
 			return;
 		}
 
-		return min($this->extractData($field));
+		return min($this->extractData($field)) + 0; // +0 forces to number
     }
 
     public function getYears(){
@@ -167,7 +175,7 @@ abstract class data{
 		$data = $this->extractData($field);
 		sort($data);
 		$middle = round(count($data) / 2);
-		return $data[$middle-1];
+		return $data[$middle-1]+0; // plus zero forces to number
     }
 
 	protected function getYearField(){
@@ -375,5 +383,23 @@ abstract class data{
 			return 12;
 		}
 		throw new exception("Can't recognize abbreviation used for month!");
+	}
+
+	public function analyze(){
+		if(!$this->success){
+			return;
+		}
+		$this->recent = $this->mostRecent();
+		$this->previous = $this->previous($this->recent);
+		$this->yearData = $this->getData($this->recent);
+		$this->prevData = $this->getData($this->previous);
+		$this->highlight();
+		$this->recordCheck();
+		$this->proportion();
+		$this->streak();
+		$this->calculateStats();
+		$this->bigChanges();
+		$this->pieceFit();
+		$this->bestFit();
 	}
 }

@@ -398,16 +398,12 @@ class monthly extends data{
 
 		$c = 0;
 		while($year != 0){
-			$d = $this->getData($year, $month);
-			$prevMonth = $this->previous($year, $month);
-			$p = $this->getData($prevMonth[0], $prevMonth[1]);
-			if($d == NULL || $p == NULL){
-				return $c;
-			}
-			if($d[$field]-$p[$field] > 0){
+			$val = $this->diffs[$year][$month][$field][1];
+			if($val > 0){
 				return $c;
 			}
 			$c++;
+			$prevMonth = $this->previous($year, $month);
 			$year = $prevMonth[0];
 			$month = $prevMonth[1];
 		}
@@ -425,16 +421,12 @@ class monthly extends data{
 
 		$c = 0;
 		while($year != 0){
-			$d = $this->getData($year, $month);
-			$prevMonth = $this->previous($year, $month);
-			$p = $this->getData($prevMonth[0], $prevMonth[1]);
-			if($d == NULL || $p == NULL){
-				return $c;
-			}
-			if($d[$field]-$p[$field] < 0){
+			$val = $this->diffs[$year][$month][$field][1];
+			if($val < 0){
 				return $c;
 			}
 			$c++;
+			$prevMonth = $this->previous($year, $month);
 			$year = $prevMonth[0];
 			$month = $prevMonth[1];
 		}
@@ -536,10 +528,8 @@ class monthly extends data{
 			while($base[0] != 0 && $base[1] != 0){
 				$year = $base[0];
 				$month = $base[1];
-				$neg = $this->negStreak($year, $field['field']);
-				$pos = $this->posStreak($year, $field['field']);
-				dump($neg, 'neg');
-				dump($pos, 'pos');
+				$neg = $this->negStreak($year, $field['field'], $month);
+				$pos = $this->posStreak($year, $field['field'], $month);
 				if($pos > $max){
 					unset($maxTime);
 					$maxTime = array();
@@ -565,8 +555,6 @@ class monthly extends data{
 			$vals[$field['text']]['decrease'] = $min;
 			$years[$field['text']]['increase'] = $maxTime;
 			$years[$field['text']]['decrease'] = $minTime;
-			dump($vals, 'vals');
-			dump($years, 'years');
 		}
 		return array($vals, $years);
 	}
@@ -869,9 +857,14 @@ class monthly extends data{
 		foreach($vals as $text=>$types){
 			echo "<h4>$text</h4>\n";
 			foreach($types as $type=>$val){
-				echo "Longest $type: $val years\n";
-				$i = 0;
-				dump($years[$text][$type]);
+				echo "Longest $type: $val months\n";
+				echo "<ul>\n";
+				foreach($years[$text][$type] as $endMonth){
+					$startMonth = $this->subtractMonths($endMonth[0], $endMonth[1], $val+1);
+					echo "\t<li>" . $this->timeString($startMonth[0], $startMonth[1]) . " - " . $this->timeString($endMonth[0], $endMonth[1]) . "</li>\n";
+				}
+				echo "</ul>\n";
+				//dump($years[$text][$type]);
 			}
 		}
 	}

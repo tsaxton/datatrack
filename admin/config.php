@@ -20,4 +20,6 @@ $dbName = 'heroku_51bc4a95169dce1';
 
 $db = new MeekroDB($host, $username, $password, $dbName);
 
+// mysql -h us-cdbr-east-04.cleardb.com --password=2015136f -u bb69d137447097 heroku_51bc4a95169dce1
+
 ?>

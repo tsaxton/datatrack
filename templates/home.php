@@ -8,7 +8,7 @@
             </div>
        		</header>
 
-<div class = "examples">
+<!--<div class = "examples">
             <div class = "container">
        				<h2> Examples: </h2>
                   <div class = "exampleBox"><img src ="http://www.thegamejar.com/wp-content/uploads/2012/12/graph3.jpg"> <h3> stuff </h3> </div> 
@@ -28,7 +28,6 @@
 	    <li class="nav-header">Categories</li>
 	    <li><a href="#crime" id="display-crime">Crime</a></li>
 	    <li><a href="#transit" id="display-transit">Transportation</a></li>
-	    <!--<li>Government</li>-->
 	</ul>
 	<script type="text/javascript">
 		$('#display-transit').click(function(){
@@ -56,44 +55,56 @@
     </div>
     <div id="dashboard-main" class="span8">
 <?php
-$datasets = $db->query('select * from datasets order by updated');
+/*$datasets = $db->query('select * from datasets order by updated');
 $i = 0;
 $ct = count($datasets);
 $sets = 6;
 $k = 0;
 for($j=0; $j < min($sets, $ct); $j++){
-    $temp = new recentAnalysis(intval($datasets[$j]['id']));
-    if($temp->success()){
-	$data[$k++] = $temp;
+	switch($datasets[$j]['type']){
+		case 'monthly':
+			$temp = new monthly(intval($datasets[$j]['id']));
+			break;
+		case 'quarterly':
+			break;
+		case 'yearly':
+			$temp = new yearly(intval($datasets[$j]['id']));
+			break;
+	}
+    if($temp->success){
+		$temp->analyze();
+		$data[$k++] = $temp;
     }
     else{
-	$sets++;
-	$ct--;
+		$sets++;
+		$ct--;
     }
 }
 $j = 0;
 while($i < 6){
 	$categories = $data[$i%$ct]->getCategories();
+	if(array_key_exists($j,$data[$i%$ct]->obs)){
     echo "<div class=\"dashboard-box small-box well $categories\">";
     echo "<a href=\"?id=display&dataset=" . $data[$i%$ct]->getId() . "\">";
     echo $data[$i%$ct]->obs[$j];
     echo "</a></div>";
     $i++;
+	}
     if($i%$ct == 0){
 	$j++;
     }
-}
+}*/
 ?>
     </div>
     <div class="span2">
 	<ul class="nav nav-list">
 	    <li class="nav-header">Data Sets</li>
 <?php
-$datasets = $db->query('select * from datasets order by name');
+/*$datasets = $db->query('select * from datasets order by name');
 foreach($datasets as $d){
     echo "\t\t\t<li><a href=\"?id=display&dataset={$d['id']}\">{$d['name']}</a></li>\n";
-}
+}*/
 ?>
 	</ul>
     </div>
-</div>
+</div>-->

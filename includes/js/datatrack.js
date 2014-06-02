@@ -9,39 +9,35 @@ $(document).ready(function(){
 		})
 	}
 
-		var id = "";
-		$(".invisibleData").each(function(){ id += $(this).attr("title") + ';' });
-		id = id.split(';');
-		id.pop();
-		//console.log(id);
-		
-		graphData = [];
-		title = '';
-		for (var i = 0; i <= id.length - 1; i++) {
-			result = getData(id[i]);
-			//console.log(result);
-			graphData.push(result);
-			title += $('#' + id[i] + ' h3').text() + ';';		
-		};
+	var optionID = $('#graphSelection option:selected').attr('id');
+	var title = $('#graphSelection option:selected').html();
+	drawGraph(optionID, title);
 
-		title = title.split(';');
-		title.pop();
-		var Series = [];
-		for (var i = 0; i <= title.length - 1; i++){
-			Series.push({label: title[i]});
-		}
-
-		var option = {
-			legend: { 
-				show: true,
-				location: 'sw',
-			},
-			series: Series
-		};
-
-		$.jqplot('graph', graphData, option);
+	$('#graphSelection').change(function(){
+		var optionID = $('#graphSelection option:selected').attr('id');
+		var title = $('#graphSelection option:selected').html();
+		drawGraph(optionID, title);
+	});
 	
 });
+
+function drawGraph(id, title){
+	$('#graph').empty();
+	graphData = [];
+	result = getData(id);
+	graphData.push(result);
+	var Series = [];
+	Series.push({label: title});
+
+	var option = {
+		legend: { 
+			show: true,
+			location: 'sw',
+		},
+		series: Series
+	};
+	$.jqplot('graph', graphData, option);
+}
 
 function getData(id){
 	var column1 = [];

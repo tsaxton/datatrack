@@ -9,6 +9,16 @@ $(document).ready(function(){
 		})
 	}
 
+	$('#checkall').click(function(e){
+		e.preventDefault();
+		$('input:checkbox').attr('checked', 'checked').prop('checked', true);
+	});
+
+	$('#uncheckall').click(function(e){
+		e.preventDefault();
+		$('input:checkbox').removeAttr('checked').prop('checked', false);
+	});
+
 	var optionID = $('#graphSelection option:selected').attr('id');
 	var title = $('#graphSelection option:selected').html();
 	drawGraph(optionID, title);
@@ -18,6 +28,7 @@ $(document).ready(function(){
 		var title = $('#graphSelection option:selected').html();
 		drawGraph(optionID, title);
 	});
+
 	
 });
 

@@ -629,6 +629,7 @@ class multicsv{
 	private function checkButtons($options, $message){
 		$str = '<div class="well"><p>' . $message . '</p>';
 		$str .= '<form action="?id=analyze" method="POST" id="confirmationDialog">';
+		$str .= "<a href='#' id='checkall'>Check All</a> <a href='#' id='uncheckall'>Uncheck All</a>";
 		foreach($options as $i=>$option){
 			$str .= '<div class="checkbox">';
 			$str .= "<label for='$i'><input type='checkbox' id='$i' checked name='response[]'/> $option</label></div>";

@@ -91,6 +91,10 @@ abstract class data{
 		return $this->id;
 	}
 
+	public function setName($name){
+		$this->name = $name;
+	}
+
     public function areProportions(){
 		if(!$this->success){
 			return;

@@ -158,7 +158,7 @@ class yearly extends data{
 		}
 
 		// set up table header
-		$ret = "<table class=\"data\" id=\"" . preg_replace("/[^A-za-z0-9]/", '', $field) . "\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
+		$ret = "<table class=\"tab-pane data table table-striped\" id=\"" . preg_replace("/[^A-za-z0-9]/", '', $field) . "\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 		$years = count($this->figures); // number of years of data
 		if(array_key_exists(date("Y"), $this->figures)){
 			$years--;
@@ -237,7 +237,7 @@ class yearly extends data{
 			return;
 		}
 
-		$ret = "<table class=\"data\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
+		$ret = "<table class=\"data table table-striped\" id=\"proportions\">\n\t<tr>\n\t\t<th>Year</th>\t";
 		foreach($this->proportions as $p){
 			$ret .= "\t\t<th>{$p['description']}</th>\n";
 		}

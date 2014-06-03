@@ -116,7 +116,7 @@ class monthly extends data{
 		}
 		
 		// set up table header
-		$ret = "<table class=\"data table table-striped\" id=\"$field\">\n\t<tr>\n\t\t<th>Month</th>\n\t\t<th>".ucfirst($thisField)."</th>\n\t";
+		$ret = "<table class=\"data table table-striped\" id=\"" . preg_replace("/[^A-Za-z0-9]/", '', $field) . "\">\n\t<tr>\n\t\t<th>Month</th>\n\t\t<th>".ucfirst($thisField)."</th>\n\t";
 		foreach($this->offsetMonth as $o){
 			$ret .= "\t<th class=\"noright\">$o month change</th>\n\t\t<th class=\"noleft\">(%)</th>\n\t";
 		}
@@ -150,7 +150,30 @@ class monthly extends data{
 		return $ret;
 	}
 
-    public function tableProp(){}
+    public function tableProp(){
+		if(!$this->success){
+			return;
+		}
+
+		$ret = "<table class='data table table-striped' id='proportions'>\n\t<tr>\n\t\t<th>Date</th>\n";
+		foreach($this->proportions as $p){
+			$ret .= "\t\t<th>{$p['description']}</th>\n";
+		}
+		$ret .= "\t</tr>\n";
+		foreach($this->figures as $year=>$months){
+			foreach($months as $month=>$data){
+				$ret .= "\t<tr>\n\t\t<th>" . $this->months[$month] . " $year</th>\n";
+				foreach($this->proportions as $p){
+					$prop = $this->proportionData[$p['id']][$year][$month];
+					$ret .= "\t\t<td>" . number_Format(100*$prop, 2, '.', ',') . "%</td>\n";
+				}
+				$ret .= "\t</tr>\n";
+			}
+		}
+		$ret .= "</table>\n\n";
+		return $ret;
+	}
+
     public function makeJSON($field){
 		if(!$this->success){
 			return;

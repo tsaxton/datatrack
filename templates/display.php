@@ -28,16 +28,17 @@ if($dataset != NULL){
 elseif(array_key_exists('csv', $_SESSION)){
 	$csv = $_SESSION['csv'];
 	switch($csv->type){
-		case 'monthly':
+	case 'monthly':
 		$data = new monthly($csv->data);
 		break;
-		case 'quarterly':
+	case 'quarterly':
 		//$data = new quarterly($csv->data);
 		break;
-		case 'yearly':
+	case 'yearly':
 		$data = new yearly($csv->data);
 		break;
 	}
+	$data->setName($csv->name);
 }
 else{
 	die('No data set selected');
@@ -187,14 +188,14 @@ foreach($data->fields as $field){
 			<!-- Begin data table tabs -->
 			<?php
 			$first = 1;
-			foreach($data->fields as $field){
+			foreach($data->fields as $id=>$field){
 				$class = '';
 				if($first){
 					$class = "class=\"active\"";
 					$first = 0;
 				}
 	//preg_replace("/[^A-Za-z0-9]/", '', $string);
-				echo "\t\t<li $class><a href=\"#".preg_replace("/[^A-Za-z0-9]/", '', $field['field'])."\" data-toggle=\"tab\">{$field['text']}</a></li>";
+				echo "\t\t<li $class><a href=\"#tab$id\" data-toggle=\"tab\">{$field['text']}</a></li>";
     //echo "\t\t<li $class><a href=\"#".str_replace(' ','',$field['field'])."\" data-toggle=\"tab\">{$field['text']}</a></li>";
 			}
 			if($data->areProportions()){
@@ -212,17 +213,17 @@ foreach($data->fields as $field){
 		<!-- Begin data tables -->
 		<?php
 		$first = 1;
-		foreach($data->fields as $field){
+		foreach($data->fields as $id=>$field){
 			$active = '';
 			if($first){
 				$active = 'active';
 				$first = 0;
 			}
-			echo "\t\t<div id=\"".preg_replace("/[^A-za-z0-9]/", '', $field['field'])."\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
+			echo "\t\t<div id=\"tab$id\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
     //echo "\t\t<div id=\"".str_replace(' ','',$field['field'])."\" class=\"tab-pane $active\">\n\t\t\t<h3>{$field['text']}</h3>\n\t\t\t<!-- Begin Data Table: {$field['text']} -->\n";
 			echo $data->makeTable($field['field']);
 			echo "\t\t\t<!-- End Data Table: {$field['text']} -->\n\t\t</div>\n";		
-			echo "<div style=\"display:none;\" title=\"".preg_replace("/[^A-za-z0-9]/", '', $field['field'])."\" class=\"invisibleData\"></div>";
+			//echo "<div style=\"display:none;\" title=\"".preg_replace("/[^A-za-z0-9]/", '', $field['field'])."\" class=\"invisibleData\"></div>";
 
 		}
 		if($data->areProportions()){

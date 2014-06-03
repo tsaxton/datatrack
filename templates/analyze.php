@@ -22,7 +22,8 @@ if(array_key_exists('files', $_FILES)){
 	$quarter = $_POST['quarters'];
 	$year = $_POST['year'];
 	$type = $_POST['timeframe'];
-	$_SESSION['csv'] = new multicsv($_FILES['files'], $month, $quarter, $year, $type);
+	$title = $_POST['name'];
+	$_SESSION['csv'] = new multicsv($_FILES['files'], $month, $quarter, $year, $type, $title);
 }
 
 if(!array_key_exists('csv', $_SESSION)){

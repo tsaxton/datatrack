@@ -3,6 +3,14 @@
       </div>
 
 <form class='form' id="input-file" role='form' method='post' action='?id=analyze' enctype="multipart/form-data">
+<div class="row">
+	<div class="col-sm-12">
+		<div class="form-group">
+			<label for="name">Dataset Name</label>
+			<input type="text" class="form-control" id="name" name="name"/>
+		</div>
+	</div>
+</div>
 <div class = "row">
 	<div class = "col-lg-6">
 	<div class="radio-inline">
@@ -49,7 +57,7 @@
 			    	<option value="6">June</option>
 					<option value="7">July</option>
 			    	<option value="8">August</option>
-			    	<option value="9">September></option>
+			    	<option value="9">September</option>
 			    	<option value="10">October</option>
 			    	<option value="11">November</option>
 			    	<option value="12">December</option>

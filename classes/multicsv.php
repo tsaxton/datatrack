@@ -12,8 +12,9 @@ class multicsv{
 	private $useCols = array();
 	private $useRows = array();
 	private $step = 0;
+	public $name;
 
-	public function __construct($files, $month, $quarter, $year, $type){
+	public function __construct($files, $month, $quarter, $year, $type, $name){
 		foreach($files['error'] as $i=>$error){
 			if($error == 0){
 				$this->files[$i] = file_get_contents($files['tmp_name'][$i]);
@@ -24,6 +25,7 @@ class multicsv{
 		$this->quarters = $quarter;
 		$this->type = $type;
 		$this->step = 0;
+		$this->name = $name;
 	}
 
 	public function fixProblem($args){

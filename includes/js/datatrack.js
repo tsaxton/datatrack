@@ -45,7 +45,7 @@ function drawGraph(id, title){
 	var option = {
 		legend: { 
 			show: true,
-			location: 'sw',
+			location: 'ne',
 		},
 		series: Series
 	};

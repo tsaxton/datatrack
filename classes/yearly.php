@@ -158,7 +158,7 @@ class yearly extends data{
 		}
 
 		// set up table header
-		$ret = "<table class=\"data\" id=\"$field\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
+		$ret = "<table class=\"data\" id=\"" . preg_replace("/[^A-za-z0-9]/", '', $field) . "\">\n\t<tr>\n\t\t<th>Year</th>\n\t\t<th>".ucfirst($field)."</th>\n\t";
 		$years = count($this->figures); // number of years of data
 		if(array_key_exists(date("Y"), $this->figures)){
 			$years--;

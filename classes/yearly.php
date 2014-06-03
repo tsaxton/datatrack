@@ -558,17 +558,18 @@ class yearly extends data{
 		}
 
 		$c = 0;
-		while($year > 1900){
-			$d = $this->getData($year);
-			$p = $this->getData($year-1);
-			if($d == NULL || $p == NULL){
-				return $c;
-			}
-			if($d[$field]-$p[$field] > 0){
+		while($year != 0){
+			$prevYear = $this->previous($year);
+			$data = $this->getData($year);
+			$prevData = $this->getData($prevYear);
+			$data = $data[$field];
+			$prevData = $prevData[$field];
+			$val = $data - $prevData;
+			if($val > 0){
 				return $c;
 			}
 			$c++;
-			$year--;
+			$year = $prevYear;
 		}
 		return $c;
     }
@@ -580,16 +581,17 @@ class yearly extends data{
 
 		$c = 0;
 		while($year > 1900){
-			$d = $this->getData($year);
-			$p = $this->getData($year-1);
-			if($d == NULL || $p == NULL){
-				return $c;
-			}
-			if($d[$field]-$p[$field] < 0){
+			$prevYear = $this->previous($year);
+			$data = $this->getData($year);
+			$prevData = $this->getData($prevYear);
+			$data = $data[$field];
+			$prevData = $prevData[$field];
+			$val = $data - $prevData;
+			if($val < 0){
 				return $c;
 			}
 			$c++;
-			$year--;
+			$year = $prevYear;
 		}
 		return $c;
     }

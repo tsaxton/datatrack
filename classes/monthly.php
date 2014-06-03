@@ -398,12 +398,18 @@ class monthly extends data{
 
 		$c = 0;
 		while($year != 0){
-			$val = $this->diffs[$year][$month][$field][1];
+			//$val = $this->diffs[$year][$month][$field][1];
+			// turns out, can't quite us this because the value will be NULL after a missing year
+			$prevMonth = $this->previous($year, $month);
+			$data = $this->getData($year, $month);
+			$prevData = $this->getData($prevMonth[0], $prevMonth[1]);
+			$data = $data[$field];
+			$prevData = $prevData[$field];
+			$val = $data - $prevData;
 			if($val > 0){
 				return $c;
 			}
 			$c++;
-			$prevMonth = $this->previous($year, $month);
 			$year = $prevMonth[0];
 			$month = $prevMonth[1];
 		}
@@ -421,12 +427,18 @@ class monthly extends data{
 
 		$c = 0;
 		while($year != 0){
-			$val = $this->diffs[$year][$month][$field][1];
+			//$val = $this->diffs[$year][$month][$field][1];
+			// turns out this won't quite work because value will be NULL after a missing year
+			$prevMonth = $this->previous($year, $month);
+			$data = $this->getData($year, $month);
+			$prevData = $this->getData($prevMonth[0], $prevMonth[1]);
+			$data = $data[$field];
+			$prevData = $prevData[$field];
+			$val = $data - $prevData;
 			if($val < 0){
 				return $c;
 			}
 			$c++;
-			$prevMonth = $this->previous($year, $month);
 			$year = $prevMonth[0];
 			$month = $prevMonth[1];
 		}

@@ -19,15 +19,17 @@ $(document).ready(function(){
 		$('input:checkbox').removeAttr('checked').prop('checked', false);
 	});
 
-	var optionID = $('#graphSelection option:selected').attr('id');
-	var title = $('#graphSelection option:selected').html();
-	drawGraph(optionID, title);
-
-	$('#graphSelection').change(function(){
+	if($('#graph').length != 0){
 		var optionID = $('#graphSelection option:selected').attr('id');
 		var title = $('#graphSelection option:selected').html();
 		drawGraph(optionID, title);
-	});
+
+		$('#graphSelection').change(function(){
+			var optionID = $('#graphSelection option:selected').attr('id');
+			var title = $('#graphSelection option:selected').html();
+			drawGraph(optionID, title);
+		});
+	}
 
 	
 });

@@ -4,9 +4,8 @@ $i = $_GET["index"];
 $t = $_GET["timefield"];
 $radioyear = $_GET["checkyear"];
 
-$fileinput =  '<div class="col-md-12">
-	  		<div class="form-group col-md-5">
-	        	<label for="file_input">File' . $i . ':</label>
+$fileinput =  '<div class="row">
+	  		<div class="form-group col-lg-6">
 	            <input type="file" id="file_input" name="files[]" class="form-control" placeholder="Add your file here"/>
 	        </div>';
 
@@ -20,7 +19,6 @@ else{
 }
 
 $month .= ';" name="select_month">
-	    	<br>
 	        <select class="form-control" name="month[]" id="Monthly">
 	            <option value="0">Month</option>
 	            <option value="1">January</option>
@@ -48,7 +46,6 @@ else{
 }
 
 $quarter .= ';" name="select_quarter">
-			<br>
             <select class="form-control" name="quarter[]" id="Quarterly">
             	<option value="0">Quarter</option>
                 <option value="1">Quarter 1</option>
@@ -58,7 +55,6 @@ $quarter .= ';" name="select_quarter">
 	        </select>
 	    	</div>';
 $year = '<div class="col-md-2"  name="select_year">
-			<br>
             <select class="form-control" name="year[]" id="Yearly">
                 <option value="0">Year</option>';
 

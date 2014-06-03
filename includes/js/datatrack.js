@@ -107,6 +107,9 @@ $(document).ajaxComplete(function(){
 			$('#attributes').html(response);
 		});
 	});*/
+	$('#additionalFile').click(function(e){
+		e.preventDefault();
+	});
 	$('#confirm-date').ajaxForm({
 		beforeSend: function(){
 			$('#time').collapse('hide').html('');

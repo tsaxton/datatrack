@@ -102,12 +102,12 @@ class multicsv{
 				break;
 			case 9:
 				foreach($args as $index=>$value){
-					array_push($this->useCols, $index+1);
+					array_push($this->useCols, $value+1);
 				}
 				break;
 			case 10:
 				foreach($args as $index=>$value){
-					array_push($this->useRows, $index+1);
+					array_push($this->useRows, $value+1);
 				}
 				break;
 		}
@@ -634,7 +634,7 @@ class multicsv{
 		$str .= "<a href='#' id='checkall'>Check All</a> <a href='#' id='uncheckall'>Uncheck All</a>";
 		foreach($options as $i=>$option){
 			$str .= '<div class="checkbox">';
-			$str .= "<label for='$i'><input type='checkbox' id='$i' checked name='response[]'/> $option</label></div>";
+			$str .= "<label for='$i'><input type='checkbox' id='$i' value='$i' checked name='response[]'/> $option</label></div>";
 		}
 		$str .= "<div class='form-group'><button type='submit' class='btn btn-default'>Continue</button></div>";
 		$str .= '</form></div>';

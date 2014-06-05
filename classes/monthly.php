@@ -892,6 +892,9 @@ class monthly extends data{
 		foreach($vals as $text=>$types){
 			echo "<h4>$text</h4>\n";
 			foreach($types as $type=>$val){
+				if($val == 0){
+					continue;
+				}
 				echo "Longest $type: $val months\n";
 				echo "<ul>\n";
 				foreach($years[$text][$type] as $endMonth){

@@ -877,6 +877,9 @@ class yearly extends data{
 		foreach($vals as $text=>$types){
 			echo "<h4>$text</h4>\n";
 			foreach($types as $type=>$val){
+				if($val == 0){
+					continue;
+				}
 				echo "Longtest $type: $val years\n";
 				$i = 0;
 				echo "<ul>\n";

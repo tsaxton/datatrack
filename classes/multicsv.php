@@ -107,7 +107,7 @@ class multicsv{
 				break;
 			case 10:
 				foreach($args as $index=>$value){
-					array_push($this->useRows, $value+1);
+					array_push($this->useRows, $value);
 				}
 				break;
 		}
@@ -301,7 +301,7 @@ class multicsv{
 			case 10:
 				// Ask which categories they want to use
 				$colOne = $this->getFirstColumn();
-				array_shift($colOne);
+				//array_shift($colOne);
 				return $this->checkButtons($colOne, 'Which of these data categories do you wish to use? (NOTE: At least one must be checked.)');
 				break;
 			case 11:

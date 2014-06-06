@@ -3,7 +3,6 @@
 class yearly extends data{
 
 	protected function fromArray($data){
-		$this->name = 'User Data';
 		$year = reset($data);
 		$fields = array();
 		$i = 0;
@@ -15,6 +14,42 @@ class yearly extends data{
 		$this->figures = $data;
 
 		$this->calculateDiffs();
+		$this->saveToDatabase();
+	}
+
+	protected function saveToDatabase(){
+		global $db;
+
+		// assmeble the array to insert into datasets
+		$datasets = array('name'=>$this->name, 'type'=>'yearly');
+		$db->insert('datasets', $datasets);
+
+		$this->id = $db->insertId();
+
+		foreach($this->fields as $i=>$field){
+			$fields = array('dataset'=>$this->id, 'major'=>1, 'field'=>$field['field'], 'text'=>$field['text']);
+			$db->insert('fields', $fields);
+			$this->fields[$i]['id'] = $db->insertId();
+		}
+
+		// finally insert data
+		foreach($this->figures as $year=>$data){
+			foreach($data as $cat=>$val){
+				$fieldId = NULL;
+				$insert = array();
+				foreach($this->fields as $field){
+					if($field['field'] == $cat || $field['text'] == $cat){
+						$fieldId = $field['id'];
+						break;
+					}
+				}
+				if($fieldId == NULL){
+					continue;
+				}
+				$insert = array('dataset'=>$this->id, 'field'=>$fieldId, 'year'=>$year, 'data'=>floatval($val));
+				$db->insert('data', $insert);
+			}
+		}
 	}
 
     public function initialize(){
@@ -51,9 +86,21 @@ class yearly extends data{
 
 		$this->proportions = $db->query("select * from proportions where dataset={$this->id}");
 
-		$result = $this->collectData();
-		if(!$result){
-			$this->success = FALSE;
+		if($this->api != NULL){
+			$result = $this->collectData();
+			if(!$result){
+				$this->success = FALSE;
+			}
+		}
+		else{
+			$figures = $db->query('select * from data where dataset=' . $this->id);
+			$this->figures = array();
+			foreach($figures as $figure){
+				if(!array_key_exists($figure['year'], $this->figures)){
+					$this->figures[$figure['year']] = array();
+				}
+				$this->figures[$figure['year']][$this->fields[$figure['field']]['field']] = $figure['data'];
+			}
 		}
 		$this->calculateDiffs();
 		$this->calculateProportions();

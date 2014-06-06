@@ -4,7 +4,56 @@ class monthly extends data{
 	private $months = array(NULL, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 
 	protected function fromArray($data){
-		return;
+		$year = max(array_keys($data));
+		$month = max(array_keys($data[$year]));
+		$fields = array();
+		$i = 0;
+		foreach($data[$year][$month] as $field=>$val){
+			array_push($fields, array('id'=>$i++, 'field'=>$field, 'text'=>$field, 'major'=>1));
+		}
+		$this->fields = $fields;
+		$this->allFields = $fields;
+		$this->figures = $data;
+
+		$this->calculateDiffs();
+		$this->saveToDatabase();
+	}
+
+	protected function saveToDatabase(){
+		global $db;
+
+		// assmeble the array to insert into datasets
+		$datasets = array('name'=>$this->name, 'type'=>'yearly');
+		$db->insert('datasets', $datasets);
+
+		$this->id = $db->insertId();
+
+		foreach($this->fields as $i=>$field){
+			$fields = array('dataset'=>$this->id, 'major'=>1, 'field'=>$field['field'], 'text'=>$field['text']);
+			$db->insert('fields', $fields);
+			$this->fields[$i]['id'] = $db->insertId();
+		}
+
+		// finally insert data
+		foreach($this->figures as $year=>$months){
+			foreach($months as $month=>$data){
+				foreach($data as $cat=>$val){
+					$fieldId = NULL;
+					$insert = array();
+					foreach($this->fields as $field){
+						if($field['field'] == $cat || $field['text'] == $cat){
+							$fieldId = $field['id'];
+							break;
+						}
+					}
+					if($fieldId == NULL){
+						continue;
+					}
+					$insert = array('dataset'=>$this->id, 'field'=>$fieldId, 'year'=>$year, 'month'=>$month, 'data'=>floatval($val));
+					$db->insert('data', $insert);
+				}
+			}
+		}
 	}
 
     public function initialize(){

@@ -86,6 +86,7 @@ abstract class data{
 	abstract public function longStreak();
 	abstract protected function bestFit();
 	abstract protected function pieceFit();
+	abstract protected function saveToDatabase();
 
 	public function getId(){
 		return $this->id;
@@ -93,6 +94,10 @@ abstract class data{
 
 	public function setName($name){
 		$this->name = $name;
+
+		global $db;
+
+		$db->update('datasets', array('name'=>$name), "id=%i", $this->id);
 	}
 
     public function areProportions(){

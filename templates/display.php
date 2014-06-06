@@ -1,17 +1,3 @@
-<div class = "importer">
-<div class = "container">
-      <div class = "row">
-          <div class = "col-lg-4">
-          		<div class = "grayBox"><h1> 1. Upload Data</h1></div>
-          </div>
-          <div class = "col-lg-4">
-             <div class = "grayBox"><h1> 2. Check Data</h1></div>
-          </div>
-          <div class = "col-lg-4">
-              <div class = "purpleBox"><h1> 3. Analyze</h1></div>
-          </div>
-      </div>
-
 <?php
 if($dataset != NULL){
 	$results = $db->queryFirstRow('select * from datasets where id='.$dataset);
@@ -48,6 +34,32 @@ $_SESSION['data'] = $data; // store the current data set as the most recent one
 $data->analyze();
 //$long = new longTerm($data);
 ?>
+<div class = "importer">
+<div class = "container">
+<?php
+if(!array_key_exists('dataset', $_GET)){
+?>
+      <div class = "row">
+          <div class = "col-lg-4">
+          		<div class = "grayBox"><h1> 1. Upload Data</h1></div>
+          </div>
+          <div class = "col-lg-4">
+             <div class = "grayBox"><h1> 2. Check Data</h1></div>
+          </div>
+          <div class = "col-lg-4">
+              <div class = "purpleBox"><h1> 3. Analyze</h1></div>
+          </div>
+      </div>
+	<div class="row">
+		<div class="col-sm-12 well well-sm" style="margin-top: 10px;">
+			Bookmark the following link to save your data!<br/>
+			<a href="?id=display&dataset=<?=$data->getId()?>"><?=$rootURL?>?id=display&dataset=<?=$data->getId()?></a>
+		</div>
+	</div>
+<?php
+}
+?>
+
 <div class = "topTrends">
 	<div class="container">
 

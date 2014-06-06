@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/?id=home">
-                    <img src="includes/css/trendable!logo.png" alt="" width = "200px">
+                    <img src="includes/css/trendablelogo.png" alt="" width = "200px">
                 </a>
             </div>
 

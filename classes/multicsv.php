@@ -423,7 +423,7 @@ class multicsv{
 						$colLabel = '';
 					}
 					else{
-					$colLabel = ' (' . $this->arrays[0][0][$col] . ')';
+						$colLabel = ' (' . $this->arrays[0][0][$col] . ')';
 					}
 					$label = $rowLabel . $colLabel;
 					$localFirstRow = $this->getFirstRow($i);
@@ -442,7 +442,36 @@ class multicsv{
 	}
 
 	private function toInternalDataMonthly(){
-		return 0;
+		$ret = array();
+		foreach($this->files as $i=>$file){
+			$month = $this->months[$i];
+			$year = $this->years[$i];
+			if(!array_key_exists($year, $ret)){
+				$ret[$year] = array();
+			}
+			$ret[$year][$month] = array();
+			foreach($this->useRows as $row){
+				foreach($this->useCols as $col){
+					$rowLabel = $this->arrays[0][$row][0];
+					if(count($this->useCols) == 1){
+						$colLabel = '';
+					}
+					else{
+						$colLabel = ' (' . $this->arrays[0][0][$col] . ')';
+					}
+					$label = $rowLabel . $colLabel;
+					$localFirstRow = $this->getFirstRow($i);
+					$localFirstCol = $this->getFirstColumn($i);
+					$j = array_search($rowLabel, $localFirstCol);
+					$k = array_search($this->arrays[0][0][$col], $localFirstRow);
+					if($j===false || $k===false){
+						// TODO: Should probably do something else here
+						return "Something went wrong!";
+					}
+					$ret[$year][$month][$label] = $this->arrays[$i][$j][$k];
+				}
+			}
+		}
 	}
 
 	private function toInternalDataQuarterly(){

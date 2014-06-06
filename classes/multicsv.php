@@ -348,7 +348,25 @@ class multicsv{
 	}
 
 	private function displayDataMonthly(){
-		return;
+		$str = "<table class='table' table-striped'><tr><th>&nbsp;</th>";
+		$year = max(array_keys($this->data));
+		$month = max(array_keys($this->data[$year]));
+		foreach($this->data[$year][$month] as $cat=>$val){
+			$str .= "<th>$cat</th>";
+		}
+		$str .= "</tr>";
+		foreach($this->data as $year=>$months){
+			foreach($months as $month=>$data){
+				$str .= "<tr><th>$month/$year</th>";
+				foreach($data as $cat=>$val){
+					$str .= "<td>$val</td>";
+				}
+				$str .= "</tr>";
+			}
+		}
+		$str .= "</table>";
+		$str .= "\n<center><a href='?id=display' class='btn btn-success'>Analyze Data</a></center>\n";
+		return $str;
 	}
 
 	private function displayDataQuarterly(){
@@ -438,6 +456,7 @@ class multicsv{
 				}
 			}
 		}
+		ksort($ret);
 		$this->data = $ret;
 	}
 
@@ -472,6 +491,8 @@ class multicsv{
 				}
 			}
 		}
+		ksort($ret);
+		$this->data = $ret;
 	}
 
 	private function toInternalDataQuarterly(){
